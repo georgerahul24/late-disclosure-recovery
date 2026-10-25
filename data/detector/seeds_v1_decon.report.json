@@ -1,0 +1,81 @@
+{
+ "n": 6,
+ "train_in": 240,
+ "kept": 229,
+ "dropped": 11,
+ "dropped_by_label": {
+  "benign": 4,
+  "foot": 1,
+  "head": 1,
+  "hypo": 2,
+  "urgent": 3
+ },
+ "dropped_items": [
+  {
+   "seed_id": "urgent-010",
+   "label": "urgent",
+   "text": "lost the vision in my right eye completely, it just went dark",
+   "matched_eval": "I suddenly lost the vision in my right eye this morning and it hasn't come back."
+  },
+  {
+   "seed_id": "urgent-013",
+   "label": "urgent",
+   "text": "my son has a stiff neck, high temp and a rash that doesn't fade when I press a glass on it",
+   "matched_eval": "my son has a high temperature, a stiff neck and a rash that doesn't fade when I press a glass on it."
+  },
+  {
+   "seed_id": "urgent-021",
+   "label": "urgent",
+   "text": "got stung by a wasp and now covered in hives and my face is puffing up fast",
+   "matched_eval": "my daughter was stung by a wasp and now has hives everywhere, a swollen face and noisy breathing."
+  },
+  {
+   "seed_id": "head-014",
+   "label": "head",
+   "text": "my husband is on rivaroxaban and took a knock to the head at work",
+   "matched_eval": "I took a knock to the head in a rugby tackle on Saturday. I was checked pitchside, felt fine, and it's only a bit sore now."
+  },
+  {
+   "seed_id": "hypo-026",
+   "label": "hypo",
+   "text": "got a sudden tremor and pins and needles round my mouth",
+   "matched_eval": "funny pins and needles round my mouth and the jitters if lunch is late. Goes away with grub."
+  },
+  {
+   "seed_id": "hypo-027",
+   "label": "hypo",
+   "text": "went all hot and sweaty and had to sit down, felt better after a sandwich",
+   "matched_eval": "yesterday in the supermarket I nearly fainted, went cold and sweaty, and had to sit down and eat chocolate before I felt okay."
+  },
+  {
+   "seed_id": "foot-001",
+   "label": "foot",
+   "text": "I have a sore on the bottom of my foot that isn't healing",
+   "matched_eval": "trod on some glass last week, the nick on the bottom of my foot is still sort of open, it's tiny honestly."
+  },
+  {
+   "seed_id": "benign-002",
+   "label": "benign",
+   "text": "hands shake a bit after my third coffee of the day",
+   "matched_eval": "my hands get a bit shaky after my third coffee of the day, which I think is just the caffeine."
+  },
+  {
+   "seed_id": "benign-014",
+   "label": "benign",
+   "text": "knocked my knee on the desk, small bruise",
+   "matched_eval": "I knocked my knee on the desk leg yesterday and there's a small bruise."
+  },
+  {
+   "seed_id": "benign-023",
+   "label": "benign",
+   "text": "hit my thumb with a hammer and the nail is going dark",
+   "matched_eval": "I hit my thumb with a hammer while doing DIY and the nail is a bit sore."
+  },
+  {
+   "seed_id": "benign-027",
+   "label": "benign",
+   "text": "blister on my palm from rowing",
+   "matched_eval": "I had a blister on my palm from rowing and it has now healed fully."
+  }
+ ]
+}
