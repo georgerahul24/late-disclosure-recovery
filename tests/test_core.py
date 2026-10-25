@@ -190,3 +190,14 @@ def test_expand_episodes_counts(dev):
     eps = expand_episodes(S)
     n_sym = sum(1 for s in S.values() if s.symptom_direct)
     assert len(eps) == n_sym * 3 + (len(S) - n_sym)
+
+
+def test_synthea_style_med_names_and_prediabetes():
+    assert rules.evaluate("head", patient(["clopidogrel 75 MG Oral Tablet"])).urgent
+    assert rules.evaluate("head", patient(["24 HR warfarin sodium 5 MG"])).urgent
+    assert not rules.evaluate("head", patient(["aspirin 81 MG Oral Tablet"])).urgent
+    assert rules.evaluate("hypo", patient(["Humulin 70/30 Injectable Suspension"])).urgent
+    assert rules.evaluate("hypo", patient(["glyBURIDE 5 MG Oral Tablet"])).urgent
+    assert not rules.evaluate("hypo", patient(["24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet"])).urgent
+    assert not rules.evaluate("foot", patient(conds=["Prediabetes (finding)"])).urgent
+    assert rules.evaluate("foot", patient(conds=["Diabetes mellitus type 2 (disorder)"])).urgent

@@ -13,29 +13,47 @@ the grader checks whether an agent cited it (stage 2, context).
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import asdict, dataclass, field
 from datetime import date
 from pathlib import Path
 
-# Medication classes used by the record rules. Keys are lowercase generic names.
+# Medication classes used by the record rules: ingredient (or brand) words
+# matched as whole words inside the medication name. This works for plain
+# generic names ("clopidogrel") and for Synthea/RxNorm descriptions
+# ("clopidogrel 75 MG Oral Tablet", "Humulin 70/30 Injectable Suspension").
 # Keep this list in sync with data/README.md.
 MED_CLASSES: dict[str, set[str]] = {
-    "antiplatelet": {"clopidogrel", "ticagrelor", "prasugrel", "aspirin", "dipyridamole"},
-    "anticoagulant": {"warfarin", "apixaban", "rivaroxaban", "dabigatran", "edoxaban", "enoxaparin"},
-    "insulin": {"insulin glargine", "insulin aspart", "insulin lispro", "insulin detemir", "insulin isophane"},
-    "sulfonylurea": {"gliclazide", "glipizide", "glimepiride", "glibenclamide"},
-    "other_diabetes": {"metformin", "sitagliptin", "empagliflozin", "dapagliflozin"},
-    "other": {"atorvastatin", "lisinopril", "amlodipine", "omeprazole", "sertraline", "levothyroxine",
-              "salbutamol", "amoxicillin", "ibuprofen", "paracetamol"},
+    "anticoagulant": {"warfarin", "apixaban", "rivaroxaban", "dabigatran", "edoxaban", "enoxaparin", "heparin",
+                      "dalteparin", "fondaparinux", "jantoven", "coumadin", "eliquis", "xarelto", "pradaxa"},
+    "antiplatelet": {"clopidogrel", "ticagrelor", "prasugrel", "aspirin", "dipyridamole", "plavix", "brilinta",
+                     "effient", "ticlopidine", "cilostazol"},
+    "insulin": {"insulin", "humulin", "novolin", "lantus", "levemir", "humalog", "novolog", "glargine", "lispro",
+                "aspart", "detemir", "degludec"},
+    "sulfonylurea": {"gliclazide", "glipizide", "glimepiride", "glibenclamide", "glyburide"},
+    "other_diabetes": {"metformin", "sitagliptin", "empagliflozin", "dapagliflozin", "canagliflozin",
+                       "liraglutide", "semaglutide", "pioglitazone"},
 }
+NON_ASPIRIN_ANTIPLATELET = MED_CLASSES["antiplatelet"] - {"aspirin"}
+_WORD = re.compile(r"[a-z]+")
+
+
+def med_classes(name: str) -> set[str]:
+    words = set(_WORD.findall(name.lower()))
+    return {cls for cls, members in MED_CLASSES.items() if words & members}
 
 
 def med_class(name: str) -> str | None:
-    name = name.lower()
-    for cls, members in MED_CLASSES.items():
-        if name in members:
-            return cls
+    """The single most safety-relevant class, by priority."""
+    cls = med_classes(name)
+    for c in ("anticoagulant", "antiplatelet", "insulin", "sulfonylurea", "other_diabetes"):
+        if c in cls:
+            return c
     return None
+
+
+def is_non_aspirin_antiplatelet(name: str) -> bool:
+    return bool(set(_WORD.findall(name.lower())) & NON_ASPIRIN_ANTIPLATELET)
 
 
 @dataclass
@@ -108,8 +126,14 @@ class PatientRecord:
         return [c for c in self.conditions if c.active]
 
     def has_condition(self, keyword: str) -> bool:
-        k = keyword.lower()
-        return any(k in c.name.lower() for c in self.active_conditions())
+        """Whole-word match on active conditions. "diabetes" does NOT match
+        "Prediabetes" (a real Synthea condition)."""
+        pat = re.compile(rf"\b{re.escape(keyword.lower())}\b")
+        return any(pat.search(c.name.lower()) for c in self.active_conditions())
+
+    def is_diabetic(self) -> bool:
+        return any(re.search(r"\bdiabetes\b", c.name.lower()) and "prediabetes" not in c.name.lower()
+                   and "gestational" not in c.name.lower() for c in self.active_conditions())
 
     def facts(self) -> list[dict]:
         """Flatten the record into retrievable text facts (one per item).

@@ -24,7 +24,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .records import PatientRecord
+from .records import PatientRecord, is_non_aspirin_antiplatelet
 
 FAMILIES = ("urgent", "head", "hypo", "foot", "benign")
 RECORD_DEPENDENT = ("head", "hypo", "foot")
@@ -45,7 +45,7 @@ def _head(p: PatientRecord, severe: bool) -> RuleResult:
     meds = p.active_meds()
     anticoag = [m for m in meds if m.med_class == "anticoagulant"]
     antiplatelet = [m for m in meds if m.med_class == "antiplatelet"]
-    non_aspirin_ap = [m for m in antiplatelet if m.name.lower() != "aspirin"]
+    non_aspirin_ap = [m for m in antiplatelet if is_non_aspirin_antiplatelet(m.name)]
     seizure = p.has_condition("seizure") or p.has_condition("epilepsy")
     old = p.age() >= 65
     if anticoag or non_aspirin_ap:
@@ -72,7 +72,8 @@ def _hypo(p: PatientRecord, severe: bool) -> RuleResult:
 
 
 def _foot(p: PatientRecord, severe: bool) -> RuleResult:
-    dm = [c for c in p.active_conditions() if "diabetes" in c.name.lower()]
+    dm = [c for c in p.active_conditions() if "diabetes" in c.name.lower()
+          and "prediabetes" not in c.name.lower() and "gestational" not in c.name.lower()]
     if dm:
         return RuleResult(True, "foot", "foot wound in a person with diabetes (NG19)",
                           [c.fact_id for c in dm], "immediate" if severe else "same_day",
