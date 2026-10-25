@@ -1,0 +1,1442 @@
+[
+  {
+    "seed_id": "urgent-001",
+    "label": "urgent",
+    "text": "crushing pain in my chest spreading to my left arm and jaw, started 20 mins ago",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-002",
+    "label": "urgent",
+    "text": "my dad's face has dropped on one side and his speech is all slurred, came on suddenly",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-003",
+    "label": "urgent",
+    "text": "been coughing up bright red blood this morning, quite a lot of it",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-004",
+    "label": "urgent",
+    "text": "cant catch my breath at all even sitting still, lips look a bit blue",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-005",
+    "label": "urgent",
+    "text": "high fever, shivering uncontrollably, heart racing and honestly I feel like I might die",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-006",
+    "label": "urgent",
+    "text": "worst headache of my life hit me like a thunderclap about an hour ago",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-007",
+    "label": "urgent",
+    "text": "threw up what looked like coffee grounds twice today",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-008",
+    "label": "urgent",
+    "text": "my poo has been black and tarry for two days and im dizzy when I stand",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-009",
+    "label": "urgent",
+    "text": "ate something with peanuts and now my throat is closing and tongue feels thick",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-010",
+    "label": "urgent",
+    "text": "lost the vision in my right eye completely, it just went dark",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-011",
+    "label": "urgent",
+    "text": "numb around my bum and inner thighs and can't tell when I need to pee, bad back pain too",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-012",
+    "label": "urgent",
+    "text": "I've decided how I'm going to end my life and I have the pills ready",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-013",
+    "label": "urgent",
+    "text": "my son has a stiff neck, high temp and a rash that doesn't fade when I press a glass on it",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-014",
+    "label": "urgent",
+    "text": "sudden agony in my left testicle, its swollen and I feel sick",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-015",
+    "label": "urgent",
+    "text": "7 weeks pregnant, bleeding heavily and sharp pain low on the right side",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-016",
+    "label": "urgent",
+    "text": "tight band across my chest and sweating buckets, feels like an elephant sitting on me",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-017",
+    "label": "urgent",
+    "text": "my wife cant lift her right arm and her words are coming out wrong",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-018",
+    "label": "urgent",
+    "text": "wheezing so badly I can only say a word or two between breaths, inhaler isnt helping",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-019",
+    "label": "urgent",
+    "text": "mottled skin, confused and havent passed urine all day after a water infection",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-020",
+    "label": "urgent",
+    "text": "there was blood in my vomit, maybe a cupful",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-021",
+    "label": "urgent",
+    "text": "got stung by a wasp and now covered in hives and my face is puffing up fast",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-022",
+    "label": "urgent",
+    "text": "pain in my chest goes straight through to my back, a tearing feeling",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-023",
+    "label": "urgent",
+    "text": "light hurts my eyes, neck so stiff I cant bend it, temperature 39.5",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-024",
+    "label": "urgent",
+    "text": "I keep thinking about killing myself and tonight I've written a note",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-025",
+    "label": "urgent",
+    "text": "blurry then total blackness in one eye like a curtain coming down",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-026",
+    "label": "urgent",
+    "text": "losing control of my bladder plus legs going weak and numb, sciatica got way worse",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-027",
+    "label": "urgent",
+    "text": "my baby is limp, breathing really fast and has a purple spotty rash",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-028",
+    "label": "urgent",
+    "text": "pressure in chest when I walk up stairs and now it wont go away at rest",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-029",
+    "label": "urgent",
+    "text": "teenager woke up screaming about pain in his balls, one side is high and swollen",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-030",
+    "label": "urgent",
+    "text": "positive test last week, now soaking pads and a stabbing pain on my left",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-031",
+    "label": "urgent",
+    "text": "sudden severe headache during sex, neck now aching and vomiting",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-032",
+    "label": "urgent",
+    "text": "coughed up clots of blood after a long flight, chest hurts when breathing in",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-033",
+    "label": "urgent",
+    "text": "gasping for air and cant finish sentences, started after a cold",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-034",
+    "label": "urgent",
+    "text": "mum is very drowsy, burning hot, breathing fast and her hands are freezing",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-035",
+    "label": "urgent",
+    "text": "passed loads of dark red blood from my back passage and nearly collapsed",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-036",
+    "label": "urgent",
+    "text": "lips and eyes swelling up after a new antibiotic, voice gone hoarse",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-037",
+    "label": "urgent",
+    "text": "one half of my body went numb and I'm seeing double, been ten minutes so far",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-038",
+    "label": "urgent",
+    "text": "heart pounding irregularly with chest pain going down my arm",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-039",
+    "label": "urgent",
+    "text": "I have a plan to jump tonight, I don't feel safe",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "urgent-040",
+    "label": "urgent",
+    "text": "suddenly cant see out of my left eye, no pain, its just gone",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-001",
+    "label": "head",
+    "text": "banged my head on the cupboard door this morning, bit of a lump",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-002",
+    "label": "head",
+    "text": "my toddler fell off the sofa and hit his head on the floor, cried straight away",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-003",
+    "label": "head",
+    "text": "walked into a low beam at the pub last night, head still sore",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-004",
+    "label": "head",
+    "text": "knocked my forehead on the car boot, small bump but feel ok",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-005",
+    "label": "head",
+    "text": "slipped on ice and the back of my head hit the pavement",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-006",
+    "label": "head",
+    "text": "I'm on warfarin and I bumped my head getting out of the car",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-007",
+    "label": "head",
+    "text": "got hit in the head by a football at training, bit dazed for a minute",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-008",
+    "label": "head",
+    "text": "my nan fell and knocked her head on the radiator, she takes apixaban",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-009",
+    "label": "head",
+    "text": "head clash during rugby, got a goose egg above my eye",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-010",
+    "label": "head",
+    "text": "stood up under the shelf and cracked my skull on it, ow",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-011",
+    "label": "head",
+    "text": "daughter bumped heads with another kid at school, has a red mark",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-012",
+    "label": "head",
+    "text": "fell off my bike with no helmet, scraped my head, mild headache since",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-013",
+    "label": "head",
+    "text": "hit my head on the corner of the table yesterday, tender to touch",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-014",
+    "label": "head",
+    "text": "my husband is on rivaroxaban and took a knock to the head at work",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-015",
+    "label": "head",
+    "text": "I tripped and my temple hit the door frame, slight swelling there",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-016",
+    "label": "head",
+    "text": "baby rolled off the changing table and bumped her head, seems fine now",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-017",
+    "label": "head",
+    "text": "got elbowed in the head playing basketball, slight ache",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-018",
+    "label": "head",
+    "text": "smacked my head on the bunk bed ladder, there's a little cut on my scalp",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-019",
+    "label": "head",
+    "text": "dad had a fall in the garden and hit his head, he's on blood thinners for AF",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-020",
+    "label": "head",
+    "text": "headbutted the windscreen in a minor fender bender, no airbags went off",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-021",
+    "label": "head",
+    "text": "a tin fell off the top shelf onto my head, bit of a bump",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-022",
+    "label": "head",
+    "text": "bumped the back of my noggin on the headboard pretty hard",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-023",
+    "label": "head",
+    "text": "son fell off the climbing frame and landed on his head",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-024",
+    "label": "head",
+    "text": "whacked my head on the open window, feel a bit sick since",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-025",
+    "label": "head",
+    "text": "took a tumble down two stairs and knocked my head against the wall",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-026",
+    "label": "head",
+    "text": "i'm on clopidogrel, hit my head on a kitchen cabinet earlier",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-027",
+    "label": "head",
+    "text": "my 4 year old ran into a lamppost head first, has a big lump",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-028",
+    "label": "head",
+    "text": "bonked my head diving into the shallow end, sore but moving fine",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-029",
+    "label": "head",
+    "text": "hit head on steering wheel when I braked hard",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-030",
+    "label": "head",
+    "text": "small lump on my scalp after banging it on the loft hatch",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-031",
+    "label": "head",
+    "text": "mum on edoxaban slipped in the shower and hit her head on the tiles",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-032",
+    "label": "head",
+    "text": "my head got knocked by a swinging gate, tender spot now",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-033",
+    "label": "head",
+    "text": "fell backwards off a ladder, head smacked the patio, a bit groggy",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-034",
+    "label": "head",
+    "text": "kid caught his head on the coffee table edge, little graze and swelling",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-035",
+    "label": "head",
+    "text": "got knocked on the head by a cricket ball, a little dizzy after",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-036",
+    "label": "head",
+    "text": "clonked my head on the car door frame getting in, still throbbing",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-037",
+    "label": "head",
+    "text": "had a minor head injury at the gym when a weight plate slipped off the rack",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-038",
+    "label": "head",
+    "text": "I take dabigatran and gave my head quite a bang last night",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-039",
+    "label": "head",
+    "text": "tripped over the dog and hit my forehead on the floor",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "head-040",
+    "label": "head",
+    "text": "tiny bump on my baby's head after she pulled herself up and toppled over",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-001",
+    "label": "hypo",
+    "text": "feeling really shaky and sweaty and I havent eaten since breakfast",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-002",
+    "label": "hypo",
+    "text": "suddenly confused and trembly, my sugar might be low i think",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-003",
+    "label": "hypo",
+    "text": "woke up drenched in sweat with a pounding heart, type 1 diabetic",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-004",
+    "label": "hypo",
+    "text": "I'm on insulin and feel faint and clammy after my run",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-005",
+    "label": "hypo",
+    "text": "my husband's speech went slurred but came right after he had some juice",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-006",
+    "label": "hypo",
+    "text": "hands trembling and feel starving, went all wobbly at work",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-007",
+    "label": "hypo",
+    "text": "keep getting night sweats and nightmares since my gliclazide dose went up",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-008",
+    "label": "hypo",
+    "text": "feel light headed and sweaty, skipped lunch after my insulin",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-009",
+    "label": "hypo",
+    "text": "my diabetic son is pale, shaky and acting weird and grumpy",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-010",
+    "label": "hypo",
+    "text": "vision blurry and lips tingling, feel shaky, had a big gym session",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-011",
+    "label": "hypo",
+    "text": "went really clammy and dizzy in the supermarket, had a glucose tablet and felt better",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-012",
+    "label": "hypo",
+    "text": "grandad gets muddled and sweaty in the late afternoon, he's on diabetes tablets",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-013",
+    "label": "hypo",
+    "text": "heart racing, shaking and feeling hungry all of a sudden",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-014",
+    "label": "hypo",
+    "text": "nearly passed out at my desk, felt cold and sweaty, had a biscuit and it helped",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-015",
+    "label": "hypo",
+    "text": "trembling all over and cant concentrate, my meter said 3.1",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-016",
+    "label": "hypo",
+    "text": "my daughter with T1 woke up sweaty and confused at 3am",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-017",
+    "label": "hypo",
+    "text": "feeling weak and wobbly and sweating, missed my dinner",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-018",
+    "label": "hypo",
+    "text": "i get really irritable and shaky an hour after taking my metformin and sulphonylurea",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-019",
+    "label": "hypo",
+    "text": "my words came out jumbled, then I drank some coke and was fine",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-020",
+    "label": "hypo",
+    "text": "keep waking at night with soaked sheets and a headache, recently started insulin",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-021",
+    "label": "hypo",
+    "text": "feel faint and pale after drinking alcohol without eating, i'm diabetic",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-022",
+    "label": "hypo",
+    "text": "reading was 2.8 and im sweaty and jittery",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-023",
+    "label": "hypo",
+    "text": "my mum seemed drunk and confused but she hasn't had alcohol, she's diabetic",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-024",
+    "label": "hypo",
+    "text": "shaking hands and a cold sweat after injecting my evening insulin",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-025",
+    "label": "hypo",
+    "text": "feeling dizzy, sweaty and very hungry mid morning, this keeps happening",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-026",
+    "label": "hypo",
+    "text": "got a sudden tremor and pins and needles round my mouth",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-027",
+    "label": "hypo",
+    "text": "went all hot and sweaty and had to sit down, felt better after a sandwich",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-028",
+    "label": "hypo",
+    "text": "partner was slurring and very sleepy, sugar was low and he perked up after glucose gel",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-029",
+    "label": "hypo",
+    "text": "im shaky, pale and my heart is thumping, missed a meal",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-030",
+    "label": "hypo",
+    "text": "he fainted after exercise, he's on insulin, recovered once he ate",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-031",
+    "label": "hypo",
+    "text": "sweating a lot at night and my blood sugars have been all over the place",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-032",
+    "label": "hypo",
+    "text": "feel spaced out and trembly, I took my insulin but forgot to eat",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-033",
+    "label": "hypo",
+    "text": "having hypos? feel weak and sweaty most afternoons",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-034",
+    "label": "hypo",
+    "text": "sudden hunger, shakes and clamminess, does this sound like low sugar",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-035",
+    "label": "hypo",
+    "text": "my teenager with diabetes is shaky and acting confused after football",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-036",
+    "label": "hypo",
+    "text": "cold clammy skin and I'm struggling to think straight",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-037",
+    "label": "hypo",
+    "text": "felt woozy and sweaty on the bus, glucose sweets sorted it",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-038",
+    "label": "hypo",
+    "text": "keep feeling faint and shaky before lunch every day",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-039",
+    "label": "hypo",
+    "text": "strange behaviour and sweating in my elderly father who takes insulin",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "hypo-040",
+    "label": "hypo",
+    "text": "trembling, sweaty palms and muddled thinking after a long walk without snacks",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-001",
+    "label": "foot",
+    "text": "I have a sore on the bottom of my foot that isn't healing",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-002",
+    "label": "foot",
+    "text": "cut my toe on a shell at the beach a week ago and its getting red",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-003",
+    "label": "foot",
+    "text": "blister on my heel from new shoes has gone yellow and weepy",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-004",
+    "label": "foot",
+    "text": "diabetic and there's an ulcer on the ball of my foot",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-005",
+    "label": "foot",
+    "text": "my big toe has turned a dusky purple colour",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-006",
+    "label": "foot",
+    "text": "crack between my toes is raw and smells a bit",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-007",
+    "label": "foot",
+    "text": "left foot is swollen and warm, not sure why",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-008",
+    "label": "foot",
+    "text": "there's a wound on my ankle thats been open for a month",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-009",
+    "label": "foot",
+    "text": "my dad's foot has gone black at the tip of one toe",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-010",
+    "label": "foot",
+    "text": "stood on a nail and the hole in my sole is throbbing",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-011",
+    "label": "foot",
+    "text": "skin splitting between my 4th and 5th toes, really sore",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-012",
+    "label": "foot",
+    "text": "a corn on my little toe has started bleeding",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-013",
+    "label": "foot",
+    "text": "my foot looks pale and feels cold compared to the other one",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-014",
+    "label": "foot",
+    "text": "ingrown toenail is red, swollen and leaking pus",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-015",
+    "label": "foot",
+    "text": "type 2 diabetic, noticed a small cut on my foot I didn't feel",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-016",
+    "label": "foot",
+    "text": "heel is cracked deeply and bleeding a bit",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-017",
+    "label": "foot",
+    "text": "both feet puffy and the skin on them is shiny",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-018",
+    "label": "foot",
+    "text": "blister under my toe popped and now its an open sore",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-019",
+    "label": "foot",
+    "text": "there's a red streak going up my leg from a cut on my foot",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-020",
+    "label": "foot",
+    "text": "sore spot on my foot keeps weeping, been 3 weeks",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-021",
+    "label": "foot",
+    "text": "foot turned bright red and hot overnight, swelling up",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-022",
+    "label": "foot",
+    "text": "graze on the top of my foot from a fall won't scab over",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-023",
+    "label": "foot",
+    "text": "my mum's toes are going bluish and numb",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-024",
+    "label": "foot",
+    "text": "I think I have a foot ulcer, theres a hole near my heel",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-025",
+    "label": "foot",
+    "text": "dropped a heavy pan on my foot and it's bruised and swollen",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-026",
+    "label": "foot",
+    "text": "moist white peeling skin between toes that's cracked open",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-027",
+    "label": "foot",
+    "text": "foot wound smells bad and has green discharge",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-028",
+    "label": "foot",
+    "text": "callus on my sole has gone dark underneath",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-029",
+    "label": "foot",
+    "text": "my feet are tingling and I found a blister I never felt",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-030",
+    "label": "foot",
+    "text": "swollen ankle and top of foot after a long flight, one side only",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-031",
+    "label": "foot",
+    "text": "a scratch on the side of my foot from the dog is now hot and painful",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-032",
+    "label": "foot",
+    "text": "sole of my foot has a small black spot that wasn't there before",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-033",
+    "label": "foot",
+    "text": "my toes change colour to red then white in the cold",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-034",
+    "label": "foot",
+    "text": "heel sore from a shoe rubbing has broken down into a wound",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-035",
+    "label": "foot",
+    "text": "there's a split in the skin under my big toe that keeps reopening",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-036",
+    "label": "foot",
+    "text": "foot has gone swollen and red round an old blister",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-037",
+    "label": "foot",
+    "text": "nursing home resident with a pressure sore on her heel",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-038",
+    "label": "foot",
+    "text": "grandpa nicked his foot cutting his toenails and it won't stop oozing",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-039",
+    "label": "foot",
+    "text": "purple patch on my instep that keeps getting bigger",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "foot-040",
+    "label": "foot",
+    "text": "stepped on glass barefoot, still sore and a bit pink around it",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-001",
+    "label": "benign",
+    "text": "I get shaky before exams, pretty sure its just nerves",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-002",
+    "label": "benign",
+    "text": "hands shake a bit after my third coffee of the day",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-003",
+    "label": "benign",
+    "text": "sweaty all the time in this heatwave, otherwise fine",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-004",
+    "label": "benign",
+    "text": "felt a bit wobbly before my job interview, settled once it started",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-005",
+    "label": "benign",
+    "text": "trembling hands whenever I have to speak in public",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-006",
+    "label": "benign",
+    "text": "sweaty palms on first dates, is that normal lol",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-007",
+    "label": "benign",
+    "text": "hungry all the time since starting to train for a marathon",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-008",
+    "label": "benign",
+    "text": "hot flushes and sweats, I'm 51 and think its the menopause",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-009",
+    "label": "benign",
+    "text": "jittery and buzzing after an energy drink",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-010",
+    "label": "benign",
+    "text": "shivering a bit after coming in from the snow, warmed up now",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-011",
+    "label": "benign",
+    "text": "sweaty at night because my duvet is too thick for summer",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-012",
+    "label": "benign",
+    "text": "stomach rumbling a lot and I get peckish between meals",
+    "near_miss_of": "hypo"
+  },
+  {
+    "seed_id": "benign-013",
+    "label": "benign",
+    "text": "bumped my elbow on the door and its tingly",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-014",
+    "label": "benign",
+    "text": "knocked my knee on the desk, small bruise",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-015",
+    "label": "benign",
+    "text": "banged my shin on the bed frame, it's sore",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-016",
+    "label": "benign",
+    "text": "hit my funny bone really hard, that hurt",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-017",
+    "label": "benign",
+    "text": "got a headache from staring at screens all day",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-018",
+    "label": "benign",
+    "text": "my scalp is itchy and flaky lately",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-019",
+    "label": "benign",
+    "text": "hit my hip on the kitchen counter, purple bruise now",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-020",
+    "label": "benign",
+    "text": "walked into a door and bruised my shoulder",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-021",
+    "label": "benign",
+    "text": "tension headache after a stressful week at work",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-022",
+    "label": "benign",
+    "text": "son bumped his arm at football, no swelling",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-023",
+    "label": "benign",
+    "text": "hit my thumb with a hammer and the nail is going dark",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-024",
+    "label": "benign",
+    "text": "having one of my usual migraines with the zigzag aura, same as always",
+    "near_miss_of": "head"
+  },
+  {
+    "seed_id": "benign-025",
+    "label": "benign",
+    "text": "paper cut on my finger that stings",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-026",
+    "label": "benign",
+    "text": "cut my hand chopping onions, small and clean",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-027",
+    "label": "benign",
+    "text": "blister on my palm from rowing",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-028",
+    "label": "benign",
+    "text": "sore calves after leg day at the gym",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-029",
+    "label": "benign",
+    "text": "my hands are dry and cracked from washing up",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-030",
+    "label": "benign",
+    "text": "calluses on my fingertips from playing guitar",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-031",
+    "label": "benign",
+    "text": "knee swollen after a long hike, ok to walk on",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-032",
+    "label": "benign",
+    "text": "sprained my wrist, a bit swollen",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-033",
+    "label": "benign",
+    "text": "chapped lips cracked at the corners",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-034",
+    "label": "benign",
+    "text": "graze on my elbow from falling off my scooter",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-035",
+    "label": "benign",
+    "text": "bruise on my thigh I don't remember getting",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-036",
+    "label": "benign",
+    "text": "a mouth ulcer that's been there 4 days",
+    "near_miss_of": "foot"
+  },
+  {
+    "seed_id": "benign-037",
+    "label": "benign",
+    "text": "runny nose and sneezing for 3 days",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-038",
+    "label": "benign",
+    "text": "hay fever is bad this year, eyes itching like mad",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-039",
+    "label": "benign",
+    "text": "can I get the flu jab here",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-040",
+    "label": "benign",
+    "text": "sore throat and a mild temp since yesterday",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-041",
+    "label": "benign",
+    "text": "need a repeat prescription for my blue inhaler",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-042",
+    "label": "benign",
+    "text": "got an itchy rash on my arm after gardening",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-043",
+    "label": "benign",
+    "text": "ear feels blocked after swimming",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-044",
+    "label": "benign",
+    "text": "bit of heartburn after spicy food",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-045",
+    "label": "benign",
+    "text": "constipated for a few days now",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-046",
+    "label": "benign",
+    "text": "lower back ache from sitting at a desk all day",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-047",
+    "label": "benign",
+    "text": "cough lingering after a cold 2 weeks ago, feel fine otherwise",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-048",
+    "label": "benign",
+    "text": "I'd like a covid booster please",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-049",
+    "label": "benign",
+    "text": "acne flaring up on my chin again",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-050",
+    "label": "benign",
+    "text": "trouble getting to sleep lately",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-051",
+    "label": "benign",
+    "text": "mild diarrhoea after a takeaway, already improving",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-052",
+    "label": "benign",
+    "text": "eczema on the backs of my knees flaring up",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-053",
+    "label": "benign",
+    "text": "period pain worse than usual this month",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-054",
+    "label": "benign",
+    "text": "need a sick note for work for my cold",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-055",
+    "label": "benign",
+    "text": "think I've got wax build up in my ear",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-056",
+    "label": "benign",
+    "text": "sticky eye, think it's conjunctivitis",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-057",
+    "label": "benign",
+    "text": "sunburn on my shoulders from the weekend",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-058",
+    "label": "benign",
+    "text": "loads of mosquito bites, really itchy",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-059",
+    "label": "benign",
+    "text": "what vaccines do I need for Thailand",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-060",
+    "label": "benign",
+    "text": "sinus pressure behind my cheeks",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-061",
+    "label": "benign",
+    "text": "cold sore coming up on my lip",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-062",
+    "label": "benign",
+    "text": "stiff neck from sleeping funny, no fever",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-063",
+    "label": "benign",
+    "text": "hiccups won't stop, been an hour",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-064",
+    "label": "benign",
+    "text": "dry gritty eyes from contact lenses",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-065",
+    "label": "benign",
+    "text": "need more of my contraceptive pill",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-066",
+    "label": "benign",
+    "text": "couple of warts on my hand",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-067",
+    "label": "benign",
+    "text": "feeling a bit low after a breakup, no thoughts of harming myself",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-068",
+    "label": "benign",
+    "text": "my partner says my snoring is getting worse",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-069",
+    "label": "benign",
+    "text": "think I've got thrush again",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-070",
+    "label": "benign",
+    "text": "hair falling out more than normal in the shower",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-071",
+    "label": "benign",
+    "text": "bloated after meals most days",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-072",
+    "label": "benign",
+    "text": "want some help to quit smoking",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-073",
+    "label": "benign",
+    "text": "bit queasy on long car journeys",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-074",
+    "label": "benign",
+    "text": "ingrown hair on my leg after shaving",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-075",
+    "label": "benign",
+    "text": "sore jaw in the mornings, think I grind my teeth",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-076",
+    "label": "benign",
+    "text": "question about my blood test results",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-077",
+    "label": "benign",
+    "text": "child has chickenpox spots, itchy but happy",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-078",
+    "label": "benign",
+    "text": "had a nosebleed that stopped after 5 mins",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-079",
+    "label": "benign",
+    "text": "eyelid keeps twitching for a week",
+    "near_miss_of": null
+  },
+  {
+    "seed_id": "benign-080",
+    "label": "benign",
+    "text": "my kid has a tummy bug, keeping fluids down",
+    "near_miss_of": null
+  }
+]

@@ -6,7 +6,8 @@
 | `dev/scenarios.json` | 38 **dev** scenarios: 12 record-dependent with 12 matched negatives (head/hypo/foot x4), 6 universal, 8 benign (3 near-misses, 1 with no symptom). | Regenerate with the script only |
 | `dev/policy.json` | 20 clinic policy passages (the proposal plans about 40). | Edit in `make_dev_data.py`, then regenerate |
 | `detector/keywords.json` | **Frozen** keyword list for the rule gate. The script never overwrites it. | Nobody, once evaluation writing starts |
-| `detector/dev_seeds.json` | 56 small labelled seeds for the TF-IDF stand-in. | Replace with George's 240 real seeds |
+| `detector/dev_seeds.json` | 56 small labelled seeds, used by the dev pilot and unit tests only. | dev only |
+| `detector/seeds_v1.json` | **240 detector training seeds** (40 urgent, 40 head, 40 hypo, 40 foot, 80 benign, of which 36 are near-misses). **Provenance:** written on 2026-10-26 by a separate Claude subagent. It was instructed not to read `data/` or the dev generator, so it wrote blind to the evaluation set, as the proposal requires different authors for seeds and evaluation text. No two seeds share more than 4 consecutive words. The proposal says George writes the seeds; George should review this set or replace it. | George reviews |
 | `eval/` (not yet made) | The real evaluation set: about 120 red-flag, 60 matched-negative and 60 benign scenarios, written by Arihant and Aditya. | Only them. Never an LLM. Never tuned on. |
 
 ## The dev set is NOT the evaluation set
