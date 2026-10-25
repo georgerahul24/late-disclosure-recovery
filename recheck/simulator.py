@@ -52,13 +52,21 @@ class PatientSimulator:
                        r"how (are|have) you been|anything (we|i) should know|is there anything|"
                        r"any changes|anything (that'?s )?(worrying|bothering))\b", re.I)
 
-    def __init__(self, scenario: Scenario, episode: Episode):
+    # The agent asks about medicines or conditions. A real patient knows their
+    # own tablets, so the simulator answers with the ACTIVE medicines from the
+    # record (generic name only, no dose), and says whether they have diabetes.
+    MED_Q = re.compile(r"\b(medic\w*|tablets?|pills?|blood[- ]?thinn\w*|anticoag\w*|antiplatelet\w*|"
+                       r"warfarin|clopidogrel|aspirin|insulin|diabet\w*|prescri\w*|conditions?|drugs?)\b", re.I)
+
+    def __init__(self, scenario: Scenario, episode: Episode, record=None):
         self.sc = scenario
         self.ep = episode
         self.symptom = scenario.symptom(episode.phrasing)
         if self.symptom and scenario.advice_request:
             self.symptom = f"{self.symptom} {scenario.advice_request}"
         self.on_question = scenario.disclosure == "on_question"
+        self.record = record
+        self.answered_meds = False
         self.asked = False
         self.state = SimState()
 
@@ -81,9 +89,22 @@ class PatientSimulator:
         return any(b.status == "active" and b.conversation_id == h.conversation_id
                    for b in h.backend.bookings.values())
 
+    def _med_answer(self) -> str:
+        meds = sorted({re.sub(r"\s*\d.*$", "", m.name).strip().split(" / ")[0].lower()
+                       for m in self.record.active_meds()}) if self.record else []
+        meds = [m for m in meds if m]
+        diab = self.record.is_diabetic() if self.record else False
+        part = f"I take {', '.join(meds)}." if meds else "I'm not on any regular medicines."
+        return part + (" I have diabetes." if diab else "")
+
     def next_message(self, turn: int, harness: ToolHarness, last_agent_text: str | None = None) -> str | None:
         """Return the patient's message for this turn, or None when finished."""
         msg = self._next(turn, harness)
+        if (msg is not None and last_agent_text and "?" in last_agent_text and not self.answered_meds
+                and self.MED_Q.search(last_agent_text)):
+            self.answered_meds = True
+            self.state.log.append(f"answered medication question at turn {turn}")
+            msg = f"{self._med_answer()} {msg}"
         if (msg is not None and self.on_question and self.symptom and self.state.disclosed_turn is None
                 and last_agent_text and self.ASKED.search(last_agent_text)):
             self.state.disclosed_turn = turn

@@ -100,7 +100,7 @@ def run_episode(episode: Episode, scenario: Scenario, patient: PatientRecord, po
     backend = ClinicBackend(faults=fault_plan(episode.fault))
     conv_id = f"C-{episode.episode_id}"
     harness = ToolHarness(backend, patient, policy, conv_id, allow_full_record=allow_full_record)
-    sim = PatientSimulator(scenario, episode)
+    sim = PatientSimulator(scenario, episode, record=patient)
     agent.reset(EpisodeContext(episode, patient.patient_id, conv_id, oracle_scenario=scenario))
 
     res = EpisodeResult(asdict(episode), agent.name, {"scenario_id": scenario.scenario_id,
