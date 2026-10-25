@@ -10,7 +10,8 @@ A clinic chat agent books, changes and cancels appointments with tools. Sometime
 
 | If you are... | Read |
 |---|---|
-| A new agent or teammate picking up work | [`handoff.md`](handoff.md) first, then [`todo.md`](todo.md) |
+| A new agent or teammate picking up work | [`handoff.md`](handoff.md) first, then [`instructions.md`](instructions.md) and [`todo.md`](todo.md) |
+| Running on the GPU cluster | [`instructions.md`](instructions.md) and [`cluster/README.md`](cluster/README.md) |
 | Looking for the research plan | [`docs/proposal.pdf`](docs/proposal.pdf) and [`docs/README.md`](docs/README.md) |
 | Looking for related work | [`papers.md`](papers.md) |
 | Working on code | [`recheck/README.md`](recheck/README.md) |
@@ -28,11 +29,13 @@ uv run python scripts/run_pilot.py   # scripted-controller pilot on the dev fixt
 ## Layout
 
 ```
-docs/       proposal PDF, reviewer pointers, design notes
-recheck/    the Python package (backend, tools, simulator, grader, controllers, agents)
-data/       patients, clinic policy, scenarios (dev fixtures only for now)
-scripts/    command line entry points (pilot, suite runs, analysis)
-tests/      pytest tests for every module
+docs/       proposal PDF, reviewer pointers, design notes, clinical sources
+recheck/    the Python package (backend, tools, simulator, grader, controllers, detectors, agents)
+data/       Synthea patients, eval scenarios, detector seeds, clinic policy, dev fixtures (tests only)
+scripts/    command line entry points (data build, pilot, LLM runs, detector training)
+cluster/    SLURM + Ollama scripts for the ada cluster
+tests/      pytest tests
+instructions.md  standing rules and cluster how-to
 papers.md   literature review
 todo.md     the live task list
 handoff.md  current state of the project for whoever picks it up next
