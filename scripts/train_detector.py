@@ -8,7 +8,8 @@ messages, plus benign carriers (recheck.detectors.augment_with_carriers).
 Split: 85/15 train/dev grouped by seed_id (paraphrases never cross the split).
 Model: <base> + 5-way classification head, LoRA r=16, alpha=32, dropout 0.05
 on q/k/v/o attention projections; head trained in full. lr 2e-4, 3 epochs,
-batch 16, fp16 (RTX 2080 Ti has no bf16). Model selection: best dev macro-F1
+batch 16. Precision: frozen base weights fp16, trainable weights fp32,
+fp16 autocast + GradScaler, gradient checkpointing (RTX 2080 Ti: 11 GB, no bf16). Model selection: best dev macro-F1
 over epochs. Writes adapter + head + label map + metrics.json to --out.
 """
 
@@ -88,12 +89,21 @@ def main():
     tok = AutoTokenizer.from_pretrained(args.base)
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
-    model = AutoModelForSequenceClassification.from_pretrained(args.base, num_labels=len(labels),
-                                                               torch_dtype=torch.float32)
+    # Frozen base in fp16 (fits an 11 GB RTX 2080 Ti); trainable LoRA + head
+    # are cast to fp32 below so GradScaler can unscale their gradients.
+    use_cuda = torch.cuda.is_available()
+    model = AutoModelForSequenceClassification.from_pretrained(
+        args.base, num_labels=len(labels), torch_dtype=torch.float16 if use_cuda else torch.float32)
     model.config.pad_token_id = tok.pad_token_id
     cfg = LoraConfig(r=16, lora_alpha=32, lora_dropout=0.05, target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
                      task_type="SEQ_CLS", modules_to_save=["score"])
     model = get_peft_model(model, cfg)
+    for p_ in model.parameters():
+        if p_.requires_grad:
+            p_.data = p_.data.float()
+    if use_cuda:
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+        model.enable_input_require_grads()
     model.print_trainable_parameters()
     dev_ = "cuda" if torch.cuda.is_available() else "cpu"
     model.to(dev_)
@@ -155,7 +165,7 @@ def main():
             "n_train_groups": len({r['seed_id'] for r in train_base}), "n_dev_groups": len({r['seed_id'] for r in dev_base}),
             "best_dev_macro_f1": best, "history": hist,
             "hparams": {"r": 16, "alpha": 32, "dropout": 0.05, "lr": args.lr, "epochs": args.epochs, "bs": args.bs,
-                        "dtype": "fp16 autocast", "max_len": args.max_len}}
+                        "dtype": "base fp16 + trainable fp32, fp16 autocast, grad ckpt", "max_len": args.max_len}}
     (out / "metrics.json").write_text(json.dumps(meta, indent=1))
     print(json.dumps({k: meta[k] for k in ("best_dev_macro_f1", "n_train", "n_dev")}))
 
