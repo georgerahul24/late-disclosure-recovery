@@ -11,6 +11,8 @@ ENV=logs/hold-$JOB.env
 [ -f "$ENV" ] || { echo "no $ENV yet (holder not READY?)"; exit 1; }
 source "$ENV"
 SCRIPT=$1; shift
-WORKERS=${WORKERS:-$(( $(echo "$OLLAMA_URLS" | tr ',' '\n' | wc -l) * ${PARALLEL:-2} ))}
+# URLS=<comma list> restricts the run to some servers (e.g. while a GPU trains)
+URLS=${URLS:-$OLLAMA_URLS}
+WORKERS=${WORKERS:-$(( $(echo "$URLS" | tr ',' '\n' | wc -l) * ${PARALLEL:-2} ))}
 exec srun --jobid="$JOB" --overlap -n 1 -c "${CPUS:-4}" --mem=8G \
-  .venv/bin/python "$SCRIPT" --base-urls "$OLLAMA_URLS" --model "${RUN_MODEL:-$MODEL}" --workers "$WORKERS" "$@"
+  .venv/bin/python "$SCRIPT" --base-urls "$URLS" --model "${RUN_MODEL:-$MODEL}" --workers "$WORKERS" "$@"
