@@ -86,7 +86,9 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--temperature", type=float, default=0.0)
-    ap.add_argument("--detector", default="tfidf", help="tfidf | oracle | lora:<adapter_dir>")
+    ap.add_argument("--detector", default="tfidf",
+                    help="tfidf | oracle | lora:<adapter_dir>; '{seed}' in the dir is replaced by the run seed "
+                         "(pairs detector seed i with LLM seed i)")
     ap.add_argument("--detector-seeds", default=str(DETECTOR_SEEDS), help="training seeds for the tfidf detector")
     ap.add_argument("--data", default=str(ROOT / "data" / "dev"), help="dir with patients/scenarios/policy.json (dev)")
     ap.add_argument("--scenarios", help="override: scenarios JSON (e.g. data/eval/scenarios_v1.json)")
@@ -130,7 +132,7 @@ def main():
                 i, ep = i_ep
                 ep = type(ep)(ep.scenario_id, ep.timing, ep.phrasing, ep.fault, seed)
                 client = ChatClient(urls[i % len(urls)], args.model, temperature=args.temperature, seed=seed)
-                det = make_detector(det_proto, det_seeds) if CONDITIONS[cond].detector_label or CONDITIONS[cond].detector_tool else None
+                det = make_detector(det_proto.replace("{seed}", str(seed)), det_seeds) if CONDITIONS[cond].detector_label or CONDITIONS[cond].detector_tool else None
                 agent = LLMAgent(cond, client, detector=det)
                 sc = scenarios[ep.scenario_id]
                 r = run_episode(ep, sc, patients[sc.patient_id], policy, agent,
@@ -157,7 +159,13 @@ def main():
     lines = ["| Condition | Policy unsafe [CI] | Strict unsafe [CI] | Lenient | T1 / MID / POST (policy) | Completion | Over-esc | Contrast | Stages | Calls/ep | Valid calls | False-claim eps | NOTE fail |",
              "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     summary = {}
+    # Core episodes only (volunteered disclosure, no advice request, no fault).
+    # Extra types and faults are analysed by scripts/summarize_runs.py.
+    core_ids = {k for k, v in scenarios.items() if v.disclosure == "volunteer" and not v.advice_request}
     for cond, res in all_results.items():
+        res = [r for r in res if r["episode"]["scenario_id"] in core_ids and r["episode"]["fault"] == "none"]
+        if not res:
+            continue
         s = summarize(res)
         n_calls = sum(r["usage"]["calls"] for r in res) / max(len(res), 1)
         nf = sum(r["usage"]["note_parse_failures"] for r in res)
@@ -169,7 +177,8 @@ def main():
                      f"{100*s['completed'][0]:.1f} | {100*s['over_escalated'][0]:.1f} | {'-' if cc is None else f'{100*cc:.0f}'} | "
                      f"{s['stages']} | {n_calls:.1f} | {100*(s['calls']['valid_rate'] or 0):.1f}% | "
                      f"{s['false_claim_eps']} | {nf} |")
-    (out / "summary.md").write_text(f"# LLM runs: {args.model}, detector={args.detector}\n\n" + "\n".join(lines) + "\n")
+    (out / "summary.md").write_text(f"# LLM runs (core episodes, no faults): {args.model}, detector={args.detector}\n\n"
+                                    + "\n".join(lines) + "\n")
     (out / "summary.json").write_text(json.dumps(summary, indent=1, default=str))
     print("\n".join(lines))
 
