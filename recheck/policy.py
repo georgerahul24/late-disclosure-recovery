@@ -26,6 +26,7 @@ class PolicyPassage:
     passage_id: str
     topic: str
     text: str
+    source: str = ""  # guideline / rule this passage rests on (not shown to the agent)
 
 
 def load_policy(path: str | Path) -> list[PolicyPassage]:
