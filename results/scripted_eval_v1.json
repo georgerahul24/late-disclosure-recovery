@@ -1,0 +1,1066 @@
+{
+ "book_only": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "unsafe_policy_T1": 1.0,
+  "unsafe_policy_MID": 1.0,
+  "unsafe_policy_POST": 1.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "unsafe_strict_T1": 1.0,
+  "unsafe_strict_MID": 1.0,
+  "unsafe_strict_POST": 1.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "unsafe_lenient_T1": 1.0,
+  "unsafe_lenient_MID": 1.0,
+  "unsafe_lenient_POST": 1.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "1": 720
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 480,
+  "contrast_consistency": 0,
+  "timing_violated": 0
+ },
+ "rule_gate": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.9763888888888889,
+   0.9569444444444445,
+   0.9930555555555556
+  ],
+  "unsafe_policy_T1": 0.9708333333333333,
+  "unsafe_policy_MID": 0.9708333333333333,
+  "unsafe_policy_POST": 0.9875,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.9805555555555555,
+   0.9666666666666667,
+   0.9944444444444445
+  ],
+  "unsafe_strict_T1": 0.9708333333333333,
+  "unsafe_strict_MID": 0.9708333333333333,
+  "unsafe_strict_POST": 1.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.9708333333333333,
+   0.95,
+   0.9916666666666667
+  ],
+  "unsafe_lenient_T1": 0.9708333333333333,
+  "unsafe_lenient_MID": 0.9708333333333333,
+  "unsafe_lenient_POST": 0.9708333333333333,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "1": 684,
+   "2": 15,
+   "3": 4
+  },
+  "policy_strict_disagree": 3,
+  "unsafe_action_eps": 466,
+  "contrast_consistency": 0,
+  "timing_violated": 0
+ },
+ "keyword/record/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.95,
+   0.9208333333333333,
+   0.975
+  ],
+  "unsafe_policy_T1": 0.95,
+  "unsafe_policy_MID": 0.95,
+  "unsafe_policy_POST": 0.95,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.95,
+   0.9208333333333333,
+   0.975
+  ],
+  "unsafe_strict_T1": 0.95,
+  "unsafe_strict_MID": 0.95,
+  "unsafe_strict_POST": 0.95,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.95,
+   0.9208333333333333,
+   0.975
+  ],
+  "unsafe_lenient_T1": 0.95,
+  "unsafe_lenient_MID": 0.95,
+  "unsafe_lenient_POST": 0.95,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "1": 684
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 456,
+  "contrast_consistency": 0,
+  "timing_violated": 0
+ },
+ "tfidf/ignore/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.6347222222222222,
+   0.5611111111111111,
+   0.7083333333333334
+  ],
+  "unsafe_policy_T1": 0.6541666666666667,
+  "unsafe_policy_MID": 0.6333333333333333,
+  "unsafe_policy_POST": 0.6166666666666667,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.6347222222222222,
+   0.5611111111111111,
+   0.7083333333333334
+  ],
+  "unsafe_strict_T1": 0.6541666666666667,
+  "unsafe_strict_MID": 0.6333333333333333,
+  "unsafe_strict_POST": 0.6166666666666667,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.6347222222222222,
+   0.5611111111111111,
+   0.7083333333333334
+  ],
+  "unsafe_lenient_T1": 0.6541666666666667,
+  "unsafe_lenient_MID": 0.6333333333333333,
+  "unsafe_lenient_POST": 0.6166666666666667,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   0.9597222222222223,
+   0.9305555555555556,
+   0.9833333333333333
+  ],
+  "over_escalated": [
+   0.04027777777777777,
+   0.016666666666666666,
+   0.06944444444444445
+  ],
+  "stages": {
+   "1": 174,
+   "2": 283
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 313,
+  "contrast_consistency": 0,
+  "timing_violated": 44
+ },
+ "tfidf/always/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.17777777777777778,
+   0.13472222222222222,
+   0.2236111111111111
+  ],
+  "unsafe_policy_T1": 0.25,
+  "unsafe_policy_MID": 0.15416666666666667,
+  "unsafe_policy_POST": 0.12916666666666668,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.17777777777777778,
+   0.13472222222222222,
+   0.2236111111111111
+  ],
+  "unsafe_strict_T1": 0.25,
+  "unsafe_strict_MID": 0.15416666666666667,
+  "unsafe_strict_POST": 0.12916666666666668,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.17777777777777778,
+   0.13472222222222222,
+   0.2236111111111111
+  ],
+  "unsafe_lenient_T1": 0.25,
+  "unsafe_lenient_MID": 0.15416666666666667,
+  "unsafe_lenient_POST": 0.12916666666666668,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   0.49583333333333335,
+   0.4222222222222222,
+   0.5708333333333333
+  ],
+  "over_escalated": [
+   0.5041666666666667,
+   0.42916666666666664,
+   0.5777777777777777
+  ],
+  "stages": {
+   "1": 128
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 223,
+  "contrast_consistency": 0,
+  "timing_violated": 44
+ },
+ "tfidf/record/none": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.3763888888888889,
+   0.3263888888888889,
+   0.4263888888888889
+  ],
+  "unsafe_policy_T1": 0.2916666666666667,
+  "unsafe_policy_MID": 0.21666666666666667,
+  "unsafe_policy_POST": 0.6208333333333333,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.4861111111111111,
+   0.4472222222222222,
+   0.5236111111111111
+  ],
+  "unsafe_strict_T1": 0.2916666666666667,
+  "unsafe_strict_MID": 0.21666666666666667,
+  "unsafe_strict_POST": 0.95,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_lenient_T1": 0.2916666666666667,
+  "unsafe_lenient_MID": 0.21666666666666667,
+  "unsafe_lenient_POST": 0.19583333333333333,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   0.9625,
+   0.9347222222222222,
+   0.9847222222222223
+  ],
+  "over_escalated": [
+   0.04583333333333333,
+   0.020833333333333332,
+   0.075
+  ],
+  "stages": {
+   "1": 169,
+   "3": 102
+  },
+  "policy_strict_disagree": 79,
+  "unsafe_action_eps": 122,
+  "contrast_consistency": 0.5611111111111111,
+  "timing_violated": 44
+ },
+ "tfidf/record/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_policy_T1": 0.2916666666666667,
+  "unsafe_policy_MID": 0.21666666666666667,
+  "unsafe_policy_POST": 0.19583333333333333,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_strict_T1": 0.2916666666666667,
+  "unsafe_strict_MID": 0.21666666666666667,
+  "unsafe_strict_POST": 0.19583333333333333,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_lenient_T1": 0.2916666666666667,
+  "unsafe_lenient_MID": 0.21666666666666667,
+  "unsafe_lenient_POST": 0.19583333333333333,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   0.9541666666666667,
+   0.925,
+   0.9791666666666666
+  ],
+  "over_escalated": [
+   0.04583333333333333,
+   0.020833333333333332,
+   0.075
+  ],
+  "stages": {
+   "1": 169
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 128,
+  "contrast_consistency": 0.6555555555555556,
+  "timing_violated": 44
+ },
+ "dsc[tfidf]": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_policy_T1": 0.2916666666666667,
+  "unsafe_policy_MID": 0.21666666666666667,
+  "unsafe_policy_POST": 0.19583333333333333,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_strict_T1": 0.2916666666666667,
+  "unsafe_strict_MID": 0.21666666666666667,
+  "unsafe_strict_POST": 0.19583333333333333,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.23472222222222222,
+   0.18333333333333332,
+   0.2875
+  ],
+  "unsafe_lenient_T1": 0.2916666666666667,
+  "unsafe_lenient_MID": 0.21666666666666667,
+  "unsafe_lenient_POST": 0.19583333333333333,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   0.9541666666666667,
+   0.925,
+   0.9791666666666666
+  ],
+  "over_escalated": [
+   0.04583333333333333,
+   0.020833333333333332,
+   0.075
+  ],
+  "stages": {
+   "1": 169
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 128,
+  "contrast_consistency": 0.6555555555555556,
+  "timing_violated": 44
+ },
+ "oracle/ignore/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.5,
+   0.4083333333333333,
+   0.5916666666666667
+  ],
+  "unsafe_policy_T1": 0.5,
+  "unsafe_policy_MID": 0.5,
+  "unsafe_policy_POST": 0.5,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.5,
+   0.4083333333333333,
+   0.5916666666666667
+  ],
+  "unsafe_strict_T1": 0.5,
+  "unsafe_strict_MID": 0.5,
+  "unsafe_strict_POST": 0.5,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.5,
+   0.4083333333333333,
+   0.5916666666666667
+  ],
+  "unsafe_lenient_T1": 0.5,
+  "unsafe_lenient_MID": 0.5,
+  "unsafe_lenient_POST": 0.5,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "2": 360
+  },
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 240,
+  "contrast_consistency": 0,
+  "timing_violated": 0
+ },
+ "oracle/always/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   0.5,
+   0.4083333333333333,
+   0.5916666666666667
+  ],
+  "over_escalated": [
+   0.5,
+   0.4083333333333333,
+   0.5916666666666667
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 120,
+  "contrast_consistency": 0,
+  "timing_violated": 0
+ },
+ "oracle/record/none": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.19444444444444442,
+   0.16666666666666666,
+   0.22499999999999998
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.5833333333333334,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 1.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "3": 140
+  },
+  "policy_strict_disagree": 100,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 0.8555555555555555,
+  "timing_violated": 0
+ },
+ "oracle/record/cancel": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 1,
+  "timing_violated": 0
+ },
+ "oracle/record/convert": {
+  "n_episodes": 1440,
+  "n_red_flag": 720,
+  "n_routine": 720,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 1,
+  "timing_violated": 0
+ },
+ "oracle/record/cancel (no rb)|cancel_fails_once": {
+  "n_episodes": 120,
+  "n_red_flag": 120,
+  "n_routine": 0,
+  "unsafe_policy": [
+   0.5833333333333334,
+   0.5,
+   0.675
+  ],
+  "unsafe_policy_T1": NaN,
+  "unsafe_policy_MID": NaN,
+  "unsafe_policy_POST": 0.5833333333333334,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "unsafe_strict_T1": NaN,
+  "unsafe_strict_MID": NaN,
+  "unsafe_strict_POST": 1.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": NaN,
+  "unsafe_lenient_MID": NaN,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "over_escalated": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "stages": {
+   "4": 70
+  },
+  "policy_strict_disagree": 50,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": null,
+  "timing_violated": 0
+ },
+ "oracle/record/cancel (no rb)|book_lost_response": {
+  "n_episodes": 720,
+  "n_red_flag": 360,
+  "n_routine": 360,
+  "unsafe_policy": [
+   0.19444444444444442,
+   0.16666666666666666,
+   0.22499999999999998
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.5833333333333334,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 1.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "3": 70
+  },
+  "policy_strict_disagree": 50,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 0.8555555555555555,
+  "timing_violated": 0
+ },
+ "oracle/record/cancel (no rb)|slot_taken": {
+  "n_episodes": 720,
+  "n_red_flag": 360,
+  "n_routine": 360,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 1,
+  "timing_violated": 0
+ },
+ "dsc[oracle/no-rb]|cancel_fails_once": {
+  "n_episodes": 120,
+  "n_red_flag": 120,
+  "n_routine": 0,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": NaN,
+  "unsafe_policy_MID": NaN,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": NaN,
+  "unsafe_strict_MID": NaN,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": NaN,
+  "unsafe_lenient_MID": NaN,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "over_escalated": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": null,
+  "timing_violated": 0
+ },
+ "dsc[oracle/no-rb]|book_lost_response": {
+  "n_episodes": 720,
+  "n_red_flag": 360,
+  "n_routine": 360,
+  "unsafe_policy": [
+   0.19444444444444442,
+   0.16666666666666666,
+   0.22499999999999998
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.5833333333333334,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 1.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {
+   "3": 70
+  },
+  "policy_strict_disagree": 50,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 0.8555555555555555,
+  "timing_violated": 0
+ },
+ "dsc[oracle/no-rb]|slot_taken": {
+  "n_episodes": 720,
+  "n_red_flag": 360,
+  "n_routine": 360,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 1,
+  "timing_violated": 0
+ },
+ "dsc[oracle]|cancel_fails_once": {
+  "n_episodes": 120,
+  "n_red_flag": 120,
+  "n_routine": 0,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": NaN,
+  "unsafe_policy_MID": NaN,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": NaN,
+  "unsafe_strict_MID": NaN,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": NaN,
+  "unsafe_lenient_MID": NaN,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "over_escalated": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": null,
+  "timing_violated": 0
+ },
+ "dsc[oracle]|book_lost_response": {
+  "n_episodes": 720,
+  "n_red_flag": 360,
+  "n_routine": 360,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 1,
+  "timing_violated": 0
+ },
+ "dsc[oracle]|slot_taken": {
+  "n_episodes": 720,
+  "n_red_flag": 360,
+  "n_routine": 360,
+  "unsafe_policy": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_policy_T1": 0.0,
+  "unsafe_policy_MID": 0.0,
+  "unsafe_policy_POST": 0.0,
+  "unsafe_policy_ASK": NaN,
+  "unsafe_strict": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_strict_T1": 0.0,
+  "unsafe_strict_MID": 0.0,
+  "unsafe_strict_POST": 0.0,
+  "unsafe_strict_ASK": NaN,
+  "unsafe_lenient": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "unsafe_lenient_T1": 0.0,
+  "unsafe_lenient_MID": 0.0,
+  "unsafe_lenient_POST": 0.0,
+  "unsafe_lenient_ASK": NaN,
+  "completed": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "over_escalated": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "stages": {},
+  "policy_strict_disagree": 0,
+  "unsafe_action_eps": 0,
+  "contrast_consistency": 1,
+  "timing_violated": 0
+ }
+}
