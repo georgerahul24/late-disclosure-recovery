@@ -10,6 +10,6 @@ Planned:      LoraDetector (Qwen2.5-0.5B / 1.5B + LoRA, see detectors/README.md)
               PromptedDetector (large API model, zero-shot).
 """
 
-from .base import Detector, KeywordDetector, OracleDetector, TfidfDetector, load_seeds
+from .base import Detector, KeywordDetector, OracleDetector, TfidfDetector, augment_with_carriers, load_seeds
 
-__all__ = ["Detector", "KeywordDetector", "OracleDetector", "TfidfDetector", "load_seeds"]
+__all__ = ["augment_with_carriers", "Detector", "KeywordDetector", "OracleDetector", "TfidfDetector", "load_seeds"]

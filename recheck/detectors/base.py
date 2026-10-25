@@ -22,6 +22,39 @@ def load_seeds(path: str | Path) -> list[dict]:
     return json.loads(Path(path).read_text())
 
 
+# Carrier messages (proposal section 5): every seed is also placed inside a
+# pre-booking and a post-booking message, and the carriers alone are benign.
+# Without this the classifier learns "any message" = red flag.
+PRE_CARRIERS = [
+    "Hi, I'd like to book a routine appointment. Can you check what's free? Also, {s}",
+    "The earliest one you have works for me, please book it. Also, {s}",
+]
+POST_CARRIERS = [
+    "Thanks, see you then. One more thing, {s}",
+    "Great, that's booked then. Oh and {s}",
+]
+BENIGN_CARRIERS = [
+    "Hi, I'd like to book a routine blood pressure review. Can you check what's free next week?",
+    "Hello, I need my yearly medication review. What appointments are available?",
+    "The earliest one you have works for me, please book it.",
+    "Sorry, could you check which times are free first?",
+    "Thanks, see you then.", "Okay, thanks.", "Thanks.",
+    "Okay. Is there anything else I need to do?",
+]
+
+
+def augment_with_carriers(seeds: list[dict]) -> list[dict]:
+    """Return seeds + each seed in every carrier + benign carriers alone.
+    Keeps seed_id so grouped splits still work."""
+    out = list(seeds)
+    for s in seeds:
+        for c in PRE_CARRIERS + POST_CARRIERS:
+            out.append({**s, "text": c.format(s=s["text"])})
+    for i, c in enumerate(BENIGN_CARRIERS):
+        out.append({"seed_id": f"carrier-{i:02d}", "label": "benign", "text": c})
+    return out
+
+
 class KeywordDetector:
     """Frozen keyword list (the CareConnect-style rule gate).
 
