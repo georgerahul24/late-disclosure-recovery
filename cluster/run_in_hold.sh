@@ -4,6 +4,7 @@
 # The first argument after the job id is a python script; the Ollama URLs and
 # model from logs/hold-<jobid>.env are passed as --base-urls / --model.
 # Use CPUS=<n> to change the CPUs given to the step (default 4).
+# PY=/ssd_scratch/gr/lma/venv-train/bin/python for runs that load torch (LoRA detector).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 JOB=$1; shift
@@ -16,4 +17,4 @@ URLS=${URLS:-$OLLAMA_URLS}
 WORKERS=${WORKERS:-$(( $(echo "$URLS" | tr ',' '\n' | wc -l) * ${PARALLEL:-2} ))}
 # GRES=gpu:4 plus CUDA_VISIBLE_DEVICES=<i> lets the step use a GPU (e.g. LoRA detector)
 exec srun --jobid="$JOB" --overlap -n 1 -c "${CPUS:-4}" --mem="${MEM:-8G}" --gres="${GRES:-none}" \
-  .venv/bin/python "$SCRIPT" --base-urls "$URLS" --model "${RUN_MODEL:-$MODEL}" --workers "$WORKERS" "$@"
+  "${PY:-.venv/bin/python}" "$SCRIPT" --base-urls "$URLS" --model "${RUN_MODEL:-$MODEL}" --workers "$WORKERS" "$@"
