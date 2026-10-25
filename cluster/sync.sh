@@ -11,10 +11,11 @@ case "${1:-push}" in
     rsync -az --delete \
       --exclude .venv --exclude .git --exclude runs --exclude logs --exclude models \
       --exclude __pycache__ --exclude .pytest_cache --exclude '*.egg-info' \
-      --exclude /data/synthea/ \
+      --exclude /data/synthea/ --exclude '/data/detector/paraphrases_*' \
       ./ "$HOST:$REMOTE/"
     # data/synthea/ is GENERATED ON THE CLUSTER (scripts/synthea_to_records.py)
-    # and only flows back with `pull`; never let --delete wipe it.
+    # and only flows back with `pull`; never let --delete wipe it. Same for the
+    # detector paraphrases made on the cluster (scripts/paraphrase_seeds.py).
     echo "pushed to $HOST:$REMOTE" ;;
   pull)
     mkdir -p runs logs
@@ -22,6 +23,7 @@ case "${1:-push}" in
     rsync -az "$HOST:$REMOTE/logs/" logs/ || true
     mkdir -p data/synthea
     rsync -az "$HOST:$REMOTE/data/synthea/" data/synthea/ || true
+    rsync -az --include 'paraphrases_*' --exclude '*' "$HOST:$REMOTE/data/detector/" data/detector/ || true
     echo "pulled runs/, logs/ and data/synthea/" ;;
   *) echo "usage: $0 push|pull"; exit 1 ;;
 esac
