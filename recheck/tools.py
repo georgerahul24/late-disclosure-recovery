@@ -15,6 +15,7 @@ The harness:
 
 from __future__ import annotations
 
+import inspect
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
@@ -35,6 +36,7 @@ class ToolCall:
     result: Any = None
     error: str | None = None
     refused: bool = False  # True if the harness blocked it (authority / allow-list)
+    dropped_args: dict = field(default_factory=dict)  # unknown args the harness ignored
 
 
 @dataclass
@@ -132,8 +134,14 @@ class ToolHarness:
             return self._log(name, args, ok=False, refused=True,
                              error="not permitted: you can only act for the patient in this conversation")
         fn = getattr(self, f"_t_{name}")
+        # Small models often add arguments the tool does not take (e.g. a date
+        # for check_availability). Drop them instead of failing the call; they
+        # are kept in `dropped_args` on the logged call for analysis.
+        params = inspect.signature(fn).parameters
+        clean = {k: v for k, v in args.items() if k in params}
+        self._dropped = {k: v for k, v in args.items() if k not in params and k != "patient_id"}
         try:
-            return fn(**{k: v for k, v in args.items() if k != "patient_id"})
+            return fn(**clean)
         except ToolError as e:
             return self._log(name, args, ok=False, error=str(e))
         except TypeError as e:  # bad arguments from an LLM
@@ -141,7 +149,9 @@ class ToolHarness:
 
     def _log(self, name: str, args: dict, ok: bool, result: Any = None, error: str | None = None,
              refused: bool = False) -> dict:
-        self.calls.append(ToolCall(self.turn, name, dict(args), ok, result, error, refused))
+        self.calls.append(ToolCall(self.turn, name, dict(args), ok, result, error, refused,
+                                   getattr(self, "_dropped", {}) or {}))
+        self._dropped = {}
         return {"ok": True, "result": result} if ok else {"ok": False, "error": error}
 
     # ---- tools ----------------------------------------------------------
