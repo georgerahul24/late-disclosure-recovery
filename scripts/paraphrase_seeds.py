@@ -56,14 +56,21 @@ def jacc(a: str, b: str) -> float:
 
 
 def parse_list(text: str) -> list[str]:
-    m = re.search(r"\[.*\]", text, re.S)
-    if not m:
-        return []
+    """Accept one JSON list of strings, or several lists (Qwen often writes
+    one single-item list per line)."""
     try:
-        out = json.loads(m.group(0))
-        return [x.strip() for x in out if isinstance(x, str)]
+        out = json.loads(text.strip())
+        if isinstance(out, list):
+            return [x.strip() for x in out if isinstance(x, str) and x.strip()]
     except json.JSONDecodeError:
-        return []
+        pass
+    items = []
+    for m in re.finditer(r"\[[^\[\]]*\]", text, re.S):
+        try:
+            items += [x.strip() for x in json.loads(m.group(0)) if isinstance(x, str) and x.strip()]
+        except json.JSONDecodeError:
+            continue
+    return items
 
 
 def main():
