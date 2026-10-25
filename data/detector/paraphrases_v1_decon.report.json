@@ -1,0 +1,55 @@
+{
+ "n": 6,
+ "train_in": 763,
+ "kept": 756,
+ "dropped": 7,
+ "dropped_by_label": {
+  "foot": 5,
+  "hypo": 1,
+  "urgent": 1
+ },
+ "dropped_items": [
+  {
+   "seed_id": "urgent-004",
+   "label": "urgent",
+   "text": "Just sitting and I can't get enough air. My lips turned a bit blue.",
+   "matched_eval": "I'm breathing really fast, feel faint and I can't get enough air even sitting still."
+  },
+  {
+   "seed_id": "hypo-015",
+   "label": "hypo",
+   "text": "My hands are shaking and I can't concentrate, the meter read 3.1",
+   "matched_eval": "sometimes my hands are shaking and I am sweating very much before dinner, then I eat and it go away."
+  },
+  {
+   "seed_id": "foot-024",
+   "label": "foot",
+   "text": "Doc, I noticed this hole forming on the bottom of my foot, near my heel. Think it could be an ulcer.",
+   "matched_eval": "trod on some glass last week, the nick on the bottom of my foot is still sort of open, it's tiny honestly."
+  },
+  {
+   "seed_id": "foot-026",
+   "label": "foot",
+   "text": "my feet are a mess! the skin between my toes is all white, wet-looking and starting to peel. it even has a crack in it :(",
+   "matched_eval": "the skin between my toes is itchy and a bit peely, but there are no cracks or sores."
+  },
+  {
+   "seed_id": "foot-032",
+   "label": "foot",
+   "text": "Hey doc, noticed this little black thing on the bottom of my foot recently. Never had it before.",
+   "matched_eval": "trod on some glass last week, the nick on the bottom of my foot is still sort of open, it's tiny honestly."
+  },
+  {
+   "seed_id": "foot-032",
+   "label": "foot",
+   "text": "Doc, I found a tiny black mark on the sole of my foot and it's kinda worrying me 'cus it didn't start showing up until now...",
+   "matched_eval": "there's a deep hole on the sole of my foot that is oozing yellow-green pus and smells bad."
+  },
+  {
+   "seed_id": "foot-032",
+   "label": "foot",
+   "text": "Just noticed this small dark spot on the bottom of my foot and wondered if I should get it checked out since it just appeared.",
+   "matched_eval": "trod on some glass last week, the nick on the bottom of my foot is still sort of open, it's tiny honestly."
+  }
+ ]
+}

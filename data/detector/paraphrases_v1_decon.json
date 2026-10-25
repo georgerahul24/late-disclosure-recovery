@@ -1,0 +1,5294 @@
+[
+ {
+  "seed_id": "urgent-001",
+  "label": "urgent",
+  "text": "Feeling this huge pressure in my chest that's moving to my left arm and jaw, just began 20 minutes ago...",
+  "paraphrase_of": "urgent-001",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-001",
+  "label": "urgent",
+  "text": "Chest pain, like something heavy sitting on me, spreading to my arm and jaw, started about 20 mins ago.",
+  "paraphrase_of": "urgent-001",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-001",
+  "label": "urgent",
+  "text": "Hey doc, I've got this crushing pain in my chest that feels like it\u2019s going down my arm and into my jaw. It's been going on for 20 minutes now...",
+  "paraphrase_of": "urgent-001",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-001",
+  "label": "urgent",
+  "text": "Chest pain, real bad, spreading to left arm and jaw, has lasted 20 minutes.",
+  "paraphrase_of": "urgent-001",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-002",
+  "label": "urgent",
+  "text": "So my dad just had like a sudden facial droop and he can't speak clear at all.",
+  "paraphrase_of": "urgent-002",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-002",
+  "label": "urgent",
+  "text": "Hey, my dad's face is all droopy on one side and his words are really slurred, it just happened suddenly.",
+  "paraphrase_of": "urgent-002",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-002",
+  "label": "urgent",
+  "text": "Dad's face has dropped and his speech is all mumbly. It just hit him quick like.",
+  "paraphrase_of": "urgent-002",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-002",
+  "label": "urgent",
+  "text": "My dad\u2019s got a weird facial thing going on - one side sags and he can't talk right, and it was super sudden.",
+  "paraphrase_of": "urgent-002",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-003",
+  "label": "urgent",
+  "text": "Today I spit out some really bright red blood - had to be at least half a cup.",
+  "paraphrase_of": "urgent-003",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-003",
+  "label": "urgent",
+  "text": "This morning I coughed up a ton of bright red blood... what's going on?",
+  "paraphrase_of": "urgent-003",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-003",
+  "label": "urgent",
+  "text": "Just this mornin' I ended up spitting out like a big chunk of bright red blood. Feels serious.",
+  "paraphrase_of": "urgent-003",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-003",
+  "label": "urgent",
+  "text": "Coughed up a whole buncha bright red blood this morning. Scared the crap outta me!",
+  "paraphrase_of": "urgent-003",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-004",
+  "label": "urgent",
+  "text": "I'm really struggling to breathe even when I'm just sitting here. My lips look kinda blue too.",
+  "paraphrase_of": "urgent-004",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-004",
+  "label": "urgent",
+  "text": "Hey doc, I can't catch my breath at all right now, not even when I'm still. And my lips are turning a little blue.",
+  "paraphrase_of": "urgent-004",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-004",
+  "label": "urgent",
+  "text": "Can't breathe properly even while sitting. Lips look slightly blue.",
+  "paraphrase_of": "urgent-004",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-005",
+  "label": "urgent",
+  "text": "feeling really hot with chills and my heart is pounding so hard, I'm scared I might pass out",
+  "paraphrase_of": "urgent-005",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-005",
+  "label": "urgent",
+  "text": "had a super high temp, shivers all over, and my heartbeat feels crazy fast, like it could stop any second",
+  "paraphrase_of": "urgent-005",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-005",
+  "label": "urgent",
+  "text": "high fever, shaking uncontrollably, heart racing way too fast, feel like I\u2019m gonna die",
+  "paraphrase_of": "urgent-005",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-005",
+  "label": "urgent",
+  "text": "so hot with chills, heart racing so hard, honestly worried I might faint or worse",
+  "paraphrase_of": "urgent-005",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-008",
+  "label": "urgent",
+  "text": "Hey doc, my stool has turned super black and shiny for two whole days now and my head spins when I get up.",
+  "paraphrase_of": "urgent-008",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-009",
+  "label": "urgent",
+  "text": "Eaten peanuts and now my throat feels like it's closing up and my tongue is all thick and weird",
+  "paraphrase_of": "urgent-009",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-011",
+  "label": "urgent",
+  "text": "feeling numb in my bottom and legs, and having trouble sensing if i need to go, plus really bad back pain",
+  "paraphrase_of": "urgent-011",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-011",
+  "label": "urgent",
+  "text": "Hey doc, so i'm feeling all tingly around my butt and inner thighs, also can't tell when my bladder is full, and my back hurts like crazy",
+  "paraphrase_of": "urgent-011",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-011",
+  "label": "urgent",
+  "text": "Numbness in my bum and thigh area, and I can't feel when I gotta pee. Plus, this back pain is really unbearable",
+  "paraphrase_of": "urgent-011",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-011",
+  "label": "urgent",
+  "text": "Just been super numb down there and having issues with my peeing sensation, plus severe backache",
+  "paraphrase_of": "urgent-011",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-014",
+  "label": "urgent",
+  "text": "I'm really freaking out! Just got this intense pain in my left balls and it's all puffy now, plus I just feel queasy as hell.",
+  "paraphrase_of": "urgent-014",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-014",
+  "label": "urgent",
+  "text": "Hey doc, something's wrong down there. All of a sudden it hurts so bad on the left side, it\u2019s swollen up like a balloon and I\u2019m feeling yucky too.",
+  "paraphrase_of": "urgent-014",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-014",
+  "label": "urgent",
+  "text": "Need help quick! Just got this sharp pain in my left testicle and it\u2019s getting bigger fast. Plus I feel all queasy, not good.",
+  "paraphrase_of": "urgent-014",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-014",
+  "label": "urgent",
+  "text": "Ouch, something's really wrong here. I\u2019ve got sudden agony on the left side, swollen up like crazy, and now I feel sick too.",
+  "paraphrase_of": "urgent-014",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-015",
+  "label": "urgent",
+  "text": "Hey doc, I'm 7 wks preggo and got heavy bleeding and this sharp pain in my lower right belly. What's going on?",
+  "paraphrase_of": "urgent-015",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-015",
+  "label": "urgent",
+  "text": "Doc, I just found out I'm 7 weeks pregnant but now I'm bleeding a lot and have this intense pain in my right lower abdomen. Help!",
+  "paraphrase_of": "urgent-015",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-015",
+  "label": "urgent",
+  "text": "Pregnant for 7 weeks now and I've started bleeding heavily and got this sharp pain down low on the right side. Should I be worried?",
+  "paraphrase_of": "urgent-015",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-015",
+  "label": "urgent",
+  "text": "Hi, I'm 7 weeks into my pregnancy and I'm having heavy bleeding with a sharp pain in my lower right tummy. Could something be wrong?",
+  "paraphrase_of": "urgent-015",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-016",
+  "label": "urgent",
+  "text": "Feeling this tight band across my chest and soaking wet from sweat, it's crazy like an elephant is sitting on me.",
+  "paraphrase_of": "urgent-016",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-016",
+  "label": "urgent",
+  "text": "Really freaking out right now, got this intense pressure in my chest and I'm drenched in sweat, feels like an elephant is crushing me.",
+  "paraphrase_of": "urgent-016",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-016",
+  "label": "urgent",
+  "text": "Something\u2019s really wrong, I feel this super tight sensation in my chest and I\u2019m sweating so much, as if an elephant is sitting on me.",
+  "paraphrase_of": "urgent-016",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-016",
+  "label": "urgent",
+  "text": "Tightness across my chest and I can\u2019t stop sweating, it feels like there's an elephant sitting right on top of me.",
+  "paraphrase_of": "urgent-016",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-018",
+  "label": "urgent",
+  "text": "Really struggling to speak, wheezing so bad I can only get out a word or two before I need to breathe. The inhaler ain't doing much.",
+  "paraphrase_of": "urgent-018",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-018",
+  "label": "urgent",
+  "text": "Wheezing is crazy! Can barely say more than one word at a time before I need to take a big breath. Even my inhaler isn't helping.",
+  "paraphrase_of": "urgent-018",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-018",
+  "label": "urgent",
+  "text": "Can only manage to choke out a single word or two between intense wheezes. My inhaler just isn't cutting it right now.",
+  "paraphrase_of": "urgent-018",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-018",
+  "label": "urgent",
+  "text": "So wheezy, having trouble saying anything longer than a couple of words without needing to gasp for air. The inhaler doesn't seem to be working.",
+  "paraphrase_of": "urgent-018",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-019",
+  "label": "urgent",
+  "text": "I'm confused and my skin is mottled - plus I haven't gone to the bathroom once today after eating some nasty tainted water.",
+  "paraphrase_of": "urgent-019",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-020",
+  "label": "urgent",
+  "text": "Hey doc, I threw up and there was some blood in it, like a whole cup or so...",
+  "paraphrase_of": "urgent-020",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-020",
+  "label": "urgent",
+  "text": "Doc, just got sick and saw blood in the throw-up, probably around a cup.",
+  "paraphrase_of": "urgent-020",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-020",
+  "label": "urgent",
+  "text": "Ugh, threw up with blood in it, might have been about a cup. Feels bad...",
+  "paraphrase_of": "urgent-020",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-020",
+  "label": "urgent",
+  "text": "My vomit had blood in it, maybe a full cup's worth. Feeling pretty crummy.",
+  "paraphrase_of": "urgent-020",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-022",
+  "label": "urgent",
+  "text": "My chest pain feels like it's shooting straight to my back, it's this sharp tearing kind of sensation.",
+  "paraphrase_of": "urgent-022",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-022",
+  "label": "urgent",
+  "text": "Man, this chest pain is crazy, it feels like it's going all the way through to my back, like a real tear.",
+  "paraphrase_of": "urgent-022",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-022",
+  "label": "urgent",
+  "text": "Chest pain, man. It's radiating right through to my back, this really tearing feeling.",
+  "paraphrase_of": "urgent-022",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-022",
+  "label": "urgent",
+  "text": "I've got this intense chest pain that's shooting down to my back, like there's a tearing sensation.",
+  "paraphrase_of": "urgent-022",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-024",
+  "label": "urgent",
+  "text": "I can't stop thinking about hurting myself and just now I even wrote it all out.",
+  "paraphrase_of": "urgent-024",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-025",
+  "label": "urgent",
+  "text": "my vision went blurry then went totally dark like a curtain being pulled down over my eye",
+  "paraphrase_of": "urgent-025",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-025",
+  "label": "urgent",
+  "text": "when i looked at my eye it was fine but then the vision just disappeared like a curtain closing",
+  "paraphrase_of": "urgent-025",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-025",
+  "label": "urgent",
+  "text": "one of my eyes went from blurry to totally dark, like a curtain coming down in front of it",
+  "paraphrase_of": "urgent-025",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-026",
+  "label": "urgent",
+  "text": "feeling really weird lately - can't hold my pee and my legs feel all tingly and wobbly, and that nerve pain in my back is super bad",
+  "paraphrase_of": "urgent-026",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-026",
+  "label": "urgent",
+  "text": "totally losing it, can't control when I go to the bathroom and my legs are so weak and numb, my sciatica is out of control now",
+  "paraphrase_of": "urgent-026",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-027",
+  "label": "urgent",
+  "text": "My little one seems so floppy and is breathing super-fast, and there's this weird purple splotchy stuff on them",
+  "paraphrase_of": "urgent-027",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-027",
+  "label": "urgent",
+  "text": "Oh no, my baby feels lifeless and their breathin' way faster than normal. They also got these purple spots all over them",
+  "paraphrase_of": "urgent-027",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-027",
+  "label": "urgent",
+  "text": "Baby just feels kinda limp and\u5598\u4e0d\u8fc7\u6c14\u6765\uff0c\u8eab\u4e0a\u8fd8\u6709\u7d2b\u8272\u7684\u6591\u70b9\u3002",
+  "paraphrase_of": "urgent-027",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-027",
+  "label": "urgent",
+  "text": "The kid is super weak and breathing very hard. There's this odd purple rash covering them",
+  "paraphrase_of": "urgent-027",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-028",
+  "label": "urgent",
+  "text": "My chest feels pressured when climbing stairs and it's still there even when I'm resting :(",
+  "paraphrase_of": "urgent-028",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-028",
+  "label": "urgent",
+  "text": "Had pressure in my chest when going up the stairs before, but now it won't leave me alone even when sitting down!",
+  "paraphrase_of": "urgent-028",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-028",
+  "label": "urgent",
+  "text": "Hey doc, started getting this pressure in my chest when walking up stairs. Now it's here all the time! Not good.",
+  "paraphrase_of": "urgent-028",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-028",
+  "label": "urgent",
+  "text": "So I was fine until last night when I got that weird pressure in my chest while climbing stairs. It still won't go away even now at rest.",
+  "paraphrase_of": "urgent-028",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-029",
+  "label": "urgent",
+  "text": "My teenage son just started yelling because of pain down there. One testicle seems really raised and puffy.",
+  "paraphrase_of": "urgent-029",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-029",
+  "label": "urgent",
+  "text": "Uh oh, my teenager had this sudden sharp pain between the legs. It looks like one testicle is swollen and elevated on that side.",
+  "paraphrase_of": "urgent-029",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-029",
+  "label": "urgent",
+  "text": "OMG! My teen was screaming in agony - one of his balls is super high and swollen up. Can't believe it happened so suddenly!",
+  "paraphrase_of": "urgent-029",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-029",
+  "label": "urgent",
+  "text": "So bizarre, my teenager just started crying out because of intense pain down there. Now one testicle feels all puffy and raised like a balloon.",
+  "paraphrase_of": "urgent-029",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-031",
+  "label": "urgent",
+  "text": "My head just started pounding really bad during sex and now my neck hurts and I'm throwing up. What's going on?",
+  "paraphrase_of": "urgent-031",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-031",
+  "label": "urgent",
+  "text": "Just had this sudden, intense headache mid-sex, followed by a sore neck and vomiting. Need help fast.",
+  "paraphrase_of": "urgent-031",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-031",
+  "label": "urgent",
+  "text": "Got this major headache while having sex, now neck is killing me and I'm throwing up. What should I do?",
+  "paraphrase_of": "urgent-031",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-032",
+  "label": "urgent",
+  "text": "Just got back from a long flight and coughed up some bloody stuff. My chest really hurts when I breathe.",
+  "paraphrase_of": "urgent-032",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-032",
+  "label": "urgent",
+  "text": "Hey doc, big deal! I was on that plane for like 8 hours and started coughing up blood clots. Now my chest is aching every time I take a breath.",
+  "paraphrase_of": "urgent-032",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-032",
+  "label": "urgent",
+  "text": "Urgent help needed please. After the long flight, I coughed up some blood and now my chest hurts really badly when I breathe.",
+  "paraphrase_of": "urgent-032",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-032",
+  "label": "urgent",
+  "text": "Long flight + cough = blood in throat. Chest pain now. Help ASAP needed.",
+  "paraphrase_of": "urgent-032",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-033",
+  "label": "urgent",
+  "text": "I've been really struggling to breathe and keep my sentences\u5b8c\u6574\u5185\u5bb9\u672a\u7ed9\u51fa\uff0c\u8bf7\u786e\u8ba4\u662f\u5426\u9700\u8981\u7ee7\u7eed\u57fa\u4e8e\u73b0\u6709\u6307\u4ee4\u751f\u6210\u5185\u5bb9\u3002\u6839\u636e\u63d0\u4f9b\u7684\u4fe1\u606f\uff0c\u6211\u5c06\u6309\u7167\u8981\u6c42\u751f\u6210\u56db\u79cd\u4e0d\u540c\u7684\u60a3\u8005\u6d88\u606f\u7248\u672c\u3002",
+  "paraphrase_of": "urgent-033",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-033",
+  "label": "urgent",
+  "text": "Gasping like crazy and can't even finish a sentence, it started when I had that cold.",
+  "paraphrase_of": "urgent-033",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-033",
+  "label": "urgent",
+  "text": "I'm having such a hard time catching my breath and can't wrap up sentences anymore, it all started after getting over this cold.",
+  "paraphrase_of": "urgent-033",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-033",
+  "label": "urgent",
+  "text": "Can\u2019t catch my breath and my sentences get cut off, must've been the aftermath of that pesky cold.",
+  "paraphrase_of": "urgent-033",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-034",
+  "label": "urgent",
+  "text": "My mom's been really sleepy, she feels super hot all over but her hands are so cold. Her breathing has been really rapid lately.",
+  "paraphrase_of": "urgent-034",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-034",
+  "label": "urgent",
+  "text": "Mom is super tired, like she can't stay awake. She's burning up but her hands feel ice-cold. And she's taking quick breaths.",
+  "paraphrase_of": "urgent-034",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-034",
+  "label": "urgent",
+  "text": "Sorry to bother you, but my mum is so drowsy and her body feels very hot while her hands are freezing cold. Her breathing has been really fast.",
+  "paraphrase_of": "urgent-034",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-034",
+  "label": "urgent",
+  "text": "My mom is acting weird\u2014she keeps nodding off, even though she feels like she's burning up! Her hands are super cold, and she\u2019s breathing kind of fast.",
+  "paraphrase_of": "urgent-034",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-035",
+  "label": "urgent",
+  "text": "Had a ton of really dark red poop and felt like I was going to pass out :(",
+  "paraphrase_of": "urgent-035",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-035",
+  "label": "urgent",
+  "text": "Just had a bunch of really dark red blood come out and I thought I was gonna faint!",
+  "paraphrase_of": "urgent-035",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-035",
+  "label": "urgent",
+  "text": "Pissed off with all this dark red blood from my bottom and nearly passed out...",
+  "paraphrase_of": "urgent-035",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-035",
+  "label": "urgent",
+  "text": "Got loads of dark red stuff coming out the back end and felt like I was going to collapse.",
+  "paraphrase_of": "urgent-035",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-036",
+  "label": "urgent",
+  "text": "Hey doc, I'm on that new antibiotic and suddenly my face is swelling up and my voice is completely hoarse!",
+  "paraphrase_of": "urgent-036",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-036",
+  "label": "urgent",
+  "text": "OMG just took the new antibiotic and my face is puffing up around my mouth and eyes! Plus my voice is totally raspy.",
+  "paraphrase_of": "urgent-036",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-038",
+  "label": "urgent",
+  "text": "my heart is racing and feels off, and I'm getting this weird ache in my arm that's kinda scary",
+  "paraphrase_of": "urgent-038",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-038",
+  "label": "urgent",
+  "text": "super worried - my heartbeat feels really weird and thumping, also got this chest pain spreading down my arm",
+  "paraphrase_of": "urgent-038",
+  "k": 1
+ },
+ {
+  "seed_id": "urgent-038",
+  "label": "urgent",
+  "text": "doc, my heart is beating all wonky and there's this chest pain shooting down to my arm. need your help",
+  "paraphrase_of": "urgent-038",
+  "k": 2
+ },
+ {
+  "seed_id": "urgent-038",
+  "label": "urgent",
+  "text": ":/ feeling like my heart is fluttering really fast and not in a good way, plus this arm pain that's giving me the creeps",
+  "paraphrase_of": "urgent-038",
+  "k": 3
+ },
+ {
+  "seed_id": "urgent-039",
+  "label": "urgent",
+  "text": "Doc, I\u2019m seriously contemplating suicide tonight. Feeling so unsafe and alone",
+  "paraphrase_of": "urgent-039",
+  "k": 0
+ },
+ {
+  "seed_id": "urgent-040",
+  "label": "urgent",
+  "text": "OMG my left eye just went blank! No pain though, it\u2019s just not working anymore.",
+  "paraphrase_of": "urgent-040",
+  "k": 0
+ },
+ {
+  "seed_id": "head-001",
+  "label": "head",
+  "text": "Hey doc, just banged my noggin' on that cupboard door early this mornin', now got a nice little bump there.",
+  "paraphrase_of": "head-001",
+  "k": 0
+ },
+ {
+  "seed_id": "head-001",
+  "label": "head",
+  "text": "Just fell and hit my head on the kitchen cupboard door this am. There's a small lump forming.",
+  "paraphrase_of": "head-001",
+  "k": 1
+ },
+ {
+  "seed_id": "head-001",
+  "label": "head",
+  "text": "Crap! Hit my head on the cupboard door this morning. Got a little swelling.",
+  "paraphrase_of": "head-001",
+  "k": 2
+ },
+ {
+  "seed_id": "head-001",
+  "label": "head",
+  "text": "So I stubbed my head on that cupboard door earlier, now it's all puffy.",
+  "paraphrase_of": "head-001",
+  "k": 3
+ },
+ {
+  "seed_id": "head-002",
+  "label": "head",
+  "text": "My kiddo took a tumble off the couch and smacked his head on the floor, he was bawling right after it happened.",
+  "paraphrase_of": "head-002",
+  "k": 0
+ },
+ {
+  "seed_id": "head-002",
+  "label": "head",
+  "text": "Oh no! My tot fell off the sofa hard, got a good whack to the head and started crying instantly.",
+  "paraphrase_of": "head-002",
+  "k": 1
+ },
+ {
+  "seed_id": "head-002",
+  "label": "head",
+  "text": "Quick question - my toddler had a little accident and fell from the sofa. He hit his head and cried straight away.",
+  "paraphrase_of": "head-002",
+  "k": 2
+ },
+ {
+  "seed_id": "head-002",
+  "label": "head",
+  "text": "Hey doc, my baby fell off the couch and bonked his head on the floor, he was in tears right after.",
+  "paraphrase_of": "head-002",
+  "k": 3
+ },
+ {
+  "seed_id": "head-003",
+  "label": "head",
+  "text": "OWW, hit a hanging light when I was out last nite, my noggin's still achin'",
+  "paraphrase_of": "head-003",
+  "k": 0
+ },
+ {
+  "seed_id": "head-003",
+  "label": "head",
+  "text": "Dude, totally bashed my head on that low ceiling at the pub last night, feeling pretty sore right now",
+  "paraphrase_of": "head-003",
+  "k": 1
+ },
+ {
+  "seed_id": "head-003",
+  "label": "head",
+  "text": "Just smacked into the bottom of a chandelier at the bar last night and my head is still in pain",
+  "paraphrase_of": "head-003",
+  "k": 2
+ },
+ {
+  "seed_id": "head-003",
+  "label": "head",
+  "text": "So I bumped into this low hanging light in the pub and my head hurts like hell",
+  "paraphrase_of": "head-003",
+  "k": 3
+ },
+ {
+  "seed_id": "head-004",
+  "label": "head",
+  "text": "hit my head on the trunk when closing it, got a tiny lump but I'm fine",
+  "paraphrase_of": "head-004",
+  "k": 0
+ },
+ {
+  "seed_id": "head-004",
+  "label": "head",
+  "text": "hit my head on the trunk when closing it, got a tiny lump but I'm fine",
+  "paraphrase_of": "head-004",
+  "k": 1
+ },
+ {
+  "seed_id": "head-004",
+  "label": "head",
+  "text": "stupidly bumped my forehead on the car boot, had a small bump but nothing major",
+  "paraphrase_of": "head-004",
+  "k": 2
+ },
+ {
+  "seed_id": "head-004",
+  "label": "head",
+  "text": "knocked my forehead on the car boot while closing it, left with a minor bump, feeling okay though",
+  "paraphrase_of": "head-004",
+  "k": 3
+ },
+ {
+  "seed_id": "head-005",
+  "label": "head",
+  "text": "Slipped on some ice and smacked my head on the sidewalk, owie",
+  "paraphrase_of": "head-005",
+  "k": 0
+ },
+ {
+  "seed_id": "head-005",
+  "label": "head",
+  "text": "Whoa, I slipped on this icy stuff and bonked my noggin on the road. Ouch!",
+  "paraphrase_of": "head-005",
+  "k": 1
+ },
+ {
+  "seed_id": "head-005",
+  "label": "head",
+  "text": "Ugh, just slipped on that damn ice and landed hard on my head. Hurt like hell.",
+  "paraphrase_of": "head-005",
+  "k": 2
+ },
+ {
+  "seed_id": "head-005",
+  "label": "head",
+  "text": "Got a bit of a mishap slipping on the icy walkway, and ended up with a bonk to the back of my head. Feels pretty bad.",
+  "paraphrase_of": "head-005",
+  "k": 3
+ },
+ {
+  "seed_id": "head-006",
+  "label": "head",
+  "text": "Hey doc, just got out of the car and hit my head! I'm on that blood thinner stuff. What should I do??",
+  "paraphrase_of": "head-006",
+  "k": 0
+ },
+ {
+  "seed_id": "head-006",
+  "label": "head",
+  "text": "Doc, I fell outta my car and whacked my noggin. On warfarin too. Should I be worried?",
+  "paraphrase_of": "head-006",
+  "k": 1
+ },
+ {
+  "seed_id": "head-006",
+  "label": "head",
+  "text": "Went to get outa my car and bonked my head. On warfarin. Any advice?",
+  "paraphrase_of": "head-006",
+  "k": 2
+ },
+ {
+  "seed_id": "head-006",
+  "label": "head",
+  "text": "Quick question - hit my head getting out of the car. On warfarin. Need to know what to do.",
+  "paraphrase_of": "head-006",
+  "k": 3
+ },
+ {
+  "seed_id": "head-007",
+  "label": "head",
+  "text": "hit my head with a football during practice, felt a little zoned out for a sec",
+  "paraphrase_of": "head-007",
+  "k": 0
+ },
+ {
+  "seed_id": "head-007",
+  "label": "head",
+  "text": "Got tackled and got hit on the head with a football in training, just kinda spacey afterwards",
+  "paraphrase_of": "head-007",
+  "k": 1
+ },
+ {
+  "seed_id": "head-007",
+  "label": "head",
+  "text": "Knocked me out cold when someone elbowed the ball into my noggin at training. Dazed for like 1 min tho",
+  "paraphrase_of": "head-007",
+  "k": 2
+ },
+ {
+  "seed_id": "head-007",
+  "label": "head",
+  "text": "Blacked out briefly after getting hit by a football in training. Still feeling a bit groggy",
+  "paraphrase_of": "head-007",
+  "k": 3
+ },
+ {
+  "seed_id": "head-009",
+  "label": "head",
+  "text": "hit my head really hard playing rugby, got this swelling above my eye :(",
+  "paraphrase_of": "head-009",
+  "k": 0
+ },
+ {
+  "seed_id": "head-009",
+  "label": "head",
+  "text": "Oh no! I took a hit to the head in rugby and now I have this big bruise above my eye...",
+  "paraphrase_of": "head-009",
+  "k": 1
+ },
+ {
+  "seed_id": "head-009",
+  "label": "head",
+  "text": "Just had a bump on my noggin from rugby, got a pretty goose egg forming over here",
+  "paraphrase_of": "head-009",
+  "k": 2
+ },
+ {
+  "seed_id": "head-009",
+  "label": "head",
+  "text": "Dang, took one to the head during rugby practice and now there's this swelling above my eye",
+  "paraphrase_of": "head-009",
+  "k": 3
+ },
+ {
+  "seed_id": "head-010",
+  "label": "head",
+  "text": "Oh man, just got a serious bump on my head after standing too close to that shelf! Ouch!",
+  "paraphrase_of": "head-010",
+  "k": 0
+ },
+ {
+  "seed_id": "head-010",
+  "label": "head",
+  "text": "Had to stand up quick to grab something and BOOM - hit my head on the shelf! Super painful...",
+  "paraphrase_of": "head-010",
+  "k": 1
+ },
+ {
+  "seed_id": "head-010",
+  "label": "head",
+  "text": "Forgot about that shelf while reaching for stuff and crack went my skull! Ouchie...",
+  "paraphrase_of": "head-010",
+  "k": 2
+ },
+ {
+  "seed_id": "head-010",
+  "label": "head",
+  "text": "Stood up fast, thinking nothing of it, but then wham! My head hit the shelf really hard. Ouch!",
+  "paraphrase_of": "head-010",
+  "k": 3
+ },
+ {
+  "seed_id": "head-011",
+  "label": "head",
+  "text": "My daughter got hit in the head at school and now there's a red spot showing up.",
+  "paraphrase_of": "head-011",
+  "k": 0
+ },
+ {
+  "seed_id": "head-011",
+  "label": "head",
+  "text": "Oh no! My daughter got smacked by another kid at school and has a red mark on her head.",
+  "paraphrase_of": "head-011",
+  "k": 1
+ },
+ {
+  "seed_id": "head-011",
+  "label": "head",
+  "text": "My little one had an accident at school where she hit heads with someone else. Now there's this red thing showing up.",
+  "paraphrase_of": "head-011",
+  "k": 2
+ },
+ {
+  "seed_id": "head-012",
+  "label": "head",
+  "text": "Ran into a tree while riding my bike and skidded on my noggin, got a light headache that won't go away",
+  "paraphrase_of": "head-012",
+  "k": 0
+ },
+ {
+  "seed_id": "head-012",
+  "label": "head",
+  "text": "Oof, just had a pretty bad fall off the bike without my helmet, head's a bit sore with this mild headache",
+  "paraphrase_of": "head-012",
+  "k": 1
+ },
+ {
+  "seed_id": "head-012",
+  "label": "head",
+  "text": "Drove myself nuts! Fell off my bike, no helmet, and now I've got this annoying mild headache from scraping my head up",
+  "paraphrase_of": "head-012",
+  "k": 2
+ },
+ {
+  "seed_id": "head-012",
+  "label": "head",
+  "text": "Just crashed my bike without wearing a helmet and scraped up my head - been having a mild headache ever since. Freaked out!",
+  "paraphrase_of": "head-012",
+  "k": 3
+ },
+ {
+  "seed_id": "head-013",
+  "label": "head",
+  "text": "haha, hit my head on the table's edge yest'day, it still hurts when I touch it",
+  "paraphrase_of": "head-013",
+  "k": 0
+ },
+ {
+  "seed_id": "head-013",
+  "label": "head",
+  "text": "Oh no, got my forehead on that stupid table corner yesterday & it\u2019s all sore now",
+  "paraphrase_of": "head-013",
+  "k": 1
+ },
+ {
+  "seed_id": "head-013",
+  "label": "head",
+  "text": "head-butt on the table corner yesterday, super tender when I press it",
+  "paraphrase_of": "head-013",
+  "k": 2
+ },
+ {
+  "seed_id": "head-013",
+  "label": "head",
+  "text": "Ugh, fell and smacked my head on the table's edge yesterday. Still pretty sore to touch",
+  "paraphrase_of": "head-013",
+  "k": 3
+ },
+ {
+  "seed_id": "head-015",
+  "label": "head",
+  "text": "Hey doc, I had this little accident where I stumbled and my head bonked the doorframe real good. Now my temple's got a tiny bit puffy. What should I do?",
+  "paraphrase_of": "head-015",
+  "k": 0
+ },
+ {
+  "seed_id": "head-015",
+  "label": "head",
+  "text": "Had an accident tripping over and smacked my temple on that dumb doorframe. Got a teeny swelling going on. Need advice, please.",
+  "paraphrase_of": "head-015",
+  "k": 1
+ },
+ {
+  "seed_id": "head-015",
+  "label": "head",
+  "text": "Ugh, I fell and hit my temple on the doorframe. It swelled up a little. Should I be worried?",
+  "paraphrase_of": "head-015",
+  "k": 2
+ },
+ {
+  "seed_id": "head-015",
+  "label": "head",
+  "text": "Went down hard and my temple hit the doorframe. There's like a small bump there now. What do I need to watch out for?",
+  "paraphrase_of": "head-015",
+  "k": 3
+ },
+ {
+  "seed_id": "head-016",
+  "label": "head",
+  "text": "My baby fell off the changing table and hit her head, but she looks okay now",
+  "paraphrase_of": "head-016",
+  "k": 0
+ },
+ {
+  "seed_id": "head-016",
+  "label": "head",
+  "text": "Quick question - my baby fell from the changing table and got a bump on her head, is that normal? Looks good now tho",
+  "paraphrase_of": "head-016",
+  "k": 1
+ },
+ {
+  "seed_id": "head-016",
+  "label": "head",
+  "text": "Bump! My baby fell off the changing table and hit her head. She seems fine now though",
+  "paraphrase_of": "head-016",
+  "k": 2
+ },
+ {
+  "seed_id": "head-016",
+  "label": "head",
+  "text": "Just wondering if this is normal - my baby rolled off the changing table and gave herself a bump. Seems to be okay now",
+  "paraphrase_of": "head-016",
+  "k": 3
+ },
+ {
+  "seed_id": "head-017",
+  "label": "head",
+  "text": "Got elbanged in the head while playing hoops, just a mild headache tho.",
+  "paraphrase_of": "head-017",
+  "k": 0
+ },
+ {
+  "seed_id": "head-017",
+  "label": "head",
+  "text": "Just got elbowed in the head during basketball and have this little ache.",
+  "paraphrase_of": "head-017",
+  "k": 1
+ },
+ {
+  "seed_id": "head-017",
+  "label": "head",
+  "text": "Ow! Got hit in the head by an elbow playing basketball, just a slight pain.",
+  "paraphrase_of": "head-017",
+  "k": 2
+ },
+ {
+  "seed_id": "head-017",
+  "label": "head",
+  "text": "Bump on the head from a basketball elbow, not too bad but still hurts a bit.",
+  "paraphrase_of": "head-017",
+  "k": 3
+ },
+ {
+  "seed_id": "head-018",
+  "label": "head",
+  "text": "ouch! hit my head on the ladder and now i've got this tiny\u5272\u4f24\u5728\u5934\u4e0a\uff0c\u597d\u75bc",
+  "paraphrase_of": "head-018",
+  "k": 0
+ },
+ {
+  "seed_id": "head-018",
+  "label": "head",
+  "text": "oh no, just fell off the ladder and scraped my head a bit, there's a small cut",
+  "paraphrase_of": "head-018",
+  "k": 1
+ },
+ {
+  "seed_id": "head-018",
+  "label": "head",
+  "text": "accidentally bumped my head hard on the ladder, left with a little cut on top",
+  "paraphrase_of": "head-018",
+  "k": 2
+ },
+ {
+  "seed_id": "head-019",
+  "label": "head",
+  "text": "Dad fell in the garden and bonked his head pretty hard. He\u2019s on those blood-thinners for his heart stuff.",
+  "paraphrase_of": "head-019",
+  "k": 0
+ },
+ {
+  "seed_id": "head-019",
+  "label": "head",
+  "text": "My dad took a fall in the garden and smacked his head, he's been on those blood thinners for atrial fibrillation.",
+  "paraphrase_of": "head-019",
+  "k": 1
+ },
+ {
+  "seed_id": "head-019",
+  "label": "head",
+  "text": "Dad just had a tumble in the garden and hit his head, he's got to watch out since he takes blood thinners for AF.",
+  "paraphrase_of": "head-019",
+  "k": 2
+ },
+ {
+  "seed_id": "head-019",
+  "label": "head",
+  "text": "Garden accident, Dad fell and bumped his head. He\u2019s on those anticoagulants for his heart condition.",
+  "paraphrase_of": "head-019",
+  "k": 3
+ },
+ {
+  "seed_id": "head-020",
+  "label": "head",
+  "text": "Bumped my head on the windshield during a small car accident, no airbags activated.",
+  "paraphrase_of": "head-020",
+  "k": 0
+ },
+ {
+  "seed_id": "head-020",
+  "label": "head",
+  "text": "Minor fender bender, hit my head on the windshield, but no airbags deployed.",
+  "paraphrase_of": "head-020",
+  "k": 1
+ },
+ {
+  "seed_id": "head-021",
+  "label": "head",
+  "text": "I was standing in the kitchen when a can from the highest shelf hit me on the head. Now there's this little lump over here.",
+  "paraphrase_of": "head-021",
+  "k": 0
+ },
+ {
+  "seed_id": "head-021",
+  "label": "head",
+  "text": "Ouch! I was cleaning up and a tin flew down from the top shelf, right onto my noggin. There's definitely a bump now.",
+  "paraphrase_of": "head-021",
+  "k": 1
+ },
+ {
+  "seed_id": "head-021",
+  "label": "head",
+  "text": "Ugh, so clumsy\u2014there goes that tin from way high up, landing on my head like a brick. Got a nice bump for my trouble.",
+  "paraphrase_of": "head-021",
+  "k": 2
+ },
+ {
+  "seed_id": "head-021",
+  "label": "head",
+  "text": "Darn it, a tin dropped from above and bonked me in the head! Now I've got this annoying little bump.",
+  "paraphrase_of": "head-021",
+  "k": 3
+ },
+ {
+  "seed_id": "head-022",
+  "label": "head",
+  "text": "Oh man, I bumped my head real good on the bed's headboard just now",
+  "paraphrase_of": "head-022",
+  "k": 0
+ },
+ {
+  "seed_id": "head-022",
+  "label": "head",
+  "text": "Went to sleep and woke up banging my noggin on that thing, kinda hard...",
+  "paraphrase_of": "head-022",
+  "k": 1
+ },
+ {
+  "seed_id": "head-022",
+  "label": "head",
+  "text": "Just smacked my head on the bed's headboard and it hurts like heck",
+  "paraphrase_of": "head-022",
+  "k": 2
+ },
+ {
+  "seed_id": "head-022",
+  "label": "head",
+  "text": "Dinged my head on the damn headboard. Really hurt, you know?",
+  "paraphrase_of": "head-022",
+  "k": 3
+ },
+ {
+  "seed_id": "head-023",
+  "label": "head",
+  "text": "my little guy took a tumble from the playground structure and smacked his noggin'",
+  "paraphrase_of": "head-023",
+  "k": 0
+ },
+ {
+  "seed_id": "head-023",
+  "label": "head",
+  "text": "Oh no! My son hit his head when he fell off the climbing frame",
+  "paraphrase_of": "head-023",
+  "k": 1
+ },
+ {
+  "seed_id": "head-023",
+  "label": "head",
+  "text": "Quick help needed - my son tumbled off the playground equipment and landed on his head",
+  "paraphrase_of": "head-023",
+  "k": 2
+ },
+ {
+  "seed_id": "head-023",
+  "label": "head",
+  "text": "Just had a scare - son fell from the playset and bonked his head, need advice fast",
+  "paraphrase_of": "head-023",
+  "k": 3
+ },
+ {
+  "seed_id": "head-024",
+  "label": "head",
+  "text": "Dude, I hit my head on that damn car window and now I'm feeling queasy as hell",
+  "paraphrase_of": "head-024",
+  "k": 0
+ },
+ {
+  "seed_id": "head-024",
+  "label": "head",
+  "text": "Oh no, just bashed my noggin' on the open window and been feeling woozy ever since",
+  "paraphrase_of": "head-024",
+  "k": 1
+ },
+ {
+  "seed_id": "head-024",
+  "label": "head",
+  "text": "So I smacked my head on the window and have this weird queasiness going on",
+  "paraphrase_of": "head-024",
+  "k": 2
+ },
+ {
+  "seed_id": "head-025",
+  "label": "head",
+  "text": "fell down some steps and bumped my noggin on the side",
+  "paraphrase_of": "head-025",
+  "k": 0
+ },
+ {
+  "seed_id": "head-026",
+  "label": "head",
+  "text": "Hey doc, I took my clopidogrel and just whacked my noggin on the kitchen cabinet...",
+  "paraphrase_of": "head-026",
+  "k": 0
+ },
+ {
+  "seed_id": "head-026",
+  "label": "head",
+  "text": "I was taking my clopidogrel when I banged my head on that kitchen cupboard!",
+  "paraphrase_of": "head-026",
+  "k": 1
+ },
+ {
+  "seed_id": "head-026",
+  "label": "head",
+  "text": "Welp, hit my head on the kitchen counter while on clopidogrel. Any worries?",
+  "paraphrase_of": "head-026",
+  "k": 2
+ },
+ {
+  "seed_id": "head-027",
+  "label": "head",
+  "text": "My kid hit their head on a lamppost and now there's this huge bump!",
+  "paraphrase_of": "head-027",
+  "k": 0
+ },
+ {
+  "seed_id": "head-027",
+  "label": "head",
+  "text": "Oh no, my 4-year-old just crashed into a lamp post and got a pretty big swelling on his head...",
+  "paraphrase_of": "head-027",
+  "k": 1
+ },
+ {
+  "seed_id": "head-027",
+  "label": "head",
+  "text": "Quick question - my son ran into a street light headfirst, now he has a sizable lump.",
+  "paraphrase_of": "head-027",
+  "k": 2
+ },
+ {
+  "seed_id": "head-027",
+  "label": "head",
+  "text": "Hey, my little one just bonked their forehead on a lamppost and there's this big bump forming.",
+  "paraphrase_of": "head-027",
+  "k": 3
+ },
+ {
+  "seed_id": "head-028",
+  "label": "head",
+  "text": "Oof, fell on my head while jumping in the pool, feel kinda fuzzy but can walk around",
+  "paraphrase_of": "head-028",
+  "k": 0
+ },
+ {
+  "seed_id": "head-028",
+  "label": "head",
+  "text": "Dived wrong way and bonked head on the pool floor, hurts but I\u2019m ok",
+  "paraphrase_of": "head-028",
+  "k": 1
+ },
+ {
+  "seed_id": "head-028",
+  "label": "head",
+  "text": "I just slammed my head into the shallow end of the pool. Not great but able to walk",
+  "paraphrase_of": "head-028",
+  "k": 2
+ },
+ {
+  "seed_id": "head-028",
+  "label": "head",
+  "text": "Just took a header into the shallow end and got my noggin checked; still moving though",
+  "paraphrase_of": "head-028",
+  "k": 3
+ },
+ {
+  "seed_id": "head-029",
+  "label": "head",
+  "text": "smacked my head on the wheel when I slammed on the brakes",
+  "paraphrase_of": "head-029",
+  "k": 0
+ },
+ {
+  "seed_id": "head-029",
+  "label": "head",
+  "text": "oh no, just hit my head on the wheel when braking really fast",
+  "paraphrase_of": "head-029",
+  "k": 1
+ },
+ {
+  "seed_id": "head-029",
+  "label": "head",
+  "text": "accident! hit my forehead on the steering wheel while braking\u786c\u7740\u5934\u76ae\u5239\u4e86\u4e00\u4e0b",
+  "paraphrase_of": "head-029",
+  "k": 2
+ },
+ {
+  "seed_id": "head-029",
+  "label": "head",
+  "text": "braked hard and ended up hitting my head on the wheel",
+  "paraphrase_of": "head-029",
+  "k": 3
+ },
+ {
+  "seed_id": "head-030",
+  "label": "head",
+  "text": "hit my head on the loft hatch and now there's this little bump on my scalp, could it be serious?",
+  "paraphrase_of": "head-030",
+  "k": 0
+ },
+ {
+  "seed_id": "head-030",
+  "label": "head",
+  "text": "Hey doc, so I smacked my head on that loft door thingy and now there's like a tiny lump on my head. Scared about it.",
+  "paraphrase_of": "head-030",
+  "k": 1
+ },
+ {
+  "seed_id": "head-030",
+  "label": "head",
+  "text": "I just realized after banging my head on the loft hatch that I have this small bump on my scalp. Should I be worried?",
+  "paraphrase_of": "head-030",
+  "k": 2
+ },
+ {
+  "seed_id": "head-030",
+  "label": "head",
+  "text": "Small bump appeared on my scalp after hitting it on the loft hatch. Any idea what might this be?",
+  "paraphrase_of": "head-030",
+  "k": 3
+ },
+ {
+  "seed_id": "head-031",
+  "label": "head",
+  "text": "My mom was on edoxaban and she slipped in the shower, hitting her head on the tiles.",
+  "paraphrase_of": "head-031",
+  "k": 0
+ },
+ {
+  "seed_id": "head-031",
+  "label": "head",
+  "text": "Hey doc, my mum is on edoxaban and she took a tumble in the shower\u2014hit her head on those tiles!",
+  "paraphrase_of": "head-031",
+  "k": 1
+ },
+ {
+  "seed_id": "head-031",
+  "label": "head",
+  "text": "Quick question: My mom was on edoxaban and fell in the shower. She hit her head on something hard.",
+  "paraphrase_of": "head-031",
+  "k": 2
+ },
+ {
+  "seed_id": "head-032",
+  "label": "head",
+  "text": "uh oh, i hit my head on that swinging gate and now there's this tender spot...",
+  "paraphrase_of": "head-032",
+  "k": 0
+ },
+ {
+  "seed_id": "head-032",
+  "label": "head",
+  "text": "damn it, just got smacked in the noggin' by that gate, feels kinda sore right here",
+  "paraphrase_of": "head-032",
+  "k": 1
+ },
+ {
+  "seed_id": "head-032",
+  "label": "head",
+  "text": "woah, that gate gave me quite a whack and i've got this tender spot forming",
+  "paraphrase_of": "head-032",
+  "k": 2
+ },
+ {
+  "seed_id": "head-032",
+  "label": "head",
+  "text": "oh no, seriously dropped my head on that swinging gate and now there's this painful spot",
+  "paraphrase_of": "head-032",
+  "k": 3
+ },
+ {
+  "seed_id": "head-033",
+  "label": "head",
+  "text": "owed big time after falling off that ladder, hit my head on the patio, feeling pretty fuzzy still",
+  "paraphrase_of": "head-033",
+  "k": 0
+ },
+ {
+  "seed_id": "head-033",
+  "label": "head",
+  "text": "FELL OFF A LADDER BACKWARDS! HEAD SMACKED THE PATIO. STILL FEELING GROGGY AND CONFUSED",
+  "paraphrase_of": "head-033",
+  "k": 1
+ },
+ {
+  "seed_id": "head-033",
+  "label": "head",
+  "text": "Just fell off a ladder and smacked my head on the patio, super groggy right now",
+  "paraphrase_of": "head-033",
+  "k": 2
+ },
+ {
+  "seed_id": "head-033",
+  "label": "head",
+  "text": "Had a major faceplant off a ladder, bonked my noggin on the patio, feeling kinda out of it",
+  "paraphrase_of": "head-033",
+  "k": 3
+ },
+ {
+  "seed_id": "head-034",
+  "label": "head",
+  "text": "My kid hit his head on the coffee table and got a small scratch and some swelling.",
+  "paraphrase_of": "head-034",
+  "k": 0
+ },
+ {
+  "seed_id": "head-035",
+  "label": "head",
+  "text": "hit by a cricket ball on my head and feeling a bit dizzy still",
+  "paraphrase_of": "head-035",
+  "k": 0
+ },
+ {
+  "seed_id": "head-035",
+  "label": "head",
+  "text": "darn, got hit by a cricket ball and am super dizzy now",
+  "paraphrase_of": "head-035",
+  "k": 1
+ },
+ {
+  "seed_id": "head-035",
+  "label": "head",
+  "text": "knocked out by that cricket ball, my head feels a little woozy",
+  "paraphrase_of": "head-035",
+  "k": 2
+ },
+ {
+  "seed_id": "head-035",
+  "label": "head",
+  "text": "yep, got smacked in the noggin' by a cricket ball, still feeling a littl' dizzy",
+  "paraphrase_of": "head-035",
+  "k": 3
+ },
+ {
+  "seed_id": "head-036",
+  "label": "head",
+  "text": "Ow man, hit my head on the car door and it's still really pounding",
+  "paraphrase_of": "head-036",
+  "k": 0
+ },
+ {
+  "seed_id": "head-036",
+  "label": "head",
+  "text": "Got my head bashed on the car door when I was getting in, still feels like it's throbbing bad",
+  "paraphrase_of": "head-036",
+  "k": 1
+ },
+ {
+  "seed_id": "head-036",
+  "label": "head",
+  "text": "Darn, smacked my noggin' on the car door\u4eca\u513f\u4e2a\u6211\u611f\u89c9\u8fd8\u662f\u6709\u70b9\u75bc",
+  "paraphrase_of": "head-036",
+  "k": 2
+ },
+ {
+  "seed_id": "head-036",
+  "label": "head",
+  "text": "Ugh, just bonked my head on the car door trying to get in and it\u2019s still giving me that throb",
+  "paraphrase_of": "head-036",
+  "k": 3
+ },
+ {
+  "seed_id": "head-037",
+  "label": "head",
+  "text": "Minor head bump from a fallen weight plate at the gym today.",
+  "paraphrase_of": "head-037",
+  "k": 0
+ },
+ {
+  "seed_id": "head-037",
+  "label": "head",
+  "text": "Oh no! Got hit by a loose weight plate at the gym. Just a small bump, but freaked me out.",
+  "paraphrase_of": "head-037",
+  "k": 1
+ },
+ {
+  "seed_id": "head-037",
+  "label": "head",
+  "text": "Weight plate fell off the rack at the gym and bonked my noggin. Need to watch where I step now.",
+  "paraphrase_of": "head-037",
+  "k": 2
+ },
+ {
+  "seed_id": "head-037",
+  "label": "head",
+  "text": "So spooked! Weight plate slipped off the gym rack and gave me a little head thump. Really gave me a scare.",
+  "paraphrase_of": "head-037",
+  "k": 3
+ },
+ {
+  "seed_id": "head-038",
+  "label": "head",
+  "text": "Hey doc, I was out last night and took a bad fall - I'm on dabigatran.",
+  "paraphrase_of": "head-038",
+  "k": 0
+ },
+ {
+  "seed_id": "head-038",
+  "label": "head",
+  "text": "Oh no, I had a bit of an accident and smacked my head good. On dabigatran though.",
+  "paraphrase_of": "head-038",
+  "k": 1
+ },
+ {
+  "seed_id": "head-038",
+  "label": "head",
+  "text": "Quick question - fell off my bike pretty hard last night and started taking dabigatran just recently.",
+  "paraphrase_of": "head-038",
+  "k": 2
+ },
+ {
+  "seed_id": "head-038",
+  "label": "head",
+  "text": "Dangit, hit my head hard after that late night out. On dabigatran.",
+  "paraphrase_of": "head-038",
+  "k": 3
+ },
+ {
+  "seed_id": "head-039",
+  "label": "head",
+  "text": "slipped while playing with the dog and banged my head on the ground",
+  "paraphrase_of": "head-039",
+  "k": 0
+ },
+ {
+  "seed_id": "head-039",
+  "label": "head",
+  "text": "Oh no, just tripped on Fido and smacked my forehead on the floor",
+  "paraphrase_of": "head-039",
+  "k": 1
+ },
+ {
+  "seed_id": "head-040",
+  "label": "head",
+  "text": "My baby fell while learning to walk and now there's this little bump on her head. Should I be worried?",
+  "paraphrase_of": "head-040",
+  "k": 0
+ },
+ {
+  "seed_id": "head-040",
+  "label": "head",
+  "text": "Quick question: my tot got knocked out when climbing, now there\u2019s a small bump on the noggin. Any ideas?",
+  "paraphrase_of": "head-040",
+  "k": 1
+ },
+ {
+  "seed_id": "head-040",
+  "label": "head",
+  "text": "Hey doc, my kid had an accident while trying to walk and now there\u2019s a teeny bump on her forehead. Need help!",
+  "paraphrase_of": "head-040",
+  "k": 2
+ },
+ {
+  "seed_id": "head-040",
+  "label": "head",
+  "text": "Just noticed a tiny bump on baby's head after she fell learning to crawl. Any advice?",
+  "paraphrase_of": "head-040",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-001",
+  "label": "hypo",
+  "text": "I'm so shaky and sweaty and haven't had anything to eat since this morning :(",
+  "paraphrase_of": "hypo-001",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-001",
+  "label": "hypo",
+  "text": "Feeling all wobbly and clammy, and no food in me since before breakfast",
+  "paraphrase_of": "hypo-001",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-001",
+  "label": "hypo",
+  "text": "Really shaky and sweaty, and I skipped breakfast",
+  "paraphrase_of": "hypo-001",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-001",
+  "label": "hypo",
+  "text": "So shaky and sweaty, no food since this a.m.",
+  "paraphrase_of": "hypo-001",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-002",
+  "label": "hypo",
+  "text": "feeling pretty zonked out and shaky, think my blood sugar is maybe too low",
+  "paraphrase_of": "hypo-002",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-002",
+  "label": "hypo",
+  "text": "uh oh, feeling super fuzzy in the head and all jittery, could my sugar be dipping?",
+  "paraphrase_of": "hypo-002",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-002",
+  "label": "hypo",
+  "text": "confused and shaking like crazy, kinda think my blood sugar is dropping",
+  "paraphrase_of": "hypo-002",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-002",
+  "label": "hypo",
+  "text": "just got really confused and wobbly, worried my sugar might be low",
+  "paraphrase_of": "hypo-002",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-003",
+  "label": "hypo",
+  "text": "Hey doc, woke up all sweaty and my heartbeat was racing like crazy, and I'm a type 1 diabetic.",
+  "paraphrase_of": "hypo-003",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-003",
+  "label": "hypo",
+  "text": "Scared to death this morning, drenched in sweat and heart was pounding really hard, just checked and I\u2019m a type 1 diabetic.",
+  "paraphrase_of": "hypo-003",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-003",
+  "label": "hypo",
+  "text": "Woke up sweating and heart racing, got my blood sugar checked and I\u2019m type 1 diabetic. Something\u2019s off for sure.",
+  "paraphrase_of": "hypo-003",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-003",
+  "label": "hypo",
+  "text": "Hey, woke up all sweaty and heartbeat super fast this morning. Just remembered I\u2019m a type 1 diabetic.",
+  "paraphrase_of": "hypo-003",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-004",
+  "label": "hypo",
+  "text": "Doc, I took my insulin like usual but then got all weak and sweaty running today...",
+  "paraphrase_of": "hypo-004",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-004",
+  "label": "hypo",
+  "text": "Hey, so I was out for a run and suddenly felt light-headed and cold all over, even though I injected my insulin before...",
+  "paraphrase_of": "hypo-004",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-004",
+  "label": "hypo",
+  "text": "Just ran and now I'm feeling dizzy and clammy. Wasn't expecting that after my shot this morning...",
+  "paraphrase_of": "hypo-004",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-004",
+  "label": "hypo",
+  "text": "I went for a run and started feeling faint and sweaty, despite taking my insulin on schedule like always...",
+  "paraphrase_of": "hypo-004",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-006",
+  "label": "hypo",
+  "text": "My hands won't stop shaking and I'm so hungry I might pass out at work... \ud83d\ude13",
+  "paraphrase_of": "hypo-006",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-006",
+  "label": "hypo",
+  "text": "Feeling shaky and super famished today, got so weak my knees gave out at the office \ud83d\ude48",
+  "paraphrase_of": "hypo-006",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-006",
+  "label": "hypo",
+  "text": "Shaky hands and ravenous, almost fainted at work. Needs a doc now! \ud83e\udd14",
+  "paraphrase_of": "hypo-006",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-006",
+  "label": "hypo",
+  "text": "Trembling hands and starving, felt wobbly at work. Should I see someone? \ud83d\ude15",
+  "paraphrase_of": "hypo-006",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-008",
+  "label": "hypo",
+  "text": "Feeling kinda lightheaded and all sweaty, just realized I forgot to eat lunch 'cause of the insulin.",
+  "paraphrase_of": "hypo-008",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-008",
+  "label": "hypo",
+  "text": "Hey doc, feeling dizzy and all sweaty, skipped lunch because of my insulin shot.",
+  "paraphrase_of": "hypo-008",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-008",
+  "label": "hypo",
+  "text": "Feel faint and break out in a sweat, didn't have lunch after my insulin dose.",
+  "paraphrase_of": "hypo-008",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-008",
+  "label": "hypo",
+  "text": "Just got this weird lightheaded, sweaty feeling\u2014realized I missed lunch coz of the insulin.",
+  "paraphrase_of": "hypo-008",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-009",
+  "label": "hypo",
+  "text": "My diabetic kid looks really pale, is shaking, and has been super cranky lately.",
+  "paraphrase_of": "hypo-009",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-009",
+  "label": "hypo",
+  "text": "Doc, my child with diabetes seems light as air, trembling and in a bad mood.",
+  "paraphrase_of": "hypo-009",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-009",
+  "label": "hypo",
+  "text": "Hey, my diabetic son is all pale, feels shaky, and is acting extra grumpy.",
+  "paraphrase_of": "hypo-009",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-009",
+  "label": "hypo",
+  "text": "Just noticed that my diabetic boy looks really pale and is feeling kinda shaky and crankier than usual.",
+  "paraphrase_of": "hypo-009",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-010",
+  "label": "hypo",
+  "text": "Hey doc, my eyesight is all murky and my lips feel electric. Also really shaky post-workout.",
+  "paraphrase_of": "hypo-010",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-011",
+  "label": "hypo",
+  "text": "Got super clammy and lightheaded at the store, but took a glucose tab and feel better now",
+  "paraphrase_of": "hypo-011",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-011",
+  "label": "hypo",
+  "text": "Hello doc, just got all sweaty and woozy in the mall, had a glucose tablet real quick and feeling good again. Was worried there for a sec",
+  "paraphrase_of": "hypo-011",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-011",
+  "label": "hypo",
+  "text": "Clammy, dizzy episode at the grocery store, took a glucose tab and things are fine now",
+  "paraphrase_of": "hypo-011",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-011",
+  "label": "hypo",
+  "text": "Hey there, just went clammy and dizzy in the supermarket, grabbed a glucose tablet, all better now",
+  "paraphrase_of": "hypo-011",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-012",
+  "label": "hypo",
+  "text": "My grandpa seems confused and really sweaty every day around 4pm. He\u2019s been on diabetes pills for a while now.",
+  "paraphrase_of": "hypo-012",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-012",
+  "label": "hypo",
+  "text": "Hey doc, my dad gets all mixed up and overheated in the evenings starting from about 3:30. And he's been taking those sugar meds you gave him.",
+  "paraphrase_of": "hypo-012",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-012",
+  "label": "hypo",
+  "text": "\"Doc, grandpa starts acting weird and getting all warm and clammy around late afternoon. He\u2019s on the diabetes tablets we talked about.",
+  "paraphrase_of": "hypo-012",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-012",
+  "label": "hypo",
+  "text": "My grandad gets all spaced out and sweaty in the afternoons. He\u2019s been on diabetes medication for a few months now.",
+  "paraphrase_of": "hypo-012",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-013",
+  "label": "hypo",
+  "text": "Heart racing again, hands are shaking and I\u2019m getting these intense hunger pangs",
+  "paraphrase_of": "hypo-013",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-013",
+  "label": "hypo",
+  "text": "Hey, it\u2019s happening again - my heartbeat is racing, I\u2019m shaking and suddenly so hungry",
+  "paraphrase_of": "hypo-013",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-014",
+  "label": "hypo",
+  "text": "felt so dizzy I thought I was gonna faint at work, got clammy and sweaty but eating a cookie helped me feel better",
+  "paraphrase_of": "hypo-014",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-014",
+  "label": "hypo",
+  "text": "scared I was going to pass out right there at my desk, felt like I was covered in sweat, munching on a biscuit made everything okay again",
+  "paraphrase_of": "hypo-014",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-014",
+  "label": "hypo",
+  "text": "nearly fainted at work, started feeling cold and all sweaty, but the biscuit brought me back",
+  "paraphrase_of": "hypo-014",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-014",
+  "label": "hypo",
+  "text": "got so lightheaded and clammy that I thought I was going to pass out, eating a cookie snapped me out of it",
+  "paraphrase_of": "hypo-014",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-015",
+  "label": "hypo",
+  "text": "feeling so shaky and can't focus, my glucose meter read 3.1",
+  "paraphrase_of": "hypo-015",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-015",
+  "label": "hypo",
+  "text": "I'm trembling badly and having trouble concentrating, my blood sugar meter showed 3.1",
+  "paraphrase_of": "hypo-015",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-015",
+  "label": "hypo",
+  "text": "Shaking all over and can\u2019t think straight, my glucometer said 3.1",
+  "paraphrase_of": "hypo-015",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-016",
+  "label": "hypo",
+  "text": "My daughter who has T1 got all sweaty and was really confused early this morning around 3 AM.",
+  "paraphrase_of": "hypo-016",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-016",
+  "label": "hypo",
+  "text": "T1 daughter woke up super sweaty and confused around 3 AM, what should I do?",
+  "paraphrase_of": "hypo-016",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-016",
+  "label": "hypo",
+  "text": "Hey doc, my T1 kid was all hot and confused at 3 AM this morning. Any idea why?",
+  "paraphrase_of": "hypo-016",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-017",
+  "label": "hypo",
+  "text": "I'm feeling really weak, kind of wobbly on my feet, and I've been sweating a lot. Also I skipped dinner.",
+  "paraphrase_of": "hypo-017",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-017",
+  "label": "hypo",
+  "text": "Hey doc, I feel super weak and wobbly, plus I keep breaking out in sweat. And to top it off, I missed my dinner.",
+  "paraphrase_of": "hypo-017",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-017",
+  "label": "hypo",
+  "text": "Felt so weak, like I was about to faint, and all sweaty too. Oh yeah, and forgot to eat dinner.",
+  "paraphrase_of": "hypo-017",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-017",
+  "label": "hypo",
+  "text": "So not feeling good at all, weak and wobbly with a lot of sweating. Plus, totally forgot about dinner.",
+  "paraphrase_of": "hypo-017",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-018",
+  "label": "hypo",
+  "text": "Feels like I'm losing it an hour post-Metformin and Sulphonylurea - super jumpy and cranky :/",
+  "paraphrase_of": "hypo-018",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-018",
+  "label": "hypo",
+  "text": "Been having these mood swings and shakes about an hour after my Metformin and Sulphonylurea dose... What gives?",
+  "paraphrase_of": "hypo-018",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-018",
+  "label": "hypo",
+  "text": "Just noticed I get pretty irritable and shaky around an hour after taking my Meds. Could this be a side effect?",
+  "paraphrase_of": "hypo-018",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-021",
+  "label": "hypo",
+  "text": "Feels so dizzy and pale after having some wine, especially when I don't eat first. Also dealing with diabetes.",
+  "paraphrase_of": "hypo-021",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-021",
+  "label": "hypo",
+  "text": "I get really light-headed and look super pale whenever I drink alcohol on an empty stomach. And I have diabetes too.",
+  "paraphrase_of": "hypo-021",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-021",
+  "label": "hypo",
+  "text": "Just felt faint and kind of white as a sheet after drinking without eating. I'm diabetic.",
+  "paraphrase_of": "hypo-021",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-021",
+  "label": "hypo",
+  "text": "Drank some beer and got so dizzy, almost passed out! Didn't eat anything first, plus I'm a diabetic.",
+  "paraphrase_of": "hypo-021",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-022",
+  "label": "hypo",
+  "text": "My reading is 2.8 and I'm feeling all sweaty and jumpy.",
+  "paraphrase_of": "hypo-022",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-022",
+  "label": "hypo",
+  "text": "Hey doc, my reading just came back at 2.8 and I feel totally sweating and shaky right now.",
+  "paraphrase_of": "hypo-022",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-022",
+  "label": "hypo",
+  "text": "Reading was 2.8 and I\u2019m drenched in sweat and super jittery...",
+  "paraphrase_of": "hypo-022",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-022",
+  "label": "hypo",
+  "text": "Doc, my reading is 2.8 and I\u2019m so sweaty and nervous...",
+  "paraphrase_of": "hypo-022",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-023",
+  "label": "hypo",
+  "text": "My mom was really disoriented and acting strange today, like she was drunk even though she didn't drink anything. Also, she has diabetes. Something feels off.",
+  "paraphrase_of": "hypo-023",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-023",
+  "label": "hypo",
+  "text": "Hello doc, my mum is super confused and wobbly, but we haven\u2019t given her any alcohol. She\u2019s diabetic too \u2013 something's not right!",
+  "paraphrase_of": "hypo-023",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-023",
+  "label": "hypo",
+  "text": "Can you help? My mom seems really out of it and unsteady, even though she doesn't drink. And she has diabetes on top of that.",
+  "paraphrase_of": "hypo-023",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-024",
+  "label": "hypo",
+  "text": "just got done giving myself the evening shot and I'm shaking like a leaf and sweaty as hell",
+  "paraphrase_of": "hypo-024",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-024",
+  "label": "hypo",
+  "text": "oh no, just gave my nightly insulin and now I feel all shaky and clammy",
+  "paraphrase_of": "hypo-024",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-024",
+  "label": "hypo",
+  "text": "after the insulin, my hands won't stop trembling and my palms are drenched in sweat",
+  "paraphrase_of": "hypo-024",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-024",
+  "label": "hypo",
+  "text": "so yeah, post-insulin and I'm having some pretty intense shakes and cold sweats",
+  "paraphrase_of": "hypo-024",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-025",
+  "label": "hypo",
+  "text": "Feeling all dizzy, super sweaty, and really starving around mid-morning. This has been happening lately.",
+  "paraphrase_of": "hypo-025",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-025",
+  "label": "hypo",
+  "text": "Hey doc, I keep getting these dizzy spells, sweat like crazy, and feeling very hungry in the middle of morning. What's going on?",
+  "paraphrase_of": "hypo-025",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-025",
+  "label": "hypo",
+  "text": "Mid-morning I'm hitting a wall - dizzy, sweatin' bullets, and super hungry. This keeps repeating for some reason...",
+  "paraphrase_of": "hypo-025",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-025",
+  "label": "hypo",
+  "text": "Dizzy, sweaty, and starving around mid-morning. It\u2019s been happening every day now.",
+  "paraphrase_of": "hypo-025",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-028",
+  "label": "hypo",
+  "text": "My guy was all slurred and so sleepy, his sugar levels were low. He perked right up after I gave him a glucose gel though!",
+  "paraphrase_of": "hypo-028",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-029",
+  "label": "hypo",
+  "text": "I'm feeling really shaky and pale, and my heart feels like it's pounding. Also, I skipped breakfast.",
+  "paraphrase_of": "hypo-029",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-029",
+  "label": "hypo",
+  "text": "I've got this weird shakiness and paleness going on, plus my heartbeat is really strong and fast. And yeah, no food today.",
+  "paraphrase_of": "hypo-029",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-029",
+  "label": "hypo",
+  "text": "Hey doc, I feel all shaky and super pale. My heart is racing super crazy. And just realized I missed a meal.",
+  "paraphrase_of": "hypo-029",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-030",
+  "label": "hypo",
+  "text": "Dude fainted after working out, has diabetes and got better when he snacked",
+  "paraphrase_of": "hypo-030",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-030",
+  "label": "hypo",
+  "text": "My husband blacked out during the workout class. He takes insulin and felt better after having something to eat",
+  "paraphrase_of": "hypo-030",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-030",
+  "label": "hypo",
+  "text": "He passed out post-workout, diabetic and recovered with a snack",
+  "paraphrase_of": "hypo-030",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-030",
+  "label": "hypo",
+  "text": "Doc, he fainted after exercise session, on insulin regimen and was fine after eating",
+  "paraphrase_of": "hypo-030",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-031",
+  "label": "hypo",
+  "text": "night sweats really bad and my sugar levels are all over the map",
+  "paraphrase_of": "hypo-031",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-031",
+  "label": "hypo",
+  "text": "I've been sweating like crazy at night and my blood sugar is all over the place",
+  "paraphrase_of": "hypo-031",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-031",
+  "label": "hypo",
+  "text": "Really dealing with excessive night sweats and my blood sugars are super unpredictable",
+  "paraphrase_of": "hypo-031",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-031",
+  "label": "hypo",
+  "text": "Hey, I'm having a ton of night sweats and my blood sugar readings keep fluctuating",
+  "paraphrase_of": "hypo-031",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-032",
+  "label": "hypo",
+  "text": "Feeling kind of zoned out and shaky, doc. Took my insulin but totally forgot to eat. What should I do?",
+  "paraphrase_of": "hypo-032",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-032",
+  "label": "hypo",
+  "text": "I'm feeling really spaced out and shaky even after taking my insulin. Just realized I didn't eat anything. Should I call someone?",
+  "paraphrase_of": "hypo-032",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-032",
+  "label": "hypo",
+  "text": "Still feeling weird, kinda spaced out & trembling. Took my insulin but no food. Wth?",
+  "paraphrase_of": "hypo-032",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-032",
+  "label": "hypo",
+  "text": "Feeling super spaced out and shaky despite taking the insulin. Must've forgotten to eat again. What now?",
+  "paraphrase_of": "hypo-032",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-033",
+  "label": "hypo",
+  "text": "feeling all shaky and sweaty in the afternoons, like I might pass out",
+  "paraphrase_of": "hypo-033",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-033",
+  "label": "hypo",
+  "text": "really been feeling weak and sweaty at work lately, every afternoon",
+  "paraphrase_of": "hypo-033",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-033",
+  "label": "hypo",
+  "text": "got those hypo vibes again, super weak and sweaty most afternoons",
+  "paraphrase_of": "hypo-033",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-033",
+  "label": "hypo",
+  "text": "hey doc, i've had these hypo moments where i feel weak and sweaty every afternoon",
+  "paraphrase_of": "hypo-033",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-034",
+  "label": "hypo",
+  "text": "All of a sudden I'm super hungry and shaky, could this be low blood sugar?",
+  "paraphrase_of": "hypo-034",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-034",
+  "label": "hypo",
+  "text": "Hey doc, just got really hungry all of a sudden and my hands are shaking and cold. Is that from low sugar?",
+  "paraphrase_of": "hypo-034",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-034",
+  "label": "hypo",
+  "text": "Sudden hunger, shakes, clammy palms... sounds like low sugar to me. Can you check?",
+  "paraphrase_of": "hypo-034",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-034",
+  "label": "hypo",
+  "text": "Just hit a wall with sudden hunger, shakes and sweatiness. Could this be hypoglycemia?",
+  "paraphrase_of": "hypo-034",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-035",
+  "label": "hypo",
+  "text": "My teen got shaky and seems confused right after playing football. Any idea what's up doc?",
+  "paraphrase_of": "hypo-035",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-035",
+  "label": "hypo",
+  "text": "My kid has diabetes and just came back from football practice, feeling pretty shaky and disoriented. Should we worry?",
+  "paraphrase_of": "hypo-035",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-035",
+  "label": "hypo",
+  "text": "Quick question: my diabetic teenager was acting weird and super shaky post-football. Need some advice fast.",
+  "paraphrase_of": "hypo-035",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-035",
+  "label": "hypo",
+  "text": "Hey, my diabetic teen is shaky and confused after the game. Could it be related to blood sugar?",
+  "paraphrase_of": "hypo-035",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-036",
+  "label": "hypo",
+  "text": "feels like my skin's all cold and sweaty and my brain is totally foggy",
+  "paraphrase_of": "hypo-036",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-036",
+  "label": "hypo",
+  "text": "Cold skin and fuzzy thinking, really struggling here",
+  "paraphrase_of": "hypo-036",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-036",
+  "label": "hypo",
+  "text": "Got cold, clammy skin & my thoughts feel jumbled up",
+  "paraphrase_of": "hypo-036",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-037",
+  "label": "hypo",
+  "text": "Feelin' all dizzy and sweaty on the bus, those glucose sweets did the trick!",
+  "paraphrase_of": "hypo-037",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-037",
+  "label": "hypo",
+  "text": "Got really lightheaded and sweaty on the bus but glucose sweets fixed me up.",
+  "paraphrase_of": "hypo-037",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-037",
+  "label": "hypo",
+  "text": "Sweaty and wobbly on the bus, glucose sweets saved the day.",
+  "paraphrase_of": "hypo-037",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-037",
+  "label": "hypo",
+  "text": "Was feeling queasy and sweaty on the bus, glucose sweets helped out.",
+  "paraphrase_of": "hypo-037",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-038",
+  "label": "hypo",
+  "text": "feeling lightheaded and shaky just before lunchtime each day",
+  "paraphrase_of": "hypo-038",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-038",
+  "label": "hypo",
+  "text": "every morning before I eat, I feel so weak and shaky it's scary",
+  "paraphrase_of": "hypo-038",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-038",
+  "label": "hypo",
+  "text": "hey doc, still having that faint feeling around lunch time, can you help?",
+  "paraphrase_of": "hypo-038",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-039",
+  "label": "hypo",
+  "text": "My dad's been acting weird and he keeps sweating a lot lately. He takes insulin for diabetes.",
+  "paraphrase_of": "hypo-039",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-039",
+  "label": "hypo",
+  "text": "Hey doc, my old man has been pretty off and all sweaty, he\u2019s on insulin.",
+  "paraphrase_of": "hypo-039",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-039",
+  "label": "hypo",
+  "text": "Dad's been really strange and has been sweating A LOT. He's on insulin for his sugar.",
+  "paraphrase_of": "hypo-039",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-039",
+  "label": "hypo",
+  "text": "My dad is acting very oddly and has excessive sweating. He's dependent on insulin.",
+  "paraphrase_of": "hypo-039",
+  "k": 3
+ },
+ {
+  "seed_id": "hypo-040",
+  "label": "hypo",
+  "text": "been shaking and my hands are all sweaty and I feel kinda spaced out after walking for a loooong time without eating anything :(",
+  "paraphrase_of": "hypo-040",
+  "k": 0
+ },
+ {
+  "seed_id": "hypo-040",
+  "label": "hypo",
+  "text": "just had one of those episodes where I was so shaky, palms were drenched in sweat, and everything felt foggy after not having any snacks during that long hike",
+  "paraphrase_of": "hypo-040",
+  "k": 1
+ },
+ {
+  "seed_id": "hypo-040",
+  "label": "hypo",
+  "text": "yep, another episode where my whole body started trembling, hands got all sweaty, and I couldn't think straight after walking for hours without a snack",
+  "paraphrase_of": "hypo-040",
+  "k": 2
+ },
+ {
+  "seed_id": "hypo-040",
+  "label": "hypo",
+  "text": "had one of those days where I was shaking, palms were sweaty, and my brain was all muddled from not eating after a long walk",
+  "paraphrase_of": "hypo-040",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-002",
+  "label": "foot",
+  "text": "Got a cut on my toe from a shell at the beach last week, now it's turning red.",
+  "paraphrase_of": "foot-002",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-002",
+  "label": "foot",
+  "text": "A week ago I sliced my toe on a seashell while at the beach, now it's getting all red and swollen.",
+  "paraphrase_of": "foot-002",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-002",
+  "label": "foot",
+  "text": "Had my big toe nicked by a crab shell during our beach trip last week. It's gotten red since then.",
+  "paraphrase_of": "foot-002",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-002",
+  "label": "foot",
+  "text": "Missed a step on my toe with a shell from the beach a week ago. Now it\u2019s turning that red color.",
+  "paraphrase_of": "foot-002",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-003",
+  "label": "foot",
+  "text": "My heel blister from the new shoes is now yellow and oozing a bit.",
+  "paraphrase_of": "foot-003",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-003",
+  "label": "foot",
+  "text": "Hey doc, so the blister on my heel from those new shoes? It's turned yellow and has some liquid in it.",
+  "paraphrase_of": "foot-003",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-003",
+  "label": "foot",
+  "text": "The blister on my heel from the new shoes is yellow and leaking now.",
+  "paraphrase_of": "foot-003",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-003",
+  "label": "foot",
+  "text": "Blister on my heel from new shoes went yellow and is weepy.",
+  "paraphrase_of": "foot-003",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-004",
+  "label": "foot",
+  "text": "Doctor, I'm diabetic and noticed something weird on the ball of my foot - it looks like an ulcer.",
+  "paraphrase_of": "foot-004",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-004",
+  "label": "foot",
+  "text": "Hey doc, I've got that sugar disease and now there's this yucky sore on the front part of my foot.",
+  "paraphrase_of": "foot-004",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-004",
+  "label": "foot",
+  "text": "I have diabetes and found an open wound on the top of my foot. Hurts a bit when I walk.",
+  "paraphrase_of": "foot-004",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-004",
+  "label": "foot",
+  "text": "Doc, since I was diagnosed with diabetes, I noticed what seems to be an ulcer forming on the ball of my foot.",
+  "paraphrase_of": "foot-004",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-005",
+  "label": "foot",
+  "text": "My toe is purplish right now",
+  "paraphrase_of": "foot-005",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-005",
+  "label": "foot",
+  "text": "It's kinda dark purple on my toe, like really dark!",
+  "paraphrase_of": "foot-005",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-005",
+  "label": "foot",
+  "text": "Hey doc, my toe is this weird purple color...",
+  "paraphrase_of": "foot-005",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-005",
+  "label": "foot",
+  "text": "Just noticed my big toe turned this nasty purple, what\u2019s up with that?",
+  "paraphrase_of": "foot-005",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-006",
+  "label": "foot",
+  "text": "My toe has a raw crack and it's kinda stinky :(",
+  "paraphrase_of": "foot-006",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-006",
+  "label": "foot",
+  "text": "Hey doc, there's this yucky smell coming from between my toes...",
+  "paraphrase_of": "foot-006",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-006",
+  "label": "foot",
+  "text": "Raw spot on my toe and it smells weird, not good.",
+  "paraphrase_of": "foot-006",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-006",
+  "label": "foot",
+  "text": "Toes are cracked and smell bad, what should I do?",
+  "paraphrase_of": "foot-006",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-007",
+  "label": "foot",
+  "text": "my left foot feels puffy and hot for some reason",
+  "paraphrase_of": "foot-007",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-007",
+  "label": "foot",
+  "text": "I don't know what's causing my left foot to be so swollie and toasty",
+  "paraphrase_of": "foot-007",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-007",
+  "label": "foot",
+  "text": "Left foot is all swollen up and warm, no clue why this is happening",
+  "paraphrase_of": "foot-007",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-007",
+  "label": "foot",
+  "text": "Just noticed my left foot is swollen and kinda warm to the touch - any idea what that could mean?",
+  "paraphrase_of": "foot-007",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-008",
+  "label": "foot",
+  "text": "The wound on my ankle hasn't healed in a month :(",
+  "paraphrase_of": "foot-008",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-008",
+  "label": "foot",
+  "text": "Hey doc, I've had this open sore on my ankle since last month...",
+  "paraphrase_of": "foot-008",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-008",
+  "label": "foot",
+  "text": "ANKLE WOUND STILL OPEN AFTER A MONTH!!! ANY IDEA WHAT IT IS?",
+  "paraphrase_of": "foot-008",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-008",
+  "label": "foot",
+  "text": "Just an update: My ankle wound is still open after being there for 30 days. Any idea what it could be?",
+  "paraphrase_of": "foot-008",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-009",
+  "label": "foot",
+  "text": "Doc, my old man's toe turned completely black on him... what gives?",
+  "paraphrase_of": "foot-009",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-009",
+  "label": "foot",
+  "text": "Hey there, my father's toe is all dark now, it's getting pretty serious looking",
+  "paraphrase_of": "foot-009",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-009",
+  "label": "foot",
+  "text": "Not good news - my dad\u2019s toe has gone totally black, need some help!",
+  "paraphrase_of": "foot-009",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-009",
+  "label": "foot",
+  "text": "Dad\u2019s toe is turning black at the end, something wrong??",
+  "paraphrase_of": "foot-009",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-010",
+  "label": "foot",
+  "text": "stuck a nail in my foot and the sore spot won't stop hurting",
+  "paraphrase_of": "foot-010",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-010",
+  "label": "foot",
+  "text": "oh no! got a nail in my foot, it's really painful down there",
+  "paraphrase_of": "foot-010",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-010",
+  "label": "foot",
+  "text": "nail just went through my sole, the spot is throbbing like crazy",
+  "paraphrase_of": "foot-010",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-010",
+  "label": "foot",
+  "text": "please help, I stepped on a nail and now this part of my foot is super sore",
+  "paraphrase_of": "foot-010",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-011",
+  "label": "foot",
+  "text": "my toe skin is peeling bad between the 4th and 5th one, super painful",
+  "paraphrase_of": "foot-011",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-011",
+  "label": "foot",
+  "text": "hey doc, i've got this intense pain where my 4th and 5th toes meet and the skin's splitting open",
+  "paraphrase_of": "foot-011",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-011",
+  "label": "foot",
+  "text": "skin is cracking and really hurts between my 4th and 5th toes",
+  "paraphrase_of": "foot-011",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-011",
+  "label": "foot",
+  "text": "doc, i've gotta tell ya, that area between my 4th and 5th toes is killing me, like the skin is literally splitting apart",
+  "paraphrase_of": "foot-011",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-012",
+  "label": "foot",
+  "text": "I think the corn on my baby toe is bleeding :(",
+  "paraphrase_of": "foot-012",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-012",
+  "label": "foot",
+  "text": "Hey doc, that corn thingy on my small toe just started bleeding...",
+  "paraphrase_of": "foot-012",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-012",
+  "label": "foot",
+  "text": "Crap! My smallest toe corn started dripping blood...",
+  "paraphrase_of": "foot-012",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-012",
+  "label": "foot",
+  "text": "Just noticed my littlest toe corn bled a bit...",
+  "paraphrase_of": "foot-012",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-013",
+  "label": "foot",
+  "text": "My foot is kind of white and chilly, not like my other one.",
+  "paraphrase_of": "foot-013",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-013",
+  "label": "foot",
+  "text": "Hey doc, my foot looks kinda pale and it's feeling really cold. Can you check that out?",
+  "paraphrase_of": "foot-013",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-013",
+  "label": "foot",
+  "text": "Foot's looking pretty pale and feels quite cold compared to the other side. Need a looksee.",
+  "paraphrase_of": "foot-013",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-013",
+  "label": "foot",
+  "text": "So my foot looks a bit paler than usual and is cooler to touch - could be something?",
+  "paraphrase_of": "foot-013",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-014",
+  "label": "foot",
+  "text": "my toe is all red, puffy and draining yuck",
+  "paraphrase_of": "foot-014",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-014",
+  "label": "foot",
+  "text": "oh no, my toenail is infected and gross looking",
+  "paraphrase_of": "foot-014",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-014",
+  "label": "foot",
+  "text": "help! it's super swollen and has pus coming out",
+  "paraphrase_of": "foot-014",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-014",
+  "label": "foot",
+  "text": "this ingrown toenail is so bad, it\u2019s red, swollen and leaking pus",
+  "paraphrase_of": "foot-014",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-015",
+  "label": "foot",
+  "text": "Doc, i'm type 2 diabetic and just found this tiny cut on my foot but it doesn't hurt at all",
+  "paraphrase_of": "foot-015",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-015",
+  "label": "foot",
+  "text": "I have type 2 diabetes and noticed a little cut on my foot that I didn't even notice until now. Should I be worried?",
+  "paraphrase_of": "foot-015",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-015",
+  "label": "foot",
+  "text": "Type 2 diabetic here. Just saw a small cut on my foot, but i haven't felt anything from it",
+  "paraphrase_of": "foot-015",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-015",
+  "label": "foot",
+  "text": "Hey Dr., i'm a type 2 diabetic and just realized there's this minuscule cut on my foot that isn't bothering me at all",
+  "paraphrase_of": "foot-015",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-016",
+  "label": "foot",
+  "text": "My heel is super messed up, got a deep crack and some blood came out :(",
+  "paraphrase_of": "foot-016",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-016",
+  "label": "foot",
+  "text": "Hey doc, my heel is really bad - it's cracked deep and there's a little bleeding...",
+  "paraphrase_of": "foot-016",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-016",
+  "label": "foot",
+  "text": "Deep crack in my heel and it\u2019s bleeding a li'l bit... not great.",
+  "paraphrase_of": "foot-016",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-016",
+  "label": "foot",
+  "text": "So my heel - big crack, tiny bit of blood. Really uncomfortable.",
+  "paraphrase_of": "foot-016",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-017",
+  "label": "foot",
+  "text": "my feet are so swollen and the skin looks all glossy",
+  "paraphrase_of": "foot-017",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-017",
+  "label": "foot",
+  "text": "hey doc, my toes and ankles feel really puffy and the skin is super shiny",
+  "paraphrase_of": "foot-017",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-017",
+  "label": "foot",
+  "text": "doc, both my feet are swollen and the skin looks extra shiny",
+  "paraphrase_of": "foot-017",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-017",
+  "label": "foot",
+  "text": "swelling in both feet, skin looks kinda glossy",
+  "paraphrase_of": "foot-017",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-018",
+  "label": "foot",
+  "text": "My blister popped under my big toe and it's turned into this gross open sore :(",
+  "paraphrase_of": "foot-018",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-018",
+  "label": "foot",
+  "text": "Hey doc, the blister on my toe burst and now there's this yucky open wound down there...",
+  "paraphrase_of": "foot-018",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-018",
+  "label": "foot",
+  "text": "Toes blister popped and now it\u2019s an ouchy open sore",
+  "paraphrase_of": "foot-018",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-018",
+  "label": "foot",
+  "text": "Blew up my toe blister and now I got this nasty open sore. Any idea what to do?",
+  "paraphrase_of": "foot-018",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-019",
+  "label": "foot",
+  "text": "doc, i think i might have an infection. there's this red line moving up my leg from where i sliced my foot yesterday",
+  "paraphrase_of": "foot-019",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-020",
+  "label": "foot",
+  "text": "my foot has this sore spot that won't stop leaking fluid, it's been going on for 3 whole weeks now",
+  "paraphrase_of": "foot-020",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-020",
+  "label": "foot",
+  "text": "hey doc, i know it sounds gross but im really worried about this spot on my foot that just keeps leaking stuff out, its been there for 3 weeks already",
+  "paraphrase_of": "foot-020",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-020",
+  "label": "foot",
+  "text": "sore spot on my foot that\u2019s been weeping for the past 3 weeks. no idea what it is or how to make it stop",
+  "paraphrase_of": "foot-020",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-020",
+  "label": "foot",
+  "text": "foot's been a mess for 3 weeks now with this sore spot that won't stop dripping. really need some help",
+  "paraphrase_of": "foot-020",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-021",
+  "label": "foot",
+  "text": "my foot is super red and feels really warm, it's also getting puffier than usual overnight",
+  "paraphrase_of": "foot-021",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-021",
+  "label": "foot",
+  "text": "oh no, my foot turned bright red and it's so hot to the touch, plus it's swollen like crazy",
+  "paraphrase_of": "foot-021",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-021",
+  "label": "foot",
+  "text": "foot looks red as a fire engine and feels all hot, and now it's swelling up too",
+  "paraphrase_of": "foot-021",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-021",
+  "label": "foot",
+  "text": "so weird, my foot went from normal to bright red with heat, and now it's all puffy",
+  "paraphrase_of": "foot-021",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-022",
+  "label": "foot",
+  "text": "My foot from when I fell doesn't seem to be scabbing over, what should I do?",
+  "paraphrase_of": "foot-022",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-022",
+  "label": "foot",
+  "text": "Hey doc, so i took a little tumble and now my foot won't make that scab! Any ideas?",
+  "paraphrase_of": "foot-022",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-022",
+  "label": "foot",
+  "text": "I had this small cut on my foot from falling but it's not forming a scab. Should I be worried?",
+  "paraphrase_of": "foot-022",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-022",
+  "label": "foot",
+  "text": "Quick question - fell and grazed my foot, but no scab is forming. What do I need to know?",
+  "paraphrase_of": "foot-022",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-023",
+  "label": "foot",
+  "text": "My mom's toes turned blue and they're not feeling right...",
+  "paraphrase_of": "foot-023",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-024",
+  "label": "foot",
+  "text": "Hey doc, might be time to check out this hole by my heel. Think its an ulcer.",
+  "paraphrase_of": "foot-024",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-024",
+  "label": "foot",
+  "text": "URGENT! There's a hole near my heel, think it may be an ulcer. NEED help now.",
+  "paraphrase_of": "foot-024",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-024",
+  "label": "foot",
+  "text": "Just found a weird hole by my heel that looks like its turning into something more serious. Could this be an ulcer?",
+  "paraphrase_of": "foot-024",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-025",
+  "label": "foot",
+  "text": "Ow! Dropped a big pan on my toe and now it's all bruised up and puffy.",
+  "paraphrase_of": "foot-025",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-025",
+  "label": "foot",
+  "text": "Had such a clumsy moment, dropped this heavy pan on my foot and it's so swollen and discolored.",
+  "paraphrase_of": "foot-025",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-025",
+  "label": "foot",
+  "text": "Hey doc, fell on my foot with this super heavy pan and it got all black and blue with swelling too.",
+  "paraphrase_of": "foot-025",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-025",
+  "label": "foot",
+  "text": "Just had the worst accident - dropped this super heavy pan on my foot and now there's a big bruise with swelling.",
+  "paraphrase_of": "foot-025",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-026",
+  "label": "foot",
+  "text": "uh oh, i think i have some pretty bad stuff going on between my toes. its like the skin is peeling off and there's a little crack there... not good",
+  "paraphrase_of": "foot-026",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-026",
+  "label": "foot",
+  "text": "hello, i noticed some weird stuff happening between my toes. the skin feels all moist and white, and it seems to be peeling with this tiny crack forming. need help with that",
+  "paraphrase_of": "foot-026",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-026",
+  "label": "foot",
+  "text": "hey doc, i've got this pesky issue between my toes. the skin's getting super damp looking, starting to peel, and there's a little crack showing up. any ideas on what to do?",
+  "paraphrase_of": "foot-026",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-027",
+  "label": "foot",
+  "text": "My foot wound stinks really bad and there's this green stuff coming out. Looks yucky.",
+  "paraphrase_of": "foot-027",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-027",
+  "label": "foot",
+  "text": "Hey, my foot is all nasty smelling and it\u2019s got that weird green liquid in it. Scary!",
+  "paraphrase_of": "foot-027",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-027",
+  "label": "foot",
+  "text": "Doc, the cut on my foot smells awful and has green discharge. Need to know what\u2019s up ASAP.",
+  "paraphrase_of": "foot-027",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-027",
+  "label": "foot",
+  "text": "Wound on my foot reeks bad and there's this gross green stuff seeping out of it. What do I do?",
+  "paraphrase_of": "foot-027",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-028",
+  "label": "foot",
+  "text": "my callus underfoot turned dark suddenly",
+  "paraphrase_of": "foot-028",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-028",
+  "label": "foot",
+  "text": "Hey doc, the dark spot in my heel callus is kinda concerning...",
+  "paraphrase_of": "foot-028",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-028",
+  "label": "foot",
+  "text": "Quick, my foot callus got all dark inside, what's up with that?",
+  "paraphrase_of": "foot-028",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-028",
+  "label": "foot",
+  "text": "So my heel callus went from white to dark, any idea why?",
+  "paraphrase_of": "foot-028",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-029",
+  "label": "foot",
+  "text": "Doc, my toes have this weird tingly feeling and now I see a blister there that I didn't even know was there before. Kinda worried about it.",
+  "paraphrase_of": "foot-029",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-029",
+  "label": "foot",
+  "text": "Hey, so my feet are tingling and I just noticed a blister appear that I totally didn't feel come on. Should I be concerned?",
+  "paraphrase_of": "foot-029",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-029",
+  "label": "foot",
+  "text": "{Urgent} My feet have this strange tingling sensation and I found a new blister that wasn't there before - feeling anxious about this!",
+  "paraphrase_of": "foot-029",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-029",
+  "label": "foot",
+  "text": "Just realized my toes are tingling and got a new blister without even noticing it! Need some advice pronto.",
+  "paraphrase_of": "foot-029",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-030",
+  "label": "foot",
+  "text": "My ankle and the top of my foot are swollen on just one side after sitting for so long on that flight :(",
+  "paraphrase_of": "foot-030",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-030",
+  "label": "foot",
+  "text": "Got this swelling in just one ankle and foot after the plane ride... pretty weird",
+  "paraphrase_of": "foot-030",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-030",
+  "label": "foot",
+  "text": "Ankle and foot suddenly swelled up after the flight, only on one side. Any idea why?",
+  "paraphrase_of": "foot-030",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-030",
+  "label": "foot",
+  "text": "Feeling kinda worried about this swollen ankle and top of my foot from the flight. Only one side is affected though",
+  "paraphrase_of": "foot-030",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-031",
+  "label": "foot",
+  "text": "Got a little cut from my dog on my foot, it's feeling kinda warm and super sore now.",
+  "paraphrase_of": "foot-031",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-031",
+  "label": "foot",
+  "text": "Hey, I was scratched by my dog on my foot, now it's pretty hot to touch and really hurts.",
+  "paraphrase_of": "foot-031",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-031",
+  "label": "foot",
+  "text": "Quick question - I got a scratch on the side of my foot from our dog, but now it feels very warm and painful. What should I do?",
+  "paraphrase_of": "foot-031",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-031",
+  "label": "foot",
+  "text": "Dude, I stepped on a scratchy patch while petting the dog, and my foot is now burning hot and super painful. Any ideas?",
+  "paraphrase_of": "foot-031",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-032",
+  "label": "foot",
+  "text": "Foot thingy: Sole has a new black spot. Didn't have it before. Should we be worried?",
+  "paraphrase_of": "foot-032",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-033",
+  "label": "foot",
+  "text": "My toes turn red and then white when it's chilly outside.",
+  "paraphrase_of": "foot-033",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-033",
+  "label": "foot",
+  "text": "Hey doc, my toes get all red and then they go white whenever I'm out in the cold. It's pretty weird!",
+  "paraphrase_of": "foot-033",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-033",
+  "label": "foot",
+  "text": "Toes are changing color to red and then white when it gets cold.",
+  "paraphrase_of": "foot-033",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-033",
+  "label": "foot",
+  "text": "So my toes change from red to white in the cold weather... It's kind of concerning.",
+  "paraphrase_of": "foot-033",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-035",
+  "label": "foot",
+  "text": "hey doc, i've got this split on my toe that won't heal right",
+  "paraphrase_of": "foot-035",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-035",
+  "label": "foot",
+  "text": "Doctor, I have this painful crack under my toenail that keeps opening up even after i bandage it",
+  "paraphrase_of": "foot-035",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-035",
+  "label": "foot",
+  "text": "Hey there, my big toe has a nasty split in the skin that just won't stop reopening...what do I do?",
+  "paraphrase_of": "foot-035",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-035",
+  "label": "foot",
+  "text": "Ugh, so annoying! There's this split on the bottom of my big toe and it keeps getting worse despite covering it",
+  "paraphrase_of": "foot-035",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-036",
+  "label": "foot",
+  "text": "My foot got super swol'n and red around that old blister I've had for ages.",
+  "paraphrase_of": "foot-036",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-036",
+  "label": "foot",
+  "text": "Oh no, my foot is all swollen and red where that old blister used to be...",
+  "paraphrase_of": "foot-036",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-036",
+  "label": "foot",
+  "text": "Foot's swelling up and turned red near the old blister - not good.",
+  "paraphrase_of": "foot-036",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-036",
+  "label": "foot",
+  "text": "Just noticed my foot is swollen and red where that old blister was. Feels kinda scary...",
+  "paraphrase_of": "foot-036",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-037",
+  "label": "foot",
+  "text": "Hey doc, my grandma is in the nursing home and she has this sore on her heel. What should we do?",
+  "paraphrase_of": "foot-037",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-037",
+  "label": "foot",
+  "text": "Urgent! A resident at the nursing home got a pressure sore on her heel. Need advice ASAP.",
+  "paraphrase_of": "foot-037",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-037",
+  "label": "foot",
+  "text": "Can you help? There's a pressure ulcer on grandma's heel while she's at the nursing home. Any ideas?",
+  "paraphrase_of": "foot-037",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-037",
+  "label": "foot",
+  "text": "Quick question: my mom is in a nursing home with a pressure sore on her heel. How do we handle this?",
+  "paraphrase_of": "foot-037",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-039",
+  "label": "foot",
+  "text": "noticed a purple spot on toe area expanding over time",
+  "paraphrase_of": "foot-039",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-039",
+  "label": "foot",
+  "text": "gotta check this out, purple stuff spreading on foot",
+  "paraphrase_of": "foot-039",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-039",
+  "label": "foot",
+  "text": "hey doc, got a growing purple mark on top of my foot",
+  "paraphrase_of": "foot-039",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-039",
+  "label": "foot",
+  "text": "please look at my instep, that purple patch is getting bigger",
+  "paraphrase_of": "foot-039",
+  "k": 3
+ },
+ {
+  "seed_id": "foot-040",
+  "label": "foot",
+  "text": "Got a cut from stepping on some glass with no shoes on, the area is still tender and a little red.",
+  "paraphrase_of": "foot-040",
+  "k": 0
+ },
+ {
+  "seed_id": "foot-040",
+  "label": "foot",
+  "text": "Ow, stepped on a glass bottle without wearing any shoes and now my foot is still hurting and looks a bit pink around it.",
+  "paraphrase_of": "foot-040",
+  "k": 1
+ },
+ {
+  "seed_id": "foot-040",
+  "label": "foot",
+  "text": "Had an accident at home - stepped on a piece of glass barefoot. Foot is still sore and there's some pinkness left.",
+  "paraphrase_of": "foot-040",
+  "k": 2
+ },
+ {
+  "seed_id": "foot-040",
+  "label": "foot",
+  "text": "Yeowch! I stepped on a glass with no socks on, the spot where it cut me is still aching and looks slightly red now.",
+  "paraphrase_of": "foot-040",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-001",
+  "label": "benign",
+  "text": "Feeling jumpy before tests? Yeah, definitely nerve stuff for me.",
+  "paraphrase_of": "benign-001",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-001",
+  "label": "benign",
+  "text": "So nervous I shake during exams, no doubt about it.",
+  "paraphrase_of": "benign-001",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-001",
+  "label": "benign",
+  "text": "Shaky hands when I take tests, totally anxiety though.",
+  "paraphrase_of": "benign-001",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-001",
+  "label": "benign",
+  "text": "Exam time = shaking hands, gotta be nerves right?",
+  "paraphrase_of": "benign-001",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-003",
+  "label": "benign",
+  "text": "Its so hot out and I'm drenched in sweat the whole time, but I feel okay otherwise.",
+  "paraphrase_of": "benign-003",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-003",
+  "label": "benign",
+  "text": "Sweating buckets nonstop right now during this heatwave...everything else feels normal tho.",
+  "paraphrase_of": "benign-003",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-003",
+  "label": "benign",
+  "text": "I've been soaking wet with sweat all day long in this heatwave. Otherwise, I'm doing fine.",
+  "paraphrase_of": "benign-003",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-005",
+  "label": "benign",
+  "text": "my hands shake so much when I have to talk in front of people",
+  "paraphrase_of": "benign-005",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-005",
+  "label": "benign",
+  "text": "I've been getting these tremors in my hands every time I need to give a presentation at work...",
+  "paraphrase_of": "benign-005",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-005",
+  "label": "benign",
+  "text": "Doc, my hands are always shaking when I'm on stage or in meetings, what's up with that?",
+  "paraphrase_of": "benign-005",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-005",
+  "label": "benign",
+  "text": "Hey doc, whenever I have to speak in public my hands start trembling, can you help?",
+  "paraphrase_of": "benign-005",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-007",
+  "label": "benign",
+  "text": "I've been really starving non-stop since I started training for my marathon :(",
+  "paraphrase_of": "benign-007",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-007",
+  "label": "benign",
+  "text": "So hungry all the time lately. Just started training for the marathon and now I feel like I'm never full.",
+  "paraphrase_of": "benign-007",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-007",
+  "label": "benign",
+  "text": "Haven't stopped feeling hungry since I began preparing for the marathon. It's crazy how much more ravenous I am now.",
+  "paraphrase_of": "benign-007",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-008",
+  "label": "benign",
+  "text": "feeling all hot and sweaty lately, i guess it's menopause since i'm 51",
+  "paraphrase_of": "benign-008",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-008",
+  "label": "benign",
+  "text": "Doc, I've been getting these hot flushes big time, could be menopause?",
+  "paraphrase_of": "benign-008",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-008",
+  "label": "benign",
+  "text": "hey, just wanted to say i keep breaking out in a sweat and wondered if it's menopause starting at 51",
+  "paraphrase_of": "benign-008",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-008",
+  "label": "benign",
+  "text": ".hot flushes & sweats... maybe menopause since i turned 51",
+  "paraphrase_of": "benign-008",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-009",
+  "label": "benign",
+  "text": "feeling all jumpy and sounded like there was a tiny hum inside my head post-energy-drink",
+  "paraphrase_of": "benign-009",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-009",
+  "label": "benign",
+  "text": "super jitters and ears ringing after that monster energy",
+  "paraphrase_of": "benign-009",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-009",
+  "label": "benign",
+  "text": "had that energy drink and now I feel like I\u2019m on a rollercoaster with an ear-ringing side effect",
+  "paraphrase_of": "benign-009",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-010",
+  "label": "benign",
+  "text": "feel a little chilly when I came inside from the cold, but I'm warm now",
+  "paraphrase_of": "benign-010",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-010",
+  "label": "benign",
+  "text": "was a bit shaking when I came in from outside, but I've warmed up",
+  "paraphrase_of": "benign-010",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-010",
+  "label": "benign",
+  "text": "shivered a bit after being out in the cold, but I'm all warmed up now",
+  "paraphrase_of": "benign-010",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-011",
+  "label": "benign",
+  "text": "My bed's super toasty at night 'cause that blanket is way too warm for summertime, making me all sweaty.",
+  "paraphrase_of": "benign-011",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-011",
+  "label": "benign",
+  "text": "Hey doc, I've been drenched in sweat every night because that duvet is way too thick for this heat. Any tips?",
+  "paraphrase_of": "benign-011",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-011",
+  "label": "benign",
+  "text": "Night sweats, duvet is too heavy for summer \u2013 seriously overheating me up!",
+  "paraphrase_of": "benign-011",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-011",
+  "label": "benign",
+  "text": "Sweatin' buckets at night 'cause my blanket's way too cozy for summertime. Need some advice.",
+  "paraphrase_of": "benign-011",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-012",
+  "label": "benign",
+  "text": "my tummy's been really noisy lately and i keep feeling hungry in-between my regular meal times",
+  "paraphrase_of": "benign-012",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-012",
+  "label": "benign",
+  "text": "been gurgling away in there like a never-ending storm, and i feel this constant hunger between when i eat",
+  "paraphrase_of": "benign-012",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-012",
+  "label": "benign",
+  "text": "my stomach is making all these noises and i'm getting those peckish feelings in the middle of my meals",
+  "paraphrase_of": "benign-012",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-012",
+  "label": "benign",
+  "text": "stomach's been pretty loud and i get these little hunger pangs in-between my meals",
+  "paraphrase_of": "benign-012",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-013",
+  "label": "benign",
+  "text": "Oof, I bumped my elbow on the door and it's all tingly right now :(",
+  "paraphrase_of": "benign-013",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-013",
+  "label": "benign",
+  "text": "Hey doc, so I hit my elbow on the door and now it feels kinda tingly... is that normal?",
+  "paraphrase_of": "benign-013",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-013",
+  "label": "benign",
+  "text": "Ugh, just got a bit of a shock from that door. My elbow is totally tingling now! Any worries?",
+  "paraphrase_of": "benign-013",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-013",
+  "label": "benign",
+  "text": "Dang it, smacked my elbow on the door & now it's all tingly. Should I be worried?",
+  "paraphrase_of": "benign-013",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-016",
+  "label": "benign",
+  "text": "haha, i hit my funny bone so hard & it HURT!!",
+  "paraphrase_of": "benign-016",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-016",
+  "label": "benign",
+  "text": "I just smacked my elbow the wrong way & owch, that nerve is sensitive!",
+  "paraphrase_of": "benign-016",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-016",
+  "label": "benign",
+  "text": "Man, I hit my funny bone super hard & now my arm tingles everywhere!",
+  "paraphrase_of": "benign-016",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-016",
+  "label": "benign",
+  "text": "Dude, just hit my funny bone & it was SOO painful.",
+  "paraphrase_of": "benign-016",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-017",
+  "label": "benign",
+  "text": "Headache again, think it's from staring at screens all day long",
+  "paraphrase_of": "benign-017",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-018",
+  "label": "benign",
+  "text": "My head's been really scratchy and scaly lately, doc",
+  "paraphrase_of": "benign-018",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-018",
+  "label": "benign",
+  "text": "Hey, my scalp has been this itchy and flaky mess...",
+  "paraphrase_of": "benign-018",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-018",
+  "label": "benign",
+  "text": "It's driving me nuts! My scalp is all itchy and flakey.",
+  "paraphrase_of": "benign-018",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-018",
+  "label": "benign",
+  "text": "Doc, I've had this annoying itchy, flaky scalp for days now.",
+  "paraphrase_of": "benign-018",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-019",
+  "label": "benign",
+  "text": "Ow! Smacked my hip on the counter in the kitchen and now there's this big purple bruise.",
+  "paraphrase_of": "benign-019",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-019",
+  "label": "benign",
+  "text": "Dang it, just hit my hip on the kitchen counter and got this nasty purple mark.",
+  "paraphrase_of": "benign-019",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-019",
+  "label": "benign",
+  "text": "Bumped into the kitchen counter and got a good sized purple bruise on my hip.",
+  "paraphrase_of": "benign-019",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-019",
+  "label": "benign",
+  "text": "Ugh, I ran into the kitchen counter and now have a pretty sizeable purple bruise on my hip.",
+  "paraphrase_of": "benign-019",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-020",
+  "label": "benign",
+  "text": "Oof, I walked into that damn door and now my shoulder is all bruised up.",
+  "paraphrase_of": "benign-020",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-020",
+  "label": "benign",
+  "text": "Just ran into the kitchen door and ended up with this nasty shoulder bruise. Ouch!",
+  "paraphrase_of": "benign-020",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-020",
+  "label": "benign",
+  "text": "Bruised my shoulder when it hit the doorway. Not good.",
+  "paraphrase_of": "benign-020",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-020",
+  "label": "benign",
+  "text": "So I kinda bashed my shoulder into a door... yeah, not great.",
+  "paraphrase_of": "benign-020",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-021",
+  "label": "benign",
+  "text": "been havin' tension headaches all week, stress from work is really gettin' to me",
+  "paraphrase_of": "benign-021",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-021",
+  "label": "benign",
+  "text": "I've had these tension headaches since last week at the office, it's so stressful",
+  "paraphrase_of": "benign-021",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-021",
+  "label": "benign",
+  "text": "Just got another tension headache today after that rough week at work...",
+  "paraphrase_of": "benign-021",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-021",
+  "label": "benign",
+  "text": "Hey doc, I'm dealing with these tension headaches again from the stress at work",
+  "paraphrase_of": "benign-021",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-022",
+  "label": "benign",
+  "text": "My son got a bump on his arm during football practice but there's no swelling, just a little bruise. Should I still be worried?",
+  "paraphrase_of": "benign-022",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-022",
+  "label": "benign",
+  "text": "Son hit his arm playing football, no swelling though. Just wondering if it could have been worse.",
+  "paraphrase_of": "benign-022",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-022",
+  "label": "benign",
+  "text": "Arm got bumped in football, no swelling thankfully. But is it safe to say he\u2019s okay?",
+  "paraphrase_of": "benign-022",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-022",
+  "label": "benign",
+  "text": "Just wanted to check in - son took a bump on the arm during football, but there's no swelling or anything. Still feel a bit anxious though.",
+  "paraphrase_of": "benign-022",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-024",
+  "label": "benign",
+  "text": "getting that migraine again with the usual zigzag lines in my vision",
+  "paraphrase_of": "benign-024",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-024",
+  "label": "benign",
+  "text": "oh no, here comes another one with those crazy zigzag patterns",
+  "paraphrase_of": "benign-024",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-024",
+  "label": "benign",
+  "text": "dealing with this familiar migraine with the classic zigzag aura",
+  "paraphrase_of": "benign-024",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-025",
+  "label": "benign",
+  "text": "I got a paper cut on my finger and it's really stinging.",
+  "paraphrase_of": "benign-025",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-025",
+  "label": "benign",
+  "text": "My finger from a paper cut is hurting like crazy.",
+  "paraphrase_of": "benign-025",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-025",
+  "label": "benign",
+  "text": "Paper cut on my hand, super painful!",
+  "paraphrase_of": "benign-025",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-026",
+  "label": "benign",
+  "text": "Hibbited, cut my lil finger while slicing some onions. Don't think it's bad though, just seemed clean when I washed it out.",
+  "paraphrase_of": "benign-026",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-026",
+  "label": "benign",
+  "text": "OMG I SLICED MY FINGER CHOPPING ONIONS! IT'S NOT BAD THOUGH, IT WAS A SMALL CUT AND SEEMED CLEAN AFTER I WASHED IT.",
+  "paraphrase_of": "benign-026",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-026",
+  "label": "benign",
+  "text": "Just cut my finger chopping onions. It's a small one, and seems clean after washing it up.",
+  "paraphrase_of": "benign-026",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-026",
+  "label": "benign",
+  "text": "Cut my finger while slicing onions, but it's just a small one and seems pretty clean.",
+  "paraphrase_of": "benign-026",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-028",
+  "label": "benign",
+  "text": "feels like my legs are bruised after hitting the gym today",
+  "paraphrase_of": "benign-028",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-028",
+  "label": "benign",
+  "text": "Oh man, my calf muscles are really painful post-workout",
+  "paraphrase_of": "benign-028",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-028",
+  "label": "benign",
+  "text": "Soreness in my lower legs... probably from yesterday's leg workout at the gym",
+  "paraphrase_of": "benign-028",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-028",
+  "label": "benign",
+  "text": "Just got home from the gym - my calves are killing me!",
+  "paraphrase_of": "benign-028",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-029",
+  "label": "benign",
+  "text": "My hands are so dry and super cracked from all the handwashing.",
+  "paraphrase_of": "benign-029",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-029",
+  "label": "benign",
+  "text": "I've been washing my hands A LOT and now they're totally dry and cracked!",
+  "paraphrase_of": "benign-029",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-029",
+  "label": "benign",
+  "text": "Dry as can be, my hands are super cracked from washing up all day long...",
+  "paraphrase_of": "benign-029",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-029",
+  "label": "benign",
+  "text": "Washed my hands to death and now my poor hands are crackin' and dry.",
+  "paraphrase_of": "benign-029",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-030",
+  "label": "benign",
+  "text": "my fingers got all thick from strumming guitar stuff",
+  "paraphrase_of": "benign-030",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-030",
+  "label": "benign",
+  "text": "I've got these big patches on my fingertips, must be from too much guitar practice",
+  "paraphrase_of": "benign-030",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-030",
+  "label": "benign",
+  "text": "Hey doc, my fingertips are getting these hard spots again from playing guitar nonstop",
+  "paraphrase_of": "benign-030",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-030",
+  "label": "benign",
+  "text": "Guitar playing gave me some tough calluses on my fingertips, need a tip to avoid it",
+  "paraphrase_of": "benign-030",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-032",
+  "label": "benign",
+  "text": "my wrist is sprained and looks a little puffy",
+  "paraphrase_of": "benign-032",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-032",
+  "label": "benign",
+  "text": "I think I sprained my wrist and it's got some swelling to it",
+  "paraphrase_of": "benign-032",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-032",
+  "label": "benign",
+  "text": "Got a sprained wrist, looks a bit swollen imo",
+  "paraphrase_of": "benign-032",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-032",
+  "label": "benign",
+  "text": "Wrist sprain, a tiny bit swollen",
+  "paraphrase_of": "benign-032",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-033",
+  "label": "benign",
+  "text": "My lips are super dry and split at the sides.",
+  "paraphrase_of": "benign-033",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-033",
+  "label": "benign",
+  "text": "Hey doc, my lips are really chapped and cracked at the corners.",
+  "paraphrase_of": "benign-033",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-033",
+  "label": "benign",
+  "text": "Lips are so dry and have tiny cracks at the edges.",
+  "paraphrase_of": "benign-033",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-034",
+  "label": "benign",
+  "text": "I fell off my scooter and kinda grazed my elbow...",
+  "paraphrase_of": "benign-034",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-034",
+  "label": "benign",
+  "text": "Oh no, I accidentally scraped my elbow when I fell from my scooter.",
+  "paraphrase_of": "benign-034",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-034",
+  "label": "benign",
+  "text": "Got a little cut on my elbow after I took a tumble off my scooter.",
+  "paraphrase_of": "benign-034",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-034",
+  "label": "benign",
+  "text": "Fell off my scooter and ended up with a scratch on my elbow, ya know?",
+  "paraphrase_of": "benign-034",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-035",
+  "label": "benign",
+  "text": "Hey doc, got this bruise on my thigh but can't figure out how it happened :(",
+  "paraphrase_of": "benign-035",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-035",
+  "label": "benign",
+  "text": "Doc, what's up with this bruise? I swear I didn't bump into anything...",
+  "paraphrase_of": "benign-035",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-035",
+  "label": "benign",
+  "text": "Bruised thigh, no idea how it happened, need help",
+  "paraphrase_of": "benign-035",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-035",
+  "label": "benign",
+  "text": "Hello, just noticed a bruise on my leg but couldn't have gotten it. Any ideas?",
+  "paraphrase_of": "benign-035",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-036",
+  "label": "benign",
+  "text": "my mouth sore is hanging around for 4 days now",
+  "paraphrase_of": "benign-036",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-036",
+  "label": "benign",
+  "text": "I've had this bloody mouth ulcer going on for 4 days already...",
+  "paraphrase_of": "benign-036",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-036",
+  "label": "benign",
+  "text": "Still got that pesky mouth ulcer after 4 days, anyone know what to do?",
+  "paraphrase_of": "benign-036",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-036",
+  "label": "benign",
+  "text": "Ugh, same old mouth ulcer lasting 4 days. Any ideas?",
+  "paraphrase_of": "benign-036",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-037",
+  "label": "benign",
+  "text": "feels like I've been snuffling and sneezing for 3 whole days now",
+  "paraphrase_of": "benign-037",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-037",
+  "label": "benign",
+  "text": "been sneezin' and my nose is all runny for 3 days straight, what do I do?",
+  "paraphrase_of": "benign-037",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-037",
+  "label": "benign",
+  "text": "stuffy nose and sneezing going on for 3 days - ugh",
+  "paraphrase_of": "benign-037",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-037",
+  "label": "benign",
+  "text": "day 3 of this runny nose & sneezing - how long does it usually last?",
+  "paraphrase_of": "benign-037",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-038",
+  "label": "benign",
+  "text": "My hay fever is really bad this year, my eyes are super itchy :(",
+  "paraphrase_of": "benign-038",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-038",
+  "label": "benign",
+  "text": "Hay fever is awful this time around, my eyes are driving me crazy!",
+  "paraphrase_of": "benign-038",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-038",
+  "label": "benign",
+  "text": "Eyes so itchy from the hay fever this year...",
+  "paraphrase_of": "benign-038",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-038",
+  "label": "benign",
+  "text": "This hay fever is a real bummer, my eyes are going nuts...",
+  "paraphrase_of": "benign-038",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-039",
+  "label": "benign",
+  "text": "sure can i get the flu shot at your place?",
+  "paraphrase_of": "benign-039",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-039",
+  "label": "benign",
+  "text": "hey doc, is it possible to get the flu vaccine here?",
+  "paraphrase_of": "benign-039",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-039",
+  "label": "benign",
+  "text": "quick question: do you offer the flu jab?",
+  "paraphrase_of": "benign-039",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-039",
+  "label": "benign",
+  "text": "is there a chance i could get the influenza vaccination here?",
+  "paraphrase_of": "benign-039",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-040",
+  "label": "benign",
+  "text": "feels like my throat's raw and I've got this slight fever going on since last night",
+  "paraphrase_of": "benign-040",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-040",
+  "label": "benign",
+  "text": "been dealing with a sore throat and a little bit of a temperature starting yesterday",
+  "paraphrase_of": "benign-040",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-040",
+  "label": "benign",
+  "text": "my throat hurts and I have a mild fever \u2014 it started yesterday",
+  "paraphrase_of": "benign-040",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-040",
+  "label": "benign",
+  "text": "sore throat and low-grade fever lasting from yesterday",
+  "paraphrase_of": "benign-040",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-041",
+  "label": "benign",
+  "text": "I need another refill on my blue asthma inhaler please.",
+  "paraphrase_of": "benign-041",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-041",
+  "label": "benign",
+  "text": "Hey doc, can you give me a new script for my blue inhaler?",
+  "paraphrase_of": "benign-041",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-041",
+  "label": "benign",
+  "text": "Plz give m1 a reppic f0r my blu3 inh3aler",
+  "paraphrase_of": "benign-041",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-041",
+  "label": "benign",
+  "text": "Doc, got another one for my blue puff, please?",
+  "paraphrase_of": "benign-041",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-042",
+  "label": "benign",
+  "text": "gardening gave me this itchy rash on my arm :(",
+  "paraphrase_of": "benign-042",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-042",
+  "label": "benign",
+  "text": "Hey doc, so I was out in the garden and now my arm is all itchy from some rash... what's up with that?",
+  "paraphrase_of": "benign-042",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-042",
+  "label": "benign",
+  "text": "Just got an itchy red rash on my arm after being in the garden. Any ideas?",
+  "paraphrase_of": "benign-042",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-042",
+  "label": "benign",
+  "text": "Quick question: I had this itchy rash pop up on my arm after gardening yesterday. What could it be?",
+  "paraphrase_of": "benign-042",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-043",
+  "label": "benign",
+  "text": "my ear is totally clogged up since i went swimming earlier",
+  "paraphrase_of": "benign-043",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-043",
+  "label": "benign",
+  "text": "uh oh, my ear feels all stopped up after i swam",
+  "paraphrase_of": "benign-043",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-043",
+  "label": "benign",
+  "text": "ear still feels plugged after that swim yesterday",
+  "paraphrase_of": "benign-043",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-043",
+  "label": "benign",
+  "text": "swam today and now my ear feels completely blocked",
+  "paraphrase_of": "benign-043",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-044",
+  "label": "benign",
+  "text": "Had some heartburn after eating that spicy meal last night :/",
+  "paraphrase_of": "benign-044",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-044",
+  "label": "benign",
+  "text": "Spicy curry gave me a bit of heartburn rn...",
+  "paraphrase_of": "benign-044",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-044",
+  "label": "benign",
+  "text": "Heartburn hit me post-spicy dinner last night. Not fun.",
+  "paraphrase_of": "benign-044",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-044",
+  "label": "benign",
+  "text": "Just got a little heartburn after that spicy pasta, ugh.",
+  "paraphrase_of": "benign-044",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-045",
+  "label": "benign",
+  "text": "been constipated off and on for the past couple days",
+  "paraphrase_of": "benign-045",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-045",
+  "label": "benign",
+  "text": "really stuck it\u2019s been like this for a few days now",
+  "paraphrase_of": "benign-045",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-045",
+  "label": "benign",
+  "text": "still pretty backed up, been constipated for a few more days than I like",
+  "paraphrase_of": "benign-045",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-045",
+  "label": "benign",
+  "text": "hey doc, got that\u4fbf\u79d8 thing going on for about 3-4 days",
+  "paraphrase_of": "benign-045",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-046",
+  "label": "benign",
+  "text": "my butt hurts so much from sitting at that desk again today :(",
+  "paraphrase_of": "benign-046",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-046",
+  "label": "benign",
+  "text": "I've got this really bad lower back pain from being seated all day at work",
+  "paraphrase_of": "benign-046",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-046",
+  "label": "benign",
+  "text": "Lower back is killing me 'cause I had to sit at the desk all day",
+  "paraphrase_of": "benign-046",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-046",
+  "label": "benign",
+  "text": "Dangit, my lower back's in agony because of that long day of sitting",
+  "paraphrase_of": "benign-046",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-047",
+  "label": "benign",
+  "text": "still coughing from that cold last month, no biggie tho",
+  "paraphrase_of": "benign-047",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-047",
+  "label": "benign",
+  "text": "had this stupid cough going on for like 2 weeks now, but I'm okay",
+  "paraphrase_of": "benign-047",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-047",
+  "label": "benign",
+  "text": "cough won't go away since the cold 2 weeks ago, just keepin' an eye on it",
+  "paraphrase_of": "benign-047",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-047",
+  "label": "benign",
+  "text": "cough hangin' around from before, nothing else wrong though",
+  "paraphrase_of": "benign-047",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-048",
+  "label": "benign",
+  "text": "Sure thing! Just need to know your name and date of birth for the record.",
+  "paraphrase_of": "benign-048",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-048",
+  "label": "benign",
+  "text": "Hey, can I get my COVID booster shot? Got all my details ready here!",
+  "paraphrase_of": "benign-048",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-048",
+  "label": "benign",
+  "text": "Doc, do I qualify for another COVID booster? If so, when's the earliest?",
+  "paraphrase_of": "benign-048",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-048",
+  "label": "benign",
+  "text": "Quick question: is it possible to get a booster now? No rush, just curious.",
+  "paraphrase_of": "benign-048",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-049",
+  "label": "benign",
+  "text": "My chin is breaking out again :(",
+  "paraphrase_of": "benign-049",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-049",
+  "label": "benign",
+  "text": "Hey doc, my chin acne is acting up...",
+  "paraphrase_of": "benign-049",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-049",
+  "label": "benign",
+  "text": "Chin acne is flaring up again!",
+  "paraphrase_of": "benign-049",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-049",
+  "label": "benign",
+  "text": "Just got some new chin acne spots, any ideas?",
+  "paraphrase_of": "benign-049",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-050",
+  "label": "benign",
+  "text": "been having trouble falling asleep at night lately :(",
+  "paraphrase_of": "benign-050",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-050",
+  "label": "benign",
+  "text": "Really struggling to get any rest these days...",
+  "paraphrase_of": "benign-050",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-050",
+  "label": "benign",
+  "text": "Can't seem to fall asleep, been like this for weeks now.",
+  "paraphrase_of": "benign-050",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-050",
+  "label": "benign",
+  "text": "Sleep's been a real issue lately, can't even relax to sleep.",
+  "paraphrase_of": "benign-050",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-051",
+  "label": "benign",
+  "text": "Had a bit of diarrhea after eating out, feeling better now",
+  "paraphrase_of": "benign-051",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-051",
+  "label": "benign",
+  "text": "Eww, got some loose stools from that takeout place, but it's getting better I think",
+  "paraphrase_of": "benign-051",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-051",
+  "label": "benign",
+  "text": "Diarrhea from the takeaway, looking up symptoms online now to see if I should be worried",
+  "paraphrase_of": "benign-051",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-051",
+  "label": "benign",
+  "text": "Quick update: diarrhea started after the takeaway order, things are improving though",
+  "paraphrase_of": "benign-051",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-052",
+  "label": "benign",
+  "text": "my eczema is acting up again behind my knees",
+  "paraphrase_of": "benign-052",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-052",
+  "label": "benign",
+  "text": "the rash on the back of my knees is getting worse",
+  "paraphrase_of": "benign-052",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-052",
+  "label": "benign",
+  "text": "help! my knee eczema is flaring up",
+  "paraphrase_of": "benign-052",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-052",
+  "label": "benign",
+  "text": "back of knee eczema is really bothering me lately",
+  "paraphrase_of": "benign-052",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-053",
+  "label": "benign",
+  "text": "My period pain is way worse this time around :(",
+  "paraphrase_of": "benign-053",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-053",
+  "label": "benign",
+  "text": "Hey doc, my cramps are killer this month... really bad!",
+  "paraphrase_of": "benign-053",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-053",
+  "label": "benign",
+  "text": "Pain during my period is super intense today. Something's up!",
+  "paraphrase_of": "benign-053",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-053",
+  "label": "benign",
+  "text": "Ouch, my periods are acting up again, but the pain feels worse than before.",
+  "paraphrase_of": "benign-053",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-054",
+  "label": "benign",
+  "text": "i really need to call in sick, got a cold",
+  "paraphrase_of": "benign-054",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-054",
+  "label": "benign",
+  "text": "cold again, gonna need that doc's note for the day off work",
+  "paraphrase_of": "benign-054",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-054",
+  "label": "benign",
+  "text": "just got a bad cold, can i get a leave note?",
+  "paraphrase_of": "benign-054",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-055",
+  "label": "benign",
+  "text": "Hey doc, I think there's too much wax in my ear.",
+  "paraphrase_of": "benign-055",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-055",
+  "label": "benign",
+  "text": "I might have wax buildup in my ear... sounds painful!",
+  "paraphrase_of": "benign-055",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-055",
+  "label": "benign",
+  "text": "Ear feels clogged. Think it's wax.",
+  "paraphrase_of": "benign-055",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-056",
+  "label": "benign",
+  "text": "My eye is all sticky, I think it might be pink eye.",
+  "paraphrase_of": "benign-056",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-056",
+  "label": "benign",
+  "text": "Hey doc, my eye feels icky and stuffy. Could it be that pink eye thing?",
+  "paraphrase_of": "benign-056",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-056",
+  "label": "benign",
+  "text": "Sticky eye situation here. Think it's conjunctivitis.",
+  "paraphrase_of": "benign-056",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-056",
+  "label": "benign",
+  "text": "Gross! My eye is super sticky. Kinda sounds like conjunctivitis to me.",
+  "paraphrase_of": "benign-056",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-057",
+  "label": "benign",
+  "text": "My shoulders really hurt from that sunburn over the weekend :(",
+  "paraphrase_of": "benign-057",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-057",
+  "label": "benign",
+  "text": "Hey doc, I got one hell of a burn on my shoulders this past weekend. Feels awful!",
+  "paraphrase_of": "benign-057",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-057",
+  "label": "benign",
+  "text": "Doctor, I need your help. Got some serious burning on my shoulders after too much sun this weekend.",
+  "paraphrase_of": "benign-057",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-058",
+  "label": "benign",
+  "text": "\"so many mosquito bites and they're super itchy...\"",
+  "paraphrase_of": "benign-058",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-058",
+  "label": "benign",
+  "text": "Mosquitos bit me loads and they're driving me crazy, so itchy!",
+  "paraphrase_of": "benign-058",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-058",
+  "label": "benign",
+  "text": "\"LOTS OF BITE MARKS AND REALLY ITCHY!\"",
+  "paraphrase_of": "benign-058",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-058",
+  "label": "benign",
+  "text": "Got a bunch of mosquito bites and they really are this annoying itchy!",
+  "paraphrase_of": "benign-058",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-059",
+  "label": "benign",
+  "text": "Hey doc, I'm going to Thailand next month and was wondering what shots I should get?",
+  "paraphrase_of": "benign-059",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-059",
+  "label": "benign",
+  "text": "I\u2019m planning a trip to Thailand and need to know which vaccines are required. Can you help?",
+  "paraphrase_of": "benign-059",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-059",
+  "label": "benign",
+  "text": "Quick question: what vaccines do I have to get before going to Thailand?",
+  "paraphrase_of": "benign-059",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-059",
+  "label": "benign",
+  "text": "Traveling to Thailand soon and need to know the necessary vaccinations. Got any advice?",
+  "paraphrase_of": "benign-059",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-060",
+  "label": "benign",
+  "text": "my face feels really stuffy between my cheeks",
+  "paraphrase_of": "benign-060",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-060",
+  "label": "benign",
+  "text": "I got this pressure in my cheek area from sinuses",
+  "paraphrase_of": "benign-060",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-060",
+  "label": "benign",
+  "text": "Cheeks feel all plugged up and sore",
+  "paraphrase_of": "benign-060",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-060",
+  "label": "benign",
+  "text": "Sinus pain is making my cheeks feel weird",
+  "paraphrase_of": "benign-060",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-061",
+  "label": "benign",
+  "text": "I think I'm getting a cold sore on my lip :(",
+  "paraphrase_of": "benign-061",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-061",
+  "label": "benign",
+  "text": "Hey doc, feeling kinda worried 'cuz it looks like a cold sore is forming on my lip...",
+  "paraphrase_of": "benign-061",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-061",
+  "label": "benign",
+  "text": "Cold sore showing up on my lip again...",
+  "paraphrase_of": "benign-061",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-061",
+  "label": "benign",
+  "text": "Just noticed a little bump on my lip, could that be a cold sore?",
+  "paraphrase_of": "benign-061",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-062",
+  "label": "benign",
+  "text": "My neck is super stiff because I slept in an odd position last night, but I don't have any fever.",
+  "paraphrase_of": "benign-062",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-062",
+  "label": "benign",
+  "text": "I woke up with this really stiff neck from sleeping weirdly and am surprised I don't have a fever.",
+  "paraphrase_of": "benign-062",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-062",
+  "label": "benign",
+  "text": "Just got out of bed and my neck feels so tight! Must be from the funny way I laid down. No fever tho.",
+  "paraphrase_of": "benign-062",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-062",
+  "label": "benign",
+  "text": "Stiff as can be, neck from hitting that weird spot in bed last night. But no fever this time.",
+  "paraphrase_of": "benign-062",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-063",
+  "label": "benign",
+  "text": "hickeys still going strong after an hr :(",
+  "paraphrase_of": "benign-063",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-063",
+  "label": "benign",
+  "text": "My hiccups just won't quit! It's been over an hour...",
+  "paraphrase_of": "benign-063",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-063",
+  "label": "benign",
+  "text": "Hiccups won't stop. Already lasted an hour...",
+  "paraphrase_of": "benign-063",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-063",
+  "label": "benign",
+  "text": "Still hiccupping an hour later. Why won't it stop?",
+  "paraphrase_of": "benign-063",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-064",
+  "label": "benign",
+  "text": "my eyes feel dry and scratchy since I've been wearing contacts",
+  "paraphrase_of": "benign-064",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-064",
+  "label": "benign",
+  "text": "I'm having really dry, itchy eyes from the contacts :(",
+  "paraphrase_of": "benign-064",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-064",
+  "label": "benign",
+  "text": "Dry and grainy eyeballs... only happens when I wear my lenses",
+  "paraphrase_of": "benign-064",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-064",
+  "label": "benign",
+  "text": "Contacts are making my eyes feel so dry and irritated",
+  "paraphrase_of": "benign-064",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-065",
+  "label": "benign",
+  "text": "I ran out of my birth control pills, can I get more?",
+  "paraphrase_of": "benign-065",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-065",
+  "label": "benign",
+  "text": "Hey doc, I'm all out of my contraceptive pills, do you have any spare?",
+  "paraphrase_of": "benign-065",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-065",
+  "label": "benign",
+  "text": "Need refil on my contraceptive pills ASAP!",
+  "paraphrase_of": "benign-065",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-065",
+  "label": "benign",
+  "text": "Hey there, I just remembered I'm all gone on my contraceptive pills. Can I grab some more?",
+  "paraphrase_of": "benign-065",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-066",
+  "label": "benign",
+  "text": "my hand has got a couple of warts :(",
+  "paraphrase_of": "benign-066",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-066",
+  "label": "benign",
+  "text": "Hey doc, just noticed these little bumps on my hand... are they warts?",
+  "paraphrase_of": "benign-066",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-066",
+  "label": "benign",
+  "text": "Couple of weird growths showed up on my hand, looks like warts to me",
+  "paraphrase_of": "benign-066",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-068",
+  "label": "benign",
+  "text": "Hey doc, my SO says I've been really loud at night lately",
+  "paraphrase_of": "benign-068",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-068",
+  "label": "benign",
+  "text": "My boyfriend keeps mentioning how much I'm snoring dude... it's gotten a lot worse",
+  "paraphrase_of": "benign-068",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-068",
+  "label": "benign",
+  "text": "Snore louder now? Partner says so... want to check?",
+  "paraphrase_of": "benign-068",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-068",
+  "label": "benign",
+  "text": "Just got told by spouse that snores are getting really bad. Any ideas?",
+  "paraphrase_of": "benign-068",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-069",
+  "label": "benign",
+  "text": "I think I might have thrush cropping up again :(",
+  "paraphrase_of": "benign-069",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-069",
+  "label": "benign",
+  "text": "Hey doc, I believe it's back - got that pesky thrush thing",
+  "paraphrase_of": "benign-069",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-069",
+  "label": "benign",
+  "text": "Thrush again? Ugh, this isn't great...",
+  "paraphrase_of": "benign-069",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-069",
+  "label": "benign",
+  "text": "Yup, sounds like thrush to me",
+  "paraphrase_of": "benign-069",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-070",
+  "label": "benign",
+  "text": "My hair is falling out way more than usual when I wash my head.",
+  "paraphrase_of": "benign-070",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-070",
+  "label": "benign",
+  "text": "I've been noticing a lot more hair in the drain lately after showers...",
+  "paraphrase_of": "benign-070",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-070",
+  "label": "benign",
+  "text": "Guys, my hair is falling out like crazy! More than normal, you know?",
+  "paraphrase_of": "benign-070",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-070",
+  "label": "benign",
+  "text": "Hey doc, noticed my hair's falling out A LOT in the shower. Is this normal?",
+  "paraphrase_of": "benign-070",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-071",
+  "label": "benign",
+  "text": "feels puffy after eating quite often",
+  "paraphrase_of": "benign-071",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-071",
+  "label": "benign",
+  "text": "really bloats up after having food most days, kinda worried about it",
+  "paraphrase_of": "benign-071",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-071",
+  "label": "benign",
+  "text": "been super bloated right after meals for like 2 weeks now, not good",
+  "paraphrase_of": "benign-071",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-071",
+  "label": "benign",
+  "text": "hey doc, i've been really gassy and swollen after every meal - should i be concerned?",
+  "paraphrase_of": "benign-071",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-073",
+  "label": "benign",
+  "text": "feels a bit queasy during long car rides",
+  "paraphrase_of": "benign-073",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-073",
+  "label": "benign",
+  "text": "been feeling queasy in cars for a while now",
+  "paraphrase_of": "benign-073",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-073",
+  "label": "benign",
+  "text": "queasy in the car, you know?",
+  "paraphrase_of": "benign-073",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-073",
+  "label": "benign",
+  "text": "long car trips make me feel queasy",
+  "paraphrase_of": "benign-073",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-074",
+  "label": "benign",
+  "text": "had some shaving issues and now got an ingrown hair on my leg :(",
+  "paraphrase_of": "benign-074",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-074",
+  "label": "benign",
+  "text": "Shaved my leg and got this pesky ingrown hair, any ideas?",
+  "paraphrase_of": "benign-074",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-074",
+  "label": "benign",
+  "text": "Ingenue on my leg after shaving... it's driving me nuts",
+  "paraphrase_of": "benign-074",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-074",
+  "label": "benign",
+  "text": "Just dealt with an ingrown hair from shaving my leg. Help!",
+  "paraphrase_of": "benign-074",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-075",
+  "label": "benign",
+  "text": "my jaw hurts when i wake up, i guess i'm grinding my teeth again",
+  "paraphrase_of": "benign-075",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-075",
+  "label": "benign",
+  "text": "I've been waking up with a sore jaw lately. Could it be from grinding my teeth?",
+  "paraphrase_of": "benign-075",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-075",
+  "label": "benign",
+  "text": "Jaw is super sore in the mornin', think I grind my teeth in my sleep",
+  "paraphrase_of": "benign-075",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-075",
+  "label": "benign",
+  "text": "Got this sore jaw every morning now, makes me wonder if it's because of tooth grinding",
+  "paraphrase_of": "benign-075",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-076",
+  "label": "benign",
+  "text": "Hey doc, can you help me understand my latest blood work?",
+  "paraphrase_of": "benign-076",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-076",
+  "label": "benign",
+  "text": "Doc, I got my test results back and I'm not sure what they mean. Can you explain them to me?",
+  "paraphrase_of": "benign-076",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-076",
+  "label": "benign",
+  "text": "Can someone here tell me about my blood test results? They scared me a little...",
+  "paraphrase_of": "benign-076",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-076",
+  "label": "benign",
+  "text": "Just got my blood tests done and there are some numbers that don't sound right. Need help deciphering this.",
+  "paraphrase_of": "benign-076",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-077",
+  "label": "benign",
+  "text": "My kid got some chickenpox spots, they're quite itchy but he's still pretty chipper.",
+  "paraphrase_of": "benign-077",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-077",
+  "label": "benign",
+  "text": "Hey doc, my child has these chickenpox spots showing up and they are seriously driving him nuts because they're so itchy...but he\u2019s okay for now.",
+  "paraphrase_of": "benign-077",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-077",
+  "label": "benign",
+  "text": "Child just started showing those chickenpox spots and it\u2019s really scratching his back, but he\u2019s acting fine otherwise. Just wanted to check in.",
+  "paraphrase_of": "benign-077",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-077",
+  "label": "benign",
+  "text": "My kid is sporting those telltale chickenpox spots and let me tell you, the itching is brutal! But fortunately, they seem generally happy about it.",
+  "paraphrase_of": "benign-077",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-078",
+  "label": "benign",
+  "text": "just got a quick nosebleed, lasted about 5 min",
+  "paraphrase_of": "benign-078",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-078",
+  "label": "benign",
+  "text": "my nose bled for like 5 min but it's over now",
+  "paraphrase_of": "benign-078",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-078",
+  "label": "benign",
+  "text": "quick question - had a nose bleed that stopped in 5 mins",
+  "paraphrase_of": "benign-078",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-078",
+  "label": "benign",
+  "text": "nosebleed went away after 5 mins, no biggie",
+  "paraphrase_of": "benign-078",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-079",
+  "label": "benign",
+  "text": "My eyelid has been twitching non-stop for about a week now.",
+  "paraphrase_of": "benign-079",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-079",
+  "label": "benign",
+  "text": "Been getting this weird eye twitch going on for over a week... what could it be?",
+  "paraphrase_of": "benign-079",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-079",
+  "label": "benign",
+  "text": "Eyelid is still twitchin' after a whole week, need some help!",
+  "paraphrase_of": "benign-079",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-079",
+  "label": "benign",
+  "text": "Hey doc, my eyelid won't quit twitchin', been like this for a solid week now.",
+  "paraphrase_of": "benign-079",
+  "k": 3
+ },
+ {
+  "seed_id": "benign-080",
+  "label": "benign",
+  "text": "My kids got that stomach bug thing going on and they're having trouble keeping water down :(",
+  "paraphrase_of": "benign-080",
+  "k": 0
+ },
+ {
+  "seed_id": "benign-080",
+  "label": "benign",
+  "text": "The little one's throwing up again, can't keep anything in, really worried about dehydrating",
+  "paraphrase_of": "benign-080",
+  "k": 1
+ },
+ {
+  "seed_id": "benign-080",
+  "label": "benign",
+  "text": "Tummy bug again! My kid won't hold down fluids, what should I do?",
+  "paraphrase_of": "benign-080",
+  "k": 2
+ },
+ {
+  "seed_id": "benign-080",
+  "label": "benign",
+  "text": "Hey doc, my kid has that nasty tummy bug and they just can't keep water or juice down",
+  "paraphrase_of": "benign-080",
+  "k": 3
+ }
+]

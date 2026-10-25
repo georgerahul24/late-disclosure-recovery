@@ -1,0 +1,14 @@
+{
+ "seeds": 229,
+ "kept": 763,
+ "dropped_filter": 3,
+ "dropped_label": 93,
+ "by_label": {
+  "urgent": 96,
+  "head": 137,
+  "hypo": 122,
+  "foot": 142,
+  "benign": 266
+ },
+ "model": "qwen2.5:7b-instruct-q8_0"
+}
