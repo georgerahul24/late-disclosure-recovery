@@ -45,7 +45,12 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
   - The model sometimes claims to have booked without calling `book`.
   - RECHECK often searches conditions instead of medications (a stage 2 failure).
 
-**In progress when this was written:**
+**Queue status (2026-10-26 05:06 IST).**
+- The LoRA detectors are trained. There are 6 in `models/det-*` (git-ignored), and their metrics are in `runs/detector/*.metrics.json`. Dev macro-F1 is 0.975-0.990 for 1.5B and 0.957-0.978 for 0.5B.
+- `cluster/queue_main.sh` was restarted after a LoRA OOM fix. It is now on the detector comparison step. Progress is in `logs/queue.log`, and finished steps leave `logs/queue/*.done` markers. Re-running the queue is safe.
+- Plain and Safety (`runs/llm_main`) run separately, as step 39713.33.
+
+**Earlier notes (some steps above are now done):**
 - Seed paraphrasing on the cluster: `data/detector/paraphrases_v1.json`, made on the cluster and pulled back with `cluster/sync.sh pull`.
 - **Next steps:**
   1. Decontaminate the paraphrases.
