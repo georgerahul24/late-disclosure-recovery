@@ -56,7 +56,7 @@ Owners:
 - [ ] Re-run `scripts/build_eval.py` if the rules or pools change, and re-check BUILD_REPORT.
 
 ## Phase 3. Detector
-- [~] LLM paraphrases: 4 per seed with the orchestrator model (allowed for training only), automatic label check, ~3,600 examples with carriers. Second-member check: [!] A/P.
+- [x] LLM paraphrases: 763 kept of ~916 asked (93 dropped by the label check), 756 after decontamination. A spot-check shows some drift (extra symptoms added, e.g. 'headache ever since' on a head bump), so the human check matters. Original task: 4 per seed with the orchestrator model (allowed for training only), automatic label check, ~3,600 examples with carriers. Second-member check: [!] A/P.
 - [ ] LoRA training: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B, 5-way head, r=16, alpha=32, dropout 0.05, attention projections, lr 2e-4, 3 epochs, batch 16, 3 seeds, fp16 (the 2080 Ti has no bf16). Split 85/15 grouped by seed. Training venv goes on node scratch (home is full).
 - [x] `recheck/detectors/lora.py` with `LoraDetector(adapter_dir).predict`.
 - [ ] Detector comparison: keyword vs TF-IDF vs prompted large model vs both LoRA models, on symptom-only, in-message and reworded text. Report max n-gram overlap between train and test.
