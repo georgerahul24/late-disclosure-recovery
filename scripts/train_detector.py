@@ -78,7 +78,12 @@ def main():
     random.seed(args.seed)
     np.random.seed(args.seed)
     seeds = json.loads(Path(args.seeds).read_text())
-    paras = json.loads(Path(args.paraphrases).read_text()) if Path(args.paraphrases).exists() else []
+    if args.paraphrases.lower() == "none":
+        paras = []
+    elif not Path(args.paraphrases).exists():  # never silently train without them
+        raise SystemExit(f"paraphrases file not found: {args.paraphrases} (pass --paraphrases none to skip on purpose)")
+    else:
+        paras = json.loads(Path(args.paraphrases).read_text())
     base_rows = seeds + [{"seed_id": p["seed_id"], "label": p["label"], "text": p["text"]} for p in paras]
     train_base, dev_base = grouped_split(base_rows, 0.15, seed=1234)  # same split for every run seed
     train = augment_with_carriers(train_base)
@@ -162,6 +167,7 @@ def main():
             model.save_pretrained(out)
             tok.save_pretrained(out)
     meta = {"base": args.base, "labels": labels, "seed": args.seed, "n_train": len(train), "n_dev": len(dev),
+            "n_seeds": len(seeds), "n_paraphrases": len(paras), "seeds_file": args.seeds, "paraphrases_file": args.paraphrases,
             "n_train_groups": len({r['seed_id'] for r in train_base}), "n_dev_groups": len({r['seed_id'] for r in dev_base}),
             "best_dev_macro_f1": best, "history": hist,
             "hparams": {"r": 16, "alpha": 32, "dropout": 0.05, "lr": args.lr, "epochs": args.epochs, "bs": args.bs,
