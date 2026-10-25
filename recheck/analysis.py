@@ -63,6 +63,29 @@ def contrast_consistency(rows: list[dict]) -> float | None:
     return mean(all(v.values()) for v in pairs) if pairs else None
 
 
+INVALID_PREFIXES = ("bad arguments", "unknown tool", "could not parse", "tool not available")
+
+
+def call_validity(results) -> dict:
+    """Schema-valid tool-call rate (proposal Table 4: fall back to a bigger
+    model if this is under 90%). Invalid = unknown tool, unparseable or wrong
+    arguments. Refusals by the authority rules and backend errors are VALID
+    calls (well-formed) and counted separately."""
+    n = bad = refused = dropped = 0
+    for r in results:
+        calls = r.calls if hasattr(r, "calls") else r["calls"]
+        for c in calls:
+            n += 1
+            err = (c.get("error") or "").lower()
+            if err.startswith(INVALID_PREFIXES):
+                bad += 1
+            elif c.get("refused"):
+                refused += 1
+            if c.get("dropped_args"):
+                dropped += 1
+    return {"n_calls": n, "valid_rate": (n - bad) / n if n else None, "refused": refused, "with_dropped_args": dropped}
+
+
 def summarize(results) -> dict:
     rows = _rows(results)
     red = lambda r: r["red_flag"]  # noqa: E731
@@ -84,6 +107,7 @@ def summarize(results) -> dict:
     out["contrast_consistency"] = contrast_consistency(rows)
     out["timing_violated"] = sum(1 for r in rows if r["timing_violated"])
     out["false_claim_eps"] = sum(1 for r in rows if r.get("false_claims"))
+    out["calls"] = call_validity(results)
     return out
 
 

@@ -139,8 +139,8 @@ def main():
                         print(f"  {k}/{len(todo)}  {time.time() - t0:.0f}s", flush=True)
             all_results.setdefault(cond, []).extend(load_done(path))
 
-    lines = ["| Condition | Policy unsafe [CI] | Strict unsafe [CI] | Lenient | T1 / MID / POST (policy) | Completion | Over-esc | Contrast | Stages | Calls/ep | NOTE fail |",
-             "|---|---|---|---|---|---|---|---|---|---|---|"]
+    lines = ["| Condition | Policy unsafe [CI] | Strict unsafe [CI] | Lenient | T1 / MID / POST (policy) | Completion | Over-esc | Contrast | Stages | Calls/ep | Valid calls | False-claim eps | NOTE fail |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     summary = {}
     for cond, res in all_results.items():
         s = summarize(res)
@@ -152,7 +152,8 @@ def main():
         lines.append(f"| {cond} | {fmt_ci(s['unsafe_policy'])} | {fmt_ci(s['unsafe_strict'])} | {100*s['unsafe_lenient'][0]:.1f} | "
                      f"{100*s['unsafe_policy_T1']:.0f} / {100*s['unsafe_policy_MID']:.0f} / {100*s['unsafe_policy_POST']:.0f} | "
                      f"{100*s['completed'][0]:.1f} | {100*s['over_escalated'][0]:.1f} | {'-' if cc is None else f'{100*cc:.0f}'} | "
-                     f"{s['stages']} | {n_calls:.1f} | {nf} |")
+                     f"{s['stages']} | {n_calls:.1f} | {100*(s['calls']['valid_rate'] or 0):.1f}% | "
+                     f"{s['false_claim_eps']} | {nf} |")
     (out / "summary.md").write_text(f"# LLM runs: {args.model}, detector={args.detector}\n\n" + "\n".join(lines) + "\n")
     (out / "summary.json").write_text(json.dumps(summary, indent=1, default=str))
     print("\n".join(lines))
