@@ -13,6 +13,8 @@ llm = ["openai>=1.40", "vllm>=0.6; platform_system == 'Linux'"]
 # LoRA detector training (Phase 2).
 train = ["torch>=2.3", "transformers>=4.44", "peft>=0.12", "datasets>=2.20", "accelerate>=0.33"]
 dev = ["pytest>=8"]
+# Model-based timing analysis (scripts/timing_model.py).
+stats = ["pandas>=2.0", "statsmodels>=0.14"]
 
 [build-system]
 requires = ["hatchling"]
