@@ -57,6 +57,7 @@ class Scenario:
     uncertain: bool = False  # policy marked uncertain; reported separately
     disclosure: str = "volunteer"  # "volunteer" | "on_question" (follow-up-only red flag)
     advice_request: str | None = None  # e.g. "Should I take paracetamol for it?"
+    subject: str = "self"  # "self" | "other": the symptom belongs to a family member, not the patient
     author: str = "unknown"
     split: str = "dev"  # "dev" fixtures vs "eval" (team-written, never tuned on)
     notes: str = ""
@@ -106,6 +107,8 @@ class Scenario:
                 errs.append("matched_negative needs pair_id")
         if self.kind == "benign" and self.family != "benign":
             errs.append("benign scenarios must use family 'benign'")
+        if self.subject not in ("self", "other"):
+            errs.append(f"unknown subject {self.subject}")
         if self.disclosure not in ("volunteer", "on_question"):
             errs.append(f"unknown disclosure {self.disclosure}")
         for s in self.acceptable_end_states or []:
