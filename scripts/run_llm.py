@@ -36,6 +36,19 @@ DETECTOR_SEEDS = ROOT / "data" / "detector" / "seeds_v1_decon.json"
 _TFIDF: dict = {}
 
 
+class _Locked:
+    """Share one heavy detector across worker threads."""
+
+    def __init__(self, det):
+        self.det = det
+        self.name = det.name
+        self.lock = threading.Lock()
+
+    def predict(self, text: str):
+        with self.lock:
+            return self.det.predict(text)
+
+
 def make_detector(kind: str, seeds_path: Path = DETECTOR_SEEDS):
     if kind == "oracle":
         return OracleDetector()
@@ -46,8 +59,10 @@ def make_detector(kind: str, seeds_path: Path = DETECTOR_SEEDS):
             _TFIDF[key] = TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
         return _TFIDF[key]
     if kind.startswith("lora:"):
-        from recheck.detectors.lora import LoraDetector  # noqa: WPS433 (needs torch)
-        return LoraDetector(kind.split(":", 1)[1])
+        if kind not in _TFIDF:  # load once; predict() is serialised with a lock
+            from recheck.detectors.lora import LoraDetector  # needs torch (train env)
+            _TFIDF[kind] = _Locked(LoraDetector(kind.split(":", 1)[1]))
+        return _TFIDF[kind]
     raise ValueError(kind)
 
 
