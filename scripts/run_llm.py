@@ -32,12 +32,19 @@ from recheck.runner import run_episode  # noqa: E402
 from recheck.scenarios import expand_episodes, load_scenarios  # noqa: E402
 
 
+DETECTOR_SEEDS = ROOT / "data" / "detector" / "seeds_v1_decon.json"
+_TFIDF = None
+
+
 def make_detector(kind: str):
+    global _TFIDF
     if kind == "oracle":
         return OracleDetector()
     if kind == "tfidf":
-        seeds = augment_with_carriers(load_seeds(ROOT / "data" / "detector" / "dev_seeds.json"))
-        return TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
+        if _TFIDF is None:  # train once, share across episodes (predict is read-only)
+            seeds = augment_with_carriers(load_seeds(DETECTOR_SEEDS))
+            _TFIDF = TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
+        return _TFIDF
     if kind.startswith("lora:"):
         from recheck.detectors.lora import LoraDetector  # noqa: WPS433 (needs torch)
         return LoraDetector(kind.split(":", 1)[1])
@@ -65,6 +72,7 @@ def main():
     ap.add_argument("--seeds", default="0")
     ap.add_argument("--temperature", type=float, default=0.0)
     ap.add_argument("--detector", default="tfidf", help="tfidf | oracle | lora:<adapter_dir>")
+    ap.add_argument("--detector-seeds", default=str(DETECTOR_SEEDS), help="training seeds for the tfidf detector")
     ap.add_argument("--data", default=str(ROOT / "data" / "dev"), help="dir with patients/scenarios/policy.json (dev)")
     ap.add_argument("--scenarios", help="override: scenarios JSON (e.g. data/eval/scenarios_v1.json)")
     ap.add_argument("--patients", help="override: patients JSON")
@@ -83,6 +91,8 @@ def main():
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     det_proto = args.detector
+    global DETECTOR_SEEDS
+    DETECTOR_SEEDS = Path(args.detector_seeds)
     lock = threading.Lock()
 
     eps_all = expand_episodes(scenarios, phrasings=tuple(args.phrasings.split(",")),
