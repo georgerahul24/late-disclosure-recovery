@@ -228,3 +228,13 @@ def test_follow_up_only_disclosure_and_advice_request(dev):
 def test_meglitinide_and_bleeding_disorder_rules():
     assert rules.evaluate("hypo", patient(["repaglinide 1 MG Oral Tablet"])).urgent
     assert not rules.evaluate("head", patient(conds=["Coagulation defect (disorder)"])).valid_negative
+
+
+def test_universal_misjudged_as_not_urgent_is_stage1(dev):
+    class WrongFamily:
+        name = "wrong"
+        def set_context(self, sc, ep): pass
+        def predict(self, text):
+            return ("head", 1.0) if "chest" in text else ("benign", 1.0)
+    r = _run(dev, "dev-urgent-00", "POST", ScriptedController(WrongFamily(), "record", "cancel"))
+    assert r.grade["unsafe_policy"] and r.grade["stage"] == 1
