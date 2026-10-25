@@ -138,6 +138,8 @@ def main():
             m = metrics([g for _, g in items], preds)
             rows.append({"detector": getattr(det, "name", spec), "spec": spec, "variant": variant, **m})
             print(rows[-1], flush=True)
+        if hasattr(det, "close"):
+            det.close()
     (out / f"results_{'_'.join(s.split(':')[0] for s in args.detectors.split(','))}.json").write_text(json.dumps(rows, indent=1))
     lines = ["| Detector | Text | n | Sensitivity | Specificity | PPV | Family acc. | Macro-F1 |", "|---|---|---|---|---|---|---|---|"]
     f = lambda x: "-" if x is None else f"{100 * x:.1f}"  # noqa: E731

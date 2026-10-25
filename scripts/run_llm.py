@@ -61,6 +61,8 @@ def make_detector(kind: str, seeds_path: Path = DETECTOR_SEEDS):
     if kind.startswith("lora:"):
         if kind not in _TFIDF:  # load once; predict() is serialised with a lock
             from recheck.detectors.lora import LoraDetector  # needs torch (train env)
+            for k in [k for k in _TFIDF if k.startswith("lora:")]:  # keep only one LoRA model in memory
+                _TFIDF.pop(k).det.close()
             _TFIDF[kind] = _Locked(LoraDetector(kind.split(":", 1)[1]))
         return _TFIDF[kind]
     raise ValueError(kind)
