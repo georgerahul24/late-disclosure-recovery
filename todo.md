@@ -36,7 +36,7 @@ Owners:
 - [ ] Surface perturbations (typos, tone, family downplaying the symptom) as robustness variants (papers.md 4: Gourabathina 2025).
 - [ ] A "status-correct use" retrieval metric: did the agent treat a stopped medicine as stopped?
 - [ ] Decisive-fact recall@k and citation support (proposal Table 1).
-- [ ] Mixed-effects logistic model (`unsafe ~ condition * timing + seed + (1|scenario) + (1|patient)`), Holm correction over the 5 confirmatory comparisons, TOST at ±10 points. Needs statsmodels.
+- [x] Model-based timing analysis: a GEE logistic model in place of the GLMM (docs/design.md section 11). Original task: mixed-effects logistic model (`unsafe ~ condition * timing + seed + (1|scenario) + (1|patient)`), Holm correction over the 5 confirmatory comparisons, TOST at ±10 points. Needs statsmodels.
 
 ## Phase 2. Real data (no dummy data in any reported result)
 - [x] Generate a Synthea population on the cluster: pinned v3.3.0, seed 20261026, 6000 people, Massachusetts (`cluster/run_synthea.sh`). Provenance goes in `data/synthea/PROVENANCE.txt`.
@@ -62,6 +62,17 @@ Owners:
 - [ ] Detector comparison: keyword vs TF-IDF vs prompted large model vs both LoRA models, on symptom-only, in-message and reworded text. Report max n-gram overlap between train and test.
 
 ## Phase 4. Main runs (proposal sections 6, 9, 10)
+**Running on holder 39713 (gnode089):**
+- Plain and Safety, 3 seeds, both phrasings, go to `runs/llm_main` (started 2026-10-26 04:15 IST, about 10 h).
+- The LoRA detectors are training on GPU 3 (`logs/train.out`).
+- `cluster/queue_main.sh` starts by itself when training ends, and runs:
+  1. the detector comparison,
+  2. the scripted baselines with the LoRA detector,
+  3. plain_label, recheck and hybrid (3 seeds),
+  4. the 7 ablations (seed 0, direct phrasing),
+  5. the faults.
+- Check progress with `cat logs/queue.log` and `ls logs/queue/*.done`.
+- After the queue ends: unload qwen, run `scripts/judge_runs.py` with llama3.1:8b, then `cluster/sync.sh pull`, `scripts/summarize_runs.py`, `scripts/timing_model.py` and `scripts/make_tables.py`.
 - [x] Smoke test LLM conditions on gnode089 (holder job). Check the valid tool-call rate. If it is under 90%, use the fallback: 14B model (proposal Table 4).
 - [ ] 5 main conditions x 3 seeds: plain, safety, plain_label, recheck, hybrid.
 - [ ] Rule gate (scripted) and DSC on the same eval set.
