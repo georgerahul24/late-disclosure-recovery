@@ -64,9 +64,11 @@ def _hypo(p: PatientRecord, severe: bool) -> RuleResult:
     if meds:
         return RuleResult(True, "hypo", f"possible hypoglycaemia on {', '.join(m.name for m in meds)}",
                           [m.fact_id for m in meds], "same_day", valid_negative=False)
-    diabetic = p.has_condition("diabetes")
+    # A diabetic on metformin only is the ideal matched negative (same
+    # diagnosis, no hypo-causing drug). Exclude past severe hypoglycaemia.
+    past_hypo = any("hypoglyc" in c.name.lower() for c in p.conditions)
     return RuleResult(False, "hypo", "not on insulin or a sulfonylurea",
-                      valid_negative=not diabetic)
+                      valid_negative=not past_hypo)
 
 
 def _foot(p: PatientRecord, severe: bool) -> RuleResult:
