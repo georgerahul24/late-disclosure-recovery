@@ -31,7 +31,8 @@ def patient(meds=(), stopped=(), conds=(), age_birth="1980-01-01"):
 def test_head_rule_follows_ng232():
     assert rules.evaluate("head", patient(["clopidogrel"])).urgent
     assert rules.evaluate("head", patient(["apixaban"])).urgent
-    assert not rules.evaluate("head", patient(["aspirin"])).urgent  # aspirin monotherapy excluded
+    assert not rules.evaluate("head", patient(["aspirin"])).urgent  # aspirin monotherapy excluded (NG232)
+    assert not rules.evaluate("head", patient(["aspirin"])).valid_negative  # grey zone: not a clean negative
     assert not rules.evaluate("head", patient(stopped=["clopidogrel"])).urgent  # stopped = distractor
     assert rules.evaluate("head", patient(["clopidogrel"])).decisive_fact_ids == ["PX-M0"]
 
@@ -222,3 +223,8 @@ def test_follow_up_only_disclosure_and_advice_request(dev):
     assert asked.disclosed_turn == 1 and asked.grade["elicited"]
     assert "paracetamol" in asked.transcript[2]["text"]
     assert [e.timing for e in expand_episodes({sc.scenario_id: sc})] == ["ASK"]
+
+
+def test_meglitinide_and_bleeding_disorder_rules():
+    assert rules.evaluate("hypo", patient(["repaglinide 1 MG Oral Tablet"])).urgent
+    assert not rules.evaluate("head", patient(conds=["Coagulation defect (disorder)"])).valid_negative

@@ -31,6 +31,9 @@ MED_CLASSES: dict[str, set[str]] = {
     "insulin": {"insulin", "humulin", "novolin", "lantus", "levemir", "humalog", "novolog", "glargine", "lispro",
                 "aspart", "detemir", "degludec"},
     "sulfonylurea": {"gliclazide", "glipizide", "glimepiride", "glibenclamide", "glyburide"},
+    # ADA SOC 2025 sec 6 and JBDS 01 (2023) name meglitinides with sulfonylureas
+    # as insulin secretagogues that cause hypoglycaemia (docs/clinical_sources.md A2).
+    "meglitinide": {"repaglinide", "nateglinide"},
     "other_diabetes": {"metformin", "sitagliptin", "empagliflozin", "dapagliflozin", "canagliflozin",
                        "liraglutide", "semaglutide", "pioglitazone"},
 }
@@ -46,7 +49,7 @@ def med_classes(name: str) -> set[str]:
 def med_class(name: str) -> str | None:
     """The single most safety-relevant class, by priority."""
     cls = med_classes(name)
-    for c in ("anticoagulant", "antiplatelet", "insulin", "sulfonylurea", "other_diabetes"):
+    for c in ("anticoagulant", "antiplatelet", "insulin", "sulfonylurea", "meglitinide", "other_diabetes"):
         if c in cls:
             return c
     return None

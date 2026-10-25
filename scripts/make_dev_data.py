@@ -163,7 +163,7 @@ def build():
 
     # head: positives on anticoagulant / non-aspirin antiplatelet; negatives on aspirin only or stopped clopidogrel
     head_pos = [["clopidogrel"], ["apixaban"], ["warfarin"], ["ticagrelor", "aspirin"]]
-    head_neg = [(["aspirin"], []), ([], ["clopidogrel"]), (["aspirin"], ["clopidogrel"]), ([], ["warfarin"])]
+    head_neg = [([], ["clopidogrel"]), ([], ["clopidogrel"]), ([], ["warfarin", "aspirin"]), ([], ["warfarin"])]
     for i, sym in enumerate(HEAD):
         pos = make_patient(rng.randint(40, 63), head_pos[i], stopped_meds=["clopidogrel"] if i == 1 else [])
         neg = make_patient(rng.randint(30, 63), head_neg[i][0], stopped_meds=head_neg[i][1])

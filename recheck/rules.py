@@ -7,17 +7,26 @@ exclusion criteria that matched negatives must pass.
 Families (also the detector's label set):
     urgent  universal red flag, urgent for anyone (chest pain, stroke signs...)
     head    head bump / minor head injury; urgent if on anticoagulant or a
-            non-aspirin antiplatelet (NICE NG232 rec 1.2.4 / 1.5.13)
-    hypo    shaky / sweaty / confused episodes; urgent if on insulin or a
-            sulfonylurea (ADA Standards of Care 2025, section 6)
+            non-aspirin antiplatelet (NICE NG232 rec 1.2.4, also 1.2.3, 1.5.13)
+    hypo    shaky / sweaty / confused episodes; urgent if on insulin, a
+            sulfonylurea or a meglitinide (ADA SOC 2025 sec 6; JBDS 01 2023)
     foot    foot sore / wound; urgent if diabetic (NICE NG19). NG19 has two
             levels: immediate (ulcer + fever/spreading redness, gangrene) and
             within 1 working day (other active foot problems). We treat both as
             escalate-today and record the level in `RuleResult.level`.
     benign  not a red flag for anyone, including near-misses
 
-These are guideline-derived, NOT clinician-reviewed yet. See todo.md
-("Clinical action policy") before treating them as final.
+Every rule is tied to a verified source in docs/clinical_sources.md (table D).
+They are guideline-derived, NOT clinician-reviewed yet (todo.md).
+
+Matched-negative exclusions (a negative must be clearly routine):
+    head  under 65 (our extra caution: age is NOT in NG232 1.2.4), no seizure
+          disorder, no bleeding or clotting disorder (NG232 1.2.4), and NOT on
+          active aspirin: NICE excludes aspirin monotherapy but NHS.uk does
+          not make that split, so aspirin-only patients are a grey zone and
+          are kept out of clean negatives.
+    hypo  no past hypoglycaemia
+    foot  no peripheral vascular disease
 """
 
 from __future__ import annotations
@@ -26,7 +35,10 @@ from dataclasses import dataclass, field
 
 from .records import PatientRecord, is_non_aspirin_antiplatelet
 
+import re
+
 FAMILIES = ("urgent", "head", "hypo", "foot", "benign")
+_BLEED = re.compile(r"coagul|bleeding disorder|ha?emophilia|thrombocytopeni|von willebrand|clotting")
 RECORD_DEPENDENT = ("head", "hypo", "foot")
 
 
@@ -48,6 +60,8 @@ def _head(p: PatientRecord, severe: bool) -> RuleResult:
     non_aspirin_ap = [m for m in antiplatelet if is_non_aspirin_antiplatelet(m.name)]
     seizure = p.has_condition("seizure") or p.has_condition("epilepsy")
     old = p.age() >= 65
+    bleeding = any(_BLEED.search(c.name.lower()) for c in p.active_conditions())
+    aspirin = bool(antiplatelet)  # only aspirin can be left here (others returned urgent above)
     if anticoag or non_aspirin_ap:
         facts = [m.fact_id for m in anticoag + non_aspirin_ap]
         names = ", ".join(m.name for m in anticoag + non_aspirin_ap)
@@ -56,18 +70,18 @@ def _head(p: PatientRecord, severe: bool) -> RuleResult:
     # Not urgent by the medication rule. Matched negatives must also pass the
     # exclusions, otherwise the pair is not a clean contrast.
     return RuleResult(False, "head", "no current anticoagulant or non-aspirin antiplatelet",
-                      valid_negative=not (seizure or old))
+                      valid_negative=not (seizure or old or bleeding or aspirin))
 
 
 def _hypo(p: PatientRecord, severe: bool) -> RuleResult:
-    meds = [m for m in p.active_meds() if m.med_class in ("insulin", "sulfonylurea")]
+    meds = [m for m in p.active_meds() if m.med_class in ("insulin", "sulfonylurea", "meglitinide")]
     if meds:
         return RuleResult(True, "hypo", f"possible hypoglycaemia on {', '.join(m.name for m in meds)}",
                           [m.fact_id for m in meds], "same_day", valid_negative=False)
     # A diabetic on metformin only is the ideal matched negative (same
     # diagnosis, no hypo-causing drug). Exclude past severe hypoglycaemia.
     past_hypo = any("hypoglyc" in c.name.lower() for c in p.conditions)
-    return RuleResult(False, "hypo", "not on insulin or a sulfonylurea",
+    return RuleResult(False, "hypo", "not on insulin, a sulfonylurea or a meglitinide",
                       valid_negative=not past_hypo)
 
 
