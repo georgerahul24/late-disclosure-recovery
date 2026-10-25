@@ -33,18 +33,18 @@ from recheck.scenarios import expand_episodes, load_scenarios  # noqa: E402
 
 
 DETECTOR_SEEDS = ROOT / "data" / "detector" / "seeds_v1_decon.json"
-_TFIDF = None
+_TFIDF: dict = {}
 
 
-def make_detector(kind: str):
-    global _TFIDF
+def make_detector(kind: str, seeds_path: Path = DETECTOR_SEEDS):
     if kind == "oracle":
         return OracleDetector()
     if kind == "tfidf":
-        if _TFIDF is None:  # train once, share across episodes (predict is read-only)
-            seeds = augment_with_carriers(load_seeds(DETECTOR_SEEDS))
-            _TFIDF = TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
-        return _TFIDF
+        key = str(seeds_path)
+        if key not in _TFIDF:  # train once, share across episodes (predict is read-only)
+            seeds = augment_with_carriers(load_seeds(seeds_path))
+            _TFIDF[key] = TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
+        return _TFIDF[key]
     if kind.startswith("lora:"):
         from recheck.detectors.lora import LoraDetector  # noqa: WPS433 (needs torch)
         return LoraDetector(kind.split(":", 1)[1])
@@ -91,8 +91,7 @@ def main():
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     det_proto = args.detector
-    global DETECTOR_SEEDS
-    DETECTOR_SEEDS = Path(args.detector_seeds)
+    det_seeds = Path(args.detector_seeds)
     lock = threading.Lock()
 
     eps_all = expand_episodes(scenarios, phrasings=tuple(args.phrasings.split(",")),
@@ -116,7 +115,7 @@ def main():
                 i, ep = i_ep
                 ep = type(ep)(ep.scenario_id, ep.timing, ep.phrasing, ep.fault, seed)
                 client = ChatClient(urls[i % len(urls)], args.model, temperature=args.temperature, seed=seed)
-                det = make_detector(det_proto) if CONDITIONS[cond].detector_label or CONDITIONS[cond].detector_tool else None
+                det = make_detector(det_proto, det_seeds) if CONDITIONS[cond].detector_label or CONDITIONS[cond].detector_tool else None
                 agent = LLMAgent(cond, client, detector=det)
                 sc = scenarios[ep.scenario_id]
                 r = run_episode(ep, sc, patients[sc.patient_id], policy, agent,
