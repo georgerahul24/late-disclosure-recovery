@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-10-26. Update this file whenever the state changes.
+Last updated: 2026-10-26 (evening). Update this file whenever the state changes.
 
 ## 1. What this project is
 
@@ -8,69 +8,90 @@ A course research project (LMA) by George R., Arihant R. and Aditya P. It has tw
 - **The benchmark.** Can a clinic booking agent notice that a symptom disclosed late makes its *own earlier booking* unsafe, then repair it, escalate, and confirm the fix? Grading uses the final backend state.
 - **RECHECK.** A detector plus a frozen LLM with record retrieval, an action ledger re-check, repair and read-back.
 
-The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt`. Related work is in `papers.md`.
+The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt`. Related work is in `papers.md`. Clinical grounding is in `docs/clinical_sources.md`.
 
 ## 2. Read in this order
 
-1. `instructions.md`: standing rules from George (commit per feature, push after each commit, no fake data, cluster how-to).
+1. `instructions.md`: George's standing rules. Commit per feature, push every commit, **no fake or dummy data in any result**, back every claim with literature. It also has the cluster how-to.
 2. `todo.md`: what is done and what is next.
 3. `docs/design.md`: how the proposal maps to code, and every decision we made.
 4. The `README.md` in each folder you touch.
 
 ## 3. Current state
 
-**Code (done, tested, 29 tests pass):**
-- The full episode loop: backend, tool harness, simulator, runner, grader and analysis.
-- Scripted controllers, including the DSC.
-- LLM agents for all 12 conditions (5 main + 7 ablations), talking to any OpenAI-compatible server.
-- Cluster scripts: rsync, env setup, a 4-day node holder with one Ollama server per GPU, and an `srun --overlap` runner.
+**Code (34 tests pass):**
+- **Episode loop:** backend with faults (cancel fails, slot taken, lost booking response), tool harness (allow-list, authority, ledger), simulator, runner, grader and analysis.
+- **Simulator:** event-triggered. It supports follow-up-only disclosure and advice requests, and it answers medication questions from the record.
+- **Grader:** policy (primary), strict, lenient, stages 1-5, unsafe actions, false claims and schema-valid call rate.
+- **Agents:** scripted controllers plus the DSC, and LLM agents for 12 conditions.
+- **Advice judge:** an LLM judge (UNVALIDATED until human labels exist).
+- **Detectors:** keyword, TF-IDF, oracle and LoRA (`recheck/detectors/lora.py`).
 
-**Grading choice that differs from the proposal text:**
-- The primary outcome is **policy** grading, against the clinician-acceptable end states.
-- **Strict** is reported as a stress test.
-- This fixes the main reviewer pointer. The proposal text has not been updated yet.
+**Data (all real or verified, with provenance):**
+- **Synthea population:** v3.3.0, seed 20261026, 6000 alive people. See `data/synthea/PROVENANCE.txt`, `pools.json` and `conversion_report.md`. The full `patients.json` (51 MB) is git-ignored; rebuild it with the commands in `data/synthea/README.md`.
+- **Clinical sources:** `docs/clinical_sources.md`, verified by a research agent. The rules in `recheck/rules.py` follow it (table D).
+- **Clinic policy v1:** `data/policy/clinic_policy_v1.json`, 40 passages, each with a source.
+- **Detector seeds:** `data/detector/seeds_v1.json`, 240 seeds written by an agent blind to the eval set. `seeds_v1_decon.json` has 229 after dropping those that shared 6+ words with eval text.
+- **Eval set v1:** `data/eval/`, 270 scenarios on 240 Synthea patients. The phrasings were **agent-written, blind to the seeds, and are pending team review**. See `data/eval/README.md` and `BUILD_REPORT.md`.
+- `data/dev/` is for unit tests only.
 
-**Data:**
-- `data/dev/` holds hand-made fixtures. **They are for unit tests only. Never report results on them.** George asked for no dummy data in any result.
-- Real data is in progress:
-  - The Synthea population is being generated on the cluster.
-  - A research agent is verifying clinical sources (`docs/clinical_sources.md`).
-  - A separate agent is writing detector seeds blind to the eval set (`data/detector/seeds_v1.json`).
-- The evaluation scenarios (`data/eval/`) do not exist yet.
+**Results so far:**
+- `results/scripted_eval_v1.md`: scripted controllers on eval v1.
+  - The rule gate is 97.6% unsafe.
+  - The DSC with TF-IDF is 23.5% unsafe at 95.4% completion. All of its failures are detection misses.
+  - The oracle with no revision is 33.3% strict-unsafe, all of it stale POST bookings.
+- **LLM smoke test (24 episodes, not a result):**
+  - The pipeline works and 100% of tool calls are schema-valid.
+  - The model sometimes claims to have booked without calling `book`.
+  - RECHECK often searches conditions instead of medications (a stage 2 failure).
 
-**Pilot on the dev fixtures (smoke test only, not a finding):**
-- Oracle gets 0% unsafe and 100% completion. Book-only gets 100% unsafe. The sanity checks pass.
-- The DSC with the TF-IDF stand-in gets 27.8% policy-unsafe and 98.3% completion. Every miss is a detection miss, because the dev seed set is tiny.
+**In progress when this was written:**
+- Seed paraphrasing on the cluster: `data/detector/paraphrases_v1.json`, made on the cluster and pulled back with `cluster/sync.sh pull`.
+- **Next steps:**
+  1. Decontaminate the paraphrases.
+  2. Free GPU 3 and train the LoRA detectors (`cluster/train_detectors.sh`).
+  3. Run `plain` and `safety` (they need no detector) on the other 3 servers.
+  4. Then run `plain_label`, `recheck`, `hybrid` and the ablations with the best LoRA detector.
 
 ## 4. Cluster state (check before you start)
 
-- **Holder job 39713** runs on **gnode089**: 4x RTX 2080 Ti, 36 CPUs, 100 GB RAM, 4-day limit. It started 2026-10-26 about 03:40 IST.
-  - When it is ready, it writes `~/lma/logs/hold-39713.env` with the Ollama URLs.
-  - Check it with `squeue -u gr` and `cat ~/lma/logs/lma-hold-39713.out`.
-- **Run things inside it:**
-  - LLM runs: `cluster/run_in_hold.sh 39713 scripts/run_llm.py ...`
-  - Anything else: `srun --jobid=39713 --overlap -n 1 -c <k> --mem=<m> <cmd>`
-  - **Always pass `-n 1`.** Without it srun starts several copies; this already corrupted a download once.
-- **Node-local files** live in `/ssd_scratch/gr/lma` on gnode089: the Ollama binary, the models, the JDK, the Synthea jar and the raw Synthea CSVs. If the holder moves to another node, all of this must be rebuilt. The scripts do this automatically.
-- **When the holder ends** (about 2026-10-30), submit a new one with `sbatch -w <node> cluster/hold_node.sbatch` on a node from gnode045 to gnode090 that has 4 free GPUs.
+- **Holder job 39713** runs on **gnode089**: 4x RTX 2080 Ti, 36 CPUs, 100 GB RAM. It started 2026-10-26 about 03:40 IST and has a 4-day limit, so it ends around 2026-10-30.
+  - It runs 4 Ollama servers (ports 11434-11437) with `qwen2.5:7b-instruct-q8_0` loaded. Details are in `~/lma/logs/hold-39713.env`.
+  - A watchdog restarts any server that dies.
+- **How to run things inside it:**
+  - LLM scripts: `cluster/run_in_hold.sh 39713 <script> <args>`. It adds `--base-urls`, `--model` and `--workers` for you.
+  - Anything else: `srun --jobid=39713 --overlap -n 1 -c <k> --mem=<m> --gres=none <cmd>`. **Always pass `-n 1`.** Use `--gres=gpu:4` plus `CUDA_VISIBLE_DEVICES=<i>` to use one GPU.
+- **Node-local files** (`/ssd_scratch/gr/lma` on gnode089):
+  - the Ollama install (from `~/ollama`, v0.21.2) and models
+  - JDK 17
+  - the Synthea jar and the raw CSVs (`synthea/out-20261026/csv`)
+  - the GPU training venv (`venv-train`: torch 2.4.1+cu121, transformers 4.44.2, peft 0.12.0)
+  - the HF cache
+- **Moving to a new node:** if the holder moves, re-run `cluster/run_synthea.sh` (same seed, same people) and `cluster/setup_train_env.sh`.
+- **Code sync:** `cluster/sync.sh push`, then `pull`. Push never deletes the cluster-made `data/synthea/` or `data/detector/paraphrases_*`. **Pull before you commit those.**
 
 ## 5. Known issues and traps
 
-- **`sbatch --test-only` gives false start times on this cluster.** Submit for real instead.
-- **`~/ollama` is the Ollama bundle (v0.21.2, a zstd tar).** Unpack it on a compute node; the login node has no zstd.
-- **Requests for 3 or more GPUs can sit as "ReqNodeNotAvail, reserved"** on half-used nodes. Fully free nodes (gnode072, gnode089 that day) start at once.
-- **Home quota is nearly full** (about 4 GB free). Put big things on node scratch.
-- **The 2080 Ti has no bf16.** We use the q8_0 Ollama model and fp16 for LoRA. This is a deviation from the proposal and must be reported.
-- **TF-IDF needs carrier augmentation.** Without it, it flags every booking message. This is fixed, and `augment_with_carriers` must be used.
-- **Read-back result differs from the proposal's pilot.** Because the DSC invariant retries a failed cancel, `cancel_fails_once` does not hurt the DSC. The lost-response fault is the case that shows read-back matters. See docs/design.md section 6.
+- **`sbatch --test-only` gives false start times** here. Submit for real.
+- **Big GPU requests can wait.** Requests for 3 or more GPUs on half-used nodes can sit as "reserved"; fully free nodes start at once.
+- **Home quota is nearly full.** Big things go on node scratch.
+- **`~/ollama` is a zstd tar.** Only compute nodes have `zstd`.
+- **Node DNS sometimes times out**, so model pulls retry.
+- **Ollama servers sharing one models dir race at startup.** This is fixed in `cluster/ollama_lib.sh`: the dirs are created first and `OLLAMA_NOPRUNE=1` is set.
+- **The 2080 Ti has no bf16.** We use the q8_0 Ollama model and fp16 autocast for LoRA. **Report this as a deviation from the proposal.**
+- **Read-back result differs from the proposal's pilot.** With the DSC invariant, a failed cancel gets retried. The lost-response fault is the case that shows read-back matters (docs/design.md section 6).
+- **Two independent agents converged on common clinical wording.** This is why the decontamination step exists.
 
 ## 6. Decisions that need a human (G/A/P)
 
-- **Evaluation scenarios.** If they are agent-drafted, A and P must review them, and the `author` field must say who wrote them.
-- **Clinical action policy per scenario**, with Cohen's kappa between two members.
-- **Human labels:** about 60 for the advice judge, and 50 traces for the stage 1/2 check.
-- **The second-member check** of the LLM paraphrases.
+- **Eval phrasings:** review `data/eval/phrasings_v1.json`. It is agent-written, and the proposal wanted A and P to write it.
+- **Action policy:** two-member review with Cohen's kappa.
+- **Human labels:**
+  - about 60 for the advice judge (`runs/<x>/advice_label_sample.jsonl` is exported for this),
+  - 50 traces for the stage 1/2 check,
+  - the second-member check of the paraphrases.
+- **Detector seeds:** George to review `seeds_v1.json`.
 
 ## 7. Repo
 
-https://github.com/georgerahul24/late-disclosure-recovery (private). Code reaches the cluster by `cluster/sync.sh push`, because the cluster has no GitHub credentials.
+https://github.com/georgerahul24/late-disclosure-recovery (private).
