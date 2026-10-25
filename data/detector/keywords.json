@@ -1,0 +1,42 @@
+{
+ "urgent": [
+  "chest pain",
+  "crushing",
+  "stroke",
+  "face droop",
+  "face drooped",
+  "slurred",
+  "coughed up blood",
+  "coughing up blood",
+  "worst headache",
+  "can't breathe",
+  "short of breath",
+  "blue lips",
+  "unconscious",
+  "passed out",
+  "seizure",
+  "weakness down"
+ ],
+ "head": [
+  "hit my head",
+  "bumped my head",
+  "head injury",
+  "banged my head",
+  "banged the back of my head",
+  "hit my forehead",
+  "fell and hit"
+ ],
+ "hypo": [
+  "hypo",
+  "low sugar",
+  "low blood sugar",
+  "shaky and sweaty"
+ ],
+ "foot": [
+  "foot ulcer",
+  "sore on my foot",
+  "foot wound",
+  "sore on the bottom of my foot",
+  "toe infection"
+ ]
+}

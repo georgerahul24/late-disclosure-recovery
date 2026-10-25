@@ -1,0 +1,282 @@
+[
+ {
+  "seed_id": "urgent-00",
+  "label": "urgent",
+  "text": "I have chest pain"
+ },
+ {
+  "seed_id": "urgent-01",
+  "label": "urgent",
+  "text": "pain in my chest spreading to my arm"
+ },
+ {
+  "seed_id": "urgent-02",
+  "label": "urgent",
+  "text": "my face has gone droopy"
+ },
+ {
+  "seed_id": "urgent-03",
+  "label": "urgent",
+  "text": "I can't lift my arm and my speech is slurred"
+ },
+ {
+  "seed_id": "urgent-04",
+  "label": "urgent",
+  "text": "coughing up blood"
+ },
+ {
+  "seed_id": "urgent-05",
+  "label": "urgent",
+  "text": "sudden terrible headache"
+ },
+ {
+  "seed_id": "urgent-06",
+  "label": "urgent",
+  "text": "I can hardly breathe"
+ },
+ {
+  "seed_id": "urgent-07",
+  "label": "urgent",
+  "text": "my lips are turning blue"
+ },
+ {
+  "seed_id": "urgent-08",
+  "label": "urgent",
+  "text": "I blacked out earlier"
+ },
+ {
+  "seed_id": "urgent-09",
+  "label": "urgent",
+  "text": "tight chest and sweating"
+ },
+ {
+  "seed_id": "head-00",
+  "label": "head",
+  "text": "I hit my head"
+ },
+ {
+  "seed_id": "head-01",
+  "label": "head",
+  "text": "bumped my head on a shelf"
+ },
+ {
+  "seed_id": "head-02",
+  "label": "head",
+  "text": "fell over and hit my head on the floor"
+ },
+ {
+  "seed_id": "head-03",
+  "label": "head",
+  "text": "knocked my head getting into the car"
+ },
+ {
+  "seed_id": "head-04",
+  "label": "head",
+  "text": "a door swung into my head"
+ },
+ {
+  "seed_id": "head-05",
+  "label": "head",
+  "text": "banged my skull on the cabinet"
+ },
+ {
+  "seed_id": "head-06",
+  "label": "head",
+  "text": "head knock playing football"
+ },
+ {
+  "seed_id": "head-07",
+  "label": "head",
+  "text": "smacked my head on the low ceiling"
+ },
+ {
+  "seed_id": "head-08",
+  "label": "head",
+  "text": "my head hit the pavement"
+ },
+ {
+  "seed_id": "head-09",
+  "label": "head",
+  "text": "there's a bump on my head after a fall"
+ },
+ {
+  "seed_id": "hypo-00",
+  "label": "hypo",
+  "text": "feeling shaky and sweaty"
+ },
+ {
+  "seed_id": "hypo-01",
+  "label": "hypo",
+  "text": "I went confused and trembly"
+ },
+ {
+  "seed_id": "hypo-02",
+  "label": "hypo",
+  "text": "felt faint until I ate a biscuit"
+ },
+ {
+  "seed_id": "hypo-03",
+  "label": "hypo",
+  "text": "my sugar felt low"
+ },
+ {
+  "seed_id": "hypo-04",
+  "label": "hypo",
+  "text": "woke up sweating at night with a racing heart"
+ },
+ {
+  "seed_id": "hypo-05",
+  "label": "hypo",
+  "text": "came over all wobbly and clammy"
+ },
+ {
+  "seed_id": "hypo-06",
+  "label": "hypo",
+  "text": "my partner said I wasn't making sense until I had some sugar"
+ },
+ {
+  "seed_id": "hypo-07",
+  "label": "hypo",
+  "text": "dizzy and sweaty before meals"
+ },
+ {
+  "seed_id": "hypo-08",
+  "label": "hypo",
+  "text": "nearly fainted and felt cold and clammy"
+ },
+ {
+  "seed_id": "hypo-09",
+  "label": "hypo",
+  "text": "shaky hands and foggy head"
+ },
+ {
+  "seed_id": "foot-00",
+  "label": "foot",
+  "text": "a sore on my foot that won't heal"
+ },
+ {
+  "seed_id": "foot-01",
+  "label": "foot",
+  "text": "my toe is red and leaking"
+ },
+ {
+  "seed_id": "foot-02",
+  "label": "foot",
+  "text": "a blister on my foot turned black"
+ },
+ {
+  "seed_id": "foot-03",
+  "label": "foot",
+  "text": "cut on my foot looks infected"
+ },
+ {
+  "seed_id": "foot-04",
+  "label": "foot",
+  "text": "the skin on my heel has broken open"
+ },
+ {
+  "seed_id": "foot-05",
+  "label": "foot",
+  "text": "ulcer on my sole"
+ },
+ {
+  "seed_id": "foot-06",
+  "label": "foot",
+  "text": "my toenail area is swollen and red"
+ },
+ {
+  "seed_id": "foot-07",
+  "label": "foot",
+  "text": "crack between my toes"
+ },
+ {
+  "seed_id": "foot-08",
+  "label": "foot",
+  "text": "a wound on my foot"
+ },
+ {
+  "seed_id": "foot-09",
+  "label": "foot",
+  "text": "my foot has a dark patch"
+ },
+ {
+  "seed_id": "benign-00",
+  "label": "benign",
+  "text": "I have a runny nose"
+ },
+ {
+  "seed_id": "benign-01",
+  "label": "benign",
+  "text": "my knee clicks"
+ },
+ {
+  "seed_id": "benign-02",
+  "label": "benign",
+  "text": "I can't sleep well"
+ },
+ {
+  "seed_id": "benign-03",
+  "label": "benign",
+  "text": "I get nervous before exams"
+ },
+ {
+  "seed_id": "benign-04",
+  "label": "benign",
+  "text": "I'd like a flu jab"
+ },
+ {
+  "seed_id": "benign-05",
+  "label": "benign",
+  "text": "I bumped my elbow but it's fine"
+ },
+ {
+  "seed_id": "benign-06",
+  "label": "benign",
+  "text": "small paper cut on my finger"
+ },
+ {
+  "seed_id": "benign-07",
+  "label": "benign",
+  "text": "my back is a bit stiff"
+ },
+ {
+  "seed_id": "benign-08",
+  "label": "benign",
+  "text": "mild hay fever"
+ },
+ {
+  "seed_id": "benign-09",
+  "label": "benign",
+  "text": "I feel a bit tired lately"
+ },
+ {
+  "seed_id": "benign-10",
+  "label": "benign",
+  "text": "shaky when I'm anxious"
+ },
+ {
+  "seed_id": "benign-11",
+  "label": "benign",
+  "text": "I nicked my finger cooking"
+ },
+ {
+  "seed_id": "benign-12",
+  "label": "benign",
+  "text": "I want to discuss my diet"
+ },
+ {
+  "seed_id": "benign-13",
+  "label": "benign",
+  "text": "I need a repeat prescription"
+ },
+ {
+  "seed_id": "benign-14",
+  "label": "benign",
+  "text": "slight cough for a day"
+ },
+ {
+  "seed_id": "benign-15",
+  "label": "benign",
+  "text": "my ears feel blocked"
+ }
+]
