@@ -18,7 +18,8 @@ mkdir -p "$SCR/synthea" data/synthea
 
 # 1. JDK 17 (Eclipse Temurin), node-local
 if [ ! -x "$SCR/jdk/bin/java" ]; then
-  curl -fsSL "https://api.adoptium.net/v3/binary/latest/17/ga/linux/x64/jdk/hotspot/normal/eclipse" -o "$SCR/jdk.tgz"
+  curl -fsSL "https://api.adoptium.net/v3/binary/latest/17/ga/linux/x64/jdk/hotspot/normal/eclipse" -o "$SCR/jdk.tgz.part"
+  mv "$SCR/jdk.tgz.part" "$SCR/jdk.tgz"
   mkdir -p "$SCR/jdk" && tar -xzf "$SCR/jdk.tgz" -C "$SCR/jdk" --strip-components=1 && rm "$SCR/jdk.tgz"
 fi
 JAVA="$SCR/jdk/bin/java"
@@ -27,10 +28,11 @@ JAVA="$SCR/jdk/bin/java"
 # 2. Synthea jar (pinned release; falls back to master build only if missing)
 JAR="$SCR/synthea/synthea-$SYNTHEA_VERSION.jar"
 if [ ! -s "$JAR" ]; then
-  curl -fsSL "https://github.com/synthetichealth/synthea/releases/download/$SYNTHEA_VERSION/synthea-with-dependencies.jar" -o "$JAR" \
-  || { SYNTHEA_VERSION=master-branch-latest; JAR="$SCR/synthea/synthea-$SYNTHEA_VERSION.jar";
-       curl -fsSL "https://github.com/synthetichealth/synthea/releases/download/master-branch-latest/synthea-with-dependencies.jar" -o "$JAR"; }
+  # download to .part and rename, so an interrupted download never looks complete
+  curl -fsSL "https://github.com/synthetichealth/synthea/releases/download/$SYNTHEA_VERSION/synthea-with-dependencies.jar" -o "$JAR.part"
+  mv "$JAR.part" "$JAR"
 fi
+unzip -tq "$JAR" >/dev/null || { echo "corrupt $JAR, delete it and rerun"; exit 1; }
 
 # 3. Generate (CSV only, full history, alive and dead kept; we filter later)
 OUT="$SCR/synthea/out-$SEED"

@@ -20,7 +20,7 @@ install_ollama() {
   if [ ! -x "$SCR/ollama/bin/ollama" ]; then
     mkdir -p "$SCR/ollama"
     local base=https://github.com/ollama/ollama/releases/download/$OLLAMA_VERSION
-    if curl -fsSL "$base/ollama-linux-amd64.tgz" -o "$SCR/ollama.tgz"; then
+    if curl -fsSL "$base/ollama-linux-amd64.tgz" -o "$SCR/ollama.tgz.part" && mv "$SCR/ollama.tgz.part" "$SCR/ollama.tgz"; then
       tar -xzf "$SCR/ollama.tgz" -C "$SCR/ollama"
     else
       curl -fsSL "$base/ollama-linux-amd64.tar.zst" -o "$SCR/ollama.tar.zst"
