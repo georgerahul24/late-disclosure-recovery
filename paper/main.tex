@@ -1,0 +1,65 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{amsmath}
+\newcommand{\recheck}{\textsc{ReCheck}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{Late-Disclosure Recovery in Stateful Clinical Agents:\\ A Benchmark for Repairing Committed Bookings}
+\author{George R. \quad Arihant R. \quad Aditya P.\\ Team: LEs \& Arihant}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Clinic chat agents now book, move and cancel appointments with tools. Patients often mention a worrying symptom only after the agent has acted. We build a benchmark that tests whether an agent notices that its own earlier booking is no longer safe, repairs it, escalates, and confirms the repair. The same symptom is disclosed at three points: in the first message, after the availability check, or after a confirmed booking. Record-matched pairs make the same words urgent for one patient and routine for another. Patients are real Synthea records. Grading reads the final backend state against a guideline-based action policy, and each failure is placed at one of five stages. We also test \recheck{}, a targeted baseline that adds a per-turn detector, record retrieval, an action-ledger re-check and read-back verification to a frozen 7B model. \todo{one sentence of headline results, generated from results/.}
+\end{abstract}
+
+\section{Introduction}
+Clinics are starting to use LLM agents that book, change and cancel visits through tools \citep{hasan2026careconnect,vatanparvar2026patientagentbench}. Patients often start with a routine request and mention the serious part later. For example: ``Thanks, see you Thursday. One more thing, I banged my head on the cupboard this morning.'' For a patient on clopidogrel this needs same-day assessment \citep{nice2023ng232}. For most others it does not. A safe agent must notice the symptom, check the record, see that its own booking is now wrong, fix it, and escalate.
+
+A wrong booking is worse than a wrong sentence. It stays in the system after the chat ends. The patient and the clinic both see a normal appointment and think the problem is handled.
+
+Prior work covers parts of this. Patient-facing benchmarks study triage and disclosure order, but score text or action labels, not committed state \citep{hua2026carebench,srirag2026anchor,zheng2026auditing}. Tool-agent benchmarks grade final state, but users change their goals openly \citep{yao2024taubench,rana2025agentchangebench,lee2026interventionbench}. General recovery methods undo or recompute work after an explicit revision \citep{qi2026revise,zhai2026revisable}. As far as we found, no benchmark tests an implicit, safety-relevant disclosure, placed at a controlled point relative to the agent's own committed action, whose urgency depends on the patient record, and graded on the final backend state (Section~\ref{sec:related}).
+
+\paragraph{Contributions.}
+(1) A late-disclosure recovery benchmark with counterfactual timing, record-matched pairs on real Synthea records, a guideline-based action policy, and state-based grading. (2) A five-stage failure attribution. (3) \recheck{}, a targeted baseline built from known parts, with one ablation per part. (4) A comparison against a strong deterministic controller, so that gains from re-checking are not confused with gains from detection.
+
+\section{Related Work}\label{sec:related}
+\paragraph{Patient-facing triage.} CARE-Bench scores the next action after each disclosure prefix, but the model only writes text \citep{hua2026carebench}. Models anchor on the first complaint and use later evidence poorly \citep{srirag2026anchor}, and performance drops when information arrives over several turns \citep{laban2025lost}. A recent benchmark varies late and stale evidence in healthcare workflows, but grades action labels with no tools or committed state \citep{zheng2026auditing}. A protocol paper proposes scoring state continuity and escalation without results \citep{yao2026workflow}.
+
+\paragraph{Healthcare tool agents.} PatientAgentBench has stateful scheduling tools and reports that agents handle admin requests without clinical screening \citep{vatanparvar2026patientagentbench}. It grades with an LLM jury and does not vary disclosure timing. CareConnect blocks the next action with a keyword filter \citep{hasan2026careconnect}. We use this pattern as a baseline.
+
+\paragraph{Record-dependent urgency.} MedPIC-Bench pairs questions with counterfactual patient facts in static QA \citep{hou2026medpic}. PMR-Bench ranks message urgency using the EHR \citep{gatto2026pmrbench}. Our pairs follow the contrast-set idea \citep{gardner2020contrast}, but sit inside a tool-using episode where the record must be retrieved.
+
+\paragraph{Recovery and committed actions.} Final-state grading comes from $\tau$-bench and ToolSandbox \citep{yao2024taubench,barres2025tau2,lu2024toolsandbox}. SABER guards the next mutating step \citep{cuadron2025saber}. REVISE and Revisable-by-Design recompute or compensate after an explicit user revision \citep{qi2026revise,zhai2026revisable}. AgentAbstain names ``post-hoc abstention'' but does not test repair \citep{liu2026agentabstain}. Read-back after a write is studied by \citet{mansoor2026verified}, and blind retries can look robust under transient faults \citep{chen2026bench2robust}. Ledgers and compensation exist in saga-style systems \citep{chang2025sagallm,patil2024goex}. \recheck{} reuses these ideas. Its only new part is that a user disclosure triggers them.
+
+\section{Benchmark}\label{sec:bench}
+\input{sections/benchmark}
+
+\section{\recheck{}}\label{sec:method}
+\input{sections/method}
+
+\section{Experimental Setup}\label{sec:setup}
+\input{sections/setup}
+
+\section{Results}\label{sec:results}
+\input{sections/results}
+
+\section{Limitations}
+\input{sections/limitations}
+
+\section{Ethics and Data}
+All patients are synthetic Synthea records \citep{walonoski2018synthea}. No real patient data is used. All tools act on a sandboxed mock backend. The agent has no tool for clinical advice. This is a research prototype, not a medical device.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

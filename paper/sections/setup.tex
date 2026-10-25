@@ -1,0 +1,14 @@
+\paragraph{Conditions.}
+\begin{itemize}
+\item \emph{Plain:} the booking prompt only.
+\item \emph{Safety prompt:} Plain plus an instruction to escalate emergencies.
+\item \emph{Plain + Label:} Plain plus the detector label each turn. It has no ledger, procedure or verify step, so it isolates the gain from detection alone.
+\item \emph{Rule gate:} a frozen keyword filter that blocks the next action. This is the CareConnect pattern \citep{hasan2026careconnect}.
+\item \emph{DSC:} a deterministic, state-aware controller with no LLM. It combines the detector, the record rules, cancelling, the invariant and read-back.
+\item \emph{\recheck{}} and \emph{Hybrid} (Section~\ref{sec:method}).
+\end{itemize}
+The ablations each remove one part of \recheck{}: no detector; detector as an optional tool; no retrieval; the full record in context instead of retrieval; no ledger; no read-back; and single-pass (one tool round per turn). Every LLM condition writes a short structured note each turn, which we use to attribute stages 1 and 2.
+
+\paragraph{Serving.} The orchestrator is served with Ollama as \texttt{qwen2.5:7b-instruct-q8\_0} (8-bit) on RTX 2080 Ti GPUs, one server per GPU, with an 8k context. The proposal named bf16 weights served by vLLM, but these GPUs do not support bf16. Like every other condition, the LoRA detector runs on the same evaluation text, which is never used for tuning.
+
+\paragraph{Analysis.} The scenario is the unit of analysis \citep{miller2024errorbars}. For each condition we average over timings, phrasings and seeds within a scenario, and compare conditions with a paired, scenario-level bootstrap (10{,}000 resamples). The five confirmatory comparisons are: \recheck{} vs Plain, \recheck{} vs Plain + Label, \recheck{} vs no-ledger, \recheck{} vs single-pass, and Hybrid vs DSC. They are Holm-corrected. We test \recheck{} against the DSC for equivalence with TOST at $\pm$10 points \citep{lakens2017equivalence}. We also report pass$^k$ over seeds \citep{yao2024taubench} and contrast consistency on matched pairs, meaning both sides of a pair are handled correctly \citep{gardner2020contrast}.

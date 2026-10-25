@@ -1,0 +1,27 @@
+\paragraph{Patients.} We generated 6{,}961 people with Synthea v3.3.0 (seed 20261026, Massachusetts, full history) \citep{walonoski2018synthea}. Of these, 4{,}638 were alive and aged 18 to 90. Each record keeps all medicines, including stopped ones, so a clopidogrel course that ended years ago is a real distractor. The checksums of every exported file are in the repository.
+
+\paragraph{Record rules.} Three symptom families are urgent only given a record fact. Each rule follows a guideline we checked line by line:
+\begin{itemize}
+\item \emph{Head:} a minor head injury is urgent for a patient currently on an anticoagulant or an antiplatelet other than aspirin alone (NICE NG232 rec.~1.2.4) \citep{nice2023ng232}.
+\item \emph{Hypo:} shakiness, sweating or confusion is urgent for a patient on insulin, a sulfonylurea or a meglitinide \citep{ada2025sec6}.
+\item \emph{Foot:} a foot wound or colour change is urgent for a patient with diabetes, within one working day or immediately if severe (NICE NG19 recs.~1.4.1--1.4.2) \citep{nice2015ng19}.
+\end{itemize}
+A matched negative gets the same words and passes extra exclusions. For head, these are no bleeding disorder, no seizure disorder, under 65, and not on aspirin alone; NHS guidance does not make the aspirin split that NICE makes, so aspirin-only patients are left out of clean negatives.
+
+\paragraph{Scenarios.} The evaluation set has 240 core scenarios on 240 distinct patients:
+\begin{itemize}
+\item 60 record-dependent red flags (20 per family), each with a matched negative (same sex in all 60 pairs, mean age gap 2.5 years);
+\item 60 universal red flags across 15 subtypes, each tied to a NICE or NHS source;
+\item 60 benign scenarios, 30 of which are near-misses (for example, shaky from coffee).
+\end{itemize}
+Every symptom has a direct and an indirect phrasing. There are also 30 extra-type copies: 12 where the red flag comes out only if the agent asks an open question, and 18 where the patient also asks for medical advice. The 21 scenarios where the symptom belongs to a family member are reported separately.
+
+\paragraph{Timing.} Every core scenario runs at three timings: T1 (the first message), MID (after the availability check, before booking) and POST (after a confirmed booking). The simulated patient is rule-based and reacts to backend events, not to the agent's words. So every condition meets the same patient. The patient answers a question about medicines from the record, because real patients know their own tablets.
+
+\paragraph{Tools and authority.} The agent has ten tools: \texttt{get\_patient\_record}, \texttt{search\_record}, \texttt{search\_policy}, \texttt{check\_availability}, \texttt{book}, \texttt{cancel}, \texttt{update\_appointment}, \texttt{list\_bookings}, \texttt{escalate\_to\_clinician} and \texttt{send\_message}. It may change only bookings made in the current conversation. It cannot book urgent slots, but it can convert a booking into an urgent-review request. A 40-passage clinic policy, each passage tied to a source, can be searched.
+
+\paragraph{Grading.} Grading reads only the final backend state and the tool log. The primary outcome is the \emph{policy} unsafe rate: the end state is not one of the scenario's acceptable end states. Same-day problems (hypo, non-severe foot) and red flags about a family member also accept keeping the routine booking if the case is escalated. We also report a \emph{strict} rate (unsafe unless escalated and no routine booking left) as a stress test, and a \emph{lenient} rate (unsafe unless escalated). This separation answers a known problem: a strict-only metric can call a clinically accepted state unsafe. For routine episodes we report completion and over-escalation. Each failed red-flag episode gets the first stage that broke: (1) detection, (2) context, (3) earlier action not revised, (4) repair attempted but failed, (5) escalation not completed. We also flag false claims, where the reply says it booked, cancelled or escalated but no matching tool call succeeded \citep{cartagena2026gap}.
+
+\paragraph{Tool faults.} Three injected faults test robustness: a cancel that fails once, a slot taken between check and booking, and a booking whose response is lost even though it was made. The last one makes blind retrying useless and needs read-back \citep{chen2026bench2robust,mansoor2026verified}.
+
+\paragraph{Leakage control.} The evaluation phrasings and the detector training seeds were written by separately instructed agents, neither of which saw the other's text. Seeds and paraphrases sharing six or more consecutive words with any evaluation text were removed \citep{elangovan2021memorization}. The largest remaining overlap is five words. The frozen keyword list matches 10\% of direct and 0\% of indirect red-flag phrasings.

@@ -1,0 +1,8 @@
+\begin{itemize}
+\item \textbf{Synthetic records.} Synthea records are cleaner and more regular than real records \citep{chen2019synthea}. Retrieval may be easier here than in practice.
+\item \textbf{Agent-written text.} The evaluation phrasings and the detector seeds were written by LLM agents with separate instructions, not by the team as first planned. The team has not yet reviewed them. Two independent agents also converged on common clinical wording, which we handled by decontamination.
+\item \textbf{Unreviewed action policy.} The action policy is derived from guidelines. It has not been reviewed by a clinician or by two team members with an agreement score.
+\item \textbf{Unvalidated advice judge.} The medical-advice judge is not yet validated against human labels. Medical LLM judges can be close to chance on some tasks \citep{delucia2026verdict}.
+\item \textbf{One model family.} We test one open model family, served at 8-bit precision rather than bf16.
+\item \textbf{Simple simulator.} The simulated patient is rule-based. It does not test agents that hold long clarifying dialogues.
+\end{itemize}

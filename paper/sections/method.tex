@@ -1,0 +1,11 @@
+\recheck{} runs five steps on every patient turn. None of the parts is new on its own; what we test is whether combining them helps in this setting.
+
+\begin{enumerate}
+\item \textbf{Detect.} A small classifier labels each message as urgent, head, hypo, foot or benign. It runs on every turn, like a guard model \citep{inan2023llamaguard}, and its label is added to the model's input. We train Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B with LoRA \citep{hu2022lora} (rank 16, $\alpha{=}32$, dropout 0.05 on the attention projections, learning rate $2\times10^{-4}$, 3 epochs, batch 16, three seeds). Training data is 229 seeds plus 756 checked paraphrases, each also placed in pre- and post-booking carrier messages. The split is 85/15, grouped by seed.
+\item \textbf{Ground.} If the label is not benign, the model retrieves the deciding facts from the record and the matching policy passage \citep{lewis2020rag}, and cites them.
+\item \textbf{Re-check.} The harness keeps an action ledger of every booking action taken in the conversation. The model judges each entry against the new facts.
+\item \textbf{Repair and escalate.} For each entry that is no longer safe, the model cancels it or converts it to urgent, then escalates with a short summary.
+\item \textbf{Verify.} The model reads the bookings back. If the repair did not take effect it retries once, then hands over.
+\end{enumerate}
+
+The orchestrator is a frozen Qwen2.5-7B-Instruct in a ReAct loop \citep{yao2023react} with native tool calls. All LLM conditions share the model, the tools and the decoding settings (temperature 0). The Hybrid condition adds a deterministic rule after each turn: once the case is escalated, no routine booking from the ledger may stay active.
