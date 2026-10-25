@@ -145,11 +145,19 @@ class ClinicBackend:
         return asdict(b)
 
     def update_appointment(self, booking_id: str, slot_id: str | None = None,
-                           visit_type: str | None = None) -> dict:
+                           visit_type: str | None = None, priority: str | None = None) -> dict:
+        """Change a booking. priority="urgent" converts it into an urgent-review
+        request: the booking stays active but its kind becomes "urgent" and a
+        clinician will allocate the actual urgent slot. This is the "convert to
+        urgent" repair in the clinical action policy."""
         b = self.bookings.get(booking_id)
         if b is None:
             raise ToolError(f"unknown booking {booking_id}")
         self._maybe_fail("update_appointment")
+        if priority is not None:
+            if priority not in ("routine", "urgent"):
+                raise ToolError(f"unknown priority {priority}")
+            b.kind = priority
         if slot_id is not None:
             if slot_id not in self.slots:
                 raise ToolError(f"unknown slot {slot_id}")
