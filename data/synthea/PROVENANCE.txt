@@ -1,0 +1,12 @@
+generated: 2026-10-25T22:18:46+00:00 on gnode089
+synthea_release: v3.3.0
+synthea_jar_sha256: 8ba04f7d73abadd5a377e41edf24c5c83935a1cb07c6d982cd5db731ef1cf445
+java: openjdk version "17.0.21" 2026-10-20
+args: -p 6000 -s 20261026 -cs 20261026 Massachusetts, csv export, years_of_history=0
+summary: Records: total=6961, alive=6000, dead=961
+raw_csv_dir: /ssd_scratch/gr/lma/synthea/out-20261026/csv (node gnode089, not in git)
+patients.csv: 6962 lines sha256=543843c6689a12ac100d589e189dea03b87ffedfdbf2eba26cdce8898f347b9e
+medications.csv: 854899 lines sha256=3f9a4485e05d63e9d65d052c40cc7eed920d87e44bc35ba5b91ee883e1a74342
+conditions.csv: 709999 lines sha256=a79f17ab8c7d265d8c92eb0b737341544687c02d0b3caf24884720249bb4d62e
+encounters.csv: 1297631 lines sha256=30322173a5be8b07712b6360c1cd15b2e1d7eeaa0cfc81a73cad177de676c17c
+observations.csv: 16928813 lines sha256=e9f75cbc4fba81020de14d501fbb67745db23652158034b4373918594d730b52
