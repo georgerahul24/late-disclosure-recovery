@@ -9,8 +9,9 @@ cd "$(dirname "$0")/.."
 SCR=${SCR:-/ssd_scratch/gr/lma}
 export PATH="$HOME/.local/bin:$PATH"
 export UV_CACHE_DIR=$SCR/uv-cache
+export UV_HTTP_TIMEOUT=${UV_HTTP_TIMEOUT:-600}   # big CUDA wheels over a slow link
 V=$SCR/venv-train
-uv venv --python 3.12 "$V"
+[ -x "$V/bin/python" ] || uv venv --python 3.12 "$V"
 # torch cu121 wheels support sm_75 (RTX 2080 Ti)
 uv pip install --python "$V/bin/python" --index-url https://download.pytorch.org/whl/cu121 "torch==2.4.1"
 uv pip install --python "$V/bin/python" "transformers==4.44.2" "peft==0.12.0" "accelerate==0.33.0" \
