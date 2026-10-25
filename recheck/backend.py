@@ -12,6 +12,7 @@ Faults are consumed in order, so the same plan always gives the same trace.
 from __future__ import annotations
 
 import itertools
+from datetime import datetime
 from dataclasses import asdict, dataclass, field
 
 
@@ -103,8 +104,9 @@ class ClinicBackend:
 
     def check_availability(self, kind: str = "routine") -> list[dict]:
         self._maybe_fail("check_availability")
-        free = [asdict(s) for s in self.slots.values()
-                if s.kind == kind and s.slot_id not in self.taken_slot_ids()]
+        # Include the weekday: without it, models invent the wrong one.
+        free = [{**asdict(s), "day": datetime.fromisoformat(s.start).strftime("%A %d %B %Y")}
+                for s in self.slots.values() if s.kind == kind and s.slot_id not in self.taken_slot_ids()]
         if self.faults.steal_after_check and not self._stolen:
             # Slots are listed as free now but will be taken before booking.
             self._stolen = True
