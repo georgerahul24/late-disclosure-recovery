@@ -8,7 +8,8 @@
 #   OLLAMA_PIDS  array of server PIDs
 
 MODEL=${MODEL:-qwen2.5:7b-instruct-q8_0}
-OLLAMA_VERSION=${OLLAMA_VERSION:-v0.9.6}
+OLLAMA_ARCHIVE=${OLLAMA_ARCHIVE:-$HOME/ollama}   # George's Ollama bundle (zstd tar, v0.21.2)
+OLLAMA_VERSION=${OLLAMA_VERSION:-v0.9.6}          # download fallback only
 PARALLEL=${PARALLEL:-2}   # concurrent requests per server
 CTX=${CTX:-8192}
 BASE_PORT=${BASE_PORT:-11434}
@@ -19,6 +20,11 @@ install_ollama() {
   df -h "$SCR" | tail -1
   if [ ! -x "$SCR/ollama/bin/ollama" ]; then
     mkdir -p "$SCR/ollama"
+    # 1st choice: the bundle in home (fast copy over NFS). Needs zstd, which
+    # compute nodes have and the login node does not.
+    if [ -s "$OLLAMA_ARCHIVE" ] && zstd -dc "$OLLAMA_ARCHIVE" | tar -x -C "$SCR/ollama"; then
+      OLLAMA="$SCR/ollama/bin/ollama"; "$OLLAMA" --version || true; return 0
+    fi
     local base=https://github.com/ollama/ollama/releases/download/$OLLAMA_VERSION
     if curl -fsSL "$base/ollama-linux-amd64.tgz" -o "$SCR/ollama.tgz.part" && mv "$SCR/ollama.tgz.part" "$SCR/ollama.tgz"; then
       tar -xzf "$SCR/ollama.tgz" -C "$SCR/ollama"

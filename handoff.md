@@ -57,6 +57,7 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
 ## 5. Known issues and traps
 
 - **`sbatch --test-only` gives false start times on this cluster.** Submit for real instead.
+- **`~/ollama` is the Ollama bundle (v0.21.2, a zstd tar).** Unpack it on a compute node; the login node has no zstd.
 - **Requests for 3 or more GPUs can sit as "ReqNodeNotAvail, reserved"** on half-used nodes. Fully free nodes (gnode072, gnode089 that day) start at once.
 - **Home quota is nearly full** (about 4 GB free). Put big things on node scratch.
 - **The 2080 Ti has no bf16.** We use the q8_0 Ollama model and fp16 for LoRA. This is a deviation from the proposal and must be reported.

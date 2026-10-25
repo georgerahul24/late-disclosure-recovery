@@ -18,5 +18,5 @@ sbatch -w gnode048 --gres=gpu:3 -c 12 --mem=48G cluster/llm_job.sbatch ...   # o
 
 - **`sbatch --test-only` lies here.** It reported a start time 40 hours away for every request, while real jobs started within seconds to minutes. Submit for real and watch `squeue`.
 - **Check `/ssd_scratch` space** on the node first. Some nodes are full; for example gnode079 had 3 GB free.
-- **Do not use `~/ollama`.** That 2 GB archive does not decompress with the cluster's zstd, so the job downloads a pinned release instead.
+- **`~/ollama` is the Ollama bundle** (a zstd tar). The login node has no `zstd`, so unpack it on a compute node. The scripts do this.
 - **The GPUs are 2080 Ti.** That means no bf16, and 7B fp16 does not fit on one card. Use q8_0 or Q4 via Ollama.

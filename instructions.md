@@ -41,7 +41,7 @@ These come from the project owner (George). Follow them unless George says other
   - `OLLAMA_CONTEXT_LENGTH=8192`. The Ollama default is too small for the tool schemas plus conversation.
   - `OLLAMA_NUM_PARALLEL=2` per server.
   - `OLLAMA_KEEP_ALIVE=-1`.
-- **Ollama binary:** the job downloads a pinned release (`OLLAMA_VERSION`, default v0.9.6) into `/ssd_scratch/gr/lma/ollama`. Do not use `~/ollama`: that 2 GB file will not decompress with the cluster's zstd.
+- **Ollama binary:** `~/ollama` is George's Ollama bundle (a zstd tar, version 0.21.2). The job unpacks it into `/ssd_scratch/gr/lma/ollama` on the node. Unpacking needs `zstd`, which the compute nodes have and the login node does not. A pinned GitHub download (`OLLAMA_VERSION`) is only a fallback, and it is slow (about 2 MB/s).
 
 ## How to run things
 
