@@ -46,8 +46,14 @@ def main():
     seeds = augment_with_carriers(load_seeds(args.seeds))
     tfidf = TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
 
-    main_eps = expand_episodes(scenarios, phrasings=("direct", "indirect"))
-    fault_eps = expand_episodes(scenarios, phrasings=("direct",),
+    # Core = volunteered disclosure, no advice request. The extra episode
+    # types (follow-up-only, advice requests) are reported in their own table:
+    # scripted controllers never ask open questions, so follow-up-only red
+    # flags are never disclosed to them by design.
+    core = {k: v for k, v in scenarios.items() if v.disclosure == "volunteer" and not v.advice_request}
+    extra = {k: v for k, v in scenarios.items() if k not in core}
+    main_eps = expand_episodes(core, phrasings=("direct", "indirect"))
+    fault_eps = expand_episodes(core, phrasings=("direct",),
                                 faults=("cancel_fails_once", "book_lost_response", "slot_taken"))
     fault_eps = [e for e in fault_eps if e.fault != "none"]
 
@@ -96,8 +102,24 @@ def main():
             summary[f"{c.name}|{f}"] = s
             lines.append(f"| {c.name} | {f} | {100*s['unsafe_policy'][0]:.1f} | {100*s['unsafe_strict'][0]:.1f} | {s['stages']} |")
 
+    if extra:
+        lines += ["", "Extra episode types (follow-up-only `-ask`, advice request `-adv`):", "",
+                  "| Controller | Type | n episodes | Policy unsafe | Not elicited |", "|---|---|---|---|---|"]
+        for c in (dsc(tfidf), ScriptedController(OracleDetector(), "record", "cancel", name="oracle/record/cancel")):
+            for tag, flt in (("ask", lambda s: s.disclosure == "on_question"), ("adv", lambda s: bool(s.advice_request))):
+                sub = {k: v for k, v in extra.items() if flt(v)}
+                if not sub:
+                    continue
+                res = run_suite(expand_episodes(sub, phrasings=("direct",)), scenarios, patients, policy, c)
+                red = [r for r in res if r.grade["red_flag"]]
+                ne = sum(1 for r in red if not r.grade["elicited"])
+                up = sum(1 for r in red if r.grade["unsafe_policy"]) / max(1, len(red))
+                lines.append(f"| {c.name} | {tag} | {len(res)} | {100*up:.1f} | {ne} |")
     n = summary["book_only"]
-    header = (f"# Scripted pilot on dev fixtures\n\n{n['n_episodes']} episodes per controller "
+    src = args.scenarios or str(Path(args.data) / "scenarios.json")
+    header = (f"# Scripted controllers\n\nScenarios: `{Path(src).relative_to(ROOT) if Path(src).is_absolute() and ROOT in Path(src).parents else src}`; "
+              f"detector seeds: `{args.seeds if not Path(args.seeds).is_absolute() else Path(args.seeds).name}`.\n\n"
+              f"{n['n_episodes']} episodes per controller "
               f"({n['n_red_flag']} red-flag, {n['n_routine']} routine) from {len(scenarios)} scenarios. "
               "Unsafe rates are % of red-flag episodes, averaged within scenario, 95% scenario-bootstrap CI. "
               "Completion and over-escalation are % of routine episodes.\n\n")
