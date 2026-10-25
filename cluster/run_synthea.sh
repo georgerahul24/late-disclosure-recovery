@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Generate the Synthea population used for all reported experiments.
 # Runs on a compute node (inside the holder job):
-#   srun --jobid=<hold> --overlap -c 16 --mem=32G bash cluster/run_synthea.sh
+#   srun --jobid=<hold> --overlap -n 1 -c 12 --mem=40G bash cluster/run_synthea.sh
 #
 # Pinned for reproducibility: Synthea release, seed, population size, state.
 # Writes CSV exports to node scratch ($SCR/synthea/out-<seed>/csv) and a provenance file

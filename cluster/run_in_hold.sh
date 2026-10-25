@@ -12,5 +12,5 @@ ENV=logs/hold-$JOB.env
 source "$ENV"
 SCRIPT=$1; shift
 WORKERS=${WORKERS:-$(( $(echo "$OLLAMA_URLS" | tr ',' '\n' | wc -l) * ${PARALLEL:-2} ))}
-exec srun --jobid="$JOB" --overlap -c "${CPUS:-4}" --mem=8G \
+exec srun --jobid="$JOB" --overlap -n 1 -c "${CPUS:-4}" --mem=8G \
   .venv/bin/python "$SCRIPT" --base-urls "$OLLAMA_URLS" --model "${RUN_MODEL:-$MODEL}" --workers "$WORKERS" "$@"
