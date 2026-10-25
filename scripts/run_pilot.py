@@ -31,14 +31,19 @@ from recheck.scenarios import expand_episodes, load_scenarios  # noqa: E402
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=str(ROOT / "data" / "dev"))
+    ap.add_argument("--scenarios")
+    ap.add_argument("--patients")
+    ap.add_argument("--policy")
+    ap.add_argument("--seeds", default=str(ROOT / "data" / "detector" / "dev_seeds.json"),
+                    help="detector training seeds for the TF-IDF stand-in")
     ap.add_argument("--out", default=str(ROOT / "runs" / "pilot"))
     args = ap.parse_args()
     data = Path(args.data)
-    patients = load_patients(data / "patients.json")
-    scenarios = load_scenarios(data / "scenarios.json")
-    policy = load_policy(data / "policy.json")
+    patients = load_patients(args.patients or data / "patients.json")
+    scenarios = load_scenarios(args.scenarios or data / "scenarios.json")
+    policy = load_policy(args.policy or data / "policy.json")
     kw = KeywordDetector.from_file(ROOT / "data" / "detector" / "keywords.json")
-    seeds = augment_with_carriers(load_seeds(ROOT / "data" / "detector" / "dev_seeds.json"))
+    seeds = augment_with_carriers(load_seeds(args.seeds))
     tfidf = TfidfDetector().fit([s["text"] for s in seeds], [s["label"] for s in seeds])
 
     main_eps = expand_episodes(scenarios, phrasings=("direct", "indirect"))
