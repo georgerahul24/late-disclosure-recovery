@@ -1,0 +1,30 @@
+```
+## Verdict
+
+**The benchmark has a credible, fairly specific novelty claim; RECHECK is less novel as a method.** The strongest contribution is not “an agent that handles late information,” but a controlled test of whether a *patient-specific safety fact disclosed after a booking* causes the agent to revisit, repair, and verify that committed backend action.
+
+This is a **preliminary assessment, not a first-ever claim**; a focused literature search would be needed before making a priority claim.
+
+| Part | Novelty read |
+|---|---|
+| Late-disclosure benchmark | **Strongest.** The timing comparison, matched patients with different risk, and grading of the final backend state form a distinctive package. |
+| Failure-stage analysis | **Moderate.** Useful and tailored to the problem, but the five-stage taxonomy alone is unlikely to carry the novelty claim. |
+| RECHECK architecture | **Incremental.** Detection, retrieval, action ledgers, compensating actions, and read-back verification are established ingredients; the contribution is their targeted integration and evaluation. |
+| Pilot | **Feasibility evidence only.** It tests the grader and scripted controllers, not whether RECHECK works with LLMs—as the proposal correctly acknowledges. |
+
+## What adjacent work already covers
+
+PatientAgentBench already evaluates patient-facing agents using records and stateful healthcare tools, including scheduling. Its described setup does not, however, isolate post-booking safety disclosures, matched counterfactual patients, or a dedicated final-state repair test [Vat26b]. ([arxiv.org](https://arxiv.org/abs/2607.25485?utm_source=openai))
+
+CARE-Bench tests sequential disclosure and changing triage decisions, but scores the current patient-facing action rather than repair of a completed tool action [Hua26g]. AgentChangeBench tests goal shifts after progress, but not a new safety fact that retroactively makes an earlier action wrong [Ran25b]. A workflow-evaluation protocol includes late details and state continuity, but does not specify repair of a committed scheduling action [Yao26b].
+
+CareConnect is a particularly close application neighbor: it supports appointment booking, changes, cancellation, and emergency filtering. Its reported work does not describe the proposed post-commitment recovery test [Has26b]. ([arxiv.org](https://arxiv.org/abs/2607.05055?utm_source=openai)) More generally, SABER gates mutating actions before execution, while AgentRewind recovers from failing execution trajectories; neither, as described, is a test of using newly disclosed clinical facts to reassess and compensate for an earlier external action [Cua25, Zhu26d].
+
+**So the defensible distinction is narrow but meaningful:** these works cover healthcare agents, sequential triage, goal changes, or recovery; your proposal centers on the intersection—*late, record-conditioned safety information that invalidates an already executed administrative action, with repair judged against the resulting system state.*
+
+## Main issue to fix
+
+The **strict unsafe metric appears to conflict with the clinician-defined acceptable end states**. The proposal allows “keep and escalate” as acceptable for some cases, but defines strict safety as “escalated and no routine booking left.” That could label a clinically accepted state unsafe by construction. I’d either make clinician-policy grading primary, or clearly define strict grading as a separate stress-test measure and explain this discrepancy.
+
+For the paper’s claim, I’d lead with the benchmark and describe RECHECK as a targeted baseline method—not present the component combination as the main breakthrough. Avoid “first” until a focused search tests the claim. I can run that search or help sharpen the novelty paragraph and outcome definitions.
+```
