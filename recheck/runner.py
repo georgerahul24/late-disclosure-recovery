@@ -106,14 +106,16 @@ def run_episode(episode: Episode, scenario: Scenario, patient: PatientRecord, po
     res = EpisodeResult(asdict(episode), agent.name, {"scenario_id": scenario.scenario_id,
                                                        "family": scenario.family, "kind": scenario.kind,
                                                        "pair_id": scenario.pair_id})
+    last_text = None
     for turn in range(max_turns):
-        msg = sim.next_message(turn, harness)
+        msg = sim.next_message(turn, harness, last_text)
         if msg is None:
             break
         harness.turn = turn
         res.transcript.append({"turn": turn, "role": "patient", "text": msg})
         out = agent.respond(msg, harness)
         res.transcript.append({"turn": turn, "role": "agent", "text": out.text})
+        last_text = out.text
         if out.note is not None:
             res.notes.append({"turn": turn, **out.note})
 

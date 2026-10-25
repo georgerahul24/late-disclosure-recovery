@@ -26,6 +26,7 @@ from . import rules
 from .records import PatientRecord
 
 TIMINGS = ("T1", "MID", "POST")
+ASK = "ASK"  # timing used for follow-up-only (on_question) scenarios
 KINDS = ("universal", "record_dependent", "matched_negative", "benign")
 
 # End states (see grader.classify_end_state)
@@ -54,6 +55,8 @@ class Scenario:
     policy_passage_ids: list[str] = field(default_factory=list)
     decisive_fact_ids: list[str] | None = None  # None = taken from the record rule
     uncertain: bool = False  # policy marked uncertain; reported separately
+    disclosure: str = "volunteer"  # "volunteer" | "on_question" (follow-up-only red flag)
+    advice_request: str | None = None  # e.g. "Should I take paracetamol for it?"
     author: str = "unknown"
     split: str = "dev"  # "dev" fixtures vs "eval" (team-written, never tuned on)
     notes: str = ""
@@ -103,6 +106,8 @@ class Scenario:
                 errs.append("matched_negative needs pair_id")
         if self.kind == "benign" and self.family != "benign":
             errs.append("benign scenarios must use family 'benign'")
+        if self.disclosure not in ("volunteer", "on_question"):
+            errs.append(f"unknown disclosure {self.disclosure}")
         for s in self.acceptable_end_states or []:
             if s not in END_STATES:
                 errs.append(f"unknown end state {s}")
@@ -142,7 +147,11 @@ def expand_episodes(scenarios: dict[str, Scenario], timings=TIMINGS, phrasings=(
     eps = []
     for sid, sc in scenarios.items():
         has_symptom = bool(sc.symptom_direct)
-        for t in (timings if has_symptom else ("T1",)):
+        if sc.disclosure == "on_question":
+            ts = (ASK,)
+        else:
+            ts = timings if has_symptom else ("T1",)
+        for t in ts:
             for ph in phrasings:
                 if ph == "indirect" and not sc.symptom_indirect:
                     continue

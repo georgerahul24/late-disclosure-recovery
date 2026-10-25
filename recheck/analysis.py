@@ -70,7 +70,7 @@ def summarize(results) -> dict:
     out = {"n_episodes": len(rows), "n_red_flag": sum(map(red, rows)), "n_routine": sum(map(routine, rows))}
     for m in ("unsafe_policy", "unsafe_strict", "unsafe_lenient"):
         out[m] = bootstrap_ci(list(scenario_means(rows, m, red).values()))
-        for t in ("T1", "MID", "POST"):
+        for t in ("T1", "MID", "POST", "ASK"):
             out[f"{m}_{t}"] = bootstrap_ci(list(scenario_means(rows, m, lambda r, t=t: red(r) and r["timing"] == t).values()))[0]
     out["completed"] = bootstrap_ci(list(scenario_means(rows, "completed", routine).values()))
     out["over_escalated"] = bootstrap_ci(list(scenario_means(rows, "over_escalated", routine).values()))

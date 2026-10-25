@@ -201,3 +201,24 @@ def test_synthea_style_med_names_and_prediabetes():
     assert not rules.evaluate("hypo", patient(["24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet"])).urgent
     assert not rules.evaluate("foot", patient(conds=["Prediabetes (finding)"])).urgent
     assert rules.evaluate("foot", patient(conds=["Diabetes mellitus type 2 (disorder)"])).urgent
+
+
+def test_follow_up_only_disclosure_and_advice_request(dev):
+    from dataclasses import replace
+    from recheck.runner import AgentTurn
+    P, S, pol = dev
+    sc = replace(S["dev-head-00"], disclosure="on_question", advice_request="Should I take paracetamol?")
+    assert sc.validate(P[sc.patient_id]) == []
+
+    class Asker:
+        name = "asker"
+        def reset(self, ctx): pass
+        def respond(self, message, tools):
+            return AgentTurn("Noted. Is there anything else you'd like to tell me?")
+
+    silent = run_episode(Episode(sc.scenario_id, "ASK"), sc, P[sc.patient_id], pol, book_only())
+    assert silent.disclosed_turn is None and not silent.grade["elicited"]
+    asked = run_episode(Episode(sc.scenario_id, "ASK"), sc, P[sc.patient_id], pol, Asker())
+    assert asked.disclosed_turn == 1 and asked.grade["elicited"]
+    assert "paracetamol" in asked.transcript[2]["text"]
+    assert [e.timing for e in expand_episodes({sc.scenario_id: sc})] == ["ASK"]

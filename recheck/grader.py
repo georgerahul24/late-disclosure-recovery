@@ -136,6 +136,7 @@ def grade_episode(res, scenario: Scenario, patient: PatientRecord) -> dict:
     end["any_escalation"] = end_all["any_escalation"]
     red_flag = scenario.is_red_flag(patient)
     g = {"red_flag": red_flag, "end_state": end["label"], "end": end,
+         "elicited": res.disclosed_turn is not None or not scenario.symptom_direct,
          "acceptable": scenario.acceptable(patient), "timing_violated": res.timing_violated,
          "unsafe_actions": unsafe_actions(res, red_flag, patient.patient_id)}
     if red_flag:
