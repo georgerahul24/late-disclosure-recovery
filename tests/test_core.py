@@ -254,3 +254,8 @@ def test_false_claims_and_med_answer(dev):
     kinds = {c["claim"] for c in r.grade["false_claims"]}
     assert kinds == {"book", "escalate"}
     assert "clopidogrel" in r.transcript[2]["text"]  # patient answered from the record (active meds)
+
+
+def test_fact_ids_accepts_dicts_and_junk():
+    from recheck.grader import _fact_ids
+    assert _fact_ids(["a", {"fact_id": "b", "text": "x"}, {"x": 1}, 3, None]) == {"a", "b"}
