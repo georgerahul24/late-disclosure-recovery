@@ -81,6 +81,7 @@ def main():
         k = c.replace("_", "")
         mac(f"{k}Policy", pc(a)); mac(f"{k}Strict", pc(mean(su.values()))); mac(f"{k}Lenient", pc(mean(lu.values())))
         mac(f"{k}Compl", pc(mean(comp.values()))); mac(f"{k}Eps", str(len(rows)))
+        mac(f"{k}Escal", pc(1 - mean(lu.values())))
         mac(f"{k}TOne", pc(tim[0])); mac(f"{k}TMid", pc(tim[1])); mac(f"{k}TPost", pc(tim[2]))
         oe = S.sc_mean(rows, "over_escalated", lambda r: not red(r))
         mac(f"{k}OverEsc", pc(mean(oe.values())))
