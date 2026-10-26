@@ -72,7 +72,7 @@ Owners:
   4. the 7 ablations (seed 0, direct phrasing),
   5. the faults.
 - Check progress with `cat logs/queue.log` and `ls logs/queue/*.done`.
-- After the queue ends: unload qwen, run `scripts/judge_runs.py` with llama3.1:8b, then `cluster/sync.sh pull`, `scripts/summarize_runs.py`, `scripts/timing_model.py` and `scripts/make_tables.py`.
+- After the queue ends: **first re-run each `run_llm.py` command with the same `--out` (resume pass)** so that episodes dropped by crashes are filled in. Check that every `<cond>_s<seed>.jsonl` has all its episodes. Then unload qwen, run `scripts/judge_runs.py` with llama3.1:8b, then `cluster/sync.sh pull`, `scripts/summarize_runs.py`, `scripts/timing_model.py` and `scripts/make_tables.py`.
 - [x] Smoke test LLM conditions on gnode089 (holder job). Check the valid tool-call rate. If it is under 90%, use the fallback: 14B model (proposal Table 4).
 - [ ] 5 main conditions x 3 seeds: plain, safety, plain_label, recheck, hybrid.
 - [ ] Rule gate (scripted) and DSC on the same eval set.
