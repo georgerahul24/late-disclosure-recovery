@@ -1,0 +1,50 @@
+{
+ "base": "Qwen/Qwen2.5-0.5B",
+ "labels": [
+  "urgent",
+  "head",
+  "hypo",
+  "foot",
+  "benign"
+ ],
+ "seed": 2,
+ "n_train": 4198,
+ "n_dev": 743,
+ "n_seeds": 229,
+ "n_paraphrases": 756,
+ "seeds_file": "data/detector/seeds_v1_decon.json",
+ "paraphrases_file": "data/detector/paraphrases_v1_decon.json",
+ "n_train_groups": 194,
+ "n_dev_groups": 35,
+ "best_dev_macro_f1": 0.9587821604429798,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.705474161414288,
+   "dev_macro_f1": 0.9520974694169805,
+   "dev_acc": 0.955585464333782
+  },
+  {
+   "epoch": 2,
+   "train_loss": 4.2800214354076315e-05,
+   "dev_macro_f1": 0.9587821604429798,
+   "dev_acc": 0.9609690444145357
+  },
+  {
+   "epoch": 3,
+   "train_loss": 3.958619061643665e-06,
+   "dev_macro_f1": 0.9587821604429798,
+   "dev_acc": 0.9609690444145357
+  }
+ ],
+ "hparams": {
+  "r": 16,
+  "alpha": 32,
+  "dropout": 0.05,
+  "lr": 0.0002,
+  "epochs": 3,
+  "bs": 16,
+  "dtype": "base fp16 + trainable fp32, fp16 autocast, grad ckpt",
+  "max_len": 96
+ }
+}
