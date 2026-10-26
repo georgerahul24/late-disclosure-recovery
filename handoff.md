@@ -60,6 +60,15 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
 
 ## 4. Cluster state (check before you start)
 
+**UPDATE 2026-10-27.**
+- Holder 39713 (gnode089) was **cancelled on 2026-10-26 at 14:50** (SLURM state CANCELLED). Everything running in it stopped, and the queue then "finished" because every step failed at once. The queue now stops by itself if its holder disappears.
+- The new holder is **job 41206 on gnode062**, with 2 GPUs (2 Ollama servers), 24 CPUs and 96 GB. It has only 2 GPUs because George's `kings_server` (job 40463) uses the other 2 of the 4-GPU QoS.
+- The LoRA detector now runs on CPU (`DET_GPU` empty in `cluster/queue_main.sh`). The torch env was rebuilt on gnode062 (`logs/train_env_062.out`).
+- **Done before the cancel:** the detector comparison, the scripted baselines and DSC faults, Plain (3 seeds) and Plain + Label (3 seeds, a few episodes missing).
+- **Left:** RECHECK, Hybrid, Safety, the ablations and the faults. After those, the judge and the analysis.
+
+**Older notes:**
+
 - **Holder job 39713** runs on **gnode089**: 4x RTX 2080 Ti, 36 CPUs, 100 GB RAM. It started 2026-10-26 about 03:40 IST and has a 4-day limit, so it ends around 2026-10-30.
   - It runs 4 Ollama servers (ports 11434-11437) with `qwen2.5:7b-instruct-q8_0` loaded. Details are in `~/lma/logs/hold-39713.env`.
   - A watchdog restarts any server that dies.

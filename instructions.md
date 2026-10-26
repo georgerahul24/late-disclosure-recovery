@@ -14,9 +14,10 @@ These come from the project owner (George). Follow them unless George says other
 ## The compute cluster (IIIT Hyderabad "ada")
 
 - **Login:** `ssh gr@ada-gw1.iiit.ac.in`. Key-based SSH works from George's laptop with no password prompt.
-- **Scheduler:** SLURM. Account `research`, partition `u22`, QoS `medium`. The QoS limit per user is **40 CPUs, 4 GPUs, 125 GB RAM, 4 days**. George's rule: use **up to 36 CPUs and 4 GPUs**.
+- **Scheduler:** SLURM. Account `research`, partition `u22`, QoS `medium`. The QoS limit per user is **40 CPUs, 4 GPUs, 125 GB RAM, 4 days**. This limit is shared with George's other jobs (for example `kings_server`), so check `squeue -u gr` first. George's rule: use **up to 36 CPUs and 4 GPUs**.
 - **Nodes:** use **gnode045 to gnode090**; they have the better GPUs. Every node has 40 CPUs, about 125 GB RAM and up to 4x **RTX 2080 Ti (11 GB, Turing, sm_75)**. Turing has **no bf16**, so use fp16 or quantised models.
-- **Finding free GPUs:**
+- **Finding free GPUs: use `pestat`** (George's tip). `pestat -p u22 --no-color --gib | grep -E "gnode0(4[5-9]|[5-8][0-9]|90)"` lists CPUs used/total, free memory and GPUs used/total for each node. Pick a node with free GPUs *and* free CPUs. The older manual way is:
+- **Finding free GPUs (manual):**
   ```bash
   for n in $(sinfo -p u22 -N -h -o "%N %t" | awk '$1>="gnode045" && $1<="gnode090" && ($2=="idle"||$2=="mix"){print $1}'); do
     echo "$n $(scontrol show node $n | grep -o 'AllocTRES=[^ ]*')"; done
