@@ -130,11 +130,18 @@ def main():
             print(f"[{cond} s{seed}] {len(done)} done, {len(todo)} to run", flush=True)
             t0 = time.time()
 
+            needs_det = CONDITIONS[cond].detector_label or CONDITIONS[cond].detector_tool
+            det_kind = det_proto.replace("{seed}", str(seed))
+            # Load a shared detector ONCE before the worker threads start; loading
+            # inside the threads raced and put 6 copies of the LoRA model on one GPU.
+            # The oracle keeps per-episode state, so it stays one-per-episode.
+            shared_det = make_detector(det_kind, det_seeds) if needs_det and det_kind != "oracle" else None
+
             def work(i_ep):
                 i, ep = i_ep
                 ep = type(ep)(ep.scenario_id, ep.timing, ep.phrasing, ep.fault, seed)
                 client = ChatClient(urls[i % len(urls)], args.model, temperature=args.temperature, seed=seed)
-                det = make_detector(det_proto.replace("{seed}", str(seed)), det_seeds) if CONDITIONS[cond].detector_label or CONDITIONS[cond].detector_tool else None
+                det = (shared_det or make_detector(det_kind, det_seeds)) if needs_det else None
                 agent = LLMAgent(cond, client, detector=det)
                 sc = scenarios[ep.scenario_id]
                 r = run_episode(ep, sc, patients[sc.patient_id], policy, agent,
