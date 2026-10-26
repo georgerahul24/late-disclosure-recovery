@@ -1,0 +1,229 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\setlist{nosep,leftmargin=*}
+\newcommand{\recheck}{\textsc{ReCheck}}
+\input{tables/numbers}
+
+\title{Late-Disclosure Recovery in Stateful Clinical Agents\\[2pt]
+\large Mid-Submission Report}
+\author{George R. \quad Arihant R. \quad Aditya P.\\ Team: LEs \& Arihant}
+\date{27 October 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Code and data:} \url{https://github.com/georgerahul24/late-disclosure-recovery} (private; access can be shared on request).\\
+\textbf{Final submission:} 11 November 2026 (15 days from now).
+
+\section{Summary}
+We are building a benchmark that tests one thing. A clinic chat agent books a routine visit. Then the patient mentions a symptom. Does the agent notice that its own booking is now unsafe, fix it, escalate, and check that the fix worked?
+
+Since the proposal we have:
+\begin{itemize}
+\item built the full benchmark (mock clinic backend, tools, simulated patient, grader, analysis) with 36 automated tests;
+\item replaced all placeholder data with real Synthea patients and guideline-checked rules;
+\item built an evaluation set of 270 scenarios on 240 patients;
+\item trained six LoRA symptom detectors and compared them with four other detectors;
+\item finished five full baseline conditions (3 seeds each, 1{,}572 episodes per seed).
+\end{itemize}
+
+\noindent The main finding so far is clear. A plain tool-using LLM agent ends in an unsafe state in \plainPolicy\% of red-flag episodes. Giving it a good detector label makes it escalate more often (+\labelDiffLenient{} points), but it still leaves the routine booking in place. So the unsafe rate does not change (\labelDiffPolicy{} points, 95\% CI [\labelLoPolicy, \labelHiPolicy]). This is the gap \recheck{} is designed to close. The \recheck{} runs, the ablations and the tool-fault runs are now running on the cluster.
+
+\section{Progress against the proposal}
+\begin{center}\small
+\begin{tabular}{p{5.2cm}p{1.6cm}p{8.2cm}}\toprule
+Planned item & Status & Notes \\ \midrule
+Mock backend, 10-tool harness, authority rules, action ledger & Done & \texttt{recheck/backend.py}, \texttt{recheck/tools.py} \\
+Rule-based, event-triggered patient simulator & Done & T1 / MID / POST timing, follow-up-only and advice-request variants \\
+State-based grader, 5 failure stages & Done & Policy (primary), strict and lenient schemes; false-claim check \\
+Synthea patients and record rules & Done & 6{,}961 people; rules checked against NICE / ADA / NHS text \\
+Evaluation scenarios ($\sim$240 core) & Done (v1) & 270 scenarios; text needs team review (Section~\ref{sec:challenges}) \\
+Detector seeds, paraphrases, LoRA training & Done & 229 seeds, 756 paraphrases, 6 models \\
+Detector comparison & Done & Keyword, TF-IDF, prompted 7B, LoRA 0.5B, LoRA 1.5B \\
+Scripted pilot / DSC / rule gate & Done & 3 seeds, plus tool faults \\
+Plain, Plain + Label & Done & 3 seeds each \\
+Safety prompt & Running & Seed 0 at 1{,}139 / 1{,}572 \\
+\recheck{}, Hybrid & Running & Highest priority in the queue \\
+7 ablations, tool faults for LLMs & Queued & See Section~\ref{sec:ablations} \\
+Advice judge (LLM) & Code done & Needs 60 human labels to validate \\
+Paper draft & Started & Introduction, related work, method, setup and limitations written \\ \bottomrule
+\end{tabular}\end{center}
+
+\section{Datasets}\label{sec:data}
+All data is synthetic or written for this project. No real patient data is used.
+
+\paragraph{Patients (Synthea).} We generated a population with Synthea v3.3.0 \citep{walonoski2018synthea}. We used seed 20261026, Massachusetts, and full history. This gave 6{,}961 people (6{,}000 alive); 4{,}638 were alive and aged 18 to 90. The release, seed and SHA-256 of every exported file are saved in \texttt{data/synthea/PROVENANCE.txt}, so the same people can be rebuilt. Records keep all medicines, including stopped ones. A stopped clopidogrel course is therefore a real distractor.
+
+\paragraph{Record rules.} Three symptom families are urgent only because of a record fact. We checked each rule against the guideline text:
+\begin{itemize}
+\item head bump plus a current anticoagulant or non-aspirin antiplatelet (NICE NG232 rec.\ 1.2.4);
+\item shaky, sweaty or confused episodes plus insulin, a sulfonylurea or a meglitinide (ADA Standards of Care 2025, sec.\ 6);
+\item a foot wound in a person with diabetes (NICE NG19 recs.\ 1.4.1--1.4.2).
+\end{itemize}
+This check found four errors in our first rules, and we fixed them. For example, ``prediabetes'' had been counted as diabetes. Also, NICE and NHS guidance disagree about aspirin taken alone, so patients on aspirin alone are left out of the clean negatives.
+
+\paragraph{Patient pools.} Rule-based pools from the eligible population:
+\begin{itemize}
+\item head-positive: 829 (mostly clopidogrel, prasugrel or warfarin);
+\item hypo-positive: 468 (insulin);
+\item foot-positive: 944 (diabetes).
+\end{itemize}
+
+\paragraph{Evaluation set v1.} 270 scenarios on 240 distinct patients:
+\begin{itemize}
+\item 60 record-dependent red flags (20 per family), each with a matched negative (same words, same sex in all 60 pairs, mean age gap 2.5 years);
+\item 60 universal red flags over 15 subtypes, each tied to a NICE or NHS source;
+\item 60 benign scenarios (30 near-misses);
+\item 30 extra-type copies (follow-up-only and advice requests).
+\end{itemize}
+Each core scenario runs at 3 timings with 2 phrasings (direct and indirect), which gives 1{,}572 episodes per condition and seed. 21 scenarios are about a family member's symptom; they are reported apart from the main results.
+
+\paragraph{Detector training data.} We have 229 seeds and 756 LLM paraphrases. The paraphrases were filtered and label-checked, and every seed and paraphrase sharing 6 or more consecutive words with evaluation text was removed. Each text is also placed inside booking messages. The largest overlap left between training and evaluation text is 5 words.
+
+\paragraph{Clinic policy.} A 40-passage policy that the agent can search. Each passage names its source.
+
+\section{Systems and baselines}\label{sec:systems}
+\begin{figure}[h]\centering\small
+\begin{tikzpicture}[node distance=0.55cm and 0.6cm, box/.style={draw,rounded corners,align=center,inner sep=3pt,font=\footnotesize}]
+\node[box] (p) {Simulated\\patient};
+\node[box,right=of p,fill=blue!8] (d) {1. Detect\\LoRA, every turn};
+\node[box,right=of d,fill=gray!10] (o) {2--4. Ground, re-check,\\repair, escalate\\(frozen Qwen2.5-7B)};
+\node[box,right=of o] (b) {Clinic backend\\(graded state)};
+\node[box,above=0.35cm of o] (r) {Record + policy\\retrieval};
+\node[box,below=0.35cm of o] (l) {Action ledger};
+\draw[-Stealth] (p) -- (d); \draw[-Stealth] (d) -- node[above,font=\scriptsize]{label} (o);
+\draw[-Stealth] (o) -- node[above,font=\scriptsize]{tools} (b);
+\draw[Stealth-Stealth] (o) -- (r); \draw[Stealth-Stealth] (o) -- (l);
+\draw[-Stealth,dashed] (b.south) |- node[pos=0.75,below,font=\scriptsize]{5. verify: read bookings back} (l.east);
+\end{tikzpicture}
+\caption{\recheck{}. All LLM conditions share the same model, tools and decoding.}
+\end{figure}
+
+\noindent\textbf{Conditions:}
+\begin{itemize}
+\item \textbf{Book-only:} never escalates. A floor.
+\item \textbf{Rule gate:} a frozen keyword list blocks the next action. This is the CareConnect pattern \citep{hasan2026careconnect}.
+\item \textbf{Plain:} the booking prompt only.
+\item \textbf{Safety prompt:} Plain plus ``escalate emergencies''.
+\item \textbf{Plain + Label:} Plain plus the detector label each turn. This isolates the gain from detection alone.
+\item \textbf{DSC:} a deterministic controller with no LLM. It uses the LoRA detector, the record rules, cancel, an invariant and read-back.
+\item \textbf{\recheck{}} and \textbf{Hybrid} (\recheck{} plus the DSC invariant).
+\end{itemize}
+
+\noindent\textbf{Setup:} the orchestrator is Qwen2.5-7B-Instruct (8-bit), served with Ollama on RTX 2080 Ti GPUs. Every LLM condition uses temperature 0 and seeds 0, 1 and 2. Each LLM seed is paired with the detector of the same seed.
+
+\section{Results so far}\label{sec:results}
+
+\subsection{Symptom detectors}
+Table~\ref{tab:det} uses only evaluation text, which was never used for training. ``In-message'' places each phrasing inside the three real simulator messages.
+\begin{itemize}
+\item The frozen keyword list finds only \detKwSens\% of red flags inside messages, and \detKwSensRew\% of reworded ones. So a keyword gate cannot work here.
+\item The LoRA 1.5B detector finds \detLoraSens\% (reworded: \detLoraSensRew\%) at \detLoraSpec\% specificity.
+\item The prompted 7B model is more specific (\detPromptSpec\%) but misses many reworded symptoms (sensitivity \detPromptSensRew\%).
+\item LoRA 0.5B is close to 1.5B.
+\end{itemize}
+\begin{table}[h]\centering\small\input{tables/detectors}
+\caption{Detectors on evaluation text. LoRA rows are mean $\pm$ s.d.\ over 3 seeds. Sensitivity = any red flag detected; specificity = benign kept benign.}\label{tab:det}\end{table}
+
+\subsection{Main baselines}
+Table~\ref{tab:main} gives core episodes (own symptom, volunteered, no tool fault). Means are over scenarios, after averaging timings, phrasings and seeds within each scenario. CIs are from a scenario-level bootstrap (10{,}000 resamples).
+\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/main}}
+\caption{Core results. \emph{Policy}: end state not allowed by the scenario's action policy (primary). \emph{Strict}: not (escalated and no routine booking left). \emph{Lenient}: not escalated. Compl.: routine bookings completed. Contrast: matched pairs where both sides are handled correctly.}\label{tab:main}\end{table}
+
+\noindent\textbf{Findings:}
+\begin{enumerate}
+\item \textbf{Plain LLM agents mostly fail.} Plain is unsafe in \plainPolicy\% of red-flag episodes (strict \plainStrict\%). It escalates in only \plainEscal\% of them, and even when it does, it rarely removes the routine booking.
+\item \textbf{A detector label alone does not fix it.} Table~\ref{tab:paired}: Plain + Label escalates \labelDiffLenient{} points more often, but policy-unsafe is unchanged (\labelDiffPolicy{} points, CI [\labelLoPolicy, \labelHiPolicy]). The failures move from detection to later stages (Table~\ref{tab:stages}). The share of stage 3, ``earlier booking not revised'', is \plainStageThree\% for Plain, and stage 2, ``record not used'', rises to \plainlabelStageTwo\% with the label. This is exactly the gap \recheck{} targets.
+\item \textbf{The deterministic controller is a very strong bar} (\dscPolicy\% unsafe, \dscCompl\% completion). Part of this is by design: its record rules are the same rules that define the ground truth, so its only errors are detector misses. We will report it as an ``oracle-rules'' upper bound, not as a fair rival.
+\item \textbf{Text claims are not reliable.} Plain + Label claimed it had booked, cancelled or escalated without making the tool call in \plainlabelFalseClaim{} core episodes (Plain: \plainFalseClaim). This supports grading on backend state, not on what the agent says.
+\item \textbf{Low reliability over seeds.} Plain is safe in all 3 seeds for only \plainPassK\% of red-flag episodes (pass$^3$), against \dscPassK\% for the DSC.
+\end{enumerate}
+
+\begin{table}[h]\centering\small\input{tables/stages}
+\caption{Share (\%) of policy-unsafe episodes by the first failed stage.}\label{tab:stages}\end{table}
+
+\begin{table}[h]\centering\small\input{tables/paired}
+\caption{Paired scenario-level differences (percentage points), bootstrap CIs and $p$-values.}\label{tab:paired}\end{table}
+
+\subsection{Timing (H1)}
+H1 predicted that strict-unsafe rises by at least 10 points from T1 to POST for Plain. \textbf{H1 is not supported as stated.} The rise is only \hOneplainStrict{} points, because Plain already fails at T1: after a red flag the patient still says ``please book it'', and Plain books anyway. This is a ceiling effect. The proposal planned for this case: report the negative result and add harder cases (Section~\ref{sec:plan}).
+
+Under policy grading, the timing effect is real. A scenario-clustered logistic GEE model (Table~\ref{tab:gee}) gives POST \geePostOR{} times the odds of an unsafe end compared with T1 ($p=\geePostP$). MID gives much lower odds (OR \geeMidOR): when the symptom arrives just as the patient asks to book, the model often escalates instead. Indirect wording raises the odds of failure (OR \geeIndirectOR).
+\begin{table}[h]\centering\small\input{tables/gee}
+\caption{GEE logistic model of policy-unsafe (red-flag core episodes; Plain and Plain + Label; clustered by scenario; exchangeable correlation). Reference: Plain, T1, seed 0, direct.}\label{tab:gee}\end{table}
+
+\subsection{Extra episode types and tool faults}
+\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/extras}}
+\caption{Reliability and extra episode types. Follow-up-only red flags come out only if the agent asks an open question; scripted controllers never ask, so they always fail these by design.}\end{table}
+\begin{table}[h]\centering\small\input{tables/faults}
+\caption{Tool-fault episodes for the DSC (LLM fault runs are queued).}\end{table}
+
+\section{Ablations}\label{sec:ablations}
+\paragraph{Done.}
+\begin{itemize}
+\item \textbf{Detector ablations} (Table~\ref{tab:det}): keyword vs TF-IDF vs prompted 7B vs LoRA 0.5B vs LoRA 1.5B, on symptom-only, reworded and in-message text. LoRA dev scores are in Table~\ref{tab:lora}.
+\item \textbf{Scripted switches:} detector $\times$ grounding $\times$ revision (results file \texttt{results/scripted\_eval\_v1.md}). With a perfect detector and no revision, 33\% of red-flag episodes are still strict-unsafe, and every one of them is a stale POST booking.
+\item \textbf{Read-back:} with a lost booking response, the DSC is unsafe in 19--33\% of episodes without read-back, and 0\% with it (scripted controllers).
+\end{itemize}
+\paragraph{Running or queued} (seed 0, direct phrasing, $\sim$786 episodes each). Each removes one part of \recheck{}: no detector; detector as an optional tool; no retrieval; full record in context; no ledger; no read-back; single-pass. No-ledger and single-pass are confirmatory tests (H2c), so they run first.
+
+\begin{table}[h]\centering\small\input{tables/lora_dev}
+\caption{LoRA detector training: seed-grouped dev split (never evaluation text).}\label{tab:lora}\end{table}
+
+\section{Challenges and mitigations}\label{sec:challenges}
+\begin{center}\small
+\begin{tabular}{p{7.2cm}p{8.3cm}}\toprule
+Challenge & Mitigation \\ \midrule
+Strict metric called some clinically accepted end states unsafe (review feedback). & Clinician-policy grading is primary; strict is a stress test. We report how often the two disagree. \\
+Our 4-GPU cluster job was cancelled after 1 day; part of a run was lost. & All runs resume from where they stopped. A new job on another node (found with \texttt{pestat}) continues the queue, and the queue now stops cleanly if its job ends. \\
+GPU limit: 2080 Ti cards have 11 GB and no bf16; our QoS allows only 4 GPUs, shared with another project. & 8-bit model via Ollama (one server per GPU). The detector runs on CPU when GPUs are short. This is reported as a deviation. \\
+Bugs found during real runs: out-of-memory crashes, a race that loaded the detector 6 times, a grader crash on model notes, a sync rule that silently dropped the paraphrases from training. & Each was fixed, with tests, and the affected runs were redone. Training now fails loudly if any input file is missing. \\
+Evaluation text and seeds were written by separate LLM agents, not by the team as planned. & They were written blind to each other, and overlaps of 6+ words were removed (max overlap now 5 words). \textbf{The team will review and edit the text before the final submission.} \\
+Action policy not yet reviewed by two people. & Two members will label acceptable end states independently, and we will report Cohen's $\kappa$. \\
+The advice judge (LLM) is not validated. & 60 human labels will be used to measure its sensitivity and specificity before any advice number is reported. \\
+H1 hit a ceiling: Plain fails even at T1. & Report the negative result, use policy grading and the GEE model, and add harder variants (see plan). \\
+Synthea records are cleaner than real records. & State this as a limitation; use full histories with stopped-drug distractors. \\ \bottomrule
+\end{tabular}\end{center}
+
+\section{Deviations from the proposal}
+\begin{itemize}
+\item Orchestrator served as 8-bit (Ollama) instead of bf16 (vLLM), because the GPUs lack bf16.
+\item The ``prompted large model'' detector baseline is Qwen2.5-7B, because no API model is available.
+\item A GEE logistic model is used instead of a GLMM: each scenario has its own patient, and lme4 is not available.
+\item The evaluation set is larger than planned (both phrasings: 1{,}572 instead of $\sim$720 episodes per seed). Ablations use the direct phrasing only, as planned.
+\end{itemize}
+
+\section{Plan and timeline to the final submission (11 Nov)}\label{sec:plan}
+\begin{center}\small
+\begin{tabular}{p{2.3cm}p{9.6cm}p{2.6cm}}\toprule
+Dates & Work & Owner \\ \midrule
+27--29 Oct & Finish \recheck{}, Hybrid and Safety (3 seeds); resume pass to fill any dropped episodes. & George (cluster) \\
+27--31 Oct & Review and edit evaluation text; review detector seeds and paraphrases. & Arihant, Aditya; George \\
+29 Oct--1 Nov & 7 ablations and LLM tool-fault runs. & George \\
+29 Oct--1 Nov & Two-person action-policy labelling and Cohen's $\kappa$. & Arihant, Aditya \\
+1--3 Nov & Run the advice judge; label 60 judge turns and 50 traces for stage checks. & All \\
+2--4 Nov & If the eval text changed: rebuild the set and re-run the main conditions (the queue is automatic). & George \\
+3--5 Nov & Harder variants for H1 (follow-up-only, typos, a relative downplaying the symptom); one more model family as orchestrator if compute allows. & Aditya, George \\
+5--7 Nov & Full analysis: H2/H2b/H2c with Holm, TOST against the DSC, failure analysis (30 failed episodes per condition), figures. & Arihant \\
+7--10 Nov & Write and polish the paper; tables generated from results only. & All \\
+11 Nov & Final submission: paper, code, data, results. & All \\ \bottomrule
+\end{tabular}\end{center}
+
+\paragraph{Reproducibility.} Every number in this report comes from \texttt{scripts/make\_report\_tables.py} run on the files in \texttt{runs/}. The repository has a \texttt{README.md} in every folder, a \texttt{handoff.md} with the current state, and a \texttt{todo.md}.
+
+\small
+\bibliographystyle{plainnat}
+\bibliography{../paper/refs}
+\end{document}
