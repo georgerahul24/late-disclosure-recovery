@@ -19,13 +19,13 @@
 \title{Late-Disclosure Recovery in Stateful Clinical Agents\\[2pt]
 \large Mid-Submission Report}
 \author{George R. \quad Arihant R. \quad Aditya P.\\ Team: LEs \& Arihant}
-\date{27 October 2026}
+\date{28 October 2026}
 
 \begin{document}
 \maketitle
 
 \noindent\textbf{Code and data:} \url{https://github.com/georgerahul24/late-disclosure-recovery} (private; access can be shared on request).\\
-\textbf{Final submission:} 11 November 2026 (15 days from now).
+\textbf{Final submission:} 11 November 2026.
 
 \section{Summary}
 We are building a benchmark that tests one thing. A clinic chat agent books a routine visit. Then the patient mentions a symptom. Does the agent notice that its own booking is now unsafe, fix it, escalate, and check that the fix worked?
@@ -36,10 +36,23 @@ Since the proposal we have:
 \item replaced all placeholder data with real Synthea patients and guideline-checked rules;
 \item built an evaluation set of 270 scenarios on 240 patients;
 \item trained six LoRA symptom detectors and compared them with four other detectors;
-\item finished five full baseline conditions (3 seeds each, 1{,}572 episodes per seed).
+\item finished seven full conditions, including \recheck{} and Hybrid (3 seeds each, 1{,}572 episodes per seed; about 33{,}000 graded episodes so far).
 \end{itemize}
 
-\noindent The main finding so far is clear. A plain tool-using LLM agent ends in an unsafe state in \plainPolicy\% of red-flag episodes. Giving it a good detector label makes it escalate more often (+\labelDiffLenient{} points), but it still leaves the routine booking in place. So the unsafe rate does not change (\labelDiffPolicy{} points, 95\% CI [\labelLoPolicy, \labelHiPolicy]). This is the gap \recheck{} is designed to close. The \recheck{} runs, the ablations and the tool-fault runs are now running on the cluster.
+\noindent The main finding so far is clear. A plain tool-using LLM agent ends in an unsafe state in \plainPolicy\% of red-flag episodes. Giving it a good detector label makes it escalate more often (+\labelDiffLenient{} points), but it still leaves the routine booking in place. So the unsafe rate does not change (\labelDiffPolicy{} points, 95\% CI [\labelLoPolicy, \labelHiPolicy]).
+
+\recheck{} closes part of this gap. It lowers the unsafe rate by \recheckVsPlainPolicy{} points against Plain (95\% CI [\recheckVsPlainPolicyLo, \recheckVsPlainPolicyHi]) and by \recheckVsLabelPolicy{} points against Plain + Label. The gain is largest exactly where it was designed to help: disclosures after a booking. But it has a cost. Routine bookings drop by \recheckComplDrop{} points, because the 7B model often says it booked a slot without calling the booking tool. The proposal's H2 therefore fails on its pre-registered completion rule, even though the safety gain passes. The Safety prompt, the ablations and the tool-fault runs are still running on the cluster.
+
+\section{Novelty check after the first results}
+\begin{itemize}
+\item \textbf{The benchmark contribution still stands.} A fresh search on 28 Oct found no new work that tests an agent repairing its own committed booking after a late, record-dependent disclosure. The closest work is unchanged:
+  \begin{itemize}
+  \item CARE-Bench scores text actions after each disclosure, with no backend;
+  \item PatientAgentBench has booking tools but no controlled disclosure timing or repair test.
+  \end{itemize}
+\item \textbf{The results make the benchmark's main claim stronger.} They show a failure that text-only or next-action benchmarks cannot see. Plain agents escalate but leave the stale booking in place, and a detector alone does not help.
+\item \textbf{\recheck{} remains a targeted baseline, not the main contribution.} Its parts are known ideas. It helps where it should (POST), but it also cuts routine completion. We keep the framing the reviewers asked for: the benchmark first, \recheck{} second. We avoid any ``first'' claim beyond the narrow statement above.
+\end{itemize}
 
 \section{Progress against the proposal}
 \begin{center}\small
@@ -53,9 +66,8 @@ Evaluation scenarios ($\sim$240 core) & Done (v1) & 270 scenarios; text needs te
 Detector seeds, paraphrases, LoRA training & Done & 229 seeds, 756 paraphrases, 6 models \\
 Detector comparison & Done & Keyword, TF-IDF, prompted 7B, LoRA 0.5B, LoRA 1.5B \\
 Scripted pilot / DSC / rule gate & Done & 3 seeds, plus tool faults \\
-Plain, Plain + Label & Done & 3 seeds each \\
-Safety prompt & Running & Seed 0 at 1{,}139 / 1{,}572 \\
-\recheck{}, Hybrid & Running & Highest priority in the queue \\
+Plain, Plain + Label, \recheck{}, Hybrid & Done & 3 seeds each \\
+Safety prompt & Running & Seeds 0 done, seed 1 running, seed 2 queued \\
 7 ablations, tool faults for LLMs & Queued & See Section~\ref{sec:ablations} \\
 Advice judge (LLM) & Code done & Needs 60 human labels to validate \\
 Paper draft & Started & Introduction, related work, method, setup and limitations written \\ \bottomrule
@@ -148,8 +160,37 @@ Table~\ref{tab:main} gives core episodes (own symptom, volunteered, no tool faul
 \item \textbf{A detector label alone does not fix it.} Table~\ref{tab:paired}: Plain + Label escalates \labelDiffLenient{} points more often, but policy-unsafe is unchanged (\labelDiffPolicy{} points, CI [\labelLoPolicy, \labelHiPolicy]). The failures move from detection to later stages (Table~\ref{tab:stages}). The share of stage 3, ``earlier booking not revised'', is \plainStageThree\% for Plain, and stage 2, ``record not used'', rises to \plainlabelStageTwo\% with the label. This is exactly the gap \recheck{} targets.
 \item \textbf{The deterministic controller is a very strong bar} (\dscPolicy\% unsafe, \dscCompl\% completion). Part of this is by design: its record rules are the same rules that define the ground truth, so its only errors are detector misses. We will report it as an ``oracle-rules'' upper bound, not as a fair rival.
 \item \textbf{Text claims are not reliable.} Plain + Label claimed it had booked, cancelled or escalated without making the tool call in \plainlabelFalseClaim{} core episodes (Plain: \plainFalseClaim). This supports grading on backend state, not on what the agent says.
-\item \textbf{Low reliability over seeds.} Plain is safe in all 3 seeds for only \plainPassK\% of red-flag episodes (pass$^3$), against \dscPassK\% for the DSC.
+\item \textbf{Low reliability over seeds.} Plain is safe in all 3 seeds for only \plainPassK\% of red-flag episodes (pass$^3$), against \recheckPassK\% for \recheck{} and \dscPassK\% for the DSC.
 \end{enumerate}
+
+\subsection{\recheck{} and Hybrid (H2, H2b)}
+\begin{itemize}
+\item \textbf{Safety improves.}
+  \begin{itemize}
+  \item \recheck{} lowers policy-unsafe from \plainPolicy\% to \recheckPolicy\%, a difference of \recheckVsPlainPolicy{} points (95\% CI [\recheckVsPlainPolicyLo, \recheckVsPlainPolicyHi]).
+  \item Strict-unsafe falls by \recheckVsPlainStrict{} points.
+  \item Against Plain + Label, which gets the same detector label, the gain is still \recheckVsLabelPolicy{} points (CI [\recheckVsLabelPolicyLo, \recheckVsLabelPolicyHi]).
+  \end{itemize}
+  So the gain does not come from detection alone. \textbf{H2b is supported.}
+\item \textbf{The gain is where the method aims.}
+  \begin{itemize}
+  \item Stage 3 (``earlier booking not revised'') drops from \plainStageThree\% of Plain's failures to about a fifth for \recheck{} (Table~\ref{tab:stages}).
+  \item In the timing model (Table~\ref{tab:gee}), the \recheck{}$\times$POST term is strongly protective.
+  \item \recheck{} is unsafe in \recheckTPost\% of POST episodes, against \plainTPost\% for Plain.
+  \end{itemize}
+\item \textbf{But routine bookings suffer.} Routine completion falls by \recheckComplDrop{} points, to \recheckCompl\%. The proposal said H2 fails if completion drops by more than 10 points, so \textbf{H2 is not supported as pre-registered}, even though its safety part passes. Table~\ref{tab:routine} shows why. Of the \recheckRoutineFail{} routine episodes \recheck{} did not complete:
+  \begin{itemize}
+  \item \recheckNoAction{} ended with no booking at all;
+  \item in \recheckNoBook{}, the model never called \texttt{book};
+  \item in \recheckFalseBook{}, it told the patient the slot was booked anyway.
+  \end{itemize}
+  The longer procedure makes the 7B model skip real actions while claiming success.
+\item \textbf{New failure: repaired but not escalated.} \recheck{} escalates less often than Plain (lenient worse by \recheckVsPlainLenient{} points). Stage 5 (``not escalated'') is now about a fifth of its failures: it cancels the booking but forgets to escalate.
+\item \textbf{Hybrid.} The deterministic invariant adds a small gain (Hybrid $-$ \recheck{}: \hybridVsRecheckPolicy{} points, CI [\hybridVsRecheckPolicyLo, \hybridVsRecheckPolicyHi]). It stays far behind the DSC (\hybridVsDscPolicy{} points), so there is no equivalence with the rule-based controller.
+\end{itemize}
+
+\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/routine}}
+\caption{Why routine (non-red-flag) episodes were not completed.}\label{tab:routine}\end{table}
 
 \begin{table}[h]\centering\small\input{tables/stages}
 \caption{Share (\%) of policy-unsafe episodes by the first failed stage.}\label{tab:stages}\end{table}
@@ -160,9 +201,9 @@ Table~\ref{tab:main} gives core episodes (own symptom, volunteered, no tool faul
 \subsection{Timing (H1)}
 H1 predicted that strict-unsafe rises by at least 10 points from T1 to POST for Plain. \textbf{H1 is not supported as stated.} The rise is only \hOneplainStrict{} points, because Plain already fails at T1: after a red flag the patient still says ``please book it'', and Plain books anyway. This is a ceiling effect. The proposal planned for this case: report the negative result and add harder cases (Section~\ref{sec:plan}).
 
-Under policy grading, the timing effect is real. A scenario-clustered logistic GEE model (Table~\ref{tab:gee}) gives POST \geePostOR{} times the odds of an unsafe end compared with T1 ($p=\geePostP$). MID gives much lower odds (OR \geeMidOR): when the symptom arrives just as the patient asks to book, the model often escalates instead. Indirect wording raises the odds of failure (OR \geeIndirectOR).
+Under policy grading, the timing effect is real. A scenario-clustered logistic GEE model (Table~\ref{tab:gee}) gives POST \geePostOR{} times the odds of an unsafe end compared with T1 ($p=\geePostP$). MID gives much lower odds (OR \geeMidOR): when the symptom arrives just as the patient asks to book, the model often escalates instead. Indirect wording raises the odds of failure (OR \geeIndirectOR). The \recheck{}$\times$POST and Hybrid$\times$POST terms are well below 1, so the two methods help most after a booking.
 \begin{table}[h]\centering\small\input{tables/gee}
-\caption{GEE logistic model of policy-unsafe (red-flag core episodes; Plain and Plain + Label; clustered by scenario; exchangeable correlation). Reference: Plain, T1, seed 0, direct.}\label{tab:gee}\end{table}
+\caption{GEE logistic model of policy-unsafe (red-flag core episodes; Plain, Plain + Label, \recheck{}, Hybrid; clustered by scenario; exchangeable correlation). Reference: Plain, T1, seed 0, direct.}\label{tab:gee}\end{table}
 
 \subsection{Extra episode types and tool faults}
 \begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/extras}}
@@ -194,6 +235,7 @@ Evaluation text and seeds were written by separate LLM agents, not by the team a
 Action policy not yet reviewed by two people. & Two members will label acceptable end states independently, and we will report Cohen's $\kappa$. \\
 The advice judge (LLM) is not validated. & 60 human labels will be used to measure its sensitivity and specificity before any advice number is reported. \\
 H1 hit a ceiling: Plain fails even at T1. & Report the negative result, use policy grading and the GEE model, and add harder variants (see plan). \\
+\recheck{} omits real actions: the 7B model often says ``booked'' without calling \texttt{book}, which cut routine completion by about a third. & Pre-register a \recheck{}~v2 with an action-claim check. After each reply, the harness compares the claims against the tool log and asks the model to complete any claimed but missing action. It also gets an explicit ``escalate after repair'' step. v2 will be developed on the dev fixtures only, then run once on the evaluation set, and reported next to v1. \\
 Synthea records are cleaner than real records. & State this as a limitation; use full histories with stopped-drug distractors. \\ \bottomrule
 \end{tabular}\end{center}
 
@@ -209,11 +251,12 @@ Synthea records are cleaner than real records. & State this as a limitation; use
 \begin{center}\small
 \begin{tabular}{p{2.3cm}p{9.6cm}p{2.6cm}}\toprule
 Dates & Work & Owner \\ \midrule
-27--29 Oct & Finish \recheck{}, Hybrid and Safety (3 seeds); resume pass to fill any dropped episodes. & George (cluster) \\
+27--28 Oct & \recheck{} and Hybrid finished (done). Safety (3 seeds) running; resume pass to fill any dropped episodes. & George (cluster) \\
 27--31 Oct & Review and edit evaluation text; review detector seeds and paraphrases. & Arihant, Aditya; George \\
 29 Oct--1 Nov & 7 ablations and LLM tool-fault runs. & George \\
 29 Oct--1 Nov & Two-person action-policy labelling and Cohen's $\kappa$. & Arihant, Aditya \\
 1--3 Nov & Run the advice judge; label 60 judge turns and 50 traces for stage checks. & All \\
+30 Oct--3 Nov & \recheck{}~v2 (action-claim check, escalate-after-repair), built on dev fixtures only, then one run on the evaluation set (3 seeds). & George, Arihant \\
 2--4 Nov & If the eval text changed: rebuild the set and re-run the main conditions (the queue is automatic). & George \\
 3--5 Nov & Harder variants for H1 (follow-up-only, typos, a relative downplaying the symptom); one more model family as orchestrator if compute allows. & Aditya, George \\
 5--7 Nov & Full analysis: H2/H2b/H2c with Holm, TOST against the DSC, failure analysis (30 failed episodes per condition), figures. & Arihant \\

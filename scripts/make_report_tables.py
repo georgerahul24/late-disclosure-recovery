@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -112,18 +113,31 @@ def main():
 
     # ---- paired comparisons ----------------------------------------------
     T = [r"\begin{tabular}{llrrr}\toprule", r"Comparison & Metric & Diff. (pts) & 95\% CI & $p$ \\ \midrule"]
-    comps = [("plain_label", "plain", "Plain + Label $-$ Plain"), ("rule_gate", "plain", "Rule gate $-$ Plain"),
-             ("dsc", "plain", "DSC $-$ Plain")]
+    comps = [("recheck", "plain", r"\recheck{} $-$ Plain (H2)"), ("recheck", "plain_label", r"\recheck{} $-$ Plain + Label (H2b)"),
+             ("hybrid", "recheck", r"Hybrid $-$ \recheck{}"), ("hybrid", "dsc", "Hybrid $-$ DSC"),
+             ("plain_label", "plain", "Plain + Label $-$ Plain"), ("rule_gate", "plain", "Rule gate $-$ Plain")]
     for a, b, lab in comps:
         if a in scen and b in scen:
             for m in ("policy", "strict", "lenient"):
                 p = S.paired(scen[a][m], scen[b][m])
                 T.append(f"{lab} & {m} & {100 * p['diff']:.1f} & [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] & "
                          f"{'$<$0.001' if p['p'] < 0.001 else f'{p['p']:.3f}'} \\\\")
+                if (a, b) in (("recheck", "plain"), ("recheck", "plain_label"), ("hybrid", "dsc"), ("hybrid", "recheck")):
+                    tag = {"plain": "VsPlain", "plain_label": "VsLabel", "dsc": "VsDsc", "recheck": "VsRecheck"}[b]
+                    mac(f"{a}{tag}{m.capitalize()}", f"{100 * p['diff']:.1f}")
+                    mac(f"{a}{tag}{m.capitalize()}Lo", f"{100 * p['lo']:.1f}")
+                    mac(f"{a}{tag}{m.capitalize()}Hi", f"{100 * p['hi']:.1f}")
                 if a == "plain_label":
                     mac(f"labelDiff{m.capitalize()}", f"{100 * p['diff']:.1f}")
                     mac(f"labelLo{m.capitalize()}", f"{100 * p['lo']:.1f}")
                     mac(f"labelHi{m.capitalize()}", f"{100 * p['hi']:.1f}")
+    # routine completion change (H2 completion criterion)
+    for a, b in (("recheck", "plain"), ("hybrid", "plain")):
+        if a in scen and b in scen:
+            p = S.paired(scen[a]["completed"], scen[b]["completed"])
+            T.append(f"{NAMES[a]} $-$ Plain & routine completion & {100 * p['diff']:.1f} & [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] & "
+                     f"{'$<$0.001' if p['p'] < 0.001 else f'{p['p']:.3f}'} \\\\")
+            mac(f"{a}ComplDrop", f"{-100 * p['diff']:.1f}")
     # H1
     for c in ("plain", "plain_label"):
         if c in core:
@@ -136,6 +150,24 @@ def main():
                 mac(f"hOne{c.replace('_', '')}{m.split('_')[1].capitalize()}", f"{100 * p['diff']:.1f}")
     T.append(r"\bottomrule\end{tabular}")
     (out / "paired.tex").write_text("\n".join(T) + "\n")
+
+    # why routine episodes were not completed
+    T = [r"\begin{tabular}{lrrrrr}\toprule",
+         r"Condition & Routine eps & Not completed & No booking at all & Never called \texttt{book} & Claimed ``booked'' falsely \\ \midrule"]
+    for c in conds:
+        rows = [r for r in core[c] if not red(r)]
+        nc = [r for r in rows if not r["grade"]["completed"]]
+        if not rows or c in ("book_only", "rule_gate"):
+            continue
+        noact = sum(1 for r in nc if r["grade"]["end_state"] == "NO_ACTION")
+        nobook = sum(1 for r in nc if not any(x["name"] == "book" for x in r["calls"]))
+        fb = sum(1 for r in nc if any(x["claim"] == "book" for x in r["grade"].get("false_claims", [])))
+        T.append(f"{NAMES[c]} & {len(rows)} & {len(nc)} & {noact} & {nobook} & {fb} \\\\")
+        if c == "recheck":
+            mac("recheckRoutineFail", str(len(nc))); mac("recheckNoAction", str(noact))
+            mac("recheckNoBook", str(nobook)); mac("recheckFalseBook", str(fb))
+    T.append(r"\bottomrule\end{tabular}")
+    (out / "routine.tex").write_text("\n".join(T) + "\n")
 
     # ---- pass^k, third party, extras, faults -----------------------------
     T = [r"\begin{tabular}{lrrrrr}\toprule",
@@ -221,15 +253,28 @@ def main():
     (out / "lora_dev.tex").write_text("\n".join(T) + "\n")
 
     if args.gee and Path(args.gee).exists():
-        nice = {"C(condition)[T.plain_label]": "Plain + Label (vs Plain)", "C(timing)[T.MID]": "MID (vs T1)",
-                "C(timing)[T.POST]": "POST (vs T1)", "C(seed)[T.1]": "Seed 1", "C(seed)[T.2]": "Seed 2",
-                "C(phrasing)[T.indirect]": "Indirect phrasing", "C(condition)[T.plain_label]:C(timing)[T.MID]": "Label $\\times$ MID",
-                "C(condition)[T.plain_label]:C(timing)[T.POST]": "Label $\\times$ POST"}
+        def nice_term(t: str) -> str | None:
+            short = {"plain_label": "Plain + Label", "recheck": r"\recheck{}", "hybrid": "Hybrid", "safety": "Safety"}
+            m = re.fullmatch(r"C\(condition\)\[T\.(\w+)\]", t)
+            if m:
+                return f"{short.get(m.group(1), m.group(1))} (vs Plain)"
+            m = re.fullmatch(r"C\(timing\)\[T\.(\w+)\]", t)
+            if m:
+                return f"{m.group(1)} (vs T1)"
+            m = re.fullmatch(r"C\(seed\)\[T\.(\d)\]", t)
+            if m:
+                return f"Seed {m.group(1)}"
+            if t == "C(phrasing)[T.indirect]":
+                return "Indirect phrasing"
+            m = re.fullmatch(r"C\(condition\)\[T\.(\w+)\]:C\(timing\)\[T\.(\w+)\]", t)
+            if m:
+                return f"{short.get(m.group(1), m.group(1))} $\\times$ {m.group(2)}"
+            return None
         T = [r"\begin{tabular}{lrrr}\toprule", r"Term & Odds ratio & 95\% CI & $p$ \\ \midrule"]
         for line in Path(args.gee).read_text().splitlines():
             parts = [x.strip() for x in line.strip("|").split("|")]
-            if len(parts) == 4 and parts[0] in nice:
-                T.append(f"{nice[parts[0]]} & {parts[1]} & {parts[2]} & {parts[3]} \\\\")
+            if len(parts) == 4 and nice_term(parts[0]):
+                T.append(f"{nice_term(parts[0])} & {parts[1]} & {parts[2]} & {parts[3]} \\\\")
                 if parts[0] == "C(timing)[T.POST]":
                     mac("geePostOR", parts[1]); mac("geePostCI", parts[2]); mac("geePostP", parts[3])
                 if parts[0] == "C(timing)[T.MID]":

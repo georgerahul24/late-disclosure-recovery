@@ -17,4 +17,4 @@ cluster/sync.sh pull
 cd "ai report" && latexmk -pdf report.tex
 ```
 
-The version from 27 Oct used only the conditions that had finished all 3 seeds: Plain and Plain + Label (copied to `runs/mid`), plus the scripted runs. RECHECK, Hybrid, Safety, the ablations and the LLM faults were still running.
+The version from 28 Oct uses only the conditions that had finished all 3 seeds: Plain, Plain + Label, RECHECK and Hybrid (copied to `runs/mid`), plus the scripted runs. Safety, the ablations and the LLM faults were still running.
