@@ -82,6 +82,11 @@ Owners:
 - [ ] Failure analysis: sample 30 failed episodes per main condition, assign stage plus sub-cause, two annotated traces per stage.
 - [ ] Stage 1/2 note check against 50 hand-labelled traces. [!] Needs a human labeller.
 
+## Phase 4b. After the mid-submission (28 Oct)
+- [x] RECHECK and Hybrid finished (3 seeds). H2b is supported. H2 fails on the completion rule (−31.5 pts). See `ai report/report.pdf`.
+- [ ] De-duplicate episodes before the final analysis. `safety_s0.jsonl` has 1573 lines for 1572 episodes (one was written twice across a crash and resume). Keep the last line per episode.
+- [ ] RECHECK v2: an action-claim check (claimed but missing tool calls get completed) plus an explicit escalate-after-repair step. Develop on dev fixtures only, then run once on eval v1 with 3 seeds.
+
 ## Phase 5. Paper
 - [ ] Update the proposal claims as the reviewer pointers ask: policy grading primary, strict as a stress test; lead with the benchmark; no "first" (papers.md section 1 has the safe sentence).
 - [ ] Related work rewrite with the new closest work (papers.md section 10, items 1-3).
