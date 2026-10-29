@@ -194,7 +194,7 @@ def main():
     (out / "extras.tex").write_text("\n".join(T) + "\n")
 
     # ---- ablations (seed 0, direct phrasing) vs full RECHECK on the same episodes
-    ABL = {"recheck_no_ledger": r"No ledger re-check (H2c)", "recheck_single_pass": r"Single pass, no re-check (H2c)",
+    ABL = {"recheck_no_ledger": r"No ledger re-check (H2c)", "recheck_single_pass": r"Single pass: one tool round per turn (H2c)",
            "recheck_no_detector": "No detector", "recheck_detector_tool": "Detector as a tool",
            "recheck_no_retrieval": "No retrieval", "recheck_full_record": "Full record in prompt",
            "recheck_no_readback": "No read-back"}

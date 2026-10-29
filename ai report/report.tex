@@ -41,7 +41,7 @@ Since the proposal we have:
 
 \noindent The main finding is clear. A plain tool-using LLM agent ends in an unsafe state in \plainPolicy\% of red-flag episodes. Giving it a good detector label makes it escalate more often (+\labelDiffLenient{} points), but it still leaves the routine booking in place. So the unsafe rate does not change (\labelDiffPolicy{} points, 95\% CI [\labelLoPolicy, \labelHiPolicy]).
 
-\recheck{} closes part of this gap. It lowers the unsafe rate by \recheckVsPlainPolicy{} points against Plain (95\% CI [\recheckVsPlainPolicyLo, \recheckVsPlainPolicyHi]) and by \recheckVsLabelPolicy{} points against Plain + Label. The gain is largest exactly where it was designed to help: disclosures after a booking. But it has a cost. Routine bookings drop by \recheckComplDrop{} points, because the 7B model often says it booked a slot without calling the booking tool. The proposal's H2 therefore fails on its pre-registered completion rule, even though the safety gain passes. The ablations show that most parts of \recheck{} matter. Removing the second re-check pass costs the most (+\ablsinglepassDiff{} points unsafe), then removing the detector (+\ablnodetectorDiff). A simple safety prompt makes the agent escalate more, but it still leaves the booking in place (strict unsafe \safetyStrict\%, the same as Plain).
+\recheck{} closes part of this gap. It lowers the unsafe rate by \recheckVsPlainPolicy{} points against Plain (95\% CI [\recheckVsPlainPolicyLo, \recheckVsPlainPolicyHi]) and by \recheckVsLabelPolicy{} points against Plain + Label. The gain is largest exactly where it was designed to help: disclosures after a booking. But it has a cost. Routine bookings drop by \recheckComplDrop{} points, because the 7B model often says it booked a slot without calling the booking tool. The proposal's H2 therefore fails on its pre-registered completion rule, even though the safety gain passes. The ablations show that most parts of \recheck{} matter. Allowing only one tool-calling round per patient turn costs the most (+\ablsinglepassDiff{} points unsafe), then removing the detector (+\ablnodetectorDiff). A simple safety prompt makes the agent escalate more, but it still leaves the booking in place (strict unsafe \safetyStrict\%, the same as Plain).
 
 \section{Novelty check after the results}
 \begin{itemize}
@@ -233,7 +233,7 @@ Each fault run uses seed 0 and direct phrasing. These numbers are descriptive; w
 \begin{itemize}
 \item \textbf{H2c is supported.} Both confirmatory parts matter (Holm-corrected over the 5 confirmatory tests):
   \begin{itemize}
-  \item no second re-check pass: +\ablsinglepassDiff{} points (95\% CI [\ablsinglepassLo, \ablsinglepassHi]);
+  \item single pass (one tool-calling round per patient turn, so the model cannot act and then check in the same turn): +\ablsinglepassDiff{} points (95\% CI [\ablsinglepassLo, \ablsinglepassHi]);
   \item no action-ledger re-check: +\ablnoledgerDiff{} points (CI [\ablnoledgerLo, \ablnoledgerHi]).
   \end{itemize}
 \item \textbf{The detector matters.} Without it, unsafe rises by \ablnodetectorDiff{} points (CI [\ablnodetectorLo, \ablnodetectorHi]). Giving the detector as an optional tool instead of every turn costs less, and its CI includes 0 (+\abldetectortoolDiff{}, CI [\abldetectortoolLo, \abldetectortoolHi]).
