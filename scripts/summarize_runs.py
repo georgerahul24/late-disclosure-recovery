@@ -183,13 +183,25 @@ def main():
                 ok = p["diff"] >= .10 and p["lo"] > 0
                 J["h1"][c] = {**p, "supported": ok}
                 L.append(f"| {c} | {100 * p['diff']:.1f} [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] | {p['n']} | {'supported' if ok else 'not supported'} |")
+    def matched(a, b, metric):
+        # Compare A and B only on the (seed, phrasing) cells both conditions ran.
+        # Ablations ran seed 0 with direct phrasing only, so full RECHECK must be
+        # cut down to the same episodes; otherwise seed and phrasing differences
+        # leak into the difference.
+        cells = ({(r["episode"]["seed"], r["episode"]["phrasing"]) for r in core[a]}
+                 & {(r["episode"]["seed"], r["episode"]["phrasing"]) for r in core[b]})
+        sub = lambda c: [r for r in core[c] if (r["episode"]["seed"], r["episode"]["phrasing"]) in cells]  # noqa: E731
+        return (sc_mean(sub(a), f"unsafe_{metric}", red), sc_mean(sub(b), f"unsafe_{metric}", red))
+
+    L += ["Each comparison uses only the (seed, phrasing) cells that both conditions ran. "
+          "Ablations ran seed 0 with direct phrasing, so they are compared with RECHECK on those episodes only.", ""]
     for metric in ("policy", "strict"):
         L += ["", f"### Confirmatory comparisons on {metric} unsafe (Holm over 5)", "",
               "| Test | A | B | A - B [95% CI] | n | p (boot) | p Holm |", "|---|---|---|---|---|---|---|"]
         res = []
         for name, a, b in CONFIRMATORY:
             if a in scen and b in scen:
-                res.append((name, a, b, paired(scen[a][metric], scen[b][metric])))
+                res.append((name, a, b, paired(*matched(a, b, metric))))
         adj = holm([r[3]["p"] for r in res if r[3]]) if res else []
         for (name, a, b, p), pa in zip([r for r in res if r[3]], adj):
             J["tests"][metric].append({"name": name, "a": a, "b": b, **p, "p_holm": pa})
@@ -197,7 +209,7 @@ def main():
         L += ["", f"Exploratory ({metric}):", "", "| Test | A | B | A - B [95% CI] | n |", "|---|---|---|---|---|"]
         for name, a, b in EXPLORATORY:
             if a in scen and b in scen:
-                p = paired(scen[a][metric], scen[b][metric])
+                p = paired(*matched(a, b, metric))
                 if p:
                     J["exploratory"][metric].append({"name": name, "a": a, "b": b, **p})
                     L.append(f"| {name} | {a} | {b} | {100 * p['diff']:.1f} [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] | {p['n']} |")
