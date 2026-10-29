@@ -148,7 +148,8 @@ def main():
                                 allow_full_record=CONDITIONS[cond].full_record)
                 d = json.loads(r.to_json())
                 d["usage"] = {"calls": client.n_calls, "tokens_in": client.tokens_in, "tokens_out": client.tokens_out,
-                              "note_parse_failures": agent.parse_failures}
+                              "note_parse_failures": agent.parse_failures,
+                              "harness_feedback": agent.harness_feedback}
                 with lock:
                     with open(path, "a") as fh:
                         fh.write(json.dumps(d) + "\n")
