@@ -45,7 +45,15 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
   - The model sometimes claims to have booked without calling `book`.
   - RECHECK often searches conditions instead of medications (a stage 2 failure).
 
-**ALL RUNS FINISHED (2026-10-29 03:27 IST).** 51,750 graded episodes. Final numbers are in `results/final_v1.md` and `results/final_timing_policy.md`; raw episodes are in `results/runs_v1/*.tar.gz`. The mid-submission report (`ai report/report.pdf`) uses all of them and is tagged `midsem` in git. Left: the advice judge, RECHECK v2, the human labelling items, and the paper.
+**FINAL STAGE RUNNING ON THE CLUSTER (started 2026-10-29 22:06 IST, no laptop needed).** `cluster/queue_final.sh 41206 46988` runs on the ada login node (`logs/queue_final*.log`, step markers in `logs/queue/`):
+- holder 41206 (gnode062, 2 GPUs, qwen): RECHECK v2 on eval v1, 3 seeds, both phrasings -> `runs/llm_v2` (ETA about 07:15 IST on 30 Oct); then its GPUs become llama judge servers and judge `llm_faults`, `llm_v2`, `llm_ablate`.
+- judge job 46988 (gnode082, 2 GPUs, llama3.1:8b q8_0, ctx 1536, 6 parallel): judges `llm_main` (ETA about 06:40 IST on 30 Oct) and exports the 60-turn advice label sample.
+- then all analysis goes into `runs/final_analysis/` (regrade check, summary with v2, GEE, extra facts, failure breakdown, advice summary + `labelling/advice_labels.csv`, report tables). Expected done around 16:00-17:00 IST on 30 Oct. `logs/queue/final.done` marks the end.
+- After it ends: `cluster/sync.sh pull`, copy `runs/final_analysis/*` into `results/` and `ai report/tables/`, `runs/final_analysis/labelling/advice_labels*` into `labelling/`, update the report and `context.zip`, commit.
+- RECHECK v2 dev check (`runs/v2_dev`, dev fixtures only, seed 0): policy unsafe 71.3 vs RECHECK 78.7, completion 76.7 vs 69.2. The method was fixed before this run and not tuned on eval.
+- Traps found today: `/tmp` full on gnode082 made Ollama silently use CPU (fixed: TMPDIR on scratch); a llama judge needs ctx 1536 x 6 parallel to fit fully on one 2080 Ti; JSON mode stops trailing explanations; the cluster `.venv` needed statsmodels.
+
+**ALL MAIN RUNS FINISHED (2026-10-29 03:27 IST).** 51,750 graded episodes. Final numbers are in `results/final_v1.md` and `results/final_timing_policy.md`; raw episodes are in `results/runs_v1/*.tar.gz`. The mid-submission report (`ai report/report.pdf`) uses all of them and is tagged `midsem` in git. Left: the advice judge, RECHECK v2, the human labelling items, and the paper.
 
 **Older queue status (2026-10-26 05:06 IST).**
 - The LoRA detectors are trained. There are 6 in `models/det-*` (git-ignored), and their metrics are in `runs/detector/*.metrics.json`. Dev macro-F1 is 0.975-0.990 for 1.5B and 0.957-0.978 for 0.5B.
