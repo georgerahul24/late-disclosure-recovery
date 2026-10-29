@@ -19,7 +19,7 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
 
 ## 3. Current state
 
-**Code (34 tests pass):**
+**Code (35 tests pass):**
 - **Episode loop:** backend with faults (cancel fails, slot taken, lost booking response), tool harness (allow-list, authority, ledger), simulator, runner, grader and analysis.
 - **Simulator:** event-triggered. It supports follow-up-only disclosure and advice requests, and it answers medication questions from the record.
 - **Grader:** policy (primary), strict, lenient, stages 1-5, unsafe actions, false claims and schema-valid call rate.
