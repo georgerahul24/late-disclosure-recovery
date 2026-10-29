@@ -54,7 +54,15 @@ def main():
         L.append(f"| {c} | {len(rows)} | {len(red)} | {dis} ({100 * dis / len(red):.1f}%) | {tv} | {fce} | "
                  f"{', '.join(f'{k} {v}' for k, v in sorted(fc.items())) or '-'} | "
                  f"{f'{calls:.1f}' if llm else '-'} | {f'{tin:.0f} / {tout:.0f}' if llm else '- (no LLM)'} |")
-    L += ["", f"Total episodes: {total}"]
+    L += ["", f"Total episodes: {total}", "",
+          "## End states on red-flag episodes, by fault", "",
+          "Counts of the final backend end state (see docs/design.md section 3).", "",
+          "| Condition | Fault | Episodes | End states |", "|---|---|---|---|"]
+    for c, rows in sorted(data.items()):
+        for fault in sorted({r["episode"]["fault"] for r in rows}):
+            sub = [r for r in rows if r["grade"]["red_flag"] and r["episode"]["fault"] == fault]
+            es = Counter(r["grade"]["end_state"] for r in sub)
+            L.append(f"| {c} | {fault} | {len(sub)} | {', '.join(f'{k} {v}' for k, v in sorted(es.items()))} |")
     Path(args.out).write_text("\n".join(L) + "\n")
     print("\n".join(L))
 
