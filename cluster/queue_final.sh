@@ -20,6 +20,7 @@ LORA="lora:models/det-qwen2.5-1.5b-instruct-s{seed}"
 EVAL="--scenarios data/eval/scenarios_v1.json --patients data/eval/patients_v1.json --policy data/policy/clinic_policy_v1.json"
 
 alive() { squeue -j "$1" -h -t R | grep -q .; }
+exists() { squeue -j "$1" -h -t R,PD,CF | grep -q .; }  # running or still starting
 step() {  # step <name> <command...>
   local name=$1; shift
   if [ -f "logs/queue/$name.done" ]; then echo "skip $name"; return 0; fi
@@ -69,7 +70,7 @@ branch_hold() {
 }
 
 branch_judge() {
-  until [ -f "logs/hold-$JUDGE.env" ]; do alive "$JUDGE" || { echo "judge job gone"; return 1; }; sleep 60; done
+  until [ -f "logs/hold-$JUDGE.env" ]; do exists "$JUDGE" || { echo "judge job gone"; return 1; }; sleep 60; done
   step judge_main judge "$JUDGE" "$OLLAMA_URLS" runs/llm_main 60 || return 1
 }
 
