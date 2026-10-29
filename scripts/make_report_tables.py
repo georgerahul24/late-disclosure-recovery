@@ -279,7 +279,7 @@ def main():
 
     # LoRA dev metrics
     T = [r"\begin{tabular}{lrrr}\toprule", r"Detector & Seed & Train / dev examples & Best dev macro-F1 \\ \midrule"]
-    for f in sorted((ROOT / "runs/detector").glob("*.metrics.json")):
+    for f in sorted((ROOT / "results/lora_dev").glob("*.metrics.json")):
         m = json.loads(f.read_text())
         T.append(f"{Path(m['base']).name} & {m['seed']} & {m['n_train']} / {m['n_dev']} & {m['best_dev_macro_f1']:.3f} \\\\")
     T.append(r"\bottomrule\end{tabular}")
