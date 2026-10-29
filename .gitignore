@@ -16,3 +16,6 @@ models/
 .env
 data/synthea/patients.json
 logs/
+
+# Paper-writing bundle (built from tag midsem; not tracked)
+context.zip
