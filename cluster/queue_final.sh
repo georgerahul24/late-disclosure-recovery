@@ -2,9 +2,12 @@
 # Final stage, fully on the cluster (no laptop needed). Run on the LOGIN node:
 #   nohup bash cluster/queue_final.sh <hold_job> <judge_job> >> logs/queue_final.log 2>&1 &
 # hold_job  : the qwen holder (2 GPUs). Runs RECHECK v2 on eval v1 (3 seeds),
-#             then turns its GPUs into judge servers and judges llm_faults + llm_v2.
+#             then turns its GPUs into judge servers and judges llm_faults,
+#             llm_v2 and llm_ablate.
 # judge_job : a hold_node job started with MODEL=llama3.1:8b-instruct-q8_0,
-#             PARALLEL=6, CTX=1536. Judges llm_main + llm_ablate.
+#             PARALLEL=6, CTX=1536. Judges llm_main on ONE server: the job has
+#             16 GB RAM and each judge runner holds ~8 GB of host memory while
+#             loading, so two runners crash-loop (seen 29 Oct).
 # Then runs every analysis into runs/final_analysis/ (pulled by cluster/sync.sh pull).
 # Steps leave logs/queue/<name>.done; re-running skips finished steps and every
 # run/judge resumes.
@@ -30,7 +33,7 @@ on() {  # on <job> <cmd...>: run a command inside a job (no GPU)
   local j=$1; shift
   srun --jobid="$j" --overlap -n 1 -c "${C:-4}" --mem="${M:-8G}" --gres=none "$@"
 }
-curl_in() { on "$1" curl -s -m 600 "${@:2}"; }
+curl_in() { C=1 M=1G on "$1" curl -s -m 600 "${@:2}"; }
 
 judge() {  # judge <job> <urls> <runs_dir> <label_sample>
   local j=$1 urls=$2 d=$3 n=$4
@@ -46,6 +49,8 @@ branch_hold() {
   for p in 11434 11435; do
     curl_in "$HOLD" "http://127.0.0.1:$p/api/generate" -d "{\"model\":\"$QWEN\",\"prompt\":\"hi\",\"stream\":false,\"options\":{\"num_predict\":1}}" > /dev/null
   done
+  # a v2 run started by an earlier copy of this queue may still be running: wait for it
+  while squeue -s -j "$HOLD" -h -o "%j" | grep -qx env; do sleep 120; done
   step v2_eval srun --jobid="$HOLD" --overlap -n 1 -c 16 --mem=48G --gres=none \
     env CUDA_VISIBLE_DEVICES= HF_HOME=/ssd_scratch/gr/lma/hf HF_HUB_OFFLINE=1 \
     $TPY scripts/run_llm.py --conditions recheck_v2 --seeds 0,1,2 --phrasings direct,indirect \
@@ -55,19 +60,21 @@ branch_hold() {
     curl_in "$HOLD" "http://127.0.0.1:$p/api/generate" -d "{\"model\":\"$QWEN\",\"keep_alive\":0}" > /dev/null
   done
   sleep 10
-  nohup srun --jobid="$HOLD" --overlap -n 1 -c 6 --mem=8G --gres=gpu:2 cluster/judge_server.sh 0 11436 > logs/ollama-judge-h0.log 2>&1 &
-  nohup srun --jobid="$HOLD" --overlap -n 1 -c 6 --mem=8G --gres=gpu:2 cluster/judge_server.sh 1 11437 > logs/ollama-judge-h1.log 2>&1 &
-  sleep 30
+  nohup srun --jobid="$HOLD" --overlap -n 1 -c 6 --mem=14G --gres=gpu:2 cluster/judge_server.sh 0 11436 > logs/ollama-judge-h0.log 2>&1 &
+  sleep 90  # load one runner at a time
+  nohup srun --jobid="$HOLD" --overlap -n 1 -c 6 --mem=14G --gres=gpu:2 cluster/judge_server.sh 1 11437 > logs/ollama-judge-h1.log 2>&1 &
+  sleep 90
   local U=http://127.0.0.1:11436/v1,http://127.0.0.1:11437/v1
   step judge_faults judge "$HOLD" "$U" runs/llm_faults 0 || return 1
   step judge_v2 judge "$HOLD" "$U" runs/llm_v2 0 || return 1
+  step judge_ablate judge "$HOLD" "$U" runs/llm_ablate 0 || return 1
 }
 
 branch_judge() {
   until [ -f "logs/hold-$JUDGE.env" ]; do alive "$JUDGE" || { echo "judge job gone"; return 1; }; sleep 60; done
-  source "logs/hold-$JUDGE.env"
-  step judge_main judge "$JUDGE" "$OLLAMA_URLS" runs/llm_main 60 || return 1
-  step judge_ablate judge "$JUDGE" "$OLLAMA_URLS" runs/llm_ablate 0 || return 1
+  # one server only (see the header); unload the model from the second one
+  curl_in "$JUDGE" "http://127.0.0.1:11435/api/generate" -d "{\"model\":\"$LLAMA\",\"keep_alive\":0}" > /dev/null
+  step judge_main judge "$JUDGE" http://127.0.0.1:11434/v1 runs/llm_main 60 || return 1
 }
 
 echo "queue_final start $(date) hold=$HOLD judge=$JUDGE"
@@ -83,7 +90,7 @@ for d in llm_main llm_ablate llm_faults llm_v2; do
   [ -f "logs/queue/judge_${d#llm_}.done" ] && continue
   for j in "$JUDGE" "$HOLD"; do
     if alive "$j"; then
-      source "logs/hold-$j.env"; U=$OLLAMA_URLS
+      U=http://127.0.0.1:11434/v1
       [ "$j" = "$HOLD" ] && U=http://127.0.0.1:11436/v1,http://127.0.0.1:11437/v1
       n=0; [ "$d" = llm_main ] && n=60
       step "judge_${d#llm_}" judge "$j" "$U" "runs/$d" "$n" && break
