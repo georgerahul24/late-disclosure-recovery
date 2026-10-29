@@ -5,9 +5,7 @@
 #             then turns its GPUs into judge servers and judges llm_faults,
 #             llm_v2 and llm_ablate.
 # judge_job : a hold_node job started with MODEL=llama3.1:8b-instruct-q8_0,
-#             PARALLEL=6, CTX=1536. Judges llm_main on ONE server: the job has
-#             16 GB RAM and each judge runner holds ~8 GB of host memory while
-#             loading, so two runners crash-loop (seen 29 Oct).
+#             PARALLEL=6, CTX=1536. Judges llm_main.
 # Then runs every analysis into runs/final_analysis/ (pulled by cluster/sync.sh pull).
 # Steps leave logs/queue/<name>.done; re-running skips finished steps and every
 # run/judge resumes.
@@ -72,9 +70,7 @@ branch_hold() {
 
 branch_judge() {
   until [ -f "logs/hold-$JUDGE.env" ]; do alive "$JUDGE" || { echo "judge job gone"; return 1; }; sleep 60; done
-  # one server only (see the header); unload the model from the second one
-  curl_in "$JUDGE" "http://127.0.0.1:11435/api/generate" -d "{\"model\":\"$LLAMA\",\"keep_alive\":0}" > /dev/null
-  step judge_main judge "$JUDGE" http://127.0.0.1:11434/v1 runs/llm_main 60 || return 1
+  step judge_main judge "$JUDGE" "$OLLAMA_URLS" runs/llm_main 60 || return 1
 }
 
 echo "queue_final start $(date) hold=$HOLD judge=$JUDGE"
@@ -90,7 +86,7 @@ for d in llm_main llm_ablate llm_faults llm_v2; do
   [ -f "logs/queue/judge_${d#llm_}.done" ] && continue
   for j in "$JUDGE" "$HOLD"; do
     if alive "$j"; then
-      U=http://127.0.0.1:11434/v1
+      source "logs/hold-$j.env"; U=$OLLAMA_URLS
       [ "$j" = "$HOLD" ] && U=http://127.0.0.1:11436/v1,http://127.0.0.1:11437/v1
       n=0; [ "$d" = llm_main ] && n=60
       step "judge_${d#llm_}" judge "$j" "$U" "runs/$d" "$n" && break

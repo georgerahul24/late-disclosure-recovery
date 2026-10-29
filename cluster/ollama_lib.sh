@@ -42,7 +42,10 @@ start_ollama_servers() {
   export OLLAMA_MODELS="$SCR/models"
   # All servers share one models dir. Create it up front and disable startup
   # pruning, otherwise servers race on "remove .../manifests" and die.
-  mkdir -p "$OLLAMA_MODELS/manifests" "$OLLAMA_MODELS/blobs"
+  mkdir -p "$OLLAMA_MODELS/manifests" "$OLLAMA_MODELS/blobs" "$SCR/tmp"
+  # /tmp can be full on some nodes (gnode082, 29 Oct): GPU discovery then fails
+  # silently and Ollama runs on CPU. Keep its temp files on node scratch.
+  export TMPDIR="$SCR/tmp"
   export OLLAMA_NOPRUNE=1
   export OLLAMA_CONTEXT_LENGTH=$CTX
   export OLLAMA_NUM_PARALLEL=$PARALLEL
