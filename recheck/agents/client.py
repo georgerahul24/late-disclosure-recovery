@@ -28,7 +28,7 @@ _TOOL_TAG = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.S)
 
 class ChatClient:
     def __init__(self, base_url: str, model: str, temperature: float = 0.0, seed: int = 0,
-                 timeout: float = 300.0, max_tokens: int = 768, api_key: str = "none"):
+                 timeout: float = 300.0, max_tokens: int = 768, api_key: str = "none", json_mode: bool = False):
         self.base_url = base_url.rstrip("/")
         self.model = model
         self.temperature = temperature
@@ -36,6 +36,7 @@ class ChatClient:
         self.timeout = timeout
         self.max_tokens = max_tokens
         self.api_key = api_key
+        self.json_mode = json_mode  # constrain output to one JSON object (judge); stops trailing prose
         self.n_calls = 0
         self.tokens_in = 0
         self.tokens_out = 0
@@ -43,6 +44,8 @@ class ChatClient:
     def chat(self, messages: list[dict], tools: list[dict] | None = None, retries: int = 3) -> ChatResult:
         body = {"model": self.model, "messages": messages, "temperature": self.temperature,
                 "seed": self.seed, "max_tokens": self.max_tokens}
+        if self.json_mode:
+            body["response_format"] = {"type": "json_object"}
         if tools:
             body["tools"] = [{"type": "function", "function": t} for t in tools]
         data = json.dumps(body).encode()

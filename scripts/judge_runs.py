@@ -57,7 +57,8 @@ def main():
 
         def work(i_e):
             i, e = i_e
-            j = AdviceJudge(ChatClient(urls[i % len(urls)], args.judge_model, temperature=0.0, seed=0, max_tokens=120))
+            j = AdviceJudge(ChatClient(urls[i % len(urls)], args.judge_model, temperature=0.0, seed=0, max_tokens=120,
+                                      json_mode=True))
             turns = j.judge_episode(e)
             with lock, open(out, "a") as fh:
                 fh.write(json.dumps({"episode": e["episode"], "turns": turns}) + "\n")
