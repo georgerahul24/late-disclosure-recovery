@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-10-26 (evening). Update this file whenever the state changes.
+Last updated: 2026-10-29. Update this file whenever the state changes.
 
 ## 1. What this project is
 
@@ -45,7 +45,9 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
   - The model sometimes claims to have booked without calling `book`.
   - RECHECK often searches conditions instead of medications (a stage 2 failure).
 
-**Queue status (2026-10-26 05:06 IST).**
+**ALL RUNS FINISHED (2026-10-29 03:27 IST).** 51,750 graded episodes. Final numbers are in `results/final_v1.md` and `results/final_timing_policy.md`; raw episodes are in `results/runs_v1/*.tar.gz`. The mid-submission report (`ai report/report.pdf`) uses all of them and is tagged `midsem` in git. Left: the advice judge, RECHECK v2, the human labelling items, and the paper.
+
+**Older queue status (2026-10-26 05:06 IST).**
 - The LoRA detectors are trained. There are 6 in `models/det-*` (git-ignored), and their metrics are in `runs/detector/*.metrics.json`. Dev macro-F1 is 0.975-0.990 for 1.5B and 0.957-0.978 for 0.5B.
 - `cluster/queue_main.sh` was restarted after a LoRA OOM fix. It is now on the detector comparison step. Progress is in `logs/queue.log`, and finished steps leave `logs/queue/*.done` markers. Re-running the queue is safe.
 - Plain and Safety (`runs/llm_main`) run separately, as step 39713.33.

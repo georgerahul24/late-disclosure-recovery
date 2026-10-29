@@ -57,12 +57,12 @@ Owners:
 
 ## Phase 3. Detector
 - [x] LLM paraphrases: 763 kept of ~916 asked (93 dropped by the label check), 756 after decontamination. A spot-check shows some drift (extra symptoms added, e.g. 'headache ever since' on a head bump), so the human check matters. Original task: 4 per seed with the orchestrator model (allowed for training only), automatic label check, ~3,600 examples with carriers. Second-member check: [!] A/P.
-- [ ] LoRA training: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B, 5-way head, r=16, alpha=32, dropout 0.05, attention projections, lr 2e-4, 3 epochs, batch 16, 3 seeds, fp16 (the 2080 Ti has no bf16). Split 85/15 grouped by seed. Training venv goes on node scratch (home is full).
+- [x] LoRA training: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B, 5-way head, r=16, alpha=32, dropout 0.05, attention projections, lr 2e-4, 3 epochs, batch 16, 3 seeds, fp16 (the 2080 Ti has no bf16). Split 85/15 grouped by seed. Training venv goes on node scratch (home is full).
 - [x] `recheck/detectors/lora.py` with `LoraDetector(adapter_dir).predict`.
-- [ ] Detector comparison: keyword vs TF-IDF vs prompted large model vs both LoRA models, on symptom-only, in-message and reworded text. Report max n-gram overlap between train and test.
+- [x] Detector comparison: keyword vs TF-IDF vs prompted large model vs both LoRA models, on symptom-only, in-message and reworded text. Report max n-gram overlap between train and test.
 
 ## Phase 4. Main runs (proposal sections 6, 9, 10)
-**Running on holder 39713 (gnode089):**
+**DONE 29 Oct 2026 03:27 IST (holder 41206, gnode062). The notes below are history.**
 - Plain and Safety, 3 seeds, both phrasings, go to `runs/llm_main` (started 2026-10-26 04:15 IST, about 10 h).
 - The LoRA detectors are training on GPU 3 (`logs/train.out`).
 - `cluster/queue_main.sh` starts by itself when training ends, and runs:
@@ -74,17 +74,19 @@ Owners:
 - Check progress with `cat logs/queue.log` and `ls logs/queue/*.done`.
 - After the queue ends: **first re-run each `run_llm.py` command with the same `--out` (resume pass)** so that episodes dropped by crashes are filled in. Check that every `<cond>_s<seed>.jsonl` has all its episodes. Then unload qwen, run `scripts/judge_runs.py` with llama3.1:8b, then `cluster/sync.sh pull`, `scripts/summarize_runs.py`, `scripts/timing_model.py` and `scripts/make_tables.py`.
 - [x] Smoke test LLM conditions on gnode089 (holder job). Check the valid tool-call rate. If it is under 90%, use the fallback: 14B model (proposal Table 4).
-- [ ] 5 main conditions x 3 seeds: plain, safety, plain_label, recheck, hybrid.
-- [ ] Rule gate (scripted) and DSC on the same eval set.
-- [ ] 7 ablations x 1 seed.
-- [ ] Tool-fault episodes: cancel_fails_once, book_lost_response, slot_taken.
-- [ ] H1: POST minus T1 difference for plain and safety. H2/H2b/H2c with scenario-paired bootstrap. TOST recheck vs DSC.
+- [x] 5 main conditions x 3 seeds: plain, safety, plain_label, recheck, hybrid. Every file has its full 1,572 episodes, so no resume pass was needed.
+- [x] Rule gate (scripted) and DSC on the same eval set.
+- [x] 7 ablations x 1 seed (786 episodes each).
+- [x] Tool-fault episodes: cancel_fails_once, book_lost_response, slot_taken (plain, recheck, hybrid, recheck_no_readback; 1,704 each).
+- [x] H1: POST minus T1 difference for plain and safety. H2/H2b/H2c with scenario-paired bootstrap. TOST recheck vs DSC. See `results/final_v1.md`.
 - [ ] Failure analysis: sample 30 failed episodes per main condition, assign stage plus sub-cause, two annotated traces per stage.
 - [ ] Stage 1/2 note check against 50 hand-labelled traces. [!] Needs a human labeller.
 
 ## Phase 4b. After the mid-submission (28 Oct)
 - [x] RECHECK and Hybrid finished (3 seeds). H2b is supported. H2 fails on the completion rule (−31.5 pts). See `ai report/report.pdf`.
-- [ ] De-duplicate episodes before the final analysis. `safety_s0.jsonl` has 1573 lines for 1572 episodes (one was written twice across a crash and resume). Keep the last line per episode.
+- [x] De-duplicated episodes: `safety_s0` and `plain_label_s2` each had one episode written twice. The last line per episode is kept. Raw files are in `results/runs_v1/`.
+- [x] Final analysis, report updated, tagged `midsem` (29 Oct). H2c supported (single pass +20.5, no ledger +8.3 on matched episodes).
+- [ ] Advice judge (`scripts/judge_runs.py`, llama3.1:8b) not run yet. Holder 41206 ends about 31 Oct 03:46 IST.
 - [ ] RECHECK v2: an action-claim check (claimed but missing tool calls get completed) plus an explicit escalate-after-repair step. Develop on dev fixtures only, then run once on eval v1 with 3 seeds.
 
 ## Phase 5. Paper
