@@ -27,7 +27,7 @@ from recheck.scenarios import load_scenarios  # noqa: E402
 
 NAMES = {"book_only": "Book-only", "rule_gate": "Rule gate (keywords)", "plain": "Plain LLM",
          "plain_label": "Plain + Label", "dsc": "DSC (no LLM)", "safety": "Safety prompt", "recheck": r"\recheck{}",
-         "hybrid": "Hybrid"}
+         "hybrid": "Hybrid", "recheck_no_readback": r"\recheck{} no read-back"}
 ORDER = ["book_only", "rule_gate", "plain", "plain_label", "safety", "recheck", "hybrid", "dsc"]
 
 
@@ -104,7 +104,7 @@ def main():
                 n += 1
         if n:
             T.append(f"{NAMES[c]} & {n} & " + " & ".join(f"{100 * st[k] / n:.0f}" for k in (1, 2, 3, 4, 5)) + r" \\")
-            if c in ("plain", "plain_label"):
+            if c in ("plain", "plain_label", "safety", "recheck"):
                 mac(f"{c.replace('_', '')}StageThree", f"{100 * st[3] / n:.0f}")
                 mac(f"{c.replace('_', '')}StageTwo", f"{100 * st[2] / n:.0f}")
                 mac(f"{c.replace('_', '')}StageOne", f"{100 * st[1] / n:.0f}")
@@ -184,7 +184,8 @@ def main():
         rows = data[c]
         tp = [r for r in rows if SC[r["episode"]["scenario_id"]].subject == "other" and r["episode"]["fault"] == "none"
               and SC[r["episode"]["scenario_id"]].disclosure == "volunteer" and not SC[r["episode"]["scenario_id"]].advice_request]
-        ask = [r for r in rows if SC[r["episode"]["scenario_id"]].disclosure == "on_question" and red(r)]
+        ask = [r for r in rows if SC[r["episode"]["scenario_id"]].disclosure == "on_question" and red(r)
+               and r["episode"]["fault"] == "none"]
         adv = [r for r in rows if SC[r["episode"]["scenario_id"]].advice_request and red(r) and r["episode"]["fault"] == "none"]
         f = lambda xs: pc(mean(r["grade"]["unsafe_policy"] for r in xs)) if xs else "--"  # noqa: E731
         T.append(f"{NAMES[c]} & {pc(pk)} & {f(tp)} & {f(ask)} & {f(adv)} & {pc(1 - mean(scen[c]['lenient'].values()))} \\\\")
@@ -192,12 +193,44 @@ def main():
     T.append(r"\bottomrule\end{tabular}")
     (out / "extras.tex").write_text("\n".join(T) + "\n")
 
+    # ---- ablations (seed 0, direct phrasing) vs full RECHECK on the same episodes
+    ABL = {"recheck_no_ledger": r"No ledger re-check (H2c)", "recheck_single_pass": r"Single pass, no re-check (H2c)",
+           "recheck_no_detector": "No detector", "recheck_detector_tool": "Detector as a tool",
+           "recheck_no_retrieval": "No retrieval", "recheck_full_record": "Full record in prompt",
+           "recheck_no_readback": "No read-back"}
+    abl = [a for a in ABL if a in data]
+    if abl and "recheck" in core:
+        base = [r for r in core["recheck"] if r["episode"]["seed"] == 0 and r["episode"]["phrasing"] == "direct"]
+        bp = S.sc_mean(base, "unsafe_policy", red)
+        bc = S.sc_mean(base, "completed", lambda r: not red(r))
+        T = [r"\begin{tabular}{lrrrrr}\toprule",
+             r"Variant & Policy unsafe & $\Delta$ vs \recheck{} [95\% CI] & Strict unsafe & Completion & Over-esc. \\ \midrule",
+             f"\\recheck{{}} (full, same episodes) & {pc(mean(bp.values()))} & -- & "
+             f"{pc(mean(S.sc_mean(base, 'unsafe_strict', red).values()))} & {pc(mean(bc.values()))} & "
+             f"{pc(mean(S.sc_mean(base, 'over_escalated', lambda r: not red(r)).values()))} \\\\"]
+        mac("ablBasePolicy", pc(mean(bp.values())))
+        for a in abl:
+            rows = [r for r in data[a] if is_core(r)]
+            ap_ = S.sc_mean(rows, "unsafe_policy", red)
+            p = S.paired(ap_, bp)
+            T.append(f"{ABL[a]} & {pc(mean(ap_.values()))} & {100 * p['diff']:+.1f} [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] & "
+                     f"{pc(mean(S.sc_mean(rows, 'unsafe_strict', red).values()))} & "
+                     f"{pc(mean(S.sc_mean(rows, 'completed', lambda r: not red(r)).values()))} & "
+                     f"{pc(mean(S.sc_mean(rows, 'over_escalated', lambda r: not red(r)).values()))} \\\\")
+            k = a.replace("recheck_", "abl").replace("_", "")
+            mac(f"{k}Policy", pc(mean(ap_.values())))
+            mac(f"{k}Diff", f"{100 * p['diff']:.1f}"); mac(f"{k}Lo", f"{100 * p['lo']:.1f}"); mac(f"{k}Hi", f"{100 * p['hi']:.1f}")
+        T.append(r"\bottomrule\end{tabular}")
+        (out / "ablations.tex").write_text("\n".join(T) + "\n")
+
     T = [r"\begin{tabular}{llrrr}\toprule", r"Controller & Fault & Red-flag eps & Policy unsafe & Strict unsafe \\ \midrule"]
-    for c in conds:
+    for c in conds + [a for a in ("recheck_no_readback",) if a in data]:
         for fault in sorted({r["episode"]["fault"] for r in data[c]} - {"none"}):
             sub = [r for r in data[c] if r["episode"]["fault"] == fault and red(r)]
             T.append(f"{NAMES[c]} & {fault.replace('_', ' ')} & {len(sub)} & {pc(mean(r['grade']['unsafe_policy'] for r in sub))} & "
                      f"{pc(mean(r['grade']['unsafe_strict'] for r in sub))} \\\\")
+            fk = {"book_lost_response": "Lost", "cancel_fails_once": "CancelFail", "slot_taken": "SlotTaken"}.get(fault, fault)
+            mac(f"{c.replace('_', '')}Fault{fk}", pc(mean(r['grade']['unsafe_policy'] for r in sub)))
     T.append(r"\bottomrule\end{tabular}")
     (out / "faults.tex").write_text("\n".join(T) + "\n")
 
