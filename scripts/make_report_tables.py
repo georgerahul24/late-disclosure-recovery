@@ -27,8 +27,9 @@ from recheck.scenarios import load_scenarios  # noqa: E402
 
 NAMES = {"book_only": "Book-only", "rule_gate": "Rule gate (keywords)", "plain": "Plain LLM",
          "plain_label": "Plain + Label", "dsc": "DSC (no LLM)", "safety": "Safety prompt", "recheck": r"\recheck{}",
-         "hybrid": "Hybrid", "recheck_no_readback": r"\recheck{} no read-back"}
-ORDER = ["book_only", "rule_gate", "plain", "plain_label", "safety", "recheck", "hybrid", "dsc"]
+         "hybrid": "Hybrid", "recheck_no_readback": r"\recheck{} no read-back",
+         "recheck_v2": r"\recheck{}~v2"}
+ORDER = ["book_only", "rule_gate", "plain", "plain_label", "safety", "recheck", "hybrid", "recheck_v2", "dsc"]
 
 
 def pc(x, d=1):
@@ -104,7 +105,7 @@ def main():
                 n += 1
         if n:
             T.append(f"{NAMES[c]} & {n} & " + " & ".join(f"{100 * st[k] / n:.0f}" for k in (1, 2, 3, 4, 5)) + r" \\")
-            if c in ("plain", "plain_label", "safety", "recheck"):
+            if c in ("plain", "plain_label", "safety", "recheck", "recheck_v2"):
                 mac(f"{c.replace('_', '')}StageThree", f"{100 * st[3] / n:.0f}")
                 mac(f"{c.replace('_', '')}StageTwo", f"{100 * st[2] / n:.0f}")
                 mac(f"{c.replace('_', '')}StageOne", f"{100 * st[1] / n:.0f}")
@@ -115,29 +116,32 @@ def main():
     T = [r"\begin{tabular}{llrrr}\toprule", r"Comparison & Metric & Diff. (pts) & 95\% CI & $p$ \\ \midrule"]
     comps = [("recheck", "plain", r"\recheck{} $-$ Plain (H2)"), ("recheck", "plain_label", r"\recheck{} $-$ Plain + Label (H2b)"),
              ("hybrid", "recheck", r"Hybrid $-$ \recheck{}"), ("hybrid", "dsc", "Hybrid $-$ DSC"),
-             ("plain_label", "plain", "Plain + Label $-$ Plain"), ("rule_gate", "plain", "Rule gate $-$ Plain")]
+             ("plain_label", "plain", "Plain + Label $-$ Plain"), ("rule_gate", "plain", "Rule gate $-$ Plain"),
+             ("recheck_v2", "recheck", r"\recheck{}~v2 $-$ \recheck{}"), ("recheck_v2", "plain", r"\recheck{}~v2 $-$ Plain")]
     for a, b, lab in comps:
         if a in scen and b in scen:
             for m in ("policy", "strict", "lenient"):
                 p = S.paired(scen[a][m], scen[b][m])
                 T.append(f"{lab} & {m} & {100 * p['diff']:.1f} & [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] & "
                          f"{'$<$0.001' if p['p'] < 0.001 else f'{p['p']:.3f}'} \\\\")
-                if (a, b) in (("recheck", "plain"), ("recheck", "plain_label"), ("hybrid", "dsc"), ("hybrid", "recheck")):
+                if (a, b) in (("recheck", "plain"), ("recheck", "plain_label"), ("hybrid", "dsc"), ("hybrid", "recheck"),
+                              ("recheck_v2", "recheck"), ("recheck_v2", "plain")):
                     tag = {"plain": "VsPlain", "plain_label": "VsLabel", "dsc": "VsDsc", "recheck": "VsRecheck"}[b]
-                    mac(f"{a}{tag}{m.capitalize()}", f"{100 * p['diff']:.1f}")
-                    mac(f"{a}{tag}{m.capitalize()}Lo", f"{100 * p['lo']:.1f}")
-                    mac(f"{a}{tag}{m.capitalize()}Hi", f"{100 * p['hi']:.1f}")
+                    a_ = a.replace("_", "")
+                    mac(f"{a_}{tag}{m.capitalize()}", f"{100 * p['diff']:.1f}")
+                    mac(f"{a_}{tag}{m.capitalize()}Lo", f"{100 * p['lo']:.1f}")
+                    mac(f"{a_}{tag}{m.capitalize()}Hi", f"{100 * p['hi']:.1f}")
                 if a == "plain_label":
                     mac(f"labelDiff{m.capitalize()}", f"{100 * p['diff']:.1f}")
                     mac(f"labelLo{m.capitalize()}", f"{100 * p['lo']:.1f}")
                     mac(f"labelHi{m.capitalize()}", f"{100 * p['hi']:.1f}")
     # routine completion change (H2 completion criterion)
-    for a, b in (("recheck", "plain"), ("hybrid", "plain")):
+    for a, b in (("recheck", "plain"), ("hybrid", "plain"), ("recheck_v2", "plain")):
         if a in scen and b in scen:
             p = S.paired(scen[a]["completed"], scen[b]["completed"])
             T.append(f"{NAMES[a]} $-$ Plain & routine completion & {100 * p['diff']:.1f} & [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] & "
                      f"{'$<$0.001' if p['p'] < 0.001 else f'{p['p']:.3f}'} \\\\")
-            mac(f"{a}ComplDrop", f"{-100 * p['diff']:.1f}")
+            mac(f"{a.replace('_', '')}ComplDrop", f"{-100 * p['diff']:.1f}")
     # H1
     for c in ("plain", "plain_label"):
         if c in core:
@@ -163,9 +167,10 @@ def main():
         nobook = sum(1 for r in nc if not any(x["name"] == "book" for x in r["calls"]))
         fb = sum(1 for r in nc if any(x["claim"] == "book" for x in r["grade"].get("false_claims", [])))
         T.append(f"{NAMES[c]} & {len(rows)} & {len(nc)} & {noact} & {nobook} & {fb} \\\\")
-        if c == "recheck":
-            mac("recheckRoutineFail", str(len(nc))); mac("recheckNoAction", str(noact))
-            mac("recheckNoBook", str(nobook)); mac("recheckFalseBook", str(fb))
+        if c in ("recheck", "recheck_v2"):
+            k = c.replace("_", "")
+            mac(f"{k}RoutineFail", str(len(nc))); mac(f"{k}NoAction", str(noact))
+            mac(f"{k}NoBook", str(nobook)); mac(f"{k}FalseBook", str(fb))
     T.append(r"\bottomrule\end{tabular}")
     (out / "routine.tex").write_text("\n".join(T) + "\n")
 

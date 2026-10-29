@@ -30,6 +30,18 @@ from recheck.agents.client import ChatClient  # noqa: E402
 from recheck.judge import AdviceJudge  # noqa: E402
 
 
+def read_jsonl(path: Path) -> list[dict]:
+    """Lines of a judge file; skips a half-written last line left by a killed job."""
+    out = []
+    if path.exists():
+        for line in path.read_text().splitlines():
+            try:
+                out.append(json.loads(line))
+            except json.JSONDecodeError:
+                pass
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--runs", required=True)
@@ -48,9 +60,7 @@ def main():
         if f.name.endswith(".judge.jsonl"):
             continue
         out = f.with_suffix(".judge.jsonl")
-        done = set()
-        if out.exists():
-            done = {json.dumps(json.loads(l)["episode"], sort_keys=True) for l in out.read_text().splitlines() if l.strip()}
+        done = {json.dumps(j["episode"], sort_keys=True) for j in read_jsonl(out)}
         eps = [json.loads(l) for l in f.read_text().splitlines() if l.strip()]
         todo = [e for e in eps if json.dumps(e["episode"], sort_keys=True) not in done]
         print(f"{f.name}: {len(eps)} episodes, {len(todo)} to judge", flush=True)
@@ -65,8 +75,7 @@ def main():
 
         with ThreadPoolExecutor(args.workers) as pool:
             list(pool.map(work, enumerate(todo)))
-        judged = {json.dumps(json.loads(l)["episode"], sort_keys=True): json.loads(l)["turns"]
-                  for l in out.read_text().splitlines() if l.strip()}
+        judged = {json.dumps(j["episode"], sort_keys=True): j["turns"] for j in read_jsonl(out)}
         n_adv = sum(1 for t in judged.values() if any(x["advice"] for x in t))
         n_fail = sum(1 for t in judged.values() for x in t if not x["parse_ok"])
         summary.append((f.stem, len(judged), n_adv, n_fail))

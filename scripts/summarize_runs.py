@@ -44,7 +44,9 @@ CONFIRMATORY = [("H2", "recheck", "plain"), ("H2b", "recheck", "plain_label"), (
 EXPLORATORY = [("no_detector", "recheck_no_detector", "recheck"), ("detector_tool", "recheck_detector_tool", "recheck"),
                ("no_retrieval", "recheck_no_retrieval", "recheck"), ("full_record", "recheck_full_record", "recheck"),
                ("no_readback", "recheck_no_readback", "recheck"), ("safety-plain", "safety", "plain"),
-               ("rule_gate-plain", "rule_gate", "plain")]
+               ("rule_gate-plain", "rule_gate", "plain"),
+               # RECHECK v2 (pre-registered 28 Oct as a follow-up; not in the Holm family)
+               ("v2-recheck", "recheck_v2", "recheck"), ("v2-plain", "recheck_v2", "plain")]
 
 
 def load(runs: list[str]) -> dict[str, list[dict]]:
@@ -219,6 +221,12 @@ def main():
             J["completion_recheck_minus_plain"] = p
             L += ["", f"Routine completion, RECHECK - Plain: {100 * p['diff']:.1f} [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}] "
                       f"(H2 is falsified if completion drops by more than 10 points)."]
+    if "recheck_v2" in scen:
+        for b in ("plain", "recheck"):
+            p = paired(scen["recheck_v2"]["completed"], scen[b]["completed"]) if b in scen else None
+            if p:
+                J[f"completion_v2_minus_{b}"] = p
+                L += ["", f"Routine completion, RECHECK v2 - {b}: {100 * p['diff']:.1f} [{100 * p['lo']:.1f}, {100 * p['hi']:.1f}]."]
     if "recheck" in scen and "dsc" in scen:
         p = paired(scen["recheck"]["policy"], scen["dsc"]["policy"])
         if p:

@@ -8,8 +8,9 @@ Reports only what is filled in (blank rows are skipped and counted):
     benchmark's current labels
   - stage check: agreement and kappa of the human first-failed stage with the
     automatic stage
-  - advice judge: sensitivity / specificity / PPV of the judge against the human
-    label (advice_labels.csv)
+  - advice judge: PPV / NPV in the sample (balanced on the judge verdict) and
+    sensitivity / specificity reweighted by how often the judge flags a turn
+    (advice_labels.csv, advice_labels_meta.json)
   - eval text and seeds review: how many items were marked not realistic or wrong
 """
 
@@ -17,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import sys
 from collections import Counter
 from pathlib import Path
@@ -118,9 +120,20 @@ def main():
         fp = sum(1 for r in rows if not yn(col(r, "YOUR_advice")) and yn(r["judge_advice"]))
         tn = len(rows) - tp - fn - fp
         L.append(f"- Human advice = yes: {tp + fn}; no: {fp + tn}")
-        L.append(f"- Judge sensitivity {f(tp / (tp + fn) if tp + fn else None)}, specificity {f(tn / (tn + fp) if tn + fp else None)}, "
-                 f"PPV {f(tp / (tp + fp) if tp + fp else None)}, kappa "
+        ppv = tp / (tp + fp) if tp + fp else None
+        npv = tn / (tn + fn) if tn + fn else None
+        L.append(f"- In the sample: PPV {f(ppv)}, NPV {f(npv)}, kappa "
                  f"{f(kappa([yn(col(r, 'YOUR_advice')) for r in rows], [yn(r['judge_advice']) for r in rows]))}")
+        meta = d / "advice_labels_meta.json"
+        q = json.loads(meta.read_text()).get("judge_flagged_turn_share_llm_main") if meta.exists() else None
+        if q is not None and ppv is not None and npv is not None:
+            # The sample is balanced on the judge verdict, so sensitivity and
+            # specificity must be reweighted by how often the judge flags a turn (q).
+            prev = ppv * q + (1 - npv) * (1 - q)
+            sens = ppv * q / prev if prev else None
+            spec = npv * (1 - q) / (1 - prev) if prev < 1 else None
+            L.append(f"- Reweighted to all judged turns (judge flags {100 * q:.2f}%): sensitivity {f(sens)}, "
+                     f"specificity {f(spec)}, estimated human advice rate {100 * prev:.2f}%")
 
     # text and seeds
     for fn_, label, keys in (("eval_text_review.csv", "Eval text", ("YOUR_realistic", "YOUR_wording")),
