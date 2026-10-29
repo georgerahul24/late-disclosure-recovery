@@ -71,6 +71,7 @@ branch_hold() {
 
 branch_judge() {
   until [ -f "logs/hold-$JUDGE.env" ]; do exists "$JUDGE" || { echo "judge job gone"; return 1; }; sleep 60; done
+  source "logs/hold-$JUDGE.env"
   step judge_main judge "$JUDGE" "$OLLAMA_URLS" runs/llm_main 60 || return 1
 }
 
