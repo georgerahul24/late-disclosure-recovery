@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrrr}\toprule
+Variant & Policy unsafe & $\Delta$ vs \recheck{} [95\% CI] & Strict unsafe & Completion & Over-esc. \\ \midrule
+\recheck{} (full, same episodes) & 67.3 & -- & 72.1 & 63.1 & 15.6 \\
+No ledger re-check (H2c) & 75.6 & +8.3 [2.9, 13.8] & 77.9 & 71.7 & 16.4 \\
+Single pass, no re-check (H2c) & 87.8 & +20.5 [15.4, 25.6] & 90.4 & 71.7 & 4.7 \\
+No detector & 80.4 & +13.1 [7.7, 18.6] & 83.7 & 79.4 & 10.3 \\
+Detector as a tool & 70.8 & +3.5 [-2.6, 9.6] & 74.7 & 77.2 & 11.1 \\
+No retrieval & 68.9 & +1.6 [-4.8, 7.7] & 74.0 & 69.4 & 18.1 \\
+Full record in prompt & 76.0 & +8.7 [2.9, 14.4] & 78.8 & 65.8 & 11.7 \\
+No read-back & 74.7 & +7.4 [1.9, 12.8] & 76.6 & 70.3 & 10.8 \\
+\bottomrule\end{tabular}

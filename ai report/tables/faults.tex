@@ -1,6 +1,18 @@
 \begin{tabular}{llrrr}\toprule
 Controller & Fault & Red-flag eps & Policy unsafe & Strict unsafe \\ \midrule
+Plain LLM & book lost response & 408 & 80.4 & 96.8 \\
+Plain LLM & cancel fails once & 132 & 93.2 & 100.0 \\
+Plain LLM & slot taken & 408 & 55.6 & 58.6 \\
+\recheck{} & book lost response & 408 & 74.5 & 81.6 \\
+\recheck{} & cancel fails once & 132 & 76.5 & 87.1 \\
+\recheck{} & slot taken & 408 & 65.4 & 66.7 \\
+Hybrid & book lost response & 408 & 72.8 & 79.7 \\
+Hybrid & cancel fails once & 132 & 68.9 & 72.0 \\
+Hybrid & slot taken & 408 & 62.3 & 62.7 \\
 DSC (no LLM) & book lost response & 408 & 5.6 & 5.6 \\
 DSC (no LLM) & cancel fails once & 132 & 3.8 & 3.8 \\
 DSC (no LLM) & slot taken & 408 & 5.6 & 5.6 \\
+\recheck{} no read-back & book lost response & 408 & 77.9 & 85.0 \\
+\recheck{} no read-back & cancel fails once & 132 & 83.3 & 90.2 \\
+\recheck{} no read-back & slot taken & 408 & 68.9 & 71.1 \\
 \bottomrule\end{tabular}

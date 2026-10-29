@@ -8,13 +8,14 @@
 From the repo root:
 
 ```bash
-cluster/sync.sh pull
-.venv/bin/python scripts/summarize_runs.py --runs runs/llm_main runs/scripted_main runs/scripted_faults --out results/mid_v1.md
+cluster/sync.sh pull        # or unpack results/runs_v1/*.tar.gz into runs/
+.venv/bin/python scripts/summarize_runs.py --runs runs/llm_main runs/llm_ablate runs/llm_faults runs/scripted_main runs/scripted_faults \
+    --out results/final_v1.md
 .venv/bin/python scripts/timing_model.py --runs runs/llm_main --scenarios data/eval/scenarios_v1.json \
-    --conditions plain,plain_label --metric unsafe_policy --out results/mid_timing_policy.md
-.venv/bin/python scripts/make_report_tables.py --runs runs/llm_main runs/scripted_main runs/scripted_faults \
-    --detectors results/detectors_eval_v1.json --gee results/mid_timing_policy.md --out "ai report/tables"
+    --conditions plain,plain_label,safety,recheck,hybrid --metric unsafe_policy --out results/final_timing_policy.md
+.venv/bin/python scripts/make_report_tables.py --runs runs/llm_main runs/llm_ablate runs/llm_faults runs/scripted_main runs/scripted_faults \
+    --detectors results/detectors_eval_v1.json --gee results/final_timing_policy.md --out "ai report/tables"
 cd "ai report" && latexmk -pdf report.tex
 ```
 
-The version from 28 Oct uses only the conditions that had finished all 3 seeds: Plain, Plain + Label, RECHECK and Hybrid (copied to `runs/mid`), plus the scripted runs. Safety, the ablations and the LLM faults were still running.
+The version from 29 Oct (git tag `midsem`) uses **all finished runs**: 5 LLM conditions and 3 scripted ones (3 seeds each), 7 RECHECK ablations (seed 0, direct), and tool faults for 4 LLM conditions plus the DSC. That is 51,750 graded episodes. The advice judge has not been run yet, so the report gives no advice-quality numbers.
