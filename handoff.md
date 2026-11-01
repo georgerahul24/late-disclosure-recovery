@@ -45,6 +45,9 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
   - The model sometimes claims to have booked without calling `book`.
   - RECHECK often searches conditions instead of medications (a stage 2 failure).
 
+**SECOND-MODEL RUN STARTED (2026-11-02 03:01 IST, no laptop needed).** Llama 3.1 8B Instruct q8_0 as the agent, same prompts/tools/eval set/LoRA detector, nothing tuned for it; seed 0, both phrasings; plain, safety, plain_label (job 52643, gnode082) and recheck, recheck_v2 (job 52644, gnode056), 2 GPUs each, `OLLAMA_NUM_PARALLEL=1` (llama's KV cache does not fit 2 slots on 11 GB). `cluster/queue_llama.sh` on the login node (`logs/queue_llama.log`), output `runs/llm_llama`, analysis `runs/llama_analysis/`, end marker `logs/queue/llama.done`; it cancels both jobs when done. ETA about 11:00-12:00 IST on 2 Nov. Exploratory generality check: do not pool with the qwen runs.
+- Traps: gnode077/069/090 were idle because CUDA fails there (cuInit 999); gnode079 scratch is full; gnode056 first had a half-unpacked Ollama (GPU libs missing, ran on CPU); the CUDA torch wheel timed out, so the detector env on these nodes uses torch 2.4.1+cpu (the detector ran on CPU in all runs anyway).
+
 **ALL CLUSTER WORK FINISHED (final stage done 2026-10-30 15:43 IST; pulled and checked 2026-11-02).** No jobs are running; the judge job 46988 was cancelled after it sat idle.
 - RECHECK v2 (3 seeds, 4,716 episodes): policy unsafe 67.0 vs RECHECK 73.7 (-6.7 [-9.2, -4.3]); completion 73.6 (+7.2 vs RECHECK, -24.3 vs Plain, so it also fails the 10-point rule); false-claim episodes 255 vs 890. Exploratory. In `results/final_v1.md` and report Section "RECHECK v2".
 - Advice judge ran on every LLM run (`results/advice_v1.md`). UNVALIDATED: 60-turn sheet `labelling/advice_labels.csv` must be labelled and scored first.
