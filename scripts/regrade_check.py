@@ -43,7 +43,9 @@ def main():
     diff = Counter()
     examples = []
     for d in args.runs:
-        for f in sorted(Path(d).glob("*.jsonl")):
+        for f in sorted(Path(d).glob("*_s[0-9]*.jsonl")):  # episode files only (not .judge.jsonl or the label sample)
+            if f.name.endswith(".judge.jsonl"):
+                continue
             for line in f.read_text().splitlines():
                 if not line.strip():
                     continue

@@ -57,7 +57,8 @@ def main():
     M = {}  # macros
 
     def mac(name, val):
-        M[name] = val
+        # LaTeX macro names are letters only: recheck_v2 -> recheckvtwo
+        M[name.replace("v2", "vtwo")] = val
 
     # ---- main table ------------------------------------------------------
     T = [r"\begin{tabular}{lrrrrrrrr}\toprule",

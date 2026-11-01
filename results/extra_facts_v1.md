@@ -1,4 +1,4 @@
-# Extra facts: runs/llm_main, runs/llm_ablate, runs/llm_faults, runs/scripted_main, runs/scripted_faults
+# Extra facts: runs/llm_main, runs/llm_v2, runs/llm_ablate, runs/llm_faults, runs/scripted_main, runs/scripted_faults
 
 Counts over all episodes each condition ran (all phrasings, timings, seeds and faults). Made by `scripts/extra_facts.py`.
 
@@ -17,10 +17,11 @@ Counts over all episodes each condition ran (all phrasings, timings, seeds and f
 | recheck_no_readback | 2490 | 1356 | 63 (4.6%) | 211 | 824 | book 533, cancel 136, escalate 287 | 6.8 | 13516 / 610 |
 | recheck_no_retrieval | 786 | 408 | 29 (7.1%) | 1 | 176 | book 93, cancel 61, escalate 60 | 6.7 | 12953 / 641 |
 | recheck_single_pass | 786 | 408 | 19 (4.7%) | 0 | 270 | book 113, cancel 116, escalate 97 | 6.2 | 10699 / 515 |
+| recheck_v2 | 4716 | 2448 | 103 (4.2%) | 1 | 324 | book 126, cancel 29, escalate 201 | 7.5 | 16027 / 677 |
 | rule_gate | 4716 | 2448 | 9 (0.4%) | 0 | 0 | - | - | - (no LLM) |
 | safety | 4716 | 2448 | 587 (24.0%) | 1 | 128 | book 60, escalate 81 | 6.2 | 10534 / 582 |
 
-Total episodes: 51750
+Total episodes: 56466
 
 ## End states on red-flag episodes, by fault
 
@@ -56,5 +57,6 @@ Counts of the final backend end state (see docs/design.md section 3).
 | recheck_no_readback | slot_taken | 408 | CANCEL_ESCALATE 118, KEEP_ESCALATE 17, NO_ACTION 193, ROUTINE_BOOKED 80 |
 | recheck_no_retrieval | none | 408 | CANCEL_ESCALATE 105, CONVERT_URGENT 2, KEEP_ESCALATE 80, NO_ACTION 71, ROUTINE_BOOKED 150 |
 | recheck_single_pass | none | 408 | CANCEL_ESCALATE 41, KEEP_ESCALATE 37, NO_ACTION 141, ROUTINE_BOOKED 189 |
+| recheck_v2 | none | 2448 | CANCEL_ESCALATE 698, CONVERT_URGENT 27, KEEP_ESCALATE 253, NO_ACTION 455, ROUTINE_BOOKED 1015 |
 | rule_gate | none | 2448 | CANCEL_ESCALATE 42, KEEP_ESCALATE 21, ROUTINE_BOOKED 2385 |
 | safety | none | 2448 | CANCEL_ESCALATE 37, KEEP_ESCALATE 1452, NO_ACTION 27, ROUTINE_BOOKED 932 |

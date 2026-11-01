@@ -1,6 +1,6 @@
 # Failure breakdown (automatic, from tool logs)
 
-Runs: runs/llm_main, runs/scripted_main. Made by `scripts/failure_breakdown.py`. Cells are % of the condition's policy-unsafe red-flag episodes. End-state columns add to 100; pattern columns can overlap.
+Runs: runs/llm_main, runs/llm_v2, runs/scripted_main. Made by `scripts/failure_breakdown.py`. Cells are % of the condition's policy-unsafe red-flag episodes. End-state columns add to 100; pattern columns can overlap.
 
 ## Own symptom (core)
 
@@ -11,6 +11,7 @@ Runs: runs/llm_main, runs/scripted_main. Made by `scripts/failure_breakdown.py`.
 | safety | 1548 | 48 | 1 | 51 | 0 | 0 | 0 | 64 | 50 | 74 | 0 | 3 |
 | recheck | 1380 | 58 | 34 | 8 | 0 | 0 | 0 | 39 | 32 | 84 | 10 | 31 |
 | hybrid | 1307 | 61 | 38 | 1 | 0 | 0 | 0 | 35 | 34 | 83 | 12 | 35 |
+| recheck_v2 | 1254 | 62 | 27 | 11 | 0 | 0 | 0 | 52 | 33 | 80 | 12 | 10 |
 | rule_gate | 1848 | 99 | 0 | 1 | 0 | 0 | 0 | 66 | 58 | 3 | 0 | 0 |
 | dsc | 122 | 100 | 0 | 0 | 0 | 0 | 0 | 64 | 44 | 20 | 0 | 0 |
 | book_only | 1872 | 100 | 0 | 0 | 0 | 0 | 0 | 67 | 58 | 0 | 0 | 0 |
@@ -24,6 +25,7 @@ Runs: runs/llm_main, runs/scripted_main. Made by `scripts/failure_breakdown.py`.
 | safety | 68 | 88 | 12 | 0 | 0 | 0 | 0 | 29 | 0 | 88 | 0 | 25 |
 | recheck | 166 | 61 | 39 | 0 | 0 | 0 | 0 | 22 | 0 | 91 | 9 | 61 |
 | hybrid | 183 | 58 | 42 | 0 | 0 | 0 | 0 | 22 | 0 | 90 | 8 | 54 |
+| recheck_v2 | 165 | 60 | 40 | 0 | 0 | 0 | 0 | 34 | 0 | 92 | 19 | 25 |
 | rule_gate | 261 | 100 | 0 | 0 | 0 | 0 | 0 | 67 | 0 | 0 | 0 | 0 |
 | dsc | 12 | 100 | 0 | 0 | 0 | 0 | 0 | 67 | 0 | 25 | 0 | 0 |
 | book_only | 288 | 100 | 0 | 0 | 0 | 0 | 0 | 67 | 0 | 0 | 0 | 0 |
@@ -37,6 +39,7 @@ Runs: runs/llm_main, runs/scripted_main. Made by `scripts/failure_breakdown.py`.
 | safety | 288 | 21 | 3 | 73 | 0 | 4 | 0 |
 | recheck | 288 | 35 | 23 | 14 | 0 | 28 | 1 |
 | hybrid | 288 | 37 | 26 | 0 | 0 | 36 | 0 |
+| recheck_v2 | 288 | 34 | 23 | 12 | 0 | 29 | 2 |
 | rule_gate | 288 | 91 | 0 | 3 | 0 | 6 | 0 |
 | dsc | 288 | 4 | 0 | 0 | 0 | 96 | 0 |
 | book_only | 288 | 100 | 0 | 0 | 0 | 0 | 0 |

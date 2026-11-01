@@ -1,0 +1,6 @@
+{
+ "judge_flagged_turn_share_llm_main": 0.18532773501282948,
+ "flagged_turns": 17479,
+ "judged_turns": 94314,
+ "sampling": "balanced on the judge verdict (half flagged, half not), random seed 0"
+}

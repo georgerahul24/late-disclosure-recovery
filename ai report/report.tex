@@ -19,7 +19,7 @@
 \title{Late-Disclosure Recovery in Stateful Clinical Agents\\[2pt]
 \large Mid-Submission Report}
 \author{George R. \quad Arihant R. \quad Aditya P.\\ Team: LEs \& Arihant}
-\date{29 October 2026}
+\date{29 October 2026 (results updated 2 November 2026)}
 
 \begin{document}
 \maketitle
@@ -69,7 +69,8 @@ Scripted pilot / DSC / rule gate & Done & 3 seeds, plus tool faults \\
 Plain, Plain + Label, \recheck{}, Hybrid & Done & 3 seeds each \\
 Safety prompt & Done & 3 seeds \\
 7 ablations, tool faults for LLMs & Done & Sections~\ref{sec:ablations} and~\ref{sec:faults} \\
-Advice judge (LLM) & Code done & Needs 60 human labels to validate \\
+Advice judge (LLM) & Run (30 Oct) & All LLM runs judged; needs 60 human labels to validate \\
+\recheck{}~v2 & Done (30 Oct) & 3 seeds on the evaluation set; Section~\ref{sec:v2} \\
 Paper draft & Started & Introduction, related work, method, setup and limitations written \\ \bottomrule
 \end{tabular}\end{center}
 
@@ -146,12 +147,12 @@ Table~\ref{tab:det} uses only evaluation text, which was never used for training
 \item The prompted 7B model is more specific (\detPromptSpec\%) but misses many reworded symptoms (sensitivity \detPromptSensRew\%).
 \item LoRA 0.5B is close to 1.5B.
 \end{itemize}
-\begin{table}[h]\centering\small\input{tables/detectors}
+\begin{table}[htbp]\centering\small\input{tables/detectors}
 \caption{Detectors on evaluation text. LoRA rows are mean $\pm$ s.d.\ over 3 seeds. Sensitivity = any red flag detected; specificity = benign kept benign.}\label{tab:det}\end{table}
 
 \subsection{Main baselines}
 Table~\ref{tab:main} gives core episodes (own symptom, volunteered, no tool fault). Means are over scenarios, after averaging timings, phrasings and seeds within each scenario. CIs are from a scenario-level bootstrap (10{,}000 resamples).
-\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/main}}
+\begin{table}[htbp]\centering\small\resizebox{\linewidth}{!}{\input{tables/main}}
 \caption{Core results. \emph{Policy}: end state not allowed by the scenario's action policy (primary). \emph{Strict}: not (escalated and no routine booking left). \emph{Lenient}: not escalated. Compl.: routine bookings completed. Contrast: matched pairs where both sides are handled correctly.}\label{tab:main}\end{table}
 
 \noindent\textbf{Findings:}
@@ -190,30 +191,41 @@ Table~\ref{tab:main} gives core episodes (own symptom, volunteered, no tool faul
 \item \textbf{Hybrid.} The deterministic invariant adds a small gain (Hybrid $-$ \recheck{}: \hybridVsRecheckPolicy{} points, CI [\hybridVsRecheckPolicyLo, \hybridVsRecheckPolicyHi]). It stays far behind the DSC (\hybridVsDscPolicy{} points), so there is no equivalence with the rule-based controller.
 \end{itemize}
 
-\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/routine}}
+\subsection{\recheck{}~v2 (follow-up run, exploratory)}\label{sec:v2}
+\recheck{}~v2 was fixed in the mid-submission plan before it saw the evaluation set. It uses the same prompt as \recheck{}. The harness adds two checks after each reply, and gives the model at most one extra round per patient turn. (1) \emph{Action-claim check}: if the reply claims a booking, cancellation or escalation with no matching successful tool call, the model is told so. (2) \emph{Escalate after repair}: if a red flag was noted and a booking was cancelled or changed this turn with no escalation, the model is told so. The harness only gives feedback. It never acts itself (unlike Hybrid). It was developed on the dev fixtures only and run once on the evaluation set (3 seeds). These comparisons were not in the five confirmatory tests, so they are exploratory.
+\begin{itemize}
+\item \textbf{Safer than \recheck{}.} Policy-unsafe is \recheckvtwoPolicy\% (\recheck{}: \recheckPolicy\%), a difference of \recheckvtwoVsRecheckPolicy{} points (95\% CI [\recheckvtwoVsRecheckPolicyLo, \recheckvtwoVsRecheckPolicyHi]). It escalates more often (lenient \recheckvtwoVsRecheckLenient{} points).
+\item \textbf{Fewer false claims.} \recheckvtwoFalseClaim{} core episodes with a false action claim, against \recheckFalseClaim{} for \recheck{}.
+\item \textbf{Routine completion recovers only part of the way.} It is \recheckvtwoCompl\%: 7.2 points above \recheck{} (95\% CI [5.0, 9.4]) but still \recheckvtwoComplDrop{} points below Plain. So v2 also fails the pre-registered 10-point completion rule. Of its \recheckvtwoRoutineFail{} incomplete routine episodes, \recheckvtwoNoAction{} ended with no booking and in \recheckvtwoNoBook{} the model never called \texttt{book}; it falsely said ``booked'' in only \recheckvtwoFalseBook{}. The model now skips the action without claiming it, which the claim check cannot catch.
+\end{itemize}
+
+\subsection{Advice judge (unvalidated)}
+An LLM judge (Llama~3.1 8B Instruct, 8-bit, JSON output, temperature 0) read every agent turn in all LLM runs and marked whether it gave medical advice. It flagged 18.5\% of agent turns in the main runs, and at least one turn in 52--62\% of episodes per main condition (\texttt{results/advice\_v1.md}). \textbf{We do not interpret these numbers yet.} The judge has not been checked against human labels. A sample of 60 turns, half flagged and half not, is ready for labelling (\texttt{labelling/advice\_labels.csv}). We will report advice results only with the judge's measured sensitivity and specificity.
+
+\begin{table}[htbp]\centering\small\resizebox{\linewidth}{!}{\input{tables/routine}}
 \caption{Why routine (non-red-flag) episodes were not completed.}\label{tab:routine}\end{table}
 
-\begin{table}[h]\centering\small\input{tables/stages}
+\begin{table}[htbp]\centering\small\input{tables/stages}
 \caption{Share (\%) of policy-unsafe episodes by the first failed stage.}\label{tab:stages}\end{table}
 
-\begin{table}[h]\centering\small\input{tables/paired}
+\begin{table}[htbp]\centering\small\input{tables/paired}
 \caption{Paired scenario-level differences (percentage points), bootstrap CIs and $p$-values.}\label{tab:paired}\end{table}
 
 \subsection{Timing (H1)}
 H1 predicted that strict-unsafe rises by at least 10 points from T1 to POST for Plain. \textbf{H1 is not supported as stated.} The rise is only \hOneplainStrict{} points, because Plain already fails at T1: after a red flag the patient still says ``please book it'', and Plain books anyway. This is a ceiling effect. The proposal planned for this case: report the negative result and add harder cases (Section~\ref{sec:plan}).
 
 Under policy grading, the timing effect is real. A scenario-clustered logistic GEE model (Table~\ref{tab:gee}) gives POST \geePostOR{} times the odds of an unsafe end compared with T1 ($p=\geePostP$). MID gives much lower odds (OR \geeMidOR): when the symptom arrives just as the patient asks to book, the model often escalates instead. Indirect wording raises the odds of failure (OR \geeIndirectOR). The \recheck{}$\times$POST, Hybrid$\times$POST and Safety$\times$POST terms are well below 1, so these conditions help most after a booking. For Safety, this comes from escalation, not from removing the booking (strict-unsafe is unchanged).
-\begin{table}[h]\centering\small\input{tables/gee}
+\begin{table}[htbp]\centering\small\input{tables/gee}
 \caption{GEE logistic model of policy-unsafe (red-flag core episodes; Plain, Plain + Label, Safety, \recheck{}, Hybrid; 9{,}360 episodes; clustered by 104 scenarios; exchangeable correlation). Reference: Plain, T1, seed 0, direct.}\label{tab:gee}\end{table}
 
 \subsection{Extra episode types}
-\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/extras}}
+\begin{table}[htbp]\centering\small\resizebox{\linewidth}{!}{\input{tables/extras}}
 \caption{Reliability and extra episode types. Follow-up-only red flags come out only if the agent asks an open question; scripted controllers never ask, so they always fail these by design.}\label{tab:extras}\end{table}
 \noindent Two points stand out. First, no condition handles follow-up-only red flags well (\recheck{} still fails most of them), because the agents rarely ask an open question before booking. Second, for a family member's symptom, Safety does best and \recheck{} does worse than Plain (Table~\ref{tab:extras}). We have not yet checked why; it is on the failure-analysis list.
 
 \subsection{Tool faults}\label{sec:faults}
 Each fault run uses seed 0 and direct phrasing. These numbers are descriptive; we did not plan paired tests for them.
-\begin{table}[h]\centering\small\input{tables/faults}
+\begin{table}[htbp]\centering\small\input{tables/faults}
 \caption{Policy- and strict-unsafe on red-flag episodes with an injected tool fault.}\label{tab:faults}\end{table}
 \begin{itemize}
 \item \textbf{The DSC is robust to every fault} (\dscFaultLost\% or lower), because it re-reads the bookings and retries.
@@ -243,10 +255,10 @@ Each fault run uses seed 0 and direct phrasing. These numbers are descriptive; w
 \end{itemize}
 The ablations use one seed, so they are less certain than the main results.
 
-\begin{table}[h]\centering\small\resizebox{\linewidth}{!}{\input{tables/ablations}}
+\begin{table}[htbp]\centering\small\resizebox{\linewidth}{!}{\input{tables/ablations}}
 \caption{\recheck{} ablations (seed 0, direct phrasing, core episodes). $\Delta$: paired scenario-level difference in policy-unsafe against full \recheck{} on the same episodes.}\label{tab:abl}\end{table}
 
-\begin{table}[h]\centering\small\input{tables/lora_dev}
+\begin{table}[htbp]\centering\small\input{tables/lora_dev}
 \caption{LoRA detector training: seed-grouped dev split (never evaluation text).}\label{tab:lora}\end{table}
 
 \section{Challenges and mitigations}\label{sec:challenges}
