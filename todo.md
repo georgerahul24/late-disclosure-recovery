@@ -86,13 +86,12 @@ Owners:
 - [x] RECHECK and Hybrid finished (3 seeds). H2b is supported. H2 fails on the completion rule (−31.5 pts). See `ai report/report.pdf`.
 - [x] De-duplicated episodes: `safety_s0` and `plain_label_s2` each had one episode written twice. The last line per episode is kept. Raw files are in `results/runs_v1/`.
 - [x] Final analysis, report updated, tagged `midsem` (29 Oct). H2c supported (single pass +20.5, no ledger +8.3 on matched episodes).
-- [~] Advice judge (llama3.1:8b, JSON mode) RUNNING via `cluster/queue_final.sh` (see handoff.md). Judged turns before the disclosure are included (all agent turns).
-- [~] RECHECK v2 (`recheck_v2`: same prompt as RECHECK + harness feedback for unbacked claims and repair-without-escalation) RUNNING on eval v1, 3 seeds. Dev check done (`runs/v2_dev`).
+- [x] Advice judge (llama3.1:8b, JSON mode) run on all LLM runs (30 Oct); `results/advice_v1.md`, unvalidated. Judged turns before the disclosure are included (all agent turns).
+- [x] RECHECK v2 (`recheck_v2`: same prompt as RECHECK + harness feedback for unbacked claims and repair-without-escalation) run on eval v1, 3 seeds (30 Oct): policy unsafe 67.0, completion 73.6. Dev check done (`runs/v2_dev`).
 - [x] Hand-labelling sheets in `labelling/` (policy x2, stage check, eval text, seeds); advice sheet comes from the final queue. Scorer: `scripts/score_labels.py`.
 - [x] Automatic failure breakdown (`results/failure_breakdown_v1.md`).
-- [ ] When `logs/queue/final.done` exists: pull, copy results, update report + context.zip, commit, push.
+- [x] Pulled final results, re-checked, updated report + context.zip, committed (2 Nov).
 - [ ] Humans: fill the sheets in `labelling/`, then run `scripts/score_labels.py` and add the kappa / judge validity numbers to the paper.
-- [ ] RECHECK v2: an action-claim check (claimed but missing tool calls get completed) plus an explicit escalate-after-repair step. Develop on dev fixtures only, then run once on eval v1 with 3 seeds.
 
 ## Phase 5. Paper
 - [ ] Update the proposal claims as the reviewer pointers ask: policy grading primary, strict as a stress test; lead with the benchmark; no "first" (papers.md section 1 has the safe sentence).

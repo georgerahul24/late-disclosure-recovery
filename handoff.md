@@ -45,7 +45,14 @@ The plan is in `docs/proposal.pdf`. The review feedback is in `docs/pointers.txt
   - The model sometimes claims to have booked without calling `book`.
   - RECHECK often searches conditions instead of medications (a stage 2 failure).
 
-**FINAL STAGE RUNNING ON THE CLUSTER (started 2026-10-29 22:06 IST, no laptop needed).** `cluster/queue_final.sh 41206 46988` runs on the ada login node (`logs/queue_final*.log`, step markers in `logs/queue/`):
+**ALL CLUSTER WORK FINISHED (final stage done 2026-10-30 15:43 IST; pulled and checked 2026-11-02).** No jobs are running; the judge job 46988 was cancelled after it sat idle.
+- RECHECK v2 (3 seeds, 4,716 episodes): policy unsafe 67.0 vs RECHECK 73.7 (-6.7 [-9.2, -4.3]); completion 73.6 (+7.2 vs RECHECK, -24.3 vs Plain, so it also fails the 10-point rule); false-claim episodes 255 vs 890. Exploratory. In `results/final_v1.md` and report Section "RECHECK v2".
+- Advice judge ran on every LLM run (`results/advice_v1.md`). UNVALIDATED: 60-turn sheet `labelling/advice_labels.csv` must be labelled and scored first.
+- Checks: all 56,466 episodes re-grade to their stored grade; every cluster analysis file re-made on the laptop byte for byte; context.zip `verify/reproduce.sh` passes from the archives alone; 37/37 tests.
+- Raw files: `results/runs_v1/llm_v2.tar.gz` and `advice_judge.tar.gz` added; the first 6 archives are unchanged.
+- Only human work is left: the `labelling/` sheets, then `scripts/score_labels.py`, then the paper.
+
+**Earlier: final stage as it was launched (2026-10-29 22:06 IST).** `cluster/queue_final.sh 41206 46988` runs on the ada login node (`logs/queue_final*.log`, step markers in `logs/queue/`):
 - holder 41206 (gnode062, 2 GPUs, qwen): RECHECK v2 on eval v1, 3 seeds, both phrasings -> `runs/llm_v2` (ETA about 07:15 IST on 30 Oct); then its GPUs become llama judge servers and judge `llm_faults`, `llm_v2`, `llm_ablate`.
 - judge job 46988 (gnode082, 2 GPUs, llama3.1:8b q8_0, ctx 1536, 6 parallel): judges `llm_main` (ETA about 06:40 IST on 30 Oct) and exports the 60-turn advice label sample.
 - then all analysis goes into `runs/final_analysis/` (regrade check, summary with v2, GEE, extra facts, failure breakdown, advice summary + `labelling/advice_labels.csv`, report tables). Expected done around 16:00-17:00 IST on 30 Oct. `logs/queue/final.done` marks the end.
