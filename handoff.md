@@ -127,7 +127,8 @@ From the laptop repo root:
 ### 4.6 Traps we already hit
 
 - **zsh:** `$VAR` does not split into words (use arrays). An empty glob aborts the command.
-- **`pkill -f ollama` kills your own ssh/srun.** Use `pkill -x ollama`.
+- **`pkill -f <anything>` over ssh kills your own ssh command** (its text matches). Use `pkill -x ollama`, or find the PID with `pgrep -x bash` and check `/proc/<pid>/cmdline`.
+- **A model that does not fully fit on the GPU is 5x slower.** Check `size_vram` equals `size` in `curl -s localhost:11434/api/ps` before a long run.
 - **A full `/tmp` makes Ollama silently run on CPU.** The scripts set `TMPDIR` on scratch. Check `ollama ps` shows the model in VRAM (`size_vram` about 9.6 GB for Llama).
 - **A half-unpacked Ollama** also falls back to CPU. Fix: delete `/ssd_scratch/gr/lma/ollama` and let the holder unpack again.
 - **`sbatch --test-only` gives false start times.** Submit for real.
@@ -150,7 +151,7 @@ From the laptop repo root:
 | **Second agent model, Llama 3.1 8B (exploratory, done 10 Nov)** | `results/llama_v1.md`, `llama_extra_facts.md`, `llama_failure_breakdown.md` | Seed 0, 5 conditions, 7,860 episodes. See 5.2 |
 | Raw episodes | `results/runs_v1/*.tar.gz` + `SHA256SUMS` | 9 archives, 64,326 episodes in total |
 | Mid report | `ai report/report.tex` (tag `midsem`), updated 2 Nov | Builds clean |
-| **Third agent model, Qwen2.5 14B Q4 (RUNNING since 10 Nov)** | see Task 0 | Not finished yet |
+| **Third agent model, Qwen2.5 14B Q4 (RUNNING since 10 Nov 11:40 IST)** | see Task 0 | Ends about 05:00 IST 11 Nov |
 | Context pack for writers | `context.zip` | Built 2 Nov. Does **not** have Llama yet |
 
 Checks done: every episode re-grades to its stored grade. Every cluster analysis file was re-made on the laptop and matches. The seed-0 detector re-run in the Llama node env gives the same eval metrics as before (`results/checks/detector_rerun_llama_env.json`).
@@ -174,7 +175,9 @@ Tags: `[ ]` open, `[!]` needs a human.
 
 **What it is.** A scale check: does a bigger model of the same family do better? Agent model `qwen2.5:14b-instruct-q4_K_M` (4-bit, because 14B at 8-bit does not fit an 11 GB card). Same prompts, tools, eval set and seed-0 LoRA detector as the other runs. Nothing tuned. Seed 0, both phrasings, plain, safety, plain_label, recheck, recheck_v2 (7,860 episodes).
 
-**Where.** Holder job 67648 on gnode082 (4 GPUs, `PARALLEL=1`, `CTX=8192`), started 10 Nov about 11:45 IST. Queue: `cluster/queue_model.sh 67648 qwen14b` running on the ada login node. Log: `logs/queue_qwen14b.log`. Output: `runs/llm_qwen14b`. Analysis: `runs/qwen14b_analysis/`. End marker: `logs/queue/qwen14b.done`. The queue cancels the holder when done. Expected to take about 10-15 h (14B is slower than 8B), so it should end on 11 Nov.
+**Where.** Holder job **67671** on gnode082 (4 GPUs, `PARALLEL=1`, `CTX=8192`, plus `OLLAMA_FLASH_ATTENTION=1` and `OLLAMA_KV_CACHE_TYPE=q8_0`), started 10 Nov 11:40 IST. Queue: `cluster/queue_model.sh 67671 qwen14b` running on the ada login node. Log: `logs/queue_qwen14b.log`. Output: `runs/llm_qwen14b`. Analysis: `runs/qwen14b_analysis/`. End marker: `logs/queue/qwen14b.done`. The queue cancels the holder when done. Speed is about 7.6 episodes per minute, so it should end around **05:00 IST on 11 Nov**.
+
+**Why the KV cache setting.** A first try (job 67648) used the default 16-bit KV cache. The model did not fit on an 11 GB card (10.5 of 11.1 GB on GPU), so it ran at about 1.4 episodes per minute. Its 7 episodes were deleted and the run restarted with an 8-bit KV cache, which fits fully (10.06 of 10.06 GB). The context stays 8192, same as the other runs. **Report this setting in the paper** as a difference from the 7B and Llama runs. Log of the first try: `logs/queue_qwen14b_attempt1.log`.
 
 **Check it:**
 ```bash
@@ -183,7 +186,7 @@ cd ~/lma; tail logs/queue_qwen14b.log; ls logs/queue | grep qwen14b
 wc -l runs/llm_qwen14b/*_s0.jsonl      # 1572 each when done
 squeue -u gr
 ```
-- If the holder died: start a new one (section 4.3, `MODEL=qwen2.5:14b-instruct-q4_K_M,PARALLEL=1,CTX=8192`), then re-run `nohup bash cluster/queue_model.sh <new_job> qwen14b >> logs/queue_qwen14b.log 2>&1 &`. It resumes.
+- If the holder died: start a new one (section 4.3, `--export=ALL,MODEL=qwen2.5:14b-instruct-q4_K_M,PARALLEL=1,CTX=8192,OLLAMA_FLASH_ATTENTION=1,OLLAMA_KV_CACHE_TYPE=q8_0`), then re-run `nohup bash cluster/queue_model.sh <new_job> qwen14b >> logs/queue_qwen14b.log 2>&1 &`. It resumes.
 - **Check the model is on the GPU**, not the CPU: inside the job, `curl -s localhost:11434/api/ps` should show `size_vram` close to `size`. If not, the run is slow and should be restarted with a smaller `CTX`; say so in the paper.
 
 **When done:** the same steps as the Llama run. `cluster/sync.sh pull`; re-make the analysis on the laptop and compare with `runs/qwen14b_analysis/` (only the scenario path in the JSON should differ); archive `runs/llm_qwen14b` into `results/runs_v1/` and add the hash; copy the analysis to `results/`; add a row to `results/README.md`; add it to the paper next to Llama. Note it is 4-bit while the 7B is 8-bit. Do not pool it with the 7B runs.
