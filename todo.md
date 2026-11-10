@@ -1,4 +1,4 @@
-# TODO
+# TODO (long list; the short current list is in handoff.md section 6)
 
 The live task list. Read `handoff.md` first for context, and `instructions.md` for the standing rules (commit per feature, push every commit, no fake data, cluster how-to).
 

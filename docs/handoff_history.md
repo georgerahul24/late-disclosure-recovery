@@ -1,4 +1,4 @@
-# Handoff
+# Handoff history (old notes, kept for reference; the live file is ../handoff.md)
 
 Last updated: 2026-10-29. Update this file whenever the state changes.
 
