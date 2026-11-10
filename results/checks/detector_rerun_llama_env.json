@@ -1,0 +1,35 @@
+[
+ {
+  "detector": "lora[Qwen2.5-1.5B-Instruct/s0]",
+  "spec": "lora:models/det-qwen2.5-1.5b-instruct-s0",
+  "variant": "symptom-only",
+  "n": 180,
+  "sensitivity": 0.9916666666666667,
+  "specificity": 0.85,
+  "ppv": 0.9296875,
+  "family_acc": 0.9916666666666667,
+  "macro_f1": 0.9388095238095238
+ },
+ {
+  "detector": "lora[Qwen2.5-1.5B-Instruct/s0]",
+  "spec": "lora:models/det-qwen2.5-1.5b-instruct-s0",
+  "variant": "reworded",
+  "n": 180,
+  "sensitivity": 0.8416666666666667,
+  "specificity": 0.8833333333333333,
+  "ppv": 0.9351851851851852,
+  "family_acc": 0.8083333333333333,
+  "macro_f1": 0.8289147948722416
+ },
+ {
+  "detector": "lora[Qwen2.5-1.5B-Instruct/s0]",
+  "spec": "lora:models/det-qwen2.5-1.5b-instruct-s0",
+  "variant": "in-message",
+  "n": 1080,
+  "sensitivity": 0.9111111111111111,
+  "specificity": 0.8694444444444445,
+  "ppv": 0.9331436699857752,
+  "family_acc": 0.8902777777777777,
+  "macro_f1": 0.8789047641239442
+ }
+]
