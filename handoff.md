@@ -1,6 +1,6 @@
 # Handoff (start here)
 
-Last updated: 2026-11-10. **The final submission is due 11 Nov 2026.**
+Last updated: 2026-11-10. **The final submission is due 15 Nov 2026** (moved from 11 Nov).
 
 From now on a new collaborator runs this project, not George. This file is all you need to take over. Read it top to bottom. When you finish a task, update section 5 and the date at the top, then commit and push.
 
@@ -102,8 +102,8 @@ We hold GPUs with one long job, then run experiments inside it.
    ```
    `--workers` = number of servers x `PARALLEL`. Conditions without a detector (`plain`, `safety`) can use `~/lma/.venv/bin/python` and no `--detector`. A shortcut that fills URLs and model for you: `cluster/run_in_hold.sh <jobid> scripts/run_llm.py ...`.
 3. **Long runs: use a queue script on the login node** so your laptop can be off:
-   `nohup bash cluster/queue_llama.sh <jobA> <jobB> >> logs/queue_llama.log 2>&1 &`
-   Copy it for a new run. Each step writes `logs/queue/<step>.done`, so re-running skips finished steps. `run_llm.py` also resumes from the same `--out`.
+   `nohup bash cluster/queue_model.sh <jobid> <tag> >> logs/queue_<tag>.log 2>&1 &`
+   It waits for the holder, runs the 5 conditions, does the analysis and cancels the holder. Each step writes `logs/queue/<step>.done`, so re-running skips finished steps. `run_llm.py` also resumes from the same `--out`.
 4. **Speed:** about 1,000 episodes per hour on 4 GPUs. One condition, one seed, both phrasings = 1,572 episodes.
 5. **When done:** `scancel <jobid>`. Do not leave idle holders; they block George's 4-GPU limit.
 
@@ -150,6 +150,7 @@ From the laptop repo root:
 | **Second agent model, Llama 3.1 8B (exploratory, done 10 Nov)** | `results/llama_v1.md`, `llama_extra_facts.md`, `llama_failure_breakdown.md` | Seed 0, 5 conditions, 7,860 episodes. See 5.2 |
 | Raw episodes | `results/runs_v1/*.tar.gz` + `SHA256SUMS` | 9 archives, 64,326 episodes in total |
 | Mid report | `ai report/report.tex` (tag `midsem`), updated 2 Nov | Builds clean |
+| **Third agent model, Qwen2.5 14B Q4 (RUNNING since 10 Nov)** | see Task 0 | Not finished yet |
 | Context pack for writers | `context.zip` | Built 2 Nov. Does **not** have Llama yet |
 
 Checks done: every episode re-grades to its stored grade. Every cluster analysis file was re-made on the laptop and matches. The seed-0 detector re-run in the Llama node env gives the same eval metrics as before (`results/checks/detector_rerun_llama_env.json`).
@@ -169,12 +170,31 @@ Llama 3.1 8B is unsafe in almost every red-flag episode under every condition. P
 
 Tags: `[ ]` open, `[!]` needs a human.
 
+### Task 0. [ ] Collect the Qwen2.5 14B run (agent). About 2-3 h of work once it ends.
+
+**What it is.** A scale check: does a bigger model of the same family do better? Agent model `qwen2.5:14b-instruct-q4_K_M` (4-bit, because 14B at 8-bit does not fit an 11 GB card). Same prompts, tools, eval set and seed-0 LoRA detector as the other runs. Nothing tuned. Seed 0, both phrasings, plain, safety, plain_label, recheck, recheck_v2 (7,860 episodes).
+
+**Where.** Holder job 67648 on gnode082 (4 GPUs, `PARALLEL=1`, `CTX=8192`), started 10 Nov about 11:45 IST. Queue: `cluster/queue_model.sh 67648 qwen14b` running on the ada login node. Log: `logs/queue_qwen14b.log`. Output: `runs/llm_qwen14b`. Analysis: `runs/qwen14b_analysis/`. End marker: `logs/queue/qwen14b.done`. The queue cancels the holder when done. Expected to take about 10-15 h (14B is slower than 8B), so it should end on 11 Nov.
+
+**Check it:**
+```bash
+ssh gr@ada-gw1.iiit.ac.in
+cd ~/lma; tail logs/queue_qwen14b.log; ls logs/queue | grep qwen14b
+wc -l runs/llm_qwen14b/*_s0.jsonl      # 1572 each when done
+squeue -u gr
+```
+- If the holder died: start a new one (section 4.3, `MODEL=qwen2.5:14b-instruct-q4_K_M,PARALLEL=1,CTX=8192`), then re-run `nohup bash cluster/queue_model.sh <new_job> qwen14b >> logs/queue_qwen14b.log 2>&1 &`. It resumes.
+- **Check the model is on the GPU**, not the CPU: inside the job, `curl -s localhost:11434/api/ps` should show `size_vram` close to `size`. If not, the run is slow and should be restarted with a smaller `CTX`; say so in the paper.
+
+**When done:** the same steps as the Llama run. `cluster/sync.sh pull`; re-make the analysis on the laptop and compare with `runs/qwen14b_analysis/` (only the scenario path in the JSON should differ); archive `runs/llm_qwen14b` into `results/runs_v1/` and add the hash; copy the analysis to `results/`; add a row to `results/README.md`; add it to the paper next to Llama. Note it is 4-bit while the 7B is 8-bit. Do not pool it with the 7B runs.
+
 ### Task 1. [ ] Write the final paper (agent, then team review). About 4-6 h.
 
 The draft in `paper/` is mostly empty. The mid report `ai report/report.tex` has most of the text and all numbers. Reuse it.
 1. `sections/results.tex`: make it from `results/` with a script. `scripts/make_report_tables.py` already makes LaTeX macros and tables; extend it for Llama. Never hand-type a number.
 2. Method: add RECHECK v2. Say it is exploratory and was designed after the main results.
 3. New section "Second agent model": the Llama results (5.2).
+3b. Add the 14B results to the same section when Task 0 is done.
 4. Discussion and conclusion. Lead with the benchmark. RECHECK lowers unsafe outcomes but costs completion. A label alone does not help. A weaker agent model barely escalates at all.
 5. Limitations: Synthea realism; agent-written scenarios and seeds; q8 model, not bf16; Llama one seed only; rule-based simulator; advice judge and policy labels not validated unless Task 2 is done; no clinician review.
 6. Reviewer pointers (`docs/pointers.txt`): policy grading primary, no "first" claims (safe sentence in `papers.md` section 1).
@@ -196,9 +216,9 @@ Then: `.venv/bin/python scripts/score_labels.py --dir labelling --out results/la
 1. George: make the repo public or add the TAs.
 2. Tag the final commit: `git tag final && git push --tags`.
 
-### Optional, only if time is left after Tasks 1-4
+### Optional, only if time is left after Tasks 0-4
 
-A third agent model (for example `qwen2.5:14b` at Q4, about 9 GB, fits one card at short context) for one seed would take about 8 h on 4 GPUs. Use the same recipe as `cluster/queue_llama.sh` with a new `MODEL` and `--out`. It would make the generality claim stronger. Do not start it if it puts the paper at risk.
+More agent models or more seeds for Llama/14B. Recipe: start a holder with the new `MODEL` (section 4.3), then `nohup bash cluster/queue_model.sh <job> <tag> >> logs/queue_<tag>.log 2>&1 &`. One seed of 5 conditions is about 8-15 h on 4 GPUs. Do not start it if it puts the paper at risk.
 
 ### Not planned (say "not run" in the paper)
 
@@ -217,7 +237,7 @@ Tool-call accuracy metrics, surface perturbations (typos, tone), status-correct 
 |---|---|
 | `recheck/` | benchmark and method code (`agents/prompts.py` has every prompt) |
 | `scripts/` | run, grade, analyse, make tables |
-| `cluster/` | SLURM and Ollama scripts, queue scripts |
+| `cluster/` | SLURM and Ollama scripts, queue scripts (`queue_model.sh` for any new agent model) |
 | `data/` | eval set, policy, detector seeds, Synthea pointers |
 | `results/` | every reported number and the raw archives |
 | `labelling/` | sheets for humans |
