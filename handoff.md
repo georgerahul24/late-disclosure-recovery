@@ -55,7 +55,7 @@ You will use George's account `gr`. Everything is already installed there. Ask G
   Then `cluster/sync.sh push` from the laptop to update the code. Do not delete or change the zip.
 - Repo copy on the cluster (after restore): `~/lma` (= `/home2/gr/lma`). It is **not** a git repo. Code moves with rsync (4.5).
 - Small Python env (no torch): `~/lma/.venv` (Python 3.12). Use it for grading and analysis.
-- LoRA detector adapters: `~/lma/models/det-qwen2.5-1.5b-instruct-s{0,1,2}` and `det-qwen2.5-0.5b-s{0,1,2}`. Runs use `lora:models/det-qwen2.5-1.5b-instruct-s{seed}`.
+- LoRA detector adapters: `~/lma/models/det-qwen2.5-1.5b-instruct-s{0,1,2}` and `det-qwen2.5-0.5b-s{0,1,2}` (149 MB, git-ignored). Copies exist only in the `/share1` backup zip and in `models/` on George's laptop (copied 12 Nov). Ask George for them if you need to re-run the detector. Runs use `lora:models/det-qwen2.5-1.5b-instruct-s{seed}`.
 - Ollama bundle (v0.21.2, zstd tar): `~/ollama`. The scripts unpack it on node scratch.
 - `uv`: `~/.local/bin/uv`. Set `UV_CACHE_DIR=~/uv_cache`.
 - Home is 50 GB and shared with George's other projects (`kings*`, `LMA_A1`, `bot`). **Do not touch anything outside `~/lma`.** Big files go on node scratch.
