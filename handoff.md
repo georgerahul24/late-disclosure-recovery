@@ -1,6 +1,6 @@
 # Handoff (start here)
 
-Last updated: 2026-11-10. **The final submission is due 15 Nov 2026** (moved from 11 Nov).
+Last updated: 2026-11-12. **The final submission is due 15 Nov 2026** (moved from 11 Nov).
 
 From now on a new collaborator runs this project, not George. This file is all you need to take over. Read it top to bottom. When you finish a task, update section 5 and the date at the top, then commit and push.
 
@@ -48,7 +48,12 @@ You will use George's account `gr`. Everything is already installed there. Ask G
 
 - Login: `ssh gr@ada-gw1.iiit.ac.in` (or `ada-gw2`). You must be on the campus network or VPN. The old `ada.iiit.ac.in` no longer accepts SSH.
 - The remote shell is **zsh**.
-- Repo copy on the cluster: `~/lma` (= `/home2/gr/lma`). It is **not** a git repo. Code moves with rsync (4.5).
+- **On 11 Nov George archived `~/lma` to free home space.** It is now inside `/share1/gr/kings_lma_backup_20261111.zip` (11 GB, also holds his other projects). Every run and log is already on the laptop and in `results/runs_v1/`, so you only need it for new cluster runs. To restore just this project (about 1 GB, home has 22 GB free):
+  ```bash
+  cd ~ && unzip -q /share1/gr/kings_lma_backup_20261111.zip "lma/*"
+  ```
+  Then `cluster/sync.sh push` from the laptop to update the code. Do not delete or change the zip.
+- Repo copy on the cluster (after restore): `~/lma` (= `/home2/gr/lma`). It is **not** a git repo. Code moves with rsync (4.5).
 - Small Python env (no torch): `~/lma/.venv` (Python 3.12). Use it for grading and analysis.
 - LoRA detector adapters: `~/lma/models/det-qwen2.5-1.5b-instruct-s{0,1,2}` and `det-qwen2.5-0.5b-s{0,1,2}`. Runs use `lora:models/det-qwen2.5-1.5b-instruct-s{seed}`.
 - Ollama bundle (v0.21.2, zstd tar): `~/ollama`. The scripts unpack it on node scratch.
@@ -149,16 +154,20 @@ From the laptop repo root:
 | RECHECK v2 (exploratory) | `results/final_v1.md` | Policy unsafe 67.0 vs RECHECK 73.7. Completion 73.6, so it also fails the 10-point rule |
 | Advice judge (UNVALIDATED) | `results/advice_v1.md` | Needs the human labels before any claim |
 | **Second agent model, Llama 3.1 8B (exploratory, done 10 Nov)** | `results/llama_v1.md`, `llama_extra_facts.md`, `llama_failure_breakdown.md` | Seed 0, 5 conditions, 7,860 episodes. See 5.2 |
-| Raw episodes | `results/runs_v1/*.tar.gz` + `SHA256SUMS` | 9 archives, 64,326 episodes in total |
+| Raw episodes | `results/runs_v1/*.tar.gz` + `SHA256SUMS` | 10 archives, 72,186 episodes in total |
 | Mid report | `ai report/report.tex` (tag `midsem`), updated 2 Nov | Builds clean |
-| **Third agent model, Qwen2.5 14B Q4 (RUNNING since 10 Nov 11:40 IST)** | see Task 0 | Ends about 05:00 IST 11 Nov |
-| Context pack for writers | `context.zip` | Built 2 Nov. Does **not** have Llama yet |
+| **Third agent model, Qwen2.5 14B Q4 (done 11 Nov)** | `results/qwen14b_v1.md`, `qwen14b_extra_facts.md`, `qwen14b_failure_breakdown.md` | Seed 0, 5 conditions, 7,860 episodes. See 5.2b |
+| Context pack for writers | `context.zip` | Built 2 Nov. Does **not** have Llama or 14B yet |
 
 Checks done: every episode re-grades to its stored grade. Every cluster analysis file was re-made on the laptop and matches. The seed-0 detector re-run in the Llama node env gives the same eval metrics as before (`results/checks/detector_rerun_llama_env.json`).
 
 ### 5.2 Llama results in one paragraph
 
 Llama 3.1 8B is unsafe in almost every red-flag episode under every condition. Policy unsafe: Plain 99.5, Plain + Label 97.6, RECHECK 97.0, RECHECK v2 96.8, Safety 91.0. RECHECK beats Plain by only 2.6 points (CI -4.0 to -1.3). It almost never calls `escalate_to_clinician` (39 calls in 1,572 Plain episodes, vs 524 for Qwen). It often writes in its own note that the message is a red flag but then does nothing (41-71% of its unsafe episodes). Tool calls are 99%+ valid, so this is not a format bug. **Report it separately. Do not pool it with Qwen. It is one seed only.** Do not run the advice judge on it: the judge is the same Llama model.
+
+### 5.2b Qwen2.5 14B results in one paragraph
+
+The 14B model behaves very differently from the 7B and from Llama. Policy unsafe: Plain 80.6, Plain + Label 82.4, Safety 70.5, RECHECK 39.6, RECHECK v2 36.4. RECHECK beats Plain by 41.0 points (CI -46.2 to -35.9) and Plain + Label by 42.8. Routine completion goes **up** with RECHECK (+18.2 vs Plain), so H2 holds for this model. H1 also holds (Plain POST minus T1 strict +17.8). **Big caveat:** only 67-70% of tool calls are valid for Plain, Safety and Plain + Label (87% for RECHECK). The model often passes its NOTE JSON as the arguments of `book`, so bookings fail. This explains the low Plain completion (50.0) and part of the RECHECK gain. The proposal's rule was to switch models if valid calls are under 90%; here it is a result to report, not a reason to drop the run. Also report: 4-bit weights and an 8-bit KV cache (the 7B used 8-bit weights). One seed only. Do not pool with the 7B.
 
 ### 5.3 Numbers people get wrong
 
@@ -171,25 +180,9 @@ Llama 3.1 8B is unsafe in almost every red-flag episode under every condition. P
 
 Tags: `[ ]` open, `[!]` needs a human.
 
-### Task 0. [ ] Collect the Qwen2.5 14B run (agent). About 2-3 h of work once it ends.
+### Task 0. [x] Qwen2.5 14B run. Done.
 
-**What it is.** A scale check: does a bigger model of the same family do better? Agent model `qwen2.5:14b-instruct-q4_K_M` (4-bit, because 14B at 8-bit does not fit an 11 GB card). Same prompts, tools, eval set and seed-0 LoRA detector as the other runs. Nothing tuned. Seed 0, both phrasings, plain, safety, plain_label, recheck, recheck_v2 (7,860 episodes).
-
-**Where.** Holder job **67671** on gnode082 (4 GPUs, `PARALLEL=1`, `CTX=8192`, plus `OLLAMA_FLASH_ATTENTION=1` and `OLLAMA_KV_CACHE_TYPE=q8_0`), started 10 Nov 11:40 IST. Queue: `cluster/queue_model.sh 67671 qwen14b` running on the ada login node. Log: `logs/queue_qwen14b.log`. Output: `runs/llm_qwen14b`. Analysis: `runs/qwen14b_analysis/`. End marker: `logs/queue/qwen14b.done`. The queue cancels the holder when done. Speed is about 7.6 episodes per minute, so it should end around **05:00 IST on 11 Nov**.
-
-**Why the KV cache setting.** A first try (job 67648) used the default 16-bit KV cache. The model did not fit on an 11 GB card (10.5 of 11.1 GB on GPU), so it ran at about 1.4 episodes per minute. Its 7 episodes were deleted and the run restarted with an 8-bit KV cache, which fits fully (10.06 of 10.06 GB). The context stays 8192, same as the other runs. **Report this setting in the paper** as a difference from the 7B and Llama runs. Log of the first try: `logs/queue_qwen14b_attempt1.log`.
-
-**Check it:**
-```bash
-ssh gr@ada-gw1.iiit.ac.in
-cd ~/lma; tail logs/queue_qwen14b.log; ls logs/queue | grep qwen14b
-wc -l runs/llm_qwen14b/*_s0.jsonl      # 1572 each when done
-squeue -u gr
-```
-- If the holder died: start a new one (section 4.3, `--export=ALL,MODEL=qwen2.5:14b-instruct-q4_K_M,PARALLEL=1,CTX=8192,OLLAMA_FLASH_ATTENTION=1,OLLAMA_KV_CACHE_TYPE=q8_0`), then re-run `nohup bash cluster/queue_model.sh <new_job> qwen14b >> logs/queue_qwen14b.log 2>&1 &`. It resumes.
-- **Check the model is on the GPU**, not the CPU: inside the job, `curl -s localhost:11434/api/ps` should show `size_vram` close to `size`. If not, the run is slow and should be restarted with a smaller `CTX`; say so in the paper.
-
-**When done:** the same steps as the Llama run. `cluster/sync.sh pull`; re-make the analysis on the laptop and compare with `runs/qwen14b_analysis/` (only the scenario path in the JSON should differ); archive `runs/llm_qwen14b` into `results/runs_v1/` and add the hash; copy the analysis to `results/`; add a row to `results/README.md`; add it to the paper next to Llama. Note it is 4-bit while the 7B is 8-bit. Do not pool it with the 7B runs.
+Finished 11 Nov 05:32 IST (holder 67671, gnode082, cancelled by the queue). Pulled from the backup zip on 12 Nov, re-graded (all 7,860 match), analysis re-made on the laptop (identical except the scenario path in the JSON), archived as `results/runs_v1/llm_qwen14b.tar.gz`, results in `results/qwen14b_*`. Setup details: section 5.2b and `results/README.md`. A first try with a 16-bit KV cache (job 67648) did not fit on the GPU and was too slow; its 7 episodes were deleted (`logs/queue_qwen14b_attempt1.log`).
 
 ### Task 1. [ ] Write the final paper (agent, then team review). About 4-6 h.
 
@@ -197,7 +190,7 @@ The draft in `paper/` is mostly empty. The mid report `ai report/report.tex` has
 1. `sections/results.tex`: make it from `results/` with a script. `scripts/make_report_tables.py` already makes LaTeX macros and tables; extend it for Llama. Never hand-type a number.
 2. Method: add RECHECK v2. Say it is exploratory and was designed after the main results.
 3. New section "Second agent model": the Llama results (5.2).
-3b. Add the 14B results to the same section when Task 0 is done.
+3b. Put the 14B results (5.2b) in the same section, with the tool-call caveat.
 4. Discussion and conclusion. Lead with the benchmark. RECHECK lowers unsafe outcomes but costs completion. A label alone does not help. A weaker agent model barely escalates at all.
 5. Limitations: Synthea realism; agent-written scenarios and seeds; q8 model, not bf16; Llama one seed only; rule-based simulator; advice judge and policy labels not validated unless Task 2 is done; no clinician review.
 6. Reviewer pointers (`docs/pointers.txt`): policy grading primary, no "first" claims (safe sentence in `papers.md` section 1).
@@ -211,8 +204,8 @@ Then: `.venv/bin/python scripts/score_labels.py --dir labelling --out results/la
 
 ### Task 3. [ ] Report and context pack. About 1-2 h.
 
-1. Add a short Llama section to `ai report/report.tex`, using macros made by `scripts/make_report_tables.py`. Rebuild.
-2. Rebuild `context.zip`: add Llama to files 01, 02, 04, 05, and add `llm_llama` to `verify/reproduce.sh` and `results/llama_v1.md` to `verify/check_numbers.py` SOURCES. Run `reproduce.sh` on a fresh copy.
+1. Add a short Llama and 14B section to `ai report/report.tex`, using macros made by `scripts/make_report_tables.py`. Rebuild.
+2. Rebuild `context.zip`: add Llama and 14B to files 01, 02, 04, 05, and add `llm_llama` and `llm_qwen14b` to `verify/reproduce.sh` and `results/llama_v1.md` and `results/qwen14b_v1.md` to `verify/check_numbers.py` SOURCES. Run `reproduce.sh` on a fresh copy.
 
 ### Task 4. [ ] Submit. About 30 min.
 
