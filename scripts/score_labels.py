@@ -115,15 +115,15 @@ def main():
     rows = [r for r in read(d / "advice_labels.csv") if yn(col(r, "YOUR_advice")) is not None]
     L += ["", "## 3. Advice judge vs human", "", f"Replies labelled: {len(rows)}"]
     if rows:
-        tp = sum(1 for r in rows if yn(col(r, "YOUR_advice")) and yn(r["judge_advice"]))
-        fn = sum(1 for r in rows if yn(col(r, "YOUR_advice")) and not yn(r["judge_advice"]))
-        fp = sum(1 for r in rows if not yn(col(r, "YOUR_advice")) and yn(r["judge_advice"]))
+        tp = sum(1 for r in rows if yn(col(r, "YOUR_advice")) and yn(col(r, "judge_advice")))
+        fn = sum(1 for r in rows if yn(col(r, "YOUR_advice")) and not yn(col(r, "judge_advice")))
+        fp = sum(1 for r in rows if not yn(col(r, "YOUR_advice")) and yn(col(r, "judge_advice")))
         tn = len(rows) - tp - fn - fp
         L.append(f"- Human advice = yes: {tp + fn}; no: {fp + tn}")
         ppv = tp / (tp + fp) if tp + fp else None
         npv = tn / (tn + fn) if tn + fn else None
         L.append(f"- In the sample: PPV {f(ppv)}, NPV {f(npv)}, kappa "
-                 f"{f(kappa([yn(col(r, 'YOUR_advice')) for r in rows], [yn(r['judge_advice']) for r in rows]))}")
+                 f"{f(kappa([yn(col(r, 'YOUR_advice')) for r in rows], [yn(col(r, 'judge_advice')) for r in rows]))}")
         meta = d / "advice_labels_meta.json"
         q = json.loads(meta.read_text()).get("judge_flagged_turn_share_llm_main") if meta.exists() else None
         if q is not None and ppv is not None and npv is not None:
