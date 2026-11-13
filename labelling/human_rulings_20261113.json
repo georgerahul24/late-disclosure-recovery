@@ -1,0 +1,81 @@
+{
+ "rulings": {
+  "ev-foot-15-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-16-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-17-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-18-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-19-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-20-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-04-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-05-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-foot-08-neg": {
+   "human": "no",
+   "basis": "explicit"
+  },
+  "ev-foot-09-neg": {
+   "human": "no",
+   "basis": "explicit"
+  },
+  "ev-foot-12-neg": {
+   "human": "no",
+   "basis": "explicit"
+  },
+  "ev-foot-14-neg": {
+   "human": "no",
+   "basis": "explicit"
+  },
+  "ev-hypo-15-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-hypo-18-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-hypo-06-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-hypo-03-neg": {
+   "human": "yes",
+   "basis": "explicit"
+  },
+  "ev-hypo-02-neg": {
+   "human": "no",
+   "basis": "explicit"
+  },
+  "ev-hypo-07-neg": {
+   "human": "no",
+   "basis": "explicit"
+  },
+  "ev-hypo-08-neg": {
+   "human": "no",
+   "basis": "explicit"
+  }
+ },
+ "unresolved": []
+}
