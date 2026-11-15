@@ -28,7 +28,8 @@ _TOOL_TAG = re.compile(r"<tool_call>\s*(\{.*?\})\s*</tool_call>", re.S)
 
 class ChatClient:
     def __init__(self, base_url: str, model: str, temperature: float = 0.0, seed: int = 0,
-                 timeout: float = 300.0, max_tokens: int = 768, api_key: str = "none", json_mode: bool = False):
+                 timeout: float = 300.0, max_tokens: int = 768, api_key: str = "none", json_mode: bool = False,
+                 max_tokens_field: str = "max_tokens", sampling: bool = True, extra_body: dict | None = None):
         self.base_url = base_url.rstrip("/")
         self.model = model
         self.temperature = temperature
@@ -37,13 +38,22 @@ class ChatClient:
         self.max_tokens = max_tokens
         self.api_key = api_key
         self.json_mode = json_mode  # constrain output to one JSON object (judge); stops trailing prose
+        # Hosted APIs (OpenAI GPT-5/6) need max_completion_tokens and may reject temperature/seed.
+        self.max_tokens_field = max_tokens_field
+        self.sampling = sampling
+        self.extra_body = dict(extra_body or {})  # e.g. reasoning_effort, prompt_cache_key
         self.n_calls = 0
         self.tokens_in = 0
         self.tokens_out = 0
+        self.tokens_cached = 0     # input tokens served from the provider's prompt cache
+        self.tokens_reasoning = 0  # hidden reasoning tokens (billed as output)
+        self.served_models: set[str] = set()
 
-    def chat(self, messages: list[dict], tools: list[dict] | None = None, retries: int = 3) -> ChatResult:
-        body = {"model": self.model, "messages": messages, "temperature": self.temperature,
-                "seed": self.seed, "max_tokens": self.max_tokens}
+    def chat(self, messages: list[dict], tools: list[dict] | None = None, retries: int = 5) -> ChatResult:
+        body = {"model": self.model, "messages": messages, self.max_tokens_field: self.max_tokens}
+        if self.sampling:
+            body.update(temperature=self.temperature, seed=self.seed)
+        body.update(self.extra_body)
         if self.json_mode:
             body["response_format"] = {"type": "json_object"}
         if tools:
@@ -58,6 +68,13 @@ class ChatClient:
                 with urllib.request.urlopen(req, timeout=self.timeout) as r:
                     out = json.loads(r.read())
                 break
+            except urllib.error.HTTPError as e:
+                detail = e.read().decode(errors="replace")[:500]
+                if e.code not in (408, 409, 429) and e.code < 500:
+                    # A bad request will not fix itself; fail loudly instead of retrying.
+                    raise RuntimeError(f"chat request rejected (HTTP {e.code}): {detail}") from e
+                last = f"HTTP {e.code}: {detail}"
+                time.sleep(min(60, 5 * 2 ** attempt))  # rate limit or server error: back off
             except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
                 last = e
                 time.sleep(2 * (attempt + 1))
@@ -67,6 +84,10 @@ class ChatClient:
         usage = out.get("usage") or {}
         self.tokens_in += usage.get("prompt_tokens", 0)
         self.tokens_out += usage.get("completion_tokens", 0)
+        self.tokens_cached += (usage.get("prompt_tokens_details") or {}).get("cached_tokens") or 0
+        self.tokens_reasoning += (usage.get("completion_tokens_details") or {}).get("reasoning_tokens") or 0
+        if out.get("model"):
+            self.served_models.add(out["model"])
         msg = out["choices"][0]["message"]
         content = msg.get("content") or ""
         calls = []
