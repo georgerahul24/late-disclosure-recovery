@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 import threading
 import time
@@ -101,14 +100,6 @@ def main():
     ap.add_argument("--faults", default="none")
     ap.add_argument("--limit", type=int, default=0, help="only the first N episodes (smoke test)")
     ap.add_argument("--out", default=str(ROOT / "runs" / "llm"))
-    # Hosted APIs (e.g. OpenAI). The key is read from an env var, never from the command line.
-    ap.add_argument("--api-key-env", help="name of the env var that holds the API key (e.g. OPENAI_API_KEY)")
-    ap.add_argument("--max-tokens-field", default="max_tokens", help="OpenAI GPT-5/6 need max_completion_tokens")
-    ap.add_argument("--max-tokens", type=int, default=768)
-    ap.add_argument("--no-sampling-params", action="store_true", help="do not send temperature/seed")
-    ap.add_argument("--extra-body", default="{}", help='JSON merged into every request, e.g. {"reasoning_effort":"low"}')
-    ap.add_argument("--prompt-cache-key", action="store_true",
-                    help="send prompt_cache_key=<condition>-<episode> so one episode's calls share a cache (OpenAI)")
     args = ap.parse_args()
 
     data = Path(args.data)
@@ -116,8 +107,6 @@ def main():
     scenarios = load_scenarios(args.scenarios or data / "scenarios.json")
     policy = load_policy(args.policy or data / "policy.json")
     urls = args.base_urls.split(",")
-    api_key = os.environ[args.api_key_env] if args.api_key_env else "none"
-    extra_body = json.loads(args.extra_body)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     det_proto = args.detector
@@ -151,13 +140,7 @@ def main():
             def work(i_ep):
                 i, ep = i_ep
                 ep = type(ep)(ep.scenario_id, ep.timing, ep.phrasing, ep.fault, seed)
-                eb = dict(extra_body)
-                if args.prompt_cache_key:
-                    eb["prompt_cache_key"] = f"{cond}-{ep.scenario_id}-{ep.phrasing}-{ep.fault}-s{seed}"
-                client = ChatClient(urls[i % len(urls)], args.model, temperature=args.temperature, seed=seed,
-                                    api_key=api_key, max_tokens=args.max_tokens,
-                                    max_tokens_field=args.max_tokens_field,
-                                    sampling=not args.no_sampling_params, extra_body=eb)
+                client = ChatClient(urls[i % len(urls)], args.model, temperature=args.temperature, seed=seed)
                 det = (shared_det or make_detector(det_kind, det_seeds)) if needs_det else None
                 agent = LLMAgent(cond, client, detector=det)
                 sc = scenarios[ep.scenario_id]
@@ -165,8 +148,6 @@ def main():
                                 allow_full_record=CONDITIONS[cond].full_record)
                 d = json.loads(r.to_json())
                 d["usage"] = {"calls": client.n_calls, "tokens_in": client.tokens_in, "tokens_out": client.tokens_out,
-                              "tokens_cached": client.tokens_cached, "tokens_reasoning": client.tokens_reasoning,
-                              "served_models": sorted(client.served_models),
                               "note_parse_failures": agent.parse_failures,
                               "harness_feedback": agent.harness_feedback}
                 with lock:
