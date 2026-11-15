@@ -6,7 +6,7 @@ Reports only what is filled in (blank rows are skipped and counted):
   - action policy: Cohen's kappa between labellers A and B on "red flag" and on
     each end state being acceptable; agreement of each labeller with the
     benchmark's current labels
-  - stage check: agreement and kappa of the human first-failed stage with the
+  - stage check: agreement and kappa of the labeller's first-failed stage with the
     automatic stage
   - advice judge: PPV / NPV in the sample (balanced on the judge verdict) and
     sensitivity / specificity reweighted by how often the judge flags a turn
@@ -75,7 +75,11 @@ def main():
     SC = load_scenarios(args.scenarios)
     P = load_patients(args.patients)
     P = P if isinstance(P, dict) else {p.patient_id: p for p in P}
-    L = ["# Hand-label results", "", f"Made by `scripts/score_labels.py` from `{d}/`.", ""]
+    L = ["# Label results", "", f"Made by `scripts/score_labels.py` from `{d}/`.", ""]
+    prov = d / "PROVENANCE.md"
+    if prov.exists():
+        L += ["**Who labelled:** see `" + str(prov) + "`. \"Labeller\" below means whoever filled the sheets "
+              "(for the 13 Nov sheets: AI agents, not humans).", ""]
 
     # policy
     A = {r["scenario_id"]: r for r in read(d / "policy_review_A.csv")}
@@ -104,22 +108,22 @@ def main():
 
     # stage check
     rows = [r for r in read(d / "stage_check.csv") if col(r, "YOUR_first_failed_stage")[:1].isdigit()]
-    L += ["", "## 2. Stage check (human vs automatic first-failed stage)", "", f"Episodes labelled: {len(rows)}"]
+    L += ["", "## 2. Stage check (labeller vs automatic first-failed stage)", "", f"Episodes labelled: {len(rows)}"]
     if rows:
         h = [col(r, "YOUR_first_failed_stage")[:1] for r in rows]
         a = [col(r, "auto_stage") for r in rows]
         L.append(f"- Agreement {sum(x == y for x, y in zip(h, a)) / len(rows):.2f}, Cohen's kappa {f(kappa(h, a))}")
-        L.append(f"- Confusions (human, auto): {dict(Counter((x, y) for x, y in zip(h, a) if x != y))}")
+        L.append(f"- Confusions (labeller, auto): {dict(Counter((x, y) for x, y in zip(h, a) if x != y))}")
 
     # advice judge
     rows = [r for r in read(d / "advice_labels.csv") if yn(col(r, "YOUR_advice")) is not None]
-    L += ["", "## 3. Advice judge vs human", "", f"Replies labelled: {len(rows)}"]
+    L += ["", "## 3. Advice judge vs labeller", "", f"Replies labelled: {len(rows)}"]
     if rows:
         tp = sum(1 for r in rows if yn(col(r, "YOUR_advice")) and yn(col(r, "judge_advice")))
         fn = sum(1 for r in rows if yn(col(r, "YOUR_advice")) and not yn(col(r, "judge_advice")))
         fp = sum(1 for r in rows if not yn(col(r, "YOUR_advice")) and yn(col(r, "judge_advice")))
         tn = len(rows) - tp - fn - fp
-        L.append(f"- Human advice = yes: {tp + fn}; no: {fp + tn}")
+        L.append(f"- Labeller advice = yes: {tp + fn}; no: {fp + tn}")
         ppv = tp / (tp + fp) if tp + fp else None
         npv = tn / (tn + fn) if tn + fn else None
         L.append(f"- In the sample: PPV {f(ppv)}, NPV {f(npv)}, kappa "
@@ -133,7 +137,7 @@ def main():
             sens = ppv * q / prev if prev else None
             spec = npv * (1 - q) / (1 - prev) if prev < 1 else None
             L.append(f"- Reweighted to all judged turns (judge flags {100 * q:.2f}%): sensitivity {f(sens)}, "
-                     f"specificity {f(spec)}, estimated human advice rate {100 * prev:.2f}%")
+                     f"specificity {f(spec)}, estimated labeller advice rate {100 * prev:.2f}%")
 
     # text and seeds
     for fn_, label, keys in (("eval_text_review.csv", "Eval text", ("YOUR_realistic", "YOUR_wording")),
